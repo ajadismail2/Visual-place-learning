@@ -118,7 +118,7 @@ Three mounting options are provided to accommodate different laboratory setups a
 
 **Description**: A vertical stand printed in PLA or PETG with integrated mount for the IR LED array.
 
-![3D Printed Stand](images/ir_stand.png)
+![3D Printed Stand](images/3dprint.jpg)
 *3D-printed stand with top-mounted IR LED array*
 
 **Advantages**:
