@@ -2,7 +2,7 @@
 
 The thermal control system creates the temperature landscape that drives place learning behavior in Drosophila Melanogaster. Our current implementation uses a dual-subsystem approach: bulk thermal control for the warm background and precision PID control for the cool target tile.
 
-![Thermal System Overview](images/thermal_system_overview.jpg)
+![Thermal System Overview](images/schematic.jpg)
 *Complete thermal control system showing both bulk and precision subsystems*
 
 ---
@@ -21,8 +21,8 @@ The key insight is that the experimental paradigm only requires two distinct tem
 
 The bulk thermal subsystem consists of **60 generic Peltier plates** arranged beneath the arena floor, providing uniform warming across the experimental surface.
 
-![Bulk Peltier Array](images/bulk_peltier_array.jpg)
-*60-plate Peltier array configuration for uniform background heating*
+![Bulk Peltier Array](images/60.png)
+*64-plate Peltier array configuration for uniform background heating*
 
 **Key Specifications:**
 - **Peltier modules**: Generic TEC1-12706 or equivalent (40mm × 40mm)
@@ -39,8 +39,6 @@ The Peltier modules operate in heating mode only (current flows in one direction
 
 ### Thermal Performance
 
-![Thermal Imaging](images/thermal_uniformity.jpg)
-*Thermal camera image showing uniform 36°C surface temperature*
 
 The bulk array achieves thermal uniformity within ±1°C across the arena surface, confirmed by thermal imaging and temperature sensors. This uniformity ensures no thermal gradients exist that could guide flies to the cool tile from a distance, maintaining the requirement that navigation must rely on visual cues.
 
@@ -58,7 +56,7 @@ Generic TEC1-12706 modules cost approximately $2-3 USD each compared to $50-100 
 
 The precision subsystem uses **4 Peltier plates** under closed-loop PID (Proportional-Integral-Derivative) control to maintain the cool target tile at exactly 25°C.
 
-![PID Control System](images/pid_control_setup.jpg)
+![PID Control System](images/thermal_camera.jpg)
 *Four-plate precision cooling array with PID temperature control*
 
 **Key Specifications:**
@@ -90,9 +88,10 @@ Two sensor configurations are available, each with distinct advantages and limit
 
 #### Option 1: Thermal Camera (MLX90640 or AMG8833)
 
+<!-- 
 ![Thermal Camera Setup](images/thermal_camera_setup.jpg)
 *Thermal camera positioned for non-contact temperature measurement*
-
+-->
 **Advantages:**
 - Non-contact measurement (no sensor on arena surface)
 - Can monitor entire arena thermal profile
@@ -107,9 +106,6 @@ Two sensor configurations are available, each with distinct advantages and limit
 **Recommended Use**: Thermal cameras are ideal for system calibration, thermal uniformity verification, and open-arena testing. Use during development to establish reliable PID parameters, then switch to DS18B20 for actual experiments.
 
 #### Option 2: DS18B20 Digital Temperature Sensor
-
-![DS18B20 Placement](images/ds18b20_placement.jpg)
-*DS18B20 sensor placement options for minimal fly interference*
 
 **Advantages:**
 - Inexpensive ($1-2 per sensor)
@@ -129,8 +125,8 @@ Two sensor configurations are available, each with distinct advantages and limit
    - Sensors measure heat dissipation from the cold side
    - Requires calibration offset to correlate with actual tile surface temperature
 
-![Sensor Below Configuration](images/sensor_below_setup.jpg)
-*DS18B20 sensors mounted below precision Peltier array*
+![Sensor Below Configuration](images/ada.jpg)
+*DS18B20 sensors*
 
 2. **Pre-calibrated open-loop operation** (Alternative):
    - Use thermal camera to establish PID parameters during initial setup
@@ -167,7 +163,7 @@ The precision subsystem shares its 12V Meanwell power supply with the thermal ri
 
 The thermal ring prevents thigmotaxis (wall-following behavior) by creating an uncomfortable heated barrier around the arena perimeter. This forces flies to navigate the central arena area where visual cues are clearly visible, rather than avoiding the experimental space by walking along the walls.
 
-![Thermal Ring Assembly](images/thermal_ring_assembly.jpg)
+![Thermal Ring Assembly](images/ring.png)
 *3D-printed PLA ring with embedded nichrome heating wire*
 
 ### Construction
@@ -184,8 +180,6 @@ The nichrome wire is embedded in channels within the 3D-printed ring during asse
 - Thermal mass to maintain consistent barrier temperature
 - Mounting interface for the glass cover
 
-![Ring Cross-Section](images/ring_cross_section.jpg)
-*Cross-sectional view showing nichrome wire channel and mounting features*
 
 ### Electrical Configuration
 
@@ -209,17 +203,10 @@ This power dissipation produces sufficient surface temperature (>50°C) to creat
 - The heated ring is mechanically isolated from experimental surfaces
 - Temperature can be verified using thermal camera during setup
 
-![Ring Temperature Profile](images/ring_thermal_profile.jpg)
-*Thermal imaging showing >50°C barrier temperature*
 
 ---
 
 ## System Integration
-
-### Wiring Diagram
-
-![Complete Wiring Schematic](images/thermal_wiring_complete.jpg)
-*Full system wiring showing bulk heating, precision cooling, and thermal ring*
 
 ### Startup Sequence
 
@@ -265,7 +252,7 @@ This synchronized thermal-visual coupling is essential for place learning (as sh
 
 ---
 
-## Bill of Materials (Thermal System)
+## Cost of Materials (Thermal System)
 
 | Component | Quantity | Approximate Cost (USD) |
 |-----------|----------|------------------------|
