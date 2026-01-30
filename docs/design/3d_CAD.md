@@ -1,4 +1,4 @@
-# 3D Mechanical Design
+# 3D CAD Design
 
 This section contains the mechanical design files for the visual place learning apparatus.
 
