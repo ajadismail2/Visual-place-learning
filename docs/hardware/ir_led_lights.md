@@ -50,7 +50,7 @@ Our implementation uses widely available IR LED arrays designed for CCTV securit
 
 Standard CMOS and CCD camera sensors are sensitive to near-infrared wavelengths (up to ~1000 nm). Most consumer cameras include IR-blocking filters to produce natural-looking color images, but these filters can be removed or bypassed.
 
-![Camera IR Sensitivity](images/camera_ir_response.jpg)
+![Camera IR Sensitivity](images/CMOS.png)
 *Typical CMOS sensor spectral response showing sensitivity to 850 nm IR*
 
 **Recommended cameras**:
@@ -67,7 +67,7 @@ Standard CMOS and CCD camera sensors are sensitive to near-infrared wavelengths 
 
 **Component**: Generic 42-LED Infrared Illuminator Board
 
-![IR LED Array](images/ir_led_array_detail.jpg)
+![IR LED Array](images/ir_array.jpg)
 *42-LED IR array module commonly used for CCTV cameras*
 
 **Specifications**:
@@ -108,9 +108,6 @@ The IR array draws 1-2A from the 12V Meanwell power supply, which also powers th
 - **Optional**: Inline fuse (2A) for overcurrent protection
 - **Optional**: PWM dimming circuit for intensity control
 
-![Power Connection](images/ir_led_power_wiring.jpg)
-*IR LED array wiring to 12V power supply with optional fuse*
-
 ---
 
 ## Mounting Configurations
@@ -121,7 +118,7 @@ Three mounting options are provided to accommodate different laboratory setups a
 
 **Description**: A vertical stand printed in PLA or PETG with integrated mount for the IR LED array.
 
-![3D Printed Stand](images/ir_stand_3d_printed.jpg)
+![3D Printed Stand](images/ir_stand.png)
 *3D-printed stand with top-mounted IR LED array*
 
 **Advantages**:
@@ -146,14 +143,12 @@ Three mounting options are provided to accommodate different laboratory setups a
 - **Support**: Required for overhangs >45°
 - **Post-processing**: Remove supports, sand contact surfaces
 
-![Stand CAD Model](images/ir_stand_cad_model.jpg)
-*CAD model showing assembly and cable routing*
 
 ### Option 2: PVC Pipe Stand (Thrifted/Repurposed)
 
 **Description**: A simple, cost-effective stand made from readily available PVC plumbing pipe with lamp shade attachment.
 
-![PVC Pipe Stand](images/ir_stand_pvc_pipe.jpg)
+![PVC Pipe Stand](ir_stand.png)
 *PVC pipe stand with IR array mounted inside lamp shade*
 
 **Components**:
@@ -191,15 +186,11 @@ Three mounting options are provided to accommodate different laboratory setups a
    - Angle IR array to illuminate arena uniformly
    - Secure cable to prevent accidental disconnection
 
-![PVC Assembly Steps](images/ir_stand_pvc_assembly.jpg)
-*Step-by-step assembly of PVC pipe IR stand*
 
 ### Option 3: 3D-Printed Clip-On Mount (Attaches to P4 LED Panels)
 
 **Description**: A compact clip-on mount that attaches directly to the top edge of P4 LED panels, eliminating the need for separate stands.
 
-![Clip-On Mount](images/ir_mount_clip_on.jpg)
-*Clip-on IR mount attached to P4 LED panel frame*
 
 **Advantages**:
 - **Minimal footprint**: No floor space required
@@ -220,9 +211,6 @@ Three mounting options are provided to accommodate different laboratory setups a
 - Angle IR arrays toward center to minimize shadows
 - Use with heavier-mounted LED panels for stability
 
-![Clip-On Design](images/ir_clip_on_cad.jpg)
-*CAD model showing clip mechanism and angle adjustment*
-
 ---
 
 ## Illumination Uniformity
@@ -230,9 +218,6 @@ Three mounting options are provided to accommodate different laboratory setups a
 ### Positioning Strategy
 
 **Goal**: Achieve uniform IR illumination across the entire arena surface without creating bright spots or shadows that could provide unintended spatial cues.
-
-![Illumination Pattern](images/ir_illumination_pattern.jpg)
-*IR intensity map showing uniform illumination across arena*
 
 **Best practices**:
 1. **Height**: Position IR array 30-50 cm above arena center
@@ -289,9 +274,6 @@ print(f"Uniformity (CV): {cv:.3f}")
 ### IR Filter Removal (USB Webcams)
 
 Many consumer webcams have an IR-blocking filter that must be removed for optimal IR sensitivity.
-
-![IR Filter Removal](images/webcam_ir_filter_removal.jpg)
-*Removing IR-blocking filter from Logitech C920 webcam*
 
 **Procedure** (example for Logitech C920):
 1. **Disassemble camera**: Remove screws from camera housing
@@ -382,18 +364,6 @@ Many consumer webcams have an IR-blocking filter that must be removed for optima
 | **Total** (basic setup) | | **~$10-25** |
 
 *Specialized behavioral tracking IR illumination systems can cost $200-500. This generic approach achieves equivalent functionality at ~5-10% of the cost.*
-
----
-
-## Scientific References
-
-1. **Drosophila spectral sensitivity**: Salcedo, E., et al. (1999). Blue-and green-absorbing visual pigments of *Drosophila*. *Journal of Neuroscience*, 19(24), 10716-10726.
-
-2. **Original arena implementation**: Ofstad, T. A., Zuker, C. S., & Reiser, M. B. (2011). Visual place learning in *Drosophila melanogaster*. *Nature*, 474(7350), 204-207.
-
-3. **Behavioral tracking methodology**: Branson, K., et al. (2009). High-throughput ethomics in large groups of *Drosophila*. *Nature Methods*, 6(6), 451-457.
-
----
 
 ## CAD Files
 
