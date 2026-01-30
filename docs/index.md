@@ -41,17 +41,17 @@ Web-based interface (via Raspberry Pi) enables wireless experiment control and m
 
 **Hardware Systems**:
 - [Complete System Overview](complete_system_overview.md) - Architecture, assembly guide, cost analysis
-- [Thermal Control System](thermal_control_system.md) - Peltier arrays, PID control, thermal ring
-- [Visual Display System](visual_display_system.md) - P4 LED panels, ESP32 control, pattern generation
-- [IR Illumination System](ir_illumination_system.md) - Lighting for behavioral tracking
+- [Thermal Control System](hardware/thermal_control_system.md) - Peltier arrays, PID control, thermal ring
+- [Visual Display System](hardware/visual_display_system.md) - P4 LED panels, ESP32 control, pattern generation
+- [IR Illumination System](hardware/IR_illumination_system.md) - Lighting for behavioral tracking
 
 **Electronics & Control**:
-- [ESP32 Microcontrollers](esp32.md) - Dual-controller architecture, system coordination
-- [Web-Based Control](web_server.md) - Raspberry Pi server for remote operation
+- [ESP32 Microcontrollers](hardware/esp32.md) - Dual-controller architecture, system coordination
+- [Web-Based Control](software/web_server.md) - Raspberry Pi server for remote operation
 
 **Tracking & Analysis**:
-- [Monochrome Camera Selection](monochrome_camera.md) - Camera requirements by tracking method
-- Behavioral Tracking (coming soon) - CTRAX vs. SLEAP implementation
+- [Monochrome Camera Selection](hardware/monochrome_camera.md) - Camera requirements by tracking method
+- [Behavioural Tracking](software/Behavioural_tracking.md) - CTRAX vs. SLEAP implementation
 
 ---
 
