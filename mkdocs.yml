@@ -10,11 +10,9 @@ nav:
       - Peltier Plates: hardware/peltier_plates.md
       - LED Display: hardware/led_display.md
       - ESP32: hardware/esp32.md
-      - PyBadge MLX90640: hardware/pybadge_mlx90640.md
       - Raspberry Pi: hardware/raspberry_pi.md
       - IR LED Lights: hardware/ir_led_lights.md
       - Monochrome Camera: hardware/monochrome_camera.md
-      - Power Supplies: hardware/power_supplies.md
 
   - Design Files:
       - 3D Mechanical Design: design/3d_design.md
