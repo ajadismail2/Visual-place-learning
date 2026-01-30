@@ -2,7 +2,7 @@
 
 Control the entire visual place learning arena remotely through a web interface powered by a Raspberry Pi server. This system allows researchers to run experiments, adjust parameters, and monitor status from any device connected to the lab WiFi network.
 
-![Web Control Interface](images/web_interface_screenshot.jpg)
+![Web Control Interface](images/GUI.jpg)
 *Web interface for arena control accessible from laptop, tablet, or smartphone*
 
 ---
@@ -66,8 +66,7 @@ The Raspberry Pi acts as a central control hub, hosting a web server that commun
 - Ethernet cable (for more stable connection than WiFi)
 - Case for Raspberry Pi with cooling fan
 
-![Raspberry Pi Setup](images/raspberry_pi_connections.jpg)
-*Raspberry Pi connected to both ESP32 controllers via USB*
+![Overall Setup](images/raspberry_pi_connections.jpg)
 
 ---
 
@@ -352,36 +351,12 @@ sudo systemctl start arena-controller
 
 ### Connecting to the Interface
 
-1. **Find Raspberry Pi IP address**:
-   ```bash
-   hostname -I
-   # Example output: 192.168.1.100
-   ```
-
-2. **Access from any device on same network**:
+1. **Access from any device on same network**:
    - Open web browser
    - Navigate to: `http://192.168.1.100:5000`
    - Bookmark for easy access
 
-![Mobile Interface](images/web_interface_mobile.jpg)
-*Web interface works on smartphones and tablets*
 
-### Running an Experiment
-
-**Quick start**:
-1. Click quadrant button (e.g., "Quadrant 1")
-2. System automatically:
-   - Positions cool tile in selected quadrant
-   - Rotates visual display to match
-3. Run 5-minute trial
-4. Repeat for 10 trials
-
-**Manual control**:
-- Use temperature buttons to adjust thermal conditions
-- Use rotation buttons to change visual display independently
-- Monitor connection status in real-time
-
----
 
 ## ESP32 Serial Communication
 
@@ -420,60 +395,6 @@ void loop() {
 
 ---
 
-## Troubleshooting
-
-### Can't access web interface
-
-**Check Raspberry Pi is on same network**:
-```bash
-ping raspberrypi.local
-```
-
-**Verify server is running**:
-```bash
-sudo systemctl status arena-controller
-```
-
-**Check firewall** (if enabled):
-```bash
-sudo ufw allow 5000
-```
-
-### ESP32 not responding
-
-**Verify USB connections**:
-```bash
-ls /dev/ttyUSB*
-# Should show /dev/ttyUSB0 and /dev/ttyUSB1
-```
-
-**Check permissions**:
-```bash
-sudo usermod -a -G dialout pi
-# Logout and login for changes to take effect
-```
-
-**Test serial manually**:
-```bash
-screen /dev/ttyUSB0 115200
-# Type commands manually to test ESP32 response
-```
-
----
-
-## Security Considerations
-
-**For lab-internal use**:
-- Default setup is adequate (only accessible on local network)
-- Change default Raspberry Pi password: `passwd`
-
-**For remote access** (advanced):
-- Set up VPN to access lab network securely
-- Add password authentication to Flask app
-- Use HTTPS instead of HTTP
-
----
-
 ## Advantages of This System
 
 ✅ **Wireless operation** - Control arena without entering dark room  
@@ -494,7 +415,5 @@ screen /dev/ttyUSB0 115200
 | USB cables (2×) | $5-10 |
 | Power supply | $8-12 |
 | **Total** | **~$56-79** |
-
-*WiFi router assumed to be already available in lab*
 
 ---
