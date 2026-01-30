@@ -351,43 +351,7 @@ Many consumer webcams have an IR-blocking filter that must be removed for optima
 - Lower camera gain setting
 - Increase distance between IR array and arena
 
----
 
-## Advanced: PWM Intensity Control
-
-For optimal tracking performance, IR intensity may need adjustment. Adding PWM (Pulse Width Modulation) control allows dynamic brightness adjustment.
-
-![PWM Control Circuit](images/ir_pwm_control.jpg)
-*Simple PWM dimming circuit using MOSFET and microcontroller*
-
-**Circuit**:
-```
-ESP32/Arduino PWM Pin → MOSFET Gate (IRLZ44N)
-12V PSU → MOSFET Drain → IR LED Array Positive
-IR LED Array Negative → MOSFET Source → Ground
-```
-
-**Code example** (Arduino/ESP32):
-```cpp
-const int IR_PWM_PIN = 25; // ESP32 GPIO pin
-const int PWM_FREQ = 5000; // 5 kHz
-const int PWM_RESOLUTION = 8; // 8-bit (0-255)
-
-void setup() {
-  // Configure PWM channel
-  ledcSetup(0, PWM_FREQ, PWM_RESOLUTION);
-  ledcAttachPin(IR_PWM_PIN, 0);
-  
-  // Set brightness (0-255)
-  ledcWrite(0, 128); // 50% brightness
-}
-
-void setIRBrightness(int brightness) {
-  ledcWrite(0, brightness); // 0 = off, 255 = full
-}
-```
-
----
 
 ## Bill of Materials (IR Illumination System)
 
