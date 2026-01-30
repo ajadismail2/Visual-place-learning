@@ -15,7 +15,7 @@ nav:
       - Monochrome Camera: hardware/monochrome_camera.md
 
   - Design Files:
-      - 3D Mechanical Design: design/3d_design.md
+      - 3D Mechanical Design: design/3D_CAD.md
 
   - Software:
       - Remote Web Server: software/remote_web_server.md
