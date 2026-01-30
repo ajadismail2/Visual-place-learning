@@ -2,7 +2,7 @@
 
 The visual display provides the spatial landmarks that flies use for place navigation. Our implementation uses consumer-grade P4 LED panels with custom firmware, achieving the same visual functionality as specialized modular displays at a fraction of the cost.
 
-![P4 LED Display Array](images/led_display_panorama.jpg)
+![P4 LED Display Array](images/LED.jpg)
 *Eight P4 LED panels arranged to create 360° panoramic visual environment*
 
 ---
@@ -25,9 +25,6 @@ Our approach leverages the fact that *Drosophila* visual requirements are well-u
 ### Drosophila Visual System Capabilities
 
 *Drosophila melanogaster* possesses compound eyes with approximately 750 ommatidia (individual visual units) per eye. Understanding their visual capabilities is essential for validating that P4 LED displays provide adequate stimuli.
-
-![Fly Visual System](images/fly_eye_diagram.jpg)
-*Drosophila compound eye structure and visual field coverage*
 
 #### Spatial Resolution
 
@@ -54,7 +51,7 @@ With 8× P4 panels (64 pixels × 32 pixels each) arranged in a circle:
 - **Typical refresh rate**: >200 Hz per panel with DMA implementation
 - **Effective rate with 8 chained panels**: >180 Hz (depends on ESP32 configuration)
 
-**Conclusion**: The display refresh rate exceeds the flicker fusion frequency of *Drosophila*, ensuring flies perceive stable, non-flickering visual stimuli. This is critical because flickering displays could introduce confounding visual cues or cause stress.
+The display refresh rate exceeds the flicker fusion frequency of *Drosophila*, ensuring flies perceive stable, non-flickering visual stimuli. This is critical because flickering displays could introduce confounding visual cues or cause stress.
 
 #### Brightness and Contrast
 
@@ -67,21 +64,6 @@ With 8× P4 panels (64 pixels × 32 pixels each) arranged in a circle:
 
 Flies detect green and blue wavelengths effectively, allowing them to see the visual patterns. The high contrast ratio ensures clear figure-ground separation, essential for discriminating vertical vs. horizontal bars.
 
-![LED Spectrum](images/led_spectral_response.jpg)
-*P4 LED emission spectra overlaid with Drosophila photoreceptor sensitivity curves*
-
-### Pattern Design Considerations
-
-The original study (Ofstad et al., 2011) used **15-degree-wide bars** in vertical, horizontal, and diagonal orientations. From the arena center, each bar covered 15° of the LED display.
-
-**Implementation with P4 panels**:
-- **360° / 512 pixels = 0.7° per pixel**
-- **15° bar width = 15° / 0.7° per pixel ≈ 21 pixels wide**
-
-Our 8× P4 panels provide **512 horizontal pixels**, allowing accurate reproduction of the bar pattern with 21-pixel-wide elements. This matches the original visual landscape specifications.
-
-**Validation**: Ernst & Heisenberg (1999) demonstrated that *Drosophila* can discriminate visual patterns at spatial frequencies corresponding to features >8° wide. Our 15° bars (21 pixels) are well above this threshold.
-
 ---
 
 ## Hardware Configuration
@@ -90,8 +72,6 @@ Our 8× P4 panels provide **512 horizontal pixels**, allowing accurate reproduct
 
 **Display type**: P4 Indoor RGB LED Matrix Panel (HUB75 compatible)
 
-![P4 Panel Close-up](images/p4_panel_detail.jpg)
-*Individual P4 LED panel showing 64×32 pixel array and HUB75 connector*
 
 **Key specifications per panel**:
 - **Resolution**: 64 pixels (W) × 32 pixels (H)
@@ -110,9 +90,6 @@ Our 8× P4 panels provide **512 horizontal pixels**, allowing accurate reproduct
 
 ### Control Hardware: ESP32 Microcontroller
 
-![ESP32 Control Board](images/esp32_hub75_wiring.jpg)
-*ESP32 DevKit connected to HUB75 LED panel chain via GPIO pins*
-
 **Microcontroller**: ESP32 DevKit V1 or equivalent
 - **Processor**: Dual-core Xtensa LX6, 240 MHz
 - **RAM**: 520 KB SRAM (critical for DMA buffering)
@@ -130,7 +107,7 @@ Our 8× P4 panels provide **512 horizontal pixels**, allowing accurate reproduct
 
 HUB75 is a standard parallel interface for LED matrix panels, using 16 pins:
 
-![HUB75 Pinout](images/hub75_pinout_diagram.jpg)
+![HUB75 Pinout](images/hub.png)
 *HUB75 connector pinout and signal descriptions*
 
 **Signal definitions**:
@@ -208,9 +185,6 @@ void setup() {
 
 The experimental paradigm requires displaying vertical, horizontal, and diagonal bar patterns that rotate with the cool tile position.
 
-![Pattern Examples](images/led_pattern_examples.jpg)
-*Visual patterns: vertical bars, horizontal bars, and diagonal bars*
-
 ```cpp
 // Draw vertical bar pattern (15-degree bars)
 void drawVerticalBars() {
@@ -267,9 +241,6 @@ void repositionCoolTile(int newQuadrant) {
 **Output**: 5V regulated for LED panels
 **Method**: Buck converter module
 
-![Buck Converter Setup](images/buck_converter_led.jpg)
-*LM2596-based buck converter stepping 12V down to 5V*
-
 **Buck converter specifications**:
 - **IC**: LM2596, XL4015, or equivalent
 - **Input**: 12V DC (from Meanwell LRS-150-12)
@@ -315,9 +286,6 @@ Meanwell LRS-150-12 (12V, 12.5A)
 
 The 8× P4 panels are arranged in a circular or octagonal configuration surrounding the arena, creating a continuous 360° panoramic display.
 
-![Panel Mounting Frame](images/led_panel_mounting.jpg)
-*3D-printed or laser-cut mounting frame for circular LED panel arrangement*
-
 **Design considerations**:
 - **Panel angle**: Panels mounted vertically, facing inward toward arena center
 - **Viewing distance**: 8-12 cm from arena center to LED surface
@@ -331,8 +299,6 @@ The 8× P4 panels are arranged in a circular or octagonal configuration surround
 
 ### Cable Chain
 
-![Panel Chaining Diagram](images/led_panel_chain.jpg)
-*HUB75 ribbon cable daisy-chain connecting 8 panels to ESP32*
 
 Panels connect in series via HUB75 ribbon cables:
 ```
@@ -354,9 +320,6 @@ Each panel has:
 ## Calibration and Testing
 
 ### Display Uniformity
-
-![Brightness Calibration](images/led_brightness_test.jpg)
-*Full-white display test showing uniform brightness across all panels*
 
 Test procedure:
 1. Display solid white pattern across all panels
@@ -380,47 +343,8 @@ Use a camera or oscilloscope to verify >180 Hz refresh rate:
 
 ---
 
-## Troubleshooting
 
-### Issue: Display flicker
-
-**Possible causes**:
-- DMA not properly initialized
-- Insufficient refresh rate
-- Power supply instability
-
-**Solutions**:
-- Verify DMA library is correctly installed
-- Increase refresh rate in configuration
-- Add larger output capacitors to power supply
-
-### Issue: Color artifacts or incorrect colors
-
-**Possible causes**:
-- Incorrect pin mapping
-- Loose ribbon cable connections
-- Bad solder joints on panel connectors
-
-**Solutions**:
-- Double-check GPIO pin assignments in code
-- Reseat all ribbon cables
-- Inspect panel input/output connectors for damage
-
-### Issue: Some panels not displaying
-
-**Possible causes**:
-- Chain break (bad cable or connector)
-- Exceeding maximum chain length for power delivery
-- Incorrect panel configuration in code
-
-**Solutions**:
-- Test each panel individually
-- Check power voltage at end of chain (should be >4.8V)
-- Verify PANELS_NUMBER matches actual count
-
----
-
-## Bill of Materials (Display System)
+## Cost of Materials (Display System)
 
 | Component | Quantity | Approximate Cost (USD) |
 |-----------|----------|------------------------|
@@ -432,25 +356,10 @@ Use a camera or oscilloscope to verify >180 Hz refresh rate:
 | Mounting hardware (screws, brackets) | - | $10-20 |
 | **Total** | | **~$96-171** |
 
-*Comparable modular LED display systems designed for behavioral neuroscience cost $2,000-5,000. This implementation achieves equivalent visual functionality at ~5% of the cost.*
+Comparable modular LED display systems designed for behavioral neuroscience cost $2,000-5,000. This implementation achieves equivalent visual functionality at ~5% of the cost.
 
 ---
 
-## Scientific Validation
-
-### Key References Supporting P4 LED Use
-
-1. **Spatial resolution**: Götz, K. G. (1964). Optomotorische Untersuchung des visuellen Systems einiger Augenmutanten der Fruchtfliege *Drosophila*. *Kybernetik*, 2(2), 77-92.
-
-2. **Pattern discrimination**: Ernst, R., & Heisenberg, M. (1999). The memory template in *Drosophila* pattern vision at the flight simulator. *Vision Research*, 39(23), 3920-3933.
-
-3. **Temporal resolution**: Heisenberg, M., & Wolf, R. (1984). *Vision in Drosophila: Genetics of Microbehavior*. Springer-Verlag.
-
-4. **Photoreceptor spectral sensitivity**: Salcedo, E., Huber, A., Henrich, S., Chadwell, L. V., Chou, W. H., Paulsen, R., & Britt, S. G. (1999). Blue-and green-absorbing visual pigments of *Drosophila*: ectopic expression and physiological characterization of the R8 photoreceptor cell-specific Rh5 and Rh6 rhodopsins. *Journal of Neuroscience*, 19(24), 10716-10726.
-
-5. **Original visual place learning study**: Ofstad, T. A., Zuker, C. S., & Reiser, M. B. (2011). Visual place learning in *Drosophila melanogaster*. *Nature*, 474(7350), 204-207.
-
----
 
 ## CAD Files and Code
 
