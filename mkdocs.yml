@@ -7,7 +7,7 @@ nav:
   - Home: index.md
 
   - Hardware:
-      - Peltier Plates: hardware/peltier_plates.md
+      - Thermal Control System: hardware/thermal_control_system.md
       - LED Display: hardware/led_display.md
       - ESP32: hardware/esp32.md
       - Raspberry Pi: hardware/raspberry_pi.md
