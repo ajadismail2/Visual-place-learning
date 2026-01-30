@@ -506,5 +506,3 @@ screen /dev/ttyUSB0 115200
 - **Serial Communication**: https://pyserial.readthedocs.io/
 
 ---
-
-This web control system adds professional remote operation capabilities to your arena while keeping the implementation simple and maintainable. Perfect for the AI/tech-focused approach of the Mphasis-funded project!
