@@ -56,7 +56,7 @@ Generic TEC1-12706 modules cost approximately $2-3 USD each compared to $50-100 
 
 The precision subsystem uses **4 Peltier plates** under closed-loop PID (Proportional-Integral-Derivative) control to maintain the cool target tile at exactly 25°C.
 
-![PID Control System](images/thermal_camera.jpg)
+![PID Control System](images/thermal_camera.png)
 *Four-plate precision cooling array with PID temperature control*
 
 **Key Specifications:**
