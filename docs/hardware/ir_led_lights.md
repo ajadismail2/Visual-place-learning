@@ -2,8 +2,8 @@
 
 Infrared (IR) illumination enables continuous behavioral tracking throughout experiments conducted in complete darkness. This ensures that flies navigate using only the controlled visual cues from the LED display, with no confounding ambient light or shadows.
 
-![IR Illumination Setup](images/ir_illumination_overview.jpg)
-*Complete IR illumination system with overhead mounting configuration*
+![IR Illumination Setup](images/IR.jpg)
+*IR illumination*
 
 ---
 
@@ -25,8 +25,16 @@ Our implementation uses widely available IR LED arrays designed for CCTV securit
 
 *Drosophila* photoreceptors respond to wavelengths from approximately **300-600 nm**, with peak sensitivity around **480 nm** (blue-green light). They possess minimal sensitivity to wavelengths above **650 nm** and virtually no response beyond **700 nm**.
 
-![Spectral Sensitivity](images/drosophila_spectral_response.jpg)
-*Drosophila photoreceptor spectral sensitivity curves (R1-R6 and R7/R8 cells)*
+<figure style="text-align: center;">
+  <img src="../images/sensitivity.jpg" alt="Drosophila photoreceptor spectral sensitivity" width="650">
+  <figcaption>
+    <em>
+      Drosophila photoreceptor spectral sensitivity curves.
+      Reproduced from Sharkey CR <em>et&nbsp;al.</em>,
+      <strong>Scientific Reports</strong> 10, 18242 (2020).
+    </em>
+  </figcaption>
+</figure>
 
 **IR LED specifications**:
 - **Peak emission**: 850 nm (far beyond fly visual range)
