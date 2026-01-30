@@ -2,7 +2,7 @@
 
 The arena uses two ESP32 microcontrollers to manage thermal control and visual display independently. This distributed control architecture provides modularity, real-time performance, and simplified debugging compared to a single-controller approach.
 
-![ESP32 System Architecture](images/esp32_system_diagram.jpg)
+![ESP32 System Architecture](images/raspberry_pi_connections.jpg)
 *Dual ESP32 architecture: Thermal Controller + Display Controller*
 
 ---
@@ -26,7 +26,7 @@ The arena uses two ESP32 microcontrollers to manage thermal control and visual d
 
 ### Responsibilities
 
-![Thermal Control ESP32](images/esp32_thermal_block_diagram.jpg)
+![Thermal Control ESP32](images/schematic.jpg)
 *Thermal controller connections and data flow*
 
 **Primary functions**:
@@ -123,7 +123,7 @@ The arena uses two ESP32 microcontrollers to manage thermal control and visual d
 
 ### Responsibilities
 
-![Display Control ESP32](images/esp32_display_block_diagram.jpg)
+![Display Control ESP32](images/LED.jpg)
 *Display controller managing 8 LED panels via HUB75 interface*
 
 **Primary functions**:
@@ -444,7 +444,7 @@ Both ESP32s continuously output debug information via Serial:
 
 ---
 
-## Bill of Materials (ESP32 System)
+## Cost of Materials (ESP32 System)
 
 | Component | Quantity | Cost (USD) |
 |-----------|----------|------------|
@@ -457,7 +457,6 @@ Both ESP32s continuously output debug information via Serial:
 **Optional**:
 - PCB for permanent installation: $10-20 (per board)
 - Enclosures: $5-10 (per ESP32)
-- Heatsinks: $2-5 (if needed)
 
 ---
 
