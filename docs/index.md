@@ -70,9 +70,9 @@ Web-based interface (via Raspberry Pi) enables wireless experiment control and m
 ## Getting Started
 
 1. Review the website to understand the architecture
-2. **Check the cost of materials** to assess component availability and cost
-3. **Follow the assembly guide** for step-by-step construction
-4. **Consult individual subsystem documentation** for detailed specifications
+2. Check the cost of materials to assess component availability and cost
+3. Follow the assembly guide for step-by-step construction
+4. Consult individual subsystem documentation for detailed specifications
 
 ---
 
