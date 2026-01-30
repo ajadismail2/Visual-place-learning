@@ -485,7 +485,7 @@ screen /dev/ttyUSB0 115200
 
 ---
 
-## Bill of Materials
+## Cost of Materials
 
 | Component | Cost (USD) |
 |-----------|------------|
@@ -496,13 +496,5 @@ screen /dev/ttyUSB0 115200
 | **Total** | **~$56-79** |
 
 *WiFi router assumed to be already available in lab*
-
----
-
-## References
-
-- **Flask Documentation**: https://flask.palletsprojects.com/
-- **Raspberry Pi Setup**: https://www.raspberrypi.com/documentation/
-- **Serial Communication**: https://pyserial.readthedocs.io/
 
 ---
