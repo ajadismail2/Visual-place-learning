@@ -104,8 +104,8 @@ SLEAP detects **individual body part keypoints** (head, thorax, abdomen tip), re
 
 **6 pixels is much better** - SLEAP can reliably detect individual body parts and maintain identity through occlusions.
 
-![SLEAP Resolution Requirements](images/sleap_resolution_needs.jpg)
-*SLEAP keypoint detection quality at different resolutions*
+![SLEAP Resolution Requirements](images/sensor.png)
+*keypoint detection quality at different resolutions*
 
 **Conclusion**: For SLEAP tracking with 15 flies in a 20 cm arena, **2K or 4K cameras are strongly recommended**. 1080p is possible but may struggle with keypoint accuracy.
 
@@ -119,7 +119,7 @@ SLEAP detects **individual body part keypoints** (head, thorax, abdomen tip), re
 
 **Logitech C920 / C922** (with IR filter removed)
 
-![Logitech C920 Modified](images/logitech_c920_modified.jpg)
+![Logitech C920 Modified](images/C922-3.jpg)
 *Popular choice: Logitech C920 with IR filter removed*
 
 **Specifications**:
@@ -148,7 +148,7 @@ SLEAP detects **individual body part keypoints** (head, thorax, abdomen tip), re
 
 **Raspberry Pi HQ Camera (NoIR version)**
 
-![Raspberry Pi HQ Camera](images/raspberry_pi_hq_camera.jpg)
+![Raspberry Pi HQ Camera](images/raspberry_camera.jpg)
 *Raspberry Pi HQ Camera with C/CS-mount lens*
 
 **Specifications**:
@@ -174,152 +174,6 @@ SLEAP detects **individual body part keypoints** (head, thorax, abdomen tip), re
 **Recommended lens**: 6mm or 8mm focal length for ~30 cm working distance
 
 **Best for**: Setups already using Raspberry Pi, flexibility in lens selection.
-
----
-
-### Mid-Range Options (CTRAX or Basic SLEAP)
-
-#### 3. ELP USB Camera (Monochrome)
-
-**ELP 2MP Global Shutter Monochrome USB Camera**
-
-![ELP Monochrome Camera](images/elp_monochrome_usb.jpg)
-*ELP monochrome industrial USB camera*
-
-**Specifications**:
-- Resolution: 1920×1080 @ 60 fps
-- Sensor: True monochrome CMOS (Sony IMX290)
-- IR sensitivity: Excellent (850-900 nm optimized)
-- Shutter: Global shutter (no motion blur)
-- Connection: USB 2.0/3.0
-- **Cost**: $80-120 USD
-
-**Pros**:
-- **True monochrome sensor** (best IR sensitivity)
-- Global shutter (eliminates motion artifacts)
-- High frame rate (60 fps improves tracking)
-- Plug-and-play USB
-- Adjustable focus and aperture
-
-**Cons**:
-- More expensive than consumer webcams
-- May require driver installation (Windows)
-- Manual focus only
-
-**Best for**: Serious researchers wanting better image quality without extreme cost, global shutter benefits.
-
----
-
-### High-End Options (SLEAP Tracking)
-
-#### 4. FLIR Blackfly S Monochrome (USB3)
-
-**FLIR Blackfly S BFS-U3-50S5M-C**
-
-![FLIR Blackfly Camera](images/flir_blackfly_camera.jpg)
-*FLIR Blackfly S industrial vision camera*
-
-**Specifications**:
-- Resolution: 2448×2048 (5 MP) @ 75 fps
-- Sensor: True monochrome CMOS (Sony IMX250)
-- IR sensitivity: Very good (QE ~70% at 850 nm)
-- Shutter: Global shutter
-- Connection: USB 3.0
-- Lens mount: C-mount (interchangeable)
-- **Cost**: $400-600 USD (body only) + $50-200 (lens)
-
-**Pros**:
-- Professional-grade image quality
-- High resolution + high frame rate
-- True monochrome (maximum IR sensitivity)
-- Excellent global shutter (no motion blur)
-- SDK support (Python, C++, MATLAB)
-- Programmable exposure, gain, triggering
-
-**Cons**:
-- Expensive
-- Requires lens purchase separately
-- More complex setup (not plug-and-play)
-- Overkill for CTRAX tracking
-
-**Best for**: Laboratories focused on SLEAP tracking, high-throughput experiments, publication-quality tracking data.
-
-#### 5. Basler ace acA1920-155um
-
-**Basler ace USB3 Vision Camera (Monochrome)**
-
-![Basler ace Camera](images/basler_ace_camera.jpg)
-*Basler ace industrial camera with excellent monochrome sensor*
-
-**Specifications**:
-- Resolution: 1920×1200 @ 164 fps
-- Sensor: True monochrome CMOS (Sony IMX174)
-- IR sensitivity: Excellent
-- Shutter: Global shutter
-- Connection: USB 3.0
-- **Cost**: $500-700 USD (body only)
-
-**Pros**:
-- Extremely high frame rate (164 fps)
-- Outstanding image quality
-- True monochrome sensor
-- Professional SDK (Pylon software)
-- Reliable, proven in research
-
-**Cons**:
-- Very expensive
-- Requires C-mount lens
-- Complex setup
-
-**Best for**: High-speed tracking, simultaneous multi-arena setups, cutting-edge research labs.
-
----
-
-### 4K Option (Ultimate SLEAP Performance)
-
-#### 6. See3CAM_CU135 (4K Monochrome)
-
-**e-con Systems See3CAM_CU135M**
-
-![See3CAM 4K](images/see3cam_4k_camera.jpg)
-*4K monochrome USB camera optimized for machine vision*
-
-**Specifications**:
-- Resolution: 3840×2160 (4K) @ 30 fps, 1920×1080 @ 60 fps
-- Sensor: True monochrome CMOS (AR1335)
-- IR sensitivity: Good (requires IR LED addition)
-- Connection: USB 3.0
-- **Cost**: $200-300 USD
-
-**Pros**:
-- 4K resolution at affordable price
-- True monochrome
-- UVC compliant (works with standard software)
-- Good balance of cost and performance
-
-**Cons**:
-- Lower frame rate at 4K (30 fps)
-- IR sensitivity not as strong as IMX sensors
-- Fixed lens (less flexibility)
-
-**Best for**: SLEAP tracking on a budget, laboratories wanting 4K without industrial camera pricing.
-
----
-
-## Comparison Table
-
-| Camera | Resolution | Mono/Color | IR Sensitivity | Frame Rate | Cost | Best Use |
-|--------|-----------|------------|----------------|------------|------|----------|
-| Logitech C920 (modified) | 1080p | Color* | Good | 30 fps | $50-80 | CTRAX budget |
-| Raspberry Pi HQ NoIR | 1080p | Color* | Excellent | 30 fps | $75-125 | CTRAX + Pi integration |
-| ELP Monochrome USB | 1080p | **Mono** | Excellent | 60 fps | $80-120 | CTRAX optimal |
-| See3CAM 4K Mono | 4K | **Mono** | Good | 30 fps | $200-300 | SLEAP budget |
-| FLIR Blackfly S | 2448×2048 | **Mono** | Excellent | 75 fps | $450-800 | SLEAP professional |
-| Basler ace | 1920×1200 | **Mono** | Excellent | 164 fps | $550-900 | SLEAP high-speed |
-
-*Color sensor without IR filter, used in grayscale mode
-
----
 
 ## Image Quality Factors Beyond Resolution
 
@@ -348,20 +202,6 @@ SLEAP detects **individual body part keypoints** (head, thorax, abdomen tip), re
 
 **Recommendation**: Rolling shutter is fine for place learning experiments. Global shutter is a luxury, not a necessity.
 
-### 3. Quantum Efficiency at 850 nm
-
-**High QE** sensors (>60% at 850 nm):
-- Sony IMX174, IMX250, IMX290, IMX327
-- Better image with less IR illumination
-- Lower noise
-
-**Medium QE** sensors (~40-50% at 850 nm):
-- Most consumer CMOS sensors
-- Requires brighter IR illumination
-- Still adequate for tracking
-
-![Quantum Efficiency Curves](images/sensor_qe_curves.jpg)
-*Quantum efficiency of common sensors at IR wavelengths*
 
 ### 4. Lens Quality
 
