@@ -2,7 +2,7 @@
 
 An open-source, low-cost implementation of a thermal-visual arena for studying spatial memory in fruit flies.
 
-![Arena Overview](images/full.png)
+![Arena Overview](/hardware/images/full.png)
 
 
 ---
