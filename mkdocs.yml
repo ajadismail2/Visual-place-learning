@@ -13,10 +13,8 @@ nav:
       - Raspberry Pi: hardware/raspberry_pi.md
       - IR LED Lights: hardware/ir_led_lights.md
       - Monochrome Camera: hardware/monochrome_camera.md
-
-  - Design Files:
-      - 3D Mechanical Design: design/3D_CAD.md
-
+      
   - Software:
       - Remote Web Server: software/remote_web_server.md
       - Behavioural Tracking: software/Behavioural_tracking.md
+      - 3D CAD Designs: software/3d_CAD.md
