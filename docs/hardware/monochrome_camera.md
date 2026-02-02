@@ -2,9 +2,6 @@
 
 Choosing the right camera for behavioral tracking depends on your tracking method and budget. This guide explains why monochrome cameras are preferred, what resolution you actually need, and provides specific recommendations for different use cases.
 
-![Camera Comparison](images/camera_comparison_grid.jpg)
-*Comparison of tracking performance across different camera types and resolutions*
-
 ---
 
 ## Why Monochrome Cameras?
@@ -31,8 +28,6 @@ Choosing the right camera for behavioral tracking depends on your tracking metho
 - Lower CPU usage for tracking software
 - Simpler image processing pipeline
 
-![Bayer Filter Comparison](images/bayer_filter_diagram.jpg)
-*Color sensors waste ~75% of photons due to color filters; monochrome sensors capture all light*
 
 ### When Color Cameras Are Acceptable
 
@@ -103,9 +98,6 @@ SLEAP detects **individual body part keypoints** (head, thorax, abdomen tip), re
 - Fly head: 0.5 mm / 0.08 mm/px = **~6 pixels**
 
 **6 pixels is much better** - SLEAP can reliably detect individual body parts and maintain identity through occlusions.
-
-![SLEAP Resolution Requirements](images/sensor.png)
-*keypoint detection quality at different resolutions*
 
 **Conclusion**: For SLEAP tracking with 15 flies in a 20 cm arena, **2K or 4K cameras are strongly recommended**. 1080p is possible but may struggle with keypoint accuracy.
 
@@ -286,9 +278,6 @@ SLEAP detects **individual body part keypoints** (head, thorax, abdomen tip), re
 - Adjust so flies are clearly visible (bright pixels)
 - Background should be gray (not black or white)
 - Avoid overexposure (saturated pixels)
-
-![Camera Framing](images/optimal_camera_framing.jpg)
-*Proper camera framing: arena fills most of frame with small margin*
 
 ### Lighting Optimization
 
