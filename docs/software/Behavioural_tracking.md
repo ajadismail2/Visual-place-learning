@@ -61,20 +61,6 @@ To overcome the limitations of centroid tracking, we aim to transition to **SLEA
 
 This transition aligns strongly with the broader goals of the project.
 
-### Alignment With Project Goals
-
-This project is funded by **Mphasis**, a technology-driven AI-focused company. Accordingly:
-
-* Emphasis is placed on **AI and machine learning methodologies**
-* Moving from classical CV to deep learning strengthens the technical narrative
-* Enables exploration of:
-
-  * Pose-level behavioral features
-  * Robust identity preservation
-  * Scalable analysis pipelines
-
-SLEAP is therefore not only a technical improvement, but also a strategic one.
-
 ### Advantages of SLEAP Over CTRAX
 
 SLEAP offers several decisive advantages:
