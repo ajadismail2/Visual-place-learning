@@ -1,11 +1,6 @@
 # Web-Based Remote Control System
 
-Control the entire visual place learning arena remotely through a web interface powered by a Raspberry Pi server. This system allows researchers to run experiments, adjust parameters, and monitor status from any device connected to the lab WiFi network.
-
-<!--
-
-![Web Control Interface](images/web_interface_screenshot.jpg)
-*Web interface for arena control accessible from laptop, tablet, or smartphone*
+Control the entire visual place learning arena remotely through a web interface powered by a Raspberry Pi server. This system allows researchers to run experiments, adjust parameters, and monitor status from any device connected to the lab WiFi 
 -->
 
 ---
