@@ -361,9 +361,6 @@ sudo systemctl start arena-controller
    - Navigate to: `http://192.168.1.100:5000`
    - Bookmark for easy access
 
-![Mobile Interface](images/web_interface_mobile.jpg)
-*Web interface works on smartphones and tablets*
-
 ### Running an Experiment
 
 **Quick start**:
