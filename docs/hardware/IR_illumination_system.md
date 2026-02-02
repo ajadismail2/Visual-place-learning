@@ -25,17 +25,6 @@ Our implementation uses widely available IR LED arrays designed for CCTV securit
 
 *Drosophila* photoreceptors respond to wavelengths from approximately **300-600 nm**, with peak sensitivity around **480 nm** (blue-green light). They possess minimal sensitivity to wavelengths above **650 nm** and virtually no response beyond **700 nm**.
 
-<figure style="text-align: center;">
-  <img src="../images/sensitivity.jpg" alt="Drosophila photoreceptor spectral sensitivity" width="650">
-  <figcaption>
-    <em>
-      Drosophila photoreceptor spectral sensitivity curves.
-      Reproduced from Sharkey CR <em>et&nbsp;al.</em>,
-      <strong>Scientific Reports</strong> 10, 18242 (2020).
-    </em>
-  </figcaption>
-</figure>
-
 **IR LED specifications**:
 - **Peak emission**: 850 nm (far beyond fly visual range)
 - **Bandwidth**: ±25 nm
