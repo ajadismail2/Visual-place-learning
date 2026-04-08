@@ -1,12 +1,5 @@
 # Drosophila Visual Place Learning — Analysis Pipeline
 
-**A step-by-step guide for neuroscience researchers**
-
-This pipeline lets you go from a raw experiment video to publication-ready behavioral metrics — Time to Target, Path Length, Direction Index, Speed, Quadrant Occupancy, and Probe Learning Index — with no prior programming experience required.
-
----
-
-## What does this pipeline actually do?
 
 When flies explore the arena, a camera records their movement. This pipeline takes those recordings and answers questions like:
 
