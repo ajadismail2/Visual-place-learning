@@ -1,12 +1,6 @@
 # Drosophila Visual Place Learning — Analysis Pipeline
 
 
-When flies explore the arena, a camera records their movement. This pipeline takes those recordings and answers questions like:
-
-- **Did the flies learn?** (Do they find the cool tile faster over trials?)
-- **Are they navigating more directly over time?** (Shorter, straighter paths?)
-- **Where do they search during the probe trial?** (Do they go to where the cool tile *was*, even when it's absent?)
-
 The pipeline has three stages, each handled by a separate tool:
 
 ```
