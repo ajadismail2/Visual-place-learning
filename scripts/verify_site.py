@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 import json
+import hashlib
 ROOT=Path(__file__).resolve().parents[1]/'site'
 class Document(HTMLParser):
  def __init__(self,text):
@@ -38,6 +39,9 @@ protocol=json.loads((ROOT/'downloads/protocol.json').read_text())
 assert protocol['target_sequence']==list('BCDCBADCBA')
 assert sum(s['duration_s'] for s in protocol['cooling_stages'])==300
 assert protocol['calibration_example']['diameter_px']/protocol['arena_inner_diameter_cm']==45.8
+for line in (ROOT/'downloads/SHA256SUMS').read_text().splitlines():
+ digest,name=line.split('  ',1)
+ assert hashlib.sha256((ROOT/'downloads'/name).read_bytes()).hexdigest()==digest,f'Download checksum mismatch: {name}'
 if errors:
  raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(docs)} HTML pages; internal links, anchors, assets, semantic landmarks, search, protocol metadata.')
