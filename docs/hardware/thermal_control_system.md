@@ -1,286 +1,62 @@
-# Thermal Control System
-
-The thermal control system creates the temperature landscape that drives place learning behavior in Drosophila Melanogaster. Our current implementation uses a dual-subsystem approach: bulk thermal control for the warm background and precision PID control for the cool target tile.
-
-![Thermal System Overview](images/schematic.jpg)
-*Complete thermal control system showing both bulk and precision subsystems*
-
 ---
-
-## Design Philosophy
-
-Previous builds used 64 individually addressable 1-inch thermoelectric modules from Oven Industries, providing precise but expensive thermal control. Our implementation achieves the same behavioral outcomes using commercially available Peltier plates and simplified control electronics, dramatically reducing both initial cost and ongoing maintenance expenses.
-
-The key insight is that the experimental paradigm only requires two distinct temperatures: a uniformly warm background (36°C) that flies avoid, and a single cool tile (25°C) that serves as the safe target. This allows us to separate bulk heating from precision cooling, optimizing each subsystem independently.
-
+title: Thermal control
+description: Target temperatures, staged open-loop drive, and the distinction between a command and a measured thermal landscape.
 ---
+## A warm background and a cool target
 
-## Bulk Thermal Subsystem
+The assay uses a thermal contrast: an approximately **36 °C warm background** and a **23–25 °C cool target**. Four controlled target channels are labelled A, B, C, and D. The target selected for a trial is driven through a cooling programme while the remaining thermal landscape provides the warm background.
 
-### Hardware Configuration
+The current project record uses an **ESP32 with BTS7960 drivers**. Earlier versions used L298N drivers and closed-loop PID control. These are distinct hardware/control revisions and should not be combined into one wiring description.
 
-The bulk thermal subsystem consists of **60 generic Peltier plates** arranged beneath the arena floor, providing uniform warming across the experimental surface.
+!!! warning "Setpoints are not temperature measurements"
+    A PWM command specifies electrical drive, not floor temperature. Actual temperature depends on supply voltage, heat sinking, contact resistance, ambient conditions, and time since the previous state. Measure the complete thermal cycle on the assembled apparatus.
 
-![Bulk Peltier Array](images/60.png)
-*64-plate Peltier array configuration for uniform background heating*
+## Current staged cooling programme
 
-**Key Specifications:**
-- **Peltier modules**: Generic TEC1-12706 or equivalent (40mm × 40mm)
-- **Operating voltage**: ~30V DC
-- **Power supply**: High-current DC supply (recommendation: 30V, 15-20A minimum)
-- **Control method**: Simple on/off switching via relay or solid-state switch
-- **Thermal target**: 36°C uniform surface temperature
+The latest specified target programme uses an 8-bit PWM range, 0–255:
 
-### Operating Principle
+| Phase | Trial interval | Duration | Cooling PWM | Fraction of full-scale command |
+| --- | --- | --- | --- | --- |
+| 1 | 0–5 s | 5 s | 80 | 31.4% |
+| 2 | 5–15 s | 10 s | 75 | 29.4% |
+| 3 | 15–25 s | 10 s | 65 | 25.5% |
+| 4 | 25–300 s | 275 s | 55 | 21.6% |
 
-All 60 plates are wired in series-parallel configuration and powered simultaneously to create the warm background. Unlike the original implementation, individual addressability is not required since all background tiles maintain the same temperature throughout the experiment.
+The durations sum to **300 s**, exactly one training trial. This replaces the earlier 140 PWM / 20 s followed by 90 PWM / 280 s programme in the project specification. PWM values are specific to the tested configuration and are not portable temperature prescriptions.
 
-The Peltier modules operate in heating mode only (current flows in one direction), simplifying the power electronics and eliminating the need for H-bridge drivers in this subsystem.
+Ten-minute `HOT ALL` periods before and after training were requested in the trial plan. They are separate from the 50-minute training block; their execution and timing should be established from the actual controller log.
 
-### Thermal Performance
+## Control evolution
 
+| Revision | Function | Current interpretation |
+| --- | --- | --- |
+| L298N / sensor experiments | Initial reversible heating and cooling experiments | Historical hardware development |
+| PyBadge + MLX90640 + ESP32 | Thermal image calibration and PID feedback | Code exists in the repository; not the current open-loop protocol |
+| ESP32 + BTS7960 | Four independent target channels | Latest project configuration reported |
+| Staged PWM | Timed drive levels without temperature feedback | Current protocol specification; requires measured thermal verification |
 
-The bulk array achieves thermal uniformity within ±1°C across the arena surface, confirmed by thermal imaging and temperature sensors. This uniformity ensures no thermal gradients exist that could guide flies to the cool tile from a distance, maintaining the requirement that navigation must rely on visual cues.
+PID uses the difference between measured and desired temperature to adjust drive. Open-loop staged PWM instead follows a time-dependent command. The latter is simpler to execute when direct sensing is constrained, but does not automatically correct temperature drift.
 
-**Important**: The absence of detectable thermal gradients is critical for valid place learning. Flies tested in darkness show no improvement in locating the target, confirming that local thermal cues are not available for navigation.
+## Perimeter heating
 
-### Cost Considerations
+A nichrome ring driven through a low-side MOSFET was developed as a thermal boundary. Project tests reported approximately **20 V and 0.9–1.0 A**, with a target near **45 °C** in the measured boundary environment. That value must be associated with the actual sensor location: wire, wall, air, and walking surface temperatures are not interchangeable.
 
-Generic TEC1-12706 modules cost approximately $2-3 USD each compared to $50-100 for precision individually-addressable modules. For 60 units, this represents a cost reduction from $3,000-6,000 to $120-180 for the Peltier elements alone.
+The ring should be characterized independently from the floor and cool target. Record temperature gradients near the edge, as perimeter conditions can change both occupancy and tracking visibility.
 
----
+## Temperature measurement record
 
-## Precision Thermal Subsystem (PID-Controlled)
+Experiments included TMP117 sensors, an SHT40, and MLX90640 thermal imaging. Communication or frame-acquisition problems were reported, including a second TMP117 address not responding and MLX90640 frame errors. Sensor detection on a bus is not proof of a valid temperature measurement at the fly's location.
 
-### Hardware Configuration
+For each thermal validation run, retain:
 
-The precision subsystem uses **4 Peltier plates** under closed-loop PID (Proportional-Integral-Derivative) control to maintain the cool target tile at exactly 25°C.
+- Sensor type, location, calibration reference, and sampling interval.
+- Ambient temperature and humidity, supply voltage, and cooling/heat-sink arrangement.
+- Warm-floor spatial uniformity, target temperature, and transition time for every channel.
+- Repeatability across the complete trial sequence, including heating history.
+- Raw measurements and the exact firmware revision that generated the command sequence.
 
-![PID Control System](images/thermal_camera.png)
-*Four-plate precision cooling array with PID temperature control*
+## Existing source code
 
-**Key Specifications:**
-- **Peltier modules**: 4× generic TEC1-12706 or higher-capacity modules
-- **Power supply**: Meanwell LRS-150-12 or equivalent (12V, 3A)
-- **Controller**: Arduino/ESP32 with PID library
-- **H-bridge driver**: IBT-2 or BTS7960 motor driver (43A capability)
-- **Temperature sensors**: DS18B20 digital sensor OR thermal camera (see below)
-- **Thermal target**: 25°C ± 0.5°C
+The repository's [closed-loop thermal directory](https://github.com/ajadismail2/Visual-place-learning/tree/main/Closed_Loop_Thermal_Camera) contains calibration and PID development scripts. These remain available as historical implementations. A complete, validated release of the latest thermal master firmware and wiring diagram is still needed for independent replication.
 
-### PID Control Implementation
-
-The four precision Peltier plates operate in cooling mode, requiring bidirectional current control. An H-bridge motor driver (typically used for DC motors) provides the necessary power switching capabilities.
-
-```
-Temperature Sensor → Microcontroller (PID Algorithm) → H-Bridge Driver → Peltier Plates
-                            ↑                                                    |
-                            |←———————— Temperature Feedback ————————————————————|
-```
-
-The PID controller continuously adjusts power to maintain the target at 25°C despite:
-- Heat transfer from the surrounding warm arena
-- Ambient temperature variations
-- Thermal mass changes when flies land on the cool tile
-
-### Temperature Sensing Options
-
-Two sensor configurations are available, each with distinct advantages and limitations:
-
-#### Option 1: Thermal Camera (MLX90640 or AMG8833)
-
-<!-- 
-![Thermal Camera Setup](images/thermal_camera_setup.jpg)
-*Thermal camera positioned for non-contact temperature measurement*
--->
-**Advantages:**
-- Non-contact measurement (no sensor on arena surface)
-- Can monitor entire arena thermal profile
-- No interference with fly behavior
-- Useful for initial calibration and validation
-
-**Limitations:**
-- **Cannot operate during experiments with glass cover**: Infrared radiation reflects off the glass cover, preventing accurate temperature measurement
-- Works well during open-arena testing and calibration
-- More expensive than DS18B20 ($15-40 vs $2)
-
-**Recommended Use**: Thermal cameras are ideal for system calibration, thermal uniformity verification, and open-arena testing. Use during development to establish reliable PID parameters, then switch to DS18B20 for actual experiments.
-
-#### Option 2: DS18B20 Digital Temperature Sensor
-
-**Advantages:**
-- Inexpensive ($1-2 per sensor)
-- Digital output (no ADC required)
-- Multiple sensors on single wire (1-Wire protocol)
-- Operates reliably under glass cover
-
-**Limitations:**
-- **Cannot be placed on top of Peltier plate**: Flies detect and avoid the sensor, creating an unwanted visual/tactile cue
-- Must be positioned to measure temperature without interfering with fly behavior
-
-**Recommended Sensor Placement:**
-
-1. **Below the Peltier array** (Preferred method):
-   - Drill small access holes in the bottom of the arena platform
-   - Mount sensors underneath the four precision Peltier plates
-   - Sensors measure heat dissipation from the cold side
-   - Requires calibration offset to correlate with actual tile surface temperature
-
-![Sensor Below Configuration](images/ada.jpg)
-*DS18B20 sensors*
-
-2. **Pre-calibrated open-loop operation** (Alternative):
-   - Use thermal camera to establish PID parameters during initial setup
-   - Record optimal power levels for maintaining 25°C target
-   - Store calibrated parameters in microcontroller
-   - Run experiments using stored parameters without active feedback
-   - Verify temperature stability periodically using thermal camera
-
-### PID Tuning Procedure
-
-1. **Initial Setup**: Use thermal camera for direct temperature feedback
-2. **Parameter Optimization**: Tune Kp, Ki, Kd values for stable 25°C target
-3. **Validation**: Verify temperature stability over 30+ minute trials
-4. **Parameter Storage**: Save optimal PID values to non-volatile memory
-5. **Sensor Transition**: Switch to DS18B20 (if using beneath-array placement) with appropriate calibration offset
-
-**Typical PID Values** (starting point, requires tuning):
-- Kp: 50-100
-- Ki: 0.5-2.0
-- Kd: 1-5
-
-### Power Distribution
-
-The precision subsystem shares its 12V Meanwell power supply with the thermal ring barrier (see next section). Total power budget:
-- 4× Peltier plates: ~8-10A (cooling mode)
-- Thermal ring: ~1-2A (after buck conversion to 5V)
-- **Total**: 10-12A (well within 12.5A capacity of LRS-150-12)
-
----
-
-## Thermal Ring Barrier
-
-### Purpose and Design
-
-The thermal ring prevents thigmotaxis (wall-following behavior) by creating an uncomfortable heated barrier around the arena perimeter. This forces flies to navigate the central arena area where visual cues are clearly visible, rather than avoiding the experimental space by walking along the walls.
-
-![Thermal Ring Assembly](images/ring.png)
-*3D-printed PLA ring with embedded nichrome heating wire*
-
-### Construction
-
-**Materials:**
-- **Nichrome resistance wire**: 24-28 AWG, Nichrome 60 with Kapton insulation
-- **3D-printed housing**: PLA filament (heat-resistant up to ~60°C)
-- **Operating voltage**: 5V DC (via buck converter from 12V supply)
-- **Target temperature**: ¬50°C (sufficient to deter contact without causing harm)
-
-The nichrome wire is embedded in channels within the 3D-printed ring during assembly. The PLA housing provides:
-- Electrical insulation
-- Mechanical protection for the wire
-- Thermal mass to maintain consistent barrier temperature
-- Mounting interface for the glass cover
-
-
-### Electrical Configuration
-
-```
-12V Meanwell PSU → Buck Converter (12V→5V) → Nichrome Wire Ring → Flies repelled from perimeter
-```
-
-The buck converter steps down voltage from the precision Peltier supply. A simple LM2596-based module (>3A capacity) is sufficient.
-
-**Power Calculation:**
-- Wire resistance (example): ~2-3Ω for typical ring diameter
-- Current at 5V: I = V/R = 5V/2.5Ω ≈ 2A
-- Power dissipation: P = V²/R = 25V²/2.5Ω = 10W
-
-This power dissipation produces sufficient surface temperature (>50°C) to create an effective thermal barrier without excessive heating.
-
-### Safety Considerations
-
-- The ring operates at >50°C but remains below temperatures that could harm flies or melt PLA
-- Kapton-insulated wire prevents electrical shorts
-- The heated ring is mechanically isolated from experimental surfaces
-- Temperature can be verified using thermal camera during setup
-
-
----
-
-## System Integration
-
-### Startup Sequence
-
-1. **Power on bulk thermal system**: Allow 3-5 minutes for arena to reach 36°C
-2. **Verify thermal uniformity**: Check with thermal camera (if available)
-3. **Activate precision cooling**: PID controller brings target tile to 25°C in ~2 minutes
-4. **Enable thermal ring**: Buck converter powers nichrome barrier
-5. **Allow thermal equilibrium**: Wait 5 minutes for stable conditions
-6. **Begin experiment**: Introduce flies and start tracking
-
-### Thermal Maintenance
-
-- **Between trials**: Precision Peltier plates briefly switch to heating mode to reset cool tile to 36°C, ensuring all flies disperse from the target location
-- **Cool tile repositioning**: When the visual display rotates, the software simultaneously updates which 4 Peltier plates receive cooling power, "moving" the cool tile to match the new visual landmark configuration
-
-This synchronized thermal-visual coupling is essential for place learning (as shown in Fig. 1c and Fig. 2 of Ofstad et al.).
-
----
-
-## Troubleshooting
-
-### Issue: Cool tile not reaching 25°C
-
-**Possible causes:**
-- Insufficient cooling power (use higher-capacity Peltier modules)
-- Poor thermal contact between Peltier and arena surface
-- Ambient temperature too high (system works best at <25°C room temp)
-- Inadequate heat dissipation from hot side (add heatsinks and fans)
-
-### Issue: Temperature oscillations
-
-**Possible causes:**
-- PID parameters not properly tuned
-- Temperature sensor noise
-- Thermal mass too low (add thermal interface material)
-
-### Issue: Non-uniform background temperature
-
-**Possible causes:**
-- Uneven power distribution across bulk Peltier array
-- Poor thermal contact with arena floor
-- Insufficient warm-up time
-
----
-
-## Cost of Materials (Thermal System)
-
-| Component | Quantity | Approximate Cost (USD) |
-|-----------|----------|------------------------|
-| Generic Peltier TEC1-12706 | 64 | $120-180 |
-| 30V DC power supply (15-20A) | 1 | $40-80 |
-| Meanwell LRS-150-12 (12V, 12.5A) | 1 | $10-$20 |
-| IBT-2 H-bridge driver | 1 | $2-$3 |
-| DS18B20 sensors | 4-8 | $2-3 |
-| Thermal camera (optional) | 1 | $15-30 |
-| LM2596 buck converter | 1 | $2-3$ |
-| Nichrome wire (24-28 AWG) | 2-3m | $5-10 |
-| Arduino/ESP32 controller | 1 | $5-15 |
-| **Total** | | **~$240-426** |
-
-*Compared to precision individually-addressable systems costing $5,000-8,000, this represents significant cost reduction while maintaining experimental validity.*
-
-<!-- 
----
-
-## References
-
-1. Ofstad, T. A., Zuker, C. S., & Reiser, M. B. (2011). Visual place learning in Drosophila melanogaster. *Nature*, 474(7350), 204-207.
-2. Sayeed, O., & Benzer, S. (1996). Behavioral genetics of thermosensation and hygrosensation in Drosophila. *PNAS*, 93(12), 6079-6084.
-3. Zars, T. (2001). Two thermosensors in Drosophila have different behavioral functions. *J. Comp. Physiol. A*, 187, 235-242.
-
----
--->
-
-## CAD Files and Code
-
-All 3D models for the thermal ring, sensor mounts, and arena platform are available in the `/cad` directory of the repository. PID control code for Arduino/ESP32 is available in `/firmware/thermal_control`.
+See [controller mapping](esp32.md) and [validation](../methods/validation.md).

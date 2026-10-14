@@ -1,31 +1,52 @@
-name: Deploy MkDocs to GitHub Pages
-
+name: Build and publish research website
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
+concurrency:
+  group: research-site-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-
-      - run: pip install mkdocs
-
-      - run: mkdocs build
-
-      - uses: actions/upload-pages-artifact@v3
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-site.txt
+      - uses: actions/setup-node@v4
         with:
-          path: site
-
-      - uses: actions/deploy-pages@v4
+          node-version: '22'
+      - run: python -m pip install -r requirements-site.txt
+      - run: python -m mkdocs build --strict
+      - run: python scripts/verify_site.py
+      - run: node scripts/verify_interactions.cjs
+      - name: Save reviewable static site
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-website
+          path: site/
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        with:
+          path: site/
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

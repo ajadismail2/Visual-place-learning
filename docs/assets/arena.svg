@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 680" role="img" aria-labelledby="title desc">
+<title id="title">The thermal–visual arena</title><desc id="desc">Conceptual cutaway of an eight-panel visual arena with overhead imaging, a circular thermal floor, and a selected cool target. Not an engineering drawing.</desc>
+<defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#adbc9f"/></pattern><pattern id="bars" width="32" height="20" patternUnits="userSpaceOnUse"><rect width="11" height="20" fill="#a7c58a"/></pattern><linearGradient id="floor" x2="0" y2="1"><stop stop-color="#dce3ce"/><stop offset="1" stop-color="#c2ceb6"/></linearGradient></defs>
+<rect width="760" height="680" fill="url(#dots)"/>
+<g stroke="#687e64" stroke-width="1.2" fill="none" opacity=".5"><path d="M100 548L390 660 692 509M100 548V500M390 660V622M692 509V470"/><path d="M101 550L101 242M692 509V200" stroke-dasharray="4 5"/></g>
+<path d="M170 349L285 291 492 294 613 354 613 462 505 527 289 531 170 470Z" fill="#a9b8a0" stroke="#375740" stroke-width="1.5"/>
+<path d="M170 349L170 215 285 160 285 291Z" fill="#234a3c" stroke="#153e32" stroke-width="2"/>
+<path d="M285 160L492 163 492 294 285 291Z" fill="#193f34" stroke="#153e32" stroke-width="2"/>
+<path d="M492 163L613 222 613 354 492 294Z" fill="#285040" stroke="#153e32" stroke-width="2"/>
+<path d="M613 222L650 305 650 435 613 462Z" fill="#3c624b" stroke="#153e32" stroke-width="2"/>
+<g stroke="#bcd698" stroke-width="10" opacity=".85"><path d="M200 327V224M222 314V213M246 302V201"/><path d="M315 176V265M347 176V265M379 176V265"/><path d="M413 177L449 265M443 177L479 265"/><path d="M508 196L589 236M508 229L589 269M508 262L589 302"/></g>
+<g stroke="#a7bc94" fill="none" opacity=".5"><path d="M179 232L270 187M179 250L270 205M179 270L270 225M179 290L270 245M179 310L270 265"/><path d="M299 184H477M299 205H477M299 225H477M299 245H477M299 266H477"/></g>
+<ellipse cx="389" cy="398" rx="201" ry="97" fill="url(#floor)" stroke="#375740" stroke-width="2"/>
+<ellipse cx="389" cy="398" rx="184" ry="86" fill="none" stroke="#9baa8d"/>
+<g stroke="#a5b498" stroke-width="1" fill="none"><path d="M253 365L461 466M280 346L494 450M319 330L527 430M363 318L558 410M402 313L570 394"/><path d="M215 390L421 321M226 416L460 332M257 442L502 349M296 462L539 369M346 477L566 392"/></g>
+<path d="M360 377L418 353 466 376 408 401Z" fill="#367f75" stroke="#193f34" stroke-width="1.7"/>
+<path d="M360 377V385L408 409 466 384V376L408 401Z" fill="#1c5a51" stroke="#193f34"/>
+<path d="M194 406C207 485 345 511 448 494" stroke="#375740" stroke-width="7" fill="none"/>
+<path d="M194 406C207 485 345 511 448 494" stroke="#a3b988" stroke-width="2" fill="none"/>
+<g fill="#193f34"><ellipse cx="318" cy="407" rx="5" ry="2.5" transform="rotate(28 318 407)"/><ellipse cx="443" cy="419" rx="5" ry="2.5" transform="rotate(-25 443 419)"/><ellipse cx="377" cy="449" rx="5" ry="2.5" transform="rotate(60 377 449)"/><ellipse cx="480" cy="390" rx="5" ry="2.5"/><ellipse cx="285" cy="386" rx="5" ry="2.5"/></g>
+<g stroke="#507455" fill="none" stroke-dasharray="3 4"><path d="M263 402Q285 428 303 420T333 408Q346 420 360 405T388 388"/><path d="M493 433Q465 457 445 444T409 408"/></g>
+<path d="M215 365C238 295 546 283 568 361" fill="none" stroke="#8a9e82" stroke-dasharray="5 5"/>
+<path d="M213 333C253 291 529 279 574 330" fill="none" stroke="#496a51" stroke-width="1"/>
+<g transform="translate(351 39)"><path d="M0 12L40 0 89 19 49 32Z" fill="#58745b" stroke="#193f34"/><path d="M0 12V62L49 83V32Z" fill="#1f4437" stroke="#193f34"/><path d="M49 32L89 19V68L49 83Z" fill="#395b45" stroke="#193f34"/><path d="M24 75L57 63 75 72 75 94 46 106 24 97Z" fill="#183d31" stroke="#a4b696"/><ellipse cx="49" cy="98" rx="19" ry="8" fill="#668466" stroke="#173d31"/><ellipse cx="49" cy="98" rx="10" ry="4" fill="#182f28"/></g>
+<path d="M398 155L298 330M398 155L500 329" stroke="#9fb295" stroke-width="1" stroke-dasharray="4 6"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#23483b" font-size="12"><path d="M449 85H554" stroke="#56745b" fill="none"/><circle cx="449" cy="85" r="3"/><text x="565" y="82" font-size="10" letter-spacing="1">OVERHEAD CAMERA</text><text x="565" y="98" font-size="9" fill="#6a7f62">Monochrome imaging</text>
+<path d="M220 194L140 144H35" stroke="#56745b" fill="none"/><circle cx="220" cy="194" r="3"/><text x="35" y="124" font-size="10" letter-spacing="1">VISUAL PANORAMA</text><text x="35" y="138" font-size="9" fill="#6a7f62">8 × P4 LED panels</text>
+<path d="M408 382L587 501H708" stroke="#56745b" fill="none"/><circle cx="408" cy="382" r="3"/><text x="578" y="521" font-size="10" letter-spacing="1">COOL TARGET</text><text x="578" y="537" font-size="9" fill="#6a7f62">23–25 °C target</text>
+<path d="M269 445L184 542H45" stroke="#56745b" fill="none"/><circle cx="269" cy="445" r="3"/><text x="45" y="565" font-size="10" letter-spacing="1">THERMAL FLOOR</text><text x="45" y="581" font-size="9" fill="#6a7f62">36 °C background target</text>
+<text x="303" y="624" font-size="9" letter-spacing="2">20 cm INNER DIAMETER</text></g>
+</svg>

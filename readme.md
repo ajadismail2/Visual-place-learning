@@ -1,73 +1,63 @@
 # Visual Place Learning in Drosophila melanogaster
 
-This repository contains code and analysis pipelines for studying visual place learning in *Drosophila melanogaster* using a cost-effective and accessible experimental and computational framework.
+An accessible thermal–visual arena and documented analysis workflow for investigating visually guided spatial learning in freely walking flies.
 
-The project aims to reproduce key behavioral signatures of visual place learning using simplified hardware, open-source tools, and modular analysis scripts. The framework is designed to be easily adopted in small laboratories, teaching environments, and resource-limited settings.
+This repository contains research documentation, apparatus development code, and analysis resources. The October 2026 website redesign adds a custom editorial theme, a source-derived LED panorama explorer, calibration tools, current methods, and an explicit distinction between preliminary observations and validated results.
 
-Project website:  
-https://ajadismail2.github.io/Visual-place-learning/
+**Intended GitHub Pages address:** https://ajadismail2.github.io/Visual-place-learning/
 
----
+## Build and review the website
 
-## Repository Structure and Usage
+```bash
+python -m venv .venv
+# Activate this environment using the command appropriate to your shell.
+python -m pip install -r requirements-site.txt
+python -m mkdocs build --strict
+python scripts/verify_site.py
+node scripts/verify_interactions.cjs
+```
 
-### Closed_Loop_Thermal_Camera
+The build writes the static website to `site/`. To view a built copy locally:
 
-This folder contains all necessary scripts to implement closed-loop temperature control of Peltier plates using an Adafruit PyBadge and an Adafruit MLX90640 IR thermal camera.
+```bash
+python -m http.server 8000 --directory site
+```
 
-The code can be adapted to work with any sufficiently powerful development board and compatible IR camera.
+Open `http://localhost:8000/`. HTTP is needed for the local search index; directly opening HTML still displays the content but may block search.
 
-**Calibration_tool.py**  
-This script is used to determine the coordinates of the four Peltier plates from the thermal image. After calibration:
+## Publishing
 
-1. Save the detected coordinates in a file named `coordinates.txt`
-2. Run `pid_control_pybadge.py`
+The workflow builds and checks pull requests and uploads a downloadable `research-website` artifact. It deploys only pushes or manual runs on `main`, after the checks pass. Enable **Settings → Pages → Build and deployment → Source: GitHub Actions** for the intended address to become available. Pages was reported disabled during the repository audit; a successful local build is not a deployment confirmation.
 
-**pid_control_pybadge.py**  
-This script should be uploaded to the PyBadge. It implements PID-based closed-loop temperature control and UART communication between the PyBadge and an ESP32.
+## Website structure
 
-Important: Ensure that the correct TX and RX pins are assigned for UART communication between the PyBadge and ESP32.
+- `theme/`: custom Jinja templates, homepage, shared navigation, and footer.
+- `docs/assets/`: local CSS, JavaScript, conceptual arena diagram, and data figure.
+- `docs/research/`: scientific rationale, preliminary observations, and the sociability direction.
+- `docs/hardware/`: current apparatus specifications and historical integration notes.
+- `docs/methods/`: protocol, metric definitions, and validation.
+- `docs/resources/`: provenance, file inventory, references, and development status.
+- `docs/downloads/`: protocol metadata, a run-manifest template, and preliminary values.
+- `scripts/`: site validation, interaction checks, and reproducible figure generation.
 
----
+The original hardware and analysis source directories remain intact. Their contents are version-specific: the older closed-loop PID code is not the latest staged open-loop thermal controller, and the earlier analysis scripts do not automatically implement newer GUI conventions. Several original placeholder Python files are empty and are not complete applications.
 
-### Test_UART_communication_between_PyBadge_and_ESP32
+## Current research specification
 
-This folder contains scripts to test UART communication between the PyBadge and ESP32 before implementing the full closed-loop control system.
+The current protocol specifies a 20 cm inner arena, ten flies, ten five-minute trials, and target order **B–C–D–C–B–A–D–C–B–A**. Target success requires at least three seconds inside the target with movement allowed. The recorded 916 px / 20 cm calibration is **45.8 px/cm** and applies only to that recording geometry.
 
----
+These are implementation and protocol records. The website does not claim independent replication of the original study or completed identity validation of all tracking data. See the documentation for measurement and validation boundaries.
 
-### LED_Display
+## Updating content
 
-This folder contains scripts to generate and display the visual stimulation patterns described in the associated paper using generic P4 LED panels.
+Edit Markdown under `docs/`, then update navigation in `mkdocs.yml` when adding a page. The homepage is in `theme/home.html`; its search-index synopsis is in `docs/index.md`. Keep filenames and relative links consistent. Run the strict build and both verification scripts before publishing.
 
----
+The displayed preliminary figure is generated from `docs/downloads/preliminary_trial_times.csv` by `scripts/generate_figures.py` (requires Matplotlib). Do not add error bars, fitted trends, or missing trials without their supporting data.
 
-### Master-Slave-Codes
+The separately maintained AMADEUS target GUI is documented but not redistributed by this website. It can run its own `--self-test` with its documented dependencies installed. Hardware firmware and mechanical fit require separate validation on the real apparatus.
 
-This folder contains firmware for a distributed ESP32 architecture:
+## Attribution
 
-- Master ESP32: Controls the LED display
-- Slave ESP32: Controls the four Peltier plates
+Foundational assay: Ofstad, Zuker & Reiser (2011), https://doi.org/10.1038/nature10131. Sociability reference: Lobato-Rios, Lam & Ramdya, the selected November 2024 preprint version, https://doi.org/10.1101/2024.11.25.624845.
 
----
-
-### GUI
-
-This folder contains Tkinter-based graphical user interface scripts for easier control of the entire experimental setup.
-
-Two versions of the GUI are provided:
-
-- Generic camera GUI using OpenCV for camera access and tracking
-- Thorlabs camera GUI, which requires installation of the Thorlabs SDK and command-line access to the camera
-
----
-
-## Design Philosophy
-
-- Low-cost and accessible hardware
-- Modular and open-source software
-- Easy replication and extension
-- Suitable for education, small laboratories, and rapid prototyping
-
----
-
+The parametric butt-hinge reference credits Rohin Gosling in its source header. Original notices are preserved. This update does not assign a new blanket licence to pre-existing code, CAD references, or third-party materials.
