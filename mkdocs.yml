@@ -1,5 +1,5 @@
 site_name: Visual Place Learning
-site_description: An accessible experimental platform for studying visually guided spatial learning in Drosophila melanogaster. Apparatus, protocols, tracking, and reproducible analysis.
+site_description: "Makerspace construction notes for a visual place-learning replication: arena fabrication, Peltier control, PCB connections, and display geometry."
 site_author: Ajad Ismail
 site_url: https://ajadismail2.github.io/Visual-place-learning/
 repo_url: https://github.com/ajadismail2/Visual-place-learning
@@ -12,44 +12,26 @@ theme:
 plugins:
   - search
 markdown_extensions:
-  - admonition
   - attr_list
   - md_in_html
   - tables
   - fenced_code
   - toc:
       permalink: true
-      toc_depth: 3
+      toc_depth: 2
 validation:
   nav:
-    omitted_files: info
+    omitted_files: warn
     not_found: warn
   links:
     not_found: warn
     anchors: warn
 nav:
-  - Overview: index.md
-  - Research:
-      - Scientific rationale: research/rationale.md
-      - Preliminary observations: research/observations.md
-      - Sociability extension: research/sociability.md
-  - Apparatus:
-      - System architecture: complete_system_overview.md
-      - Thermal control: hardware/thermal_control_system.md
-      - Visual panorama: hardware/visual_display_system.md
-      - Controllers & synchronization: hardware/esp32.md
-      - Imaging & calibration: hardware/monochrome_camera.md
-      - Infrared illumination: hardware/IR_illumination_system.md
-      - Mechanical design: software/3d_CAD.md
-  - Methods:
-      - Experimental protocol: methods/protocol.md
-      - Tracking & identity: software/Behavioural_tracking.md
-      - Analysis & metrics: methods/analysis.md
-      - Validation & troubleshooting: methods/validation.md
-  - Resources:
-      - Files & reproducibility: resources/files.md
-      - Development record: resources/updates.md
-      - References: resources/references.md
-      - About the project: resources/about.md
-      - Legacy web control: software/remote_web_server.md
-      - Raspberry Pi notes: hardware/raspberry_pi.md
+  - Build overview: index.md
+  - Making the arena: build/arena.md
+  - Why Peltier modules: build/peltier.md
+  - PCB and connections: build/pcb.md
+  - Four separate channels: build/four-channels.md
+  - Setting the visual angle: build/visual-angle.md
+  - Where the heat goes: build/thermal-coupling.md
+  - Sources and revisions: resources/sources.md

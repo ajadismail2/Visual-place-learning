@@ -34,11 +34,21 @@ for p,d in docs.items():
   if not target.exists():errors.append(f'{p.relative_to(ROOT)}: missing {link}')
   elif u.fragment and target in docs and unquote(u.fragment) not in docs[target].ids:errors.append(f'{p.relative_to(ROOT)}: missing fragment {link}')
 search=json.loads((ROOT/'search/search_index.json').read_text())
-assert len(search['docs'])>50,'Search index unexpectedly small'
+assert len(search['docs'])>25,'Search index unexpectedly small'
+assert 'sociability' not in json.dumps(search).lower(),'Excluded project remains in search'
 protocol=json.loads((ROOT/'downloads/protocol.json').read_text())
-assert protocol['target_sequence']==list('BCDCBADCBA')
+assert protocol['required_sequence_length']==11
+assert len(protocol['example_sequence'])==11
+assert protocol['training_trials']==10 and protocol['final_all_heating_trials']==1
+assert protocol['preheat_s']+11*protocol['trial_duration_s']==3480
+assert [s['pwm'] for s in protocol['cooling_stages']]==[100,90,80,70]
 assert sum(s['duration_s'] for s in protocol['cooling_stages'])==300
-assert protocol['calibration_example']['diameter_px']/protocol['arena_inner_diameter_cm']==45.8
+expected={'A':(2,25,26,13,15),'B':(4,19,18,2,16),'C':(1,32,33,4,5),'D':(3,27,14,22,23)}
+for target,values in expected.items():
+ assert tuple(protocol['targets'][target][k] for k in ['channel','rpwm','lpwm','ren','len'])==values
+assert protocol['display']['pattern_height_px']==33
+assert protocol['display']['horizontal_length_px']*protocol['display']['pitch_mm']==344
+assert not (ROOT/'research/sociability/index.html').exists()
 for line in (ROOT/'downloads/SHA256SUMS').read_text().splitlines():
  digest,name=line.split('  ',1)
  assert hashlib.sha256((ROOT/'downloads'/name).read_bytes()).hexdigest()==digest,f'Download checksum mismatch: {name}'

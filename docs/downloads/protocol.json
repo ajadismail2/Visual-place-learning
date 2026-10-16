@@ -1,12 +1,16 @@
 {
-  "schema_version": 1,
-  "status": "project_protocol_specification_not_hardware_firmware",
-  "updated": "2026-10-13",
+  "schema_version": 2,
+  "status": "documented_source_defaults_not_measured_temperatures",
+  "source_revision": "2026-10-15",
+  "documented_through": "2026-10-16",
   "arena_inner_diameter_cm": 20,
-  "planned_fly_count": 10,
-  "reference_fps": 24,
+  "background_modules": 60,
+  "target_modules": 4,
+  "preheat_s": 180,
   "trial_duration_s": 300,
-  "target_sequence": [
+  "training_trials": 10,
+  "final_all_heating_trials": 1,
+  "example_sequence": [
     "B",
     "C",
     "D",
@@ -16,56 +20,101 @@
     "D",
     "C",
     "B",
-    "A"
+    "A",
+    "B"
   ],
-  "dwell_seconds": 3,
-  "movement_inside_target_allowed": true,
-  "latency_definition": "first_completed_dwell",
-  "frame_convention": "zero_based_start_inclusive_end_exclusive",
-  "thermal_aliases": {
-    "T1": "A",
-    "T2": "D",
-    "T3": "C",
-    "T4": "B"
-  },
-  "display_virtual_shape_px": [
-    256,
-    64
-  ],
-  "display_offsets_px": {
-    "A": 192,
-    "B": 0,
-    "C": 64,
-    "D": 128
+  "sequence_is_user_supplied": true,
+  "required_sequence_length": 11,
+  "pwm_frequency_hz": 20000,
+  "pwm_resolution_bits": 8,
+  "targets": {
+    "A": {
+      "alias": "T1",
+      "channel": 2,
+      "rpwm": 25,
+      "lpwm": 26,
+      "ren": 13,
+      "len": 15,
+      "initial_heat_pwm": 41,
+      "after_cooling_heat_pwm": 40
+    },
+    "B": {
+      "alias": "T4",
+      "channel": 4,
+      "rpwm": 19,
+      "lpwm": 18,
+      "ren": 2,
+      "len": 16,
+      "initial_heat_pwm": 40,
+      "after_cooling_heat_pwm": 41
+    },
+    "C": {
+      "alias": "T3",
+      "channel": 1,
+      "rpwm": 32,
+      "lpwm": 33,
+      "ren": 4,
+      "len": 5,
+      "initial_heat_pwm": 40,
+      "after_cooling_heat_pwm": 39
+    },
+    "D": {
+      "alias": "T2",
+      "channel": 3,
+      "rpwm": 27,
+      "lpwm": 14,
+      "ren": 22,
+      "len": 23,
+      "initial_heat_pwm": 39,
+      "after_cooling_heat_pwm": 38
+    }
   },
   "cooling_stages": [
     {
-      "duration_s": 5,
+      "duration_s": 10,
+      "pwm": 100
+    },
+    {
+      "duration_s": 10,
+      "pwm": 90
+    },
+    {
+      "duration_s": 10,
       "pwm": 80
     },
     {
-      "duration_s": 10,
-      "pwm": 75
-    },
-    {
-      "duration_s": 10,
-      "pwm": 65
-    },
-    {
-      "duration_s": 275,
-      "pwm": 55
+      "duration_s": 270,
+      "pwm": 70
     }
   ],
-  "warm_target_c": 36,
-  "cool_target_range_c": [
-    23,
-    25
-  ],
-  "pre_post_hot_all_s_requested": 600,
-  "calibration_example": {
-    "diameter_px": 916,
-    "diameter_cm": 20,
-    "px_per_cm": 45.8,
-    "applies_to": "recording_with_this_measured_geometry_only"
-  }
+  "post_cool_boost": {
+    "pwm": 50,
+    "duration_s": 17
+  },
+  "display": {
+    "virtual_shape_px": [
+      256,
+      64
+    ],
+    "pitch_mm": 4,
+    "bar_px": 11,
+    "gap_px": 11,
+    "pattern_height_px": 33,
+    "horizontal_length_px": 86,
+    "diagonal_panel_slope_deg": 45,
+    "offsets_px": {
+      "A": 192,
+      "B": 0,
+      "C": 64,
+      "D": 128
+    }
+  },
+  "temperature_targets_c": {
+    "warm": 36,
+    "cool_range": [
+      23,
+      25
+    ]
+  },
+  "temperature_feedback_in_master": false
 }
