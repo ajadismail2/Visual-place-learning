@@ -1,98 +1,32 @@
-# Visual Place Learning Arena for *Drosophila melanogaster*
-
-An open-source, low-cost implementation of a thermal-visual arena for studying spatial memory in fruit flies.
-
-![Arena Overview](hardware/images/full.png)
-
-
 ---
-
-## About This Project
-
-This documentation describes a practical, reproducible visual place learning apparatus based on the paradigm established by Ofstad, Zuker, and Reiser (2011). Our implementation uses commercially available components and open-source control systems to make this powerful behavioral assay accessible to laboratories with limited budgets.
-
-**Key features**:
-- Generic hardware replaces specialized components
-- Open-source firmware and control software
-- Multiple assembly options for different lab setups
-- Detailed documentation with troubleshooting guides
-
+title: Visual place-learning apparatus
+description: Equipment, assembly, temperature control and firmware for the arena.
+section: Overview
 ---
+The apparatus consists of a circular arena with a **measured inner diameter of 20 cm**, a heated background of 60 Peltier modules, four cooling targets and eight LED panels. The targets are controlled independently, and the LED pattern changes with the selected target.
 
-## System Components
+## System operation
 
-The arena integrates four subsystems to create controlled behavioral experiments:
+Temperature feedback regulates the background and thermal ring. During a trial, one target cools while the other three heat. Separate ESP32 boards control the target sequence and display. A thermal camera records the temperature distribution.
 
-### Thermal Control
-Peltier plates create a temperature landscape (36°C warm background, 25°C cool target) that motivates flies to navigate and learn spatial locations.
+## Documentation
 
-### Visual Display
-P4 LED panels provide panoramic visual landmarks that flies use to remember the location of the rewarding cool tile.
+<div class="chapter-list" markdown="1">
 
-### Behavioral Tracking
-Infrared illumination and camera systems record fly positions throughout experiments for offline analysis.
+[**Published arena specifications**<br><span>Reference dimensions, materials and components from the original paper.</span>](build/published-specifications.md)
 
-### Remote Control
-Web-based interface (via Raspberry Pi) enables wireless experiment control and monitoring.
+[**Equipment and materials**<br><span>Thermal components, electronics and fabricated parts.</span>](build/equipment.md)
 
----
+[**Arena assembly**<br><span>Base, aluminium carrier and printed mounts.</span>](build/arena.md)
 
-## Documentation Structure
+[**PCB and wiring**<br><span>Power connections, ESP32 pin assignments and diagrams.</span>](build/pcb.md)
 
-**Hardware Systems**:
-- [Complete System Overview](complete_system_overview.md) - Architecture, assembly guide, cost analysis
-- [Thermal Control System](hardware/thermal_control_system.md) - Peltier arrays, PID control, thermal ring
-- [Visual Display System](hardware/visual_display_system.md) - P4 LED panels, ESP32 control, pattern generation
-- [IR Illumination System](hardware/IR_illumination_system.md) - Lighting for behavioral tracking
+[**Temperature control**<br><span>Background feedback, target cooling and heat removal.</span>](build/peltier.md)
 
-**Electronics & Control**:
-- [ESP32 Microcontrollers](hardware/esp32.md) - Dual-controller architecture, system coordination
-- [Web-Based Control](software/web_server.md) - Raspberry Pi server for remote operation
+[**Visual display**<br><span>Panel distance, bar width and angular calibration.</span>](build/visual-angle.md)
 
-**Tracking & Analysis**:
-- [Monochrome Camera Selection](hardware/monochrome_camera.md) - Camera requirements by tracking method
-- [Behavioural Tracking](software/Behavioural_tracking.md) - CTRAX vs. SLEAP implementation
+[**Operating procedure**<br><span>Controller setup, trial sequence and shutdown.</span>](operation.md)
 
----
+[**Code and downloads**<br><span>Programs for control, measurement and component tests.</span>](firmware/index.md)
 
-## Design Philosophy
-
-**Accessibility**: Uses generic components available from standard suppliers, eliminating dependence on specialized vendors.
-
-**Transparency**: Complete documentation of hardware choices, control algorithms, and assembly procedures.
-
-**Modularity**: Each subsystem can be built and tested independently, simplifying troubleshooting and modification.
-
-**Scientific validity**: Maintains the core experimental logic of the original implementation while reducing cost.
-
----
-
-## Getting Started
-
-1. Review the website to understand the architecture
-2. Check the cost of materials to assess component availability and cost
-3. Follow the assembly guide for step-by-step construction
-4. Consult individual subsystem documentation for detailed specifications
-
----
-
-## Current Status
-
-This is an **active research project**. The documentation reflects our current implementation and will be updated as we refine the system and conduct experiments.
-
-## Contributing
-
-This project is shared to support transparency and reuse within the research community. We welcome:
-- Bug reports and troubleshooting insights
-- Design improvements and alternative implementations
-- Validation data from independent laboratories
-
-**GitHub Repository**: [github.com/ajadismail2/Visual-place-learning](https://github.com/ajadismail2/Visual-place-learning)
-
-## Contact
-
-For questions or collaboration inquiries, please open an issue on the GitHub repository.
-
----
-
-*This documentation is intended for research and educational use and is shared to support reproducibility and open science practices.*
+</div>

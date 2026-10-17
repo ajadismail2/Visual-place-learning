@@ -1,73 +1,34 @@
-# Visual Place Learning in Drosophila melanogaster
+# Visual place-learning apparatus
 
-This repository contains code and analysis pipelines for studying visual place learning in *Drosophila melanogaster* using a cost-effective and accessible experimental and computational framework.
+Makerspace build documentation for Ajad Ismail's replication of the apparatus described by Ofstad, Zuker & Reiser, doi:10.1038/nature10131.
 
-The project aims to reproduce key behavioral signatures of visual place learning using simplified hardware, open-source tools, and modular analysis scripts. The framework is designed to be easily adopted in small laboratories, teaching environments, and resource-limited settings.
+The site covers arena fabrication, Peltier control, PCB and ESP32 wiring, four cooling tiles, visual angles, and heat removal. Eight supplied sketches are explained and available in full.
 
-Project website:  
-https://ajadismail2.github.io/Visual-place-learning/
+## Build and check
 
----
+Requires Python 3.10 or later and Node.js.
 
-## Repository Structure and Usage
+```sh
+python -m pip install -r requirements-site.txt
+python scripts/package_firmware.py
+python -m mkdocs build --strict
+python scripts/verify_site.py
+python scripts/verify_firmware_docs.py
+node scripts/verify_interactions.cjs
+```
 
-### Closed_Loop_Thermal_Camera
+Content is in `docs/`, templates in `theme/`, and local CSS/JavaScript in `docs/assets/`. The output is `site/`.
 
-This folder contains all necessary scripts to implement closed-loop temperature control of Peltier plates using an Adafruit PyBadge and an Adafruit MLX90640 IR thermal camera.
+## Source and measurement
 
-The code can be adapted to work with any sufficiently powerful development board and compatible IR camera.
+The supplied master uses a five-minute preheat and accepts 1 to 16 cooling steps. Current settings are recorded in `docs/downloads/protocol.json`; the earlier parameter record is archived separately. Setpoints are not measured temperatures.
 
-**Calibration_tool.py**  
-This script is used to determine the coordinates of the four Peltier plates from the thermal image. After calibration:
+Measured temperature logs and STEP files are awaiting upload. The CNC-cut carrier, lower heat sinks, and thermal-controller ESP32 conversion are labelled proposals, not completed or validated hardware.
 
-1. Save the detected coordinates in a file named `coordinates.txt`
-2. Run `pid_control_pybadge.py`
+Personal AP credentials and the device MAC are excluded from published code. Configure the master locally using `local_config.example.h`. The original ring sketch's syntax error is documented, with a separate syntax-only correction. No firmware compilation or hardware test is claimed.
 
-**pid_control_pybadge.py**  
-This script should be uploaded to the PyBadge. It implements PID-based closed-loop temperature control and UART communication between the PyBadge and an ESP32.
+## Website
 
-Important: Ensure that the correct TX and RX pins are assigned for UART communication between the PyBadge and ESP32.
+[Website](https://ajadismail2.github.io/Visual-place-learning/) · [Download QR code](docs/downloads/website-qr.png)
 
----
-
-### Test_UART_communication_between_PyBadge_and_ESP32
-
-This folder contains scripts to test UART communication between the PyBadge and ESP32 before implementing the full closed-loop control system.
-
----
-
-### LED_Display
-
-This folder contains scripts to generate and display the visual stimulation patterns described in the associated paper using generic P4 LED panels.
-
----
-
-### Master-Slave-Codes
-
-This folder contains firmware for a distributed ESP32 architecture:
-
-- Master ESP32: Controls the LED display
-- Slave ESP32: Controls the four Peltier plates
-
----
-
-### GUI
-
-This folder contains Tkinter-based graphical user interface scripts for easier control of the entire experimental setup.
-
-Two versions of the GUI are provided:
-
-- Generic camera GUI using OpenCV for camera access and tracking
-- Thorlabs camera GUI, which requires installation of the Thorlabs SDK and command-line access to the camera
-
----
-
-## Design Philosophy
-
-- Low-cost and accessible hardware
-- Modular and open-source software
-- Easy replication and extension
-- Suitable for education, small laboratories, and rapid prototyping
-
----
-
+The workflow checks pull requests and publishes from `main`. In repository Settings → Pages, select **GitHub Actions** as the source to enable publication.

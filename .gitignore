@@ -1,0 +1,8 @@
+/site/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# Device-specific firmware settings
+local_config.h

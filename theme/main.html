@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>{% if page %}{{ page.title }} · {% endif %}{{ config.site_name }}</title>
+  <meta name="description" content="{{ page.meta.description if page and page.meta.description else config.site_description }}">
+  {% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
+  <link rel="icon" type="image/svg+xml" href="{{ 'assets/favicon.svg' | url }}">
+  <link rel="stylesheet" href="{{ 'assets/site.css' | url }}">
+  <script src="{{ 'assets/site.js' | url }}" defer data-search-index="{{ 'search/search_index.json' | url }}" data-root="{{ '.' | url }}"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="site-shell">
+<header class="masthead">
+  <a class="brand" href="{{ '.' | url }}">Visual Place Learning<span>Apparatus and methods</span></a>
+  <div class="header-actions"><a href="{{ 'resources/sources/' | url }}">Downloads</a><button type="button" class="search-toggle" aria-expanded="false" aria-controls="site-search">Search</button><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Contents</button></div>
+</header>
+<section class="search-panel" id="site-search" aria-label="Search documentation" hidden>
+  <div class="search-inner"><label for="search-input">Search documentation</label><div class="search-row"><input id="search-input" type="search" placeholder="Peltier, footprint, angle…" autocomplete="off"><button type="button" id="search-close">Close</button></div><p id="search-status" role="status">Enter at least two characters.</p><ul id="search-results"></ul></div>
+</section>
+<div class="document-layout">
+  <aside class="sidebar" id="primary-nav">
+    <p class="nav-label">DOCUMENTATION</p>
+    <nav aria-label="Main navigation">{% for item in nav %}{% if item.children %}<details class="nav-group" {% if item.active %}open{% endif %}><summary>{{ item.title }}</summary><div>{% for child in item.children %}<a href="{{ child.url | url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>{% endfor %}</div></details>{% else %}<a href="{{ item.url | url }}" {% if item.active %}aria-current="page"{% endif %}>{{ item.title }}</a>{% endif %}{% endfor %}</nav>
+    <div class="sidebar-meta"><p>Reference study</p><a href="https://doi.org/10.1038/nature10131">Ofstad et al. ↗</a><p>Ajad Ismail</p></div>
+  </aside>
+  <main id="main" class="article">
+    <header class="article-header"><p class="breadcrumb">{{ page.meta.section if page and page.meta.section else 'Documentation' }}</p><h1>{{ page.meta.title if page and page.meta.title else (page.title if page else 'Page not found') }}</h1></header>
+    {% if page and not page.is_homepage and page.toc %}<details class="page-contents"><summary>On this page</summary><ul>{% for item in page.toc %}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endfor %}</ul></details>{% endif %}
+    <div class="prose">{% if page %}{{ page.content }}{% else %}<p>This page is no longer part of the build documentation. <a href="{{ '.' | url }}">Open the build overview</a> or use the contents to find a component.</p>{% endif %}</div>
+    {% if page %}<nav class="page-nav" aria-label="Adjacent pages">{% if page.previous_page %}<a href="{{ page.previous_page.url | url }}"><small>Previous</small>← {{ page.previous_page.title }}</a>{% endif %}{% if page.next_page %}<a href="{{ page.next_page.url | url }}"><small>Next</small>{{ page.next_page.title }} →</a>{% endif %}</nav>{% endif %}
+    <footer class="page-footer"><span>Ajad Ismail · Visual place-learning apparatus</span><a href="{{ 'resources/sources/' | url }}">Downloads and references</a></footer>
+  </main>
+</div>
+</div>
+</body>
+</html>

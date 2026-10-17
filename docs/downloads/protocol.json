@@ -1,0 +1,145 @@
+{
+  "schema_version": 3,
+  "status": "uploaded_source_snapshot_not_verified_installed_firmware",
+  "source_revision": "upload-2026-10-17",
+  "documented_through": "2026-10-17",
+  "master_file": "Master_Controller.ino",
+  "display_file": "LED_Slave.ino",
+  "arena_inner_diameter_cm": 20,
+  "background_modules": 60,
+  "target_modules": 4,
+  "preheat_s": 300,
+  "preheat_pwm": 29,
+  "trial_duration_s": 300,
+  "minimum_sequence_length": 1,
+  "maximum_sequence_length": 16,
+  "required_sequence_length": null,
+  "final_all_heating_trials": 0,
+  "each_step_cools_selected_target": true,
+  "example_sequence": [
+    "B",
+    "C",
+    "D",
+    "C",
+    "B",
+    "A",
+    "D",
+    "C",
+    "B",
+    "A",
+    "B"
+  ],
+  "example_total_duration_s": 3600,
+  "pwm_frequency_hz": 20000,
+  "pwm_resolution_bits": 8,
+  "heating_output": "LPWM",
+  "cooling_output": "RPWM",
+  "targets": {
+    "A": {
+      "channel": 3,
+      "rpwm": 27,
+      "lpwm": 14,
+      "ren": 23,
+      "len": 22,
+      "manual_number": 1
+    },
+    "B": {
+      "channel": 2,
+      "rpwm": 25,
+      "lpwm": 26,
+      "ren": 13,
+      "len": 15,
+      "manual_number": 2
+    },
+    "C": {
+      "channel": 4,
+      "rpwm": 19,
+      "lpwm": 18,
+      "ren": 21,
+      "len": 17,
+      "manual_number": 3
+    },
+    "D": {
+      "channel": 1,
+      "rpwm": 32,
+      "lpwm": 33,
+      "ren": 4,
+      "len": 5,
+      "manual_number": 4
+    }
+  },
+  "cooling_boost": {
+    "pwm": 150,
+    "duration_s": 23
+  },
+  "cooling_hold": {
+    "duration_s": 277,
+    "first_selection_pwm": 106,
+    "repeat_selection_pwm": 120
+  },
+  "experiment_heat_pwm": 24,
+  "post_cool_boost": {
+    "pwm": 50,
+    "duration_s": 17
+  },
+  "temperature_feedback_in_master": false,
+  "display": {
+    "virtual_shape_px": [
+      256,
+      64
+    ],
+    "pitch_mm": 4,
+    "horizontal_length_px": 86,
+    "horizontal_rows_inclusive": [
+      [
+        0,
+        10
+      ],
+      [
+        22,
+        31
+      ]
+    ],
+    "diagonal_shift_px": -11,
+    "diagonal_height_steps": 31,
+    "offsets_px": {
+      "A": 192,
+      "B": 0,
+      "C": 64,
+      "D": 128
+    }
+  },
+  "background": {
+    "file": "Closedloop_60peltier.ino",
+    "setpoint_c": 34.8,
+    "pwm_pin": 9,
+    "pwm_limit": 150,
+    "temperature_sensor": "TMP117",
+    "sensor_interval_ms": 100,
+    "filter_alpha": 0.3,
+    "pid_gains": [
+      60,
+      4,
+      5
+    ]
+  },
+  "thermal_ring": {
+    "file": "Thermal_ring.ino",
+    "setpoint_c": 45,
+    "cutoff_c": 57,
+    "pwm_pin": 9,
+    "one_wire_pin": 2,
+    "syntax_error_in_supplied_file": true
+  },
+  "thermal_camera": {
+    "file": "thermal_camera.ino",
+    "shape_px": [
+      32,
+      24
+    ],
+    "baud": 921600,
+    "configured_refresh_hz": 8,
+    "frame_bytes": 1538
+  },
+  "previous_record": "protocol-2026-10-15.json"
+}
