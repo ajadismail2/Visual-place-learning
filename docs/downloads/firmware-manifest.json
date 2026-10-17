@@ -1,0 +1,72 @@
+{
+  "uploaded_sketch_count": 8,
+  "source_date": "2026-10-17",
+  "files": [
+    {
+      "filename": "4_peltier_mosfet_hbridge.ino",
+      "path": "firmware/4_peltier_mosfet_hbridge/4_peltier_mosfet_hbridge.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [],
+      "sha256": "dea4e92643c7febbb1b02d0dcbfdcf5b25ae6dc0b27acf14c1d3ae617d046253"
+    },
+    {
+      "filename": "Closedloop_60peltier.ino",
+      "path": "firmware/Closedloop_60peltier/Closedloop_60peltier.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [],
+      "sha256": "daf9f06e257d77075f0e638802130559f5f9fbe7b50666f9a0f64213f524d509"
+    },
+    {
+      "filename": "LED_Slave.ino",
+      "path": "firmware/LED_Slave/LED_Slave.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [
+        "Replaced a project label in a comment that matched the private AP name; program logic unchanged."
+      ],
+      "sha256": "e3d701bc38ef7ff6afbe96c77c9b50c1e6cc433a09a815d1adad3bcd138d4504"
+    },
+    {
+      "filename": "Master_Controller.ino",
+      "path": "firmware/Master_Controller/Master_Controller.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [
+        "Device MAC address and AP credentials moved to an untracked local_config.h; configure from local_config.example.h. Control logic unchanged."
+      ],
+      "sha256": "174c86868c1511b7dff4e7cd54ca99b078cb424126e3b87422fb784d263856e4"
+    },
+    {
+      "filename": "SinglePanelTest.ino",
+      "path": "firmware/SinglePanelTest/SinglePanelTest.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [
+        "Replaced a project label in a comment that matched the private AP name; program logic unchanged."
+      ],
+      "sha256": "351c44ae04a90593ffd89c1d0374fe30a2c9c90797ae762a5c7a74a1c2a48b2f"
+    },
+    {
+      "filename": "Thermal_ring.ino",
+      "path": "firmware/Thermal_ring/Thermal_ring.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [],
+      "sha256": "e85392789acdd6cc9dedcadad7d0c413b656d32f59bccee4b848bac223a0d6df"
+    },
+    {
+      "filename": "hot_slave.ino",
+      "path": "firmware/hot_slave/hot_slave.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [],
+      "sha256": "f4c2ed47afb2c09b4eb4a3cad89d7639c20972dc9473519a114b7b502a0d9ff1"
+    },
+    {
+      "filename": "thermal_camera.ino",
+      "path": "firmware/thermal_camera/thermal_camera.ino",
+      "upload_date": "2026-10-17",
+      "publication_changes": [],
+      "sha256": "b6b02cf2f120467c9fdabac4dd43879b99447e529f69d3fc5399812fca6f8f12"
+    }
+  ],
+  "optional_correction": {
+    "path": "firmware/Thermal_ring_syntax_fixed/Thermal_ring_syntax_fixed.ino",
+    "change": "Remove only the trailing 3 after the Kd declaration; no control-logic edits."
+  }
+}

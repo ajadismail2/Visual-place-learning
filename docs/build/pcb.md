@@ -1,42 +1,64 @@
 ---
-title: PCB and connections
-description: Moving the controller from loose wiring to a board meant matching real ESP32 hardware, separating power paths, and testing each connection.
-section: 03 / Electronics build
+title: PCB and wiring
+description: Controller connections and power distribution.
+section: Assembly
 ---
-## Make the footprint fit the board
+The PCB connects the ESP32 boards to the driver and display signals. Peltier current passes through the external drivers and their power wiring.
 
-KiCad was used for the schematic and footprint work. The project involved both **30-pin and 38-pin ESP32 boards**, so a generic name was not enough to select the correct footprint. Custom symbols and footprints were made around the actual boards and their enclosure dimensions.
+## PCB layout
 
-These files solve different problems. The symbol identifies electrical connections; the footprint determines the physical header positions; a 3D model helps check enclosure clearance. A convincing 3D view does not correct a misplaced pad or a wrong pin assignment.
+KiCad symbols and footprints are based on the installed boards. Measure the header spacing and check the pin order before placing connectors. The 30-pin and 38-pin ESP32 variants require different footprints.
 
-The makerspace work also included soldering and wire-and-jumper assembly. By October, the display ESP32 was reported mounted on a PCB and supplied independently of the computer. The available record does not specify whether that PCB was milled, etched, or ordered, so no manufacturing process is claimed here.
+## ESP32 control
 
-## Keep control signals and load current distinct
+The target ESP32 runs the trial sequence and generates PWM signals for the drivers. Each H-bridge reverses the Peltier current to select heating or cooling. ESP-NOW sends the selected target to a separate display ESP32.
 
-The ESP32 tells the drivers what to do. The external power circuit supplies the Peltier current. Each target has its own bidirectional driver path; its two leads connect to that driver's two switched outputs. They are not four loads wired in series, and a Peltier lead should not be treated as a permanently grounded return when an H-bridge reverses its polarity.
+Use **ESP32-WROOM boards** for the proposed common controller platform. The background and ring sketches need revised pin assignments and PWM calls before conversion. Their Arduino pin 9 cannot be transferred to a classic ESP32-WROOM, where GPIO9 connects to flash.
 
-| Connection | Role in the assembly |
+## Power and target connections
+
+| Connection | Destination |
 | --- | --- |
-| ESP32 → driver logic | Separate PWM and enable signals for each target |
-| Supply → driver power inputs | Carries the target's load current |
-| Driver outputs → Peltier pair | Reverses current through that target |
-| Logic ground → driver reference ground | Gives the control signals a common electrical reference |
-| Display supply → LED panels and controller supply arrangement | Must support standalone operation as well as USB testing |
+| Regulated logic supply | ESP32 board input and compatible driver logic supply |
+| Target power supply | Fused supply to each driver's load-power terminals |
+| PWM and enable GPIOs | Driver RPWM, LPWM, R_EN and L_EN |
+| Driver output pair | The two leads of its Peltier |
+| Control reference | Common ESP32 and driver logic ground |
+| High-current return | Back to the power supply, not through thin signal wiring |
 
-The regulated input and logic levels must match the actual boards. The current [pin map](four-channels.md#pin-map-from-the-current-master) describes the master firmware, not a substitute for the assembled PCB schematic.
+1. Connect each target to its own driver's output pair.
+2. Connect PWM and enable signals using the [target pin table](four-channels.md#target-controller-pin-map).
+3. Connect the driver power supply and common logic ground. Check supply ratings and logic levels before powering the circuit.
 
-## Why the driver changed
+Keep both Peltier leads on the H-bridge output. Neither lead should connect directly to an ESP32 pin or be permanently grounded.
 
-The earlier control work used L298N bridges. Their transistor voltage drop consumes part of the supply voltage and dissipates power in the driver. Later versions used BTS7960-based modules for the four target channels. This made the driver choice part of the thermal budget as well as the wiring design. The [L298 datasheet](https://www.st.com/resource/en/datasheet/l298.pdf) and [BTS7960 datasheet](https://www.infineon.com/assets/row/public/documents/10/57/infineon-bts7960-ds-en.pdf) describe the different power stages; a module's headline current rating is not an assembled-board rating.
+## Display board pin map
 
-<div class="build-sheet" markdown="1">
+| HUB75 signal | ESP32 GPIO |
+| --- | --- |
+| R1 / G1 / B1 | 2 / 15 / 4 |
+| R2 / G2 / B2 | 16 / 27 / 17 |
+| A / B / C / D / E | 5 / 18 / 19 / 21 / 12 |
+| LAT / OE / CLK | 25 / 26 / 22 |
 
-### Debugging the assembled display board
+![Display ESP32 connected to the HUB75 panel chain with separate panel power](../assets/display-wiring.svg)
 
-The display worked when a command was entered directly on the slave. Master-side commands initially produced flashing or disappearing patterns. The revised firmware holds the requested state, queues received commands, and prevents an older `OFF` request from following a newer state.
+Connect the display controller to the first panel's data input, then connect each output to the next panel's input. Power the panels directly from their rated supply. Use a suitable level interface where 5 V logic is required.
 
-Later logs showed a radio acknowledgement and a slave message confirming the displayed state. That narrowed the investigation: command delivery was observed, while operation from the PCB's standalone supply still needed checking. The USB-connected test and the independently powered test were different conditions.
+## Background, ring and camera
 
-</div>
+The following connections are for the **proposed ESP32 conversion**. The background and ring each use a separate controller; the existing Arduino pin assignments are listed on their code pages.
 
-<p class="source-note">KiCad and board-model work: January 2026. PCB-mounted slave and command-path tests: October 2026. The source board files and fabrication settings are not part of this public documentation; no trace width or power rating is inferred from a photograph or firmware file.</p>
+![Proposed ESP32 connections for the background sensor, ring sensor and power stages](../assets/thermal-wiring.svg)
+
+| Circuit | Signals | Load power |
+| --- | --- | --- |
+| Background, proposed | TMP117 SDA 21 / SCL 22; PWM 25 | Through a suitable power stage to the 60-module string |
+| Ring, proposed | OneWire data 4; PWM 25 | Through a suitable MOSFET stage to the heater |
+| Thermal camera, supplied | MLX90640 SDA 21 / SCL 22 on its own ESP32; USB to computer | Rated sensor-breakout supply |
+| Lower fan | Independent unless a control circuit is added | Supply matched to the fan label |
+| IR illumination | Independent of display data | Rated illumination supply |
+
+Use ESP32-compatible sensor logic and pull-ups. Confirm the OneWire sensor model before selecting its pull-up and supply. Keep each controller's signal ground referenced to its own sensors and power stage.
+
+[ESP32 board reference](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html) · [Controller code](../firmware/index.md)

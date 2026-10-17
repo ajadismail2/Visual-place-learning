@@ -1,59 +1,36 @@
 ---
-title: Four separate Peltier channels
-description: A, B, C, and D have independent driver connections and heating settings, coordinated by one master controller.
-section: 04 / Wiring and control
+title: Four-target control
+description: Wiring and timing for the four cooling targets.
+section: Thermal system
 ---
-## Separate outputs, one experiment clock
+One ESP32 controls four bidirectional drivers. Each driver connects to one Peltier, allowing one target to cool while the other three heat. The background circuit is separate.
 
-The master ESP32 controls the four target drivers. A second ESP32 drives the LED panels and receives display-state messages over ESP-NOW. This split keeps panel drawing on the display board while the master handles the heating and cooling sequence.
+## Target controller pin map
 
-Each target has its own driver outputs and control pins. The master can therefore cool one target while heating the other three. The 60-module background circuit is a separate branch; the four-target command does not describe its control.
-
-## Pin map from the current master
-
-The physical target name, manual alias, and driver channel are different labels. Reading the executable mapping in the supplied **15 October master** gives:
-
-| Target | Manual alias | Driver channel | RPWM | LPWM | R_EN | L_EN |
+| Target | Manual number | Driver channel | RPWM | LPWM | R_EN | L_EN |
 | --- | --- | --- | --- | --- | --- | --- |
-| A | T1 | 2 | GPIO 25 | GPIO 26 | GPIO 13 | GPIO 15 |
-| B | T4 | 4 | GPIO 19 | GPIO 18 | GPIO 2 | GPIO 16 |
-| C | T3 | 1 | GPIO 32 | GPIO 33 | GPIO 4 | GPIO 5 |
-| D | T2 | 3 | GPIO 27 | GPIO 14 | GPIO 22 | GPIO 23 |
+| A | 1 | 3 | 27 | 14 | 23 | 22 |
+| B | 2 | 2 | 25 | 26 | 13 | 15 |
+| C | 3 | 4 | 19 | 18 | 21 | 17 |
+| D | 4 | 1 | 32 | 33 | 4 | 5 |
 
-Each row drives a separate module, with that module's two switched outputs connected to its Peltier. The code uses **20 kHz, 8-bit PWM**. In its heating function, LPWM is set to zero before RPWM is driven; cooling does the reverse. The physical hot/cold direction still depends on the installed Peltier polarity.
+RPWM, LPWM and enable values are ESP32 GPIO numbers. The master uses **LPWM for heating and RPWM for cooling** at 20 kHz with 8-bit PWM. Check the current direction against the installed Peltier polarity.
 
-## Why all four do not use one heating value
+![Four separate driver channels connected to the target ESP32](../assets/target-wiring.svg)
 
-A target that has just been cooled has a different starting condition from a target that has remained warm. The revised controller keeps a separate value for each target before its first cooling cycle and after it has cooled. It also applies **PWM 50 for 17 seconds** immediately after a target finishes cooling, before returning it to its ordinary heating value.
+## Trial sequence
 
-| Target | Preheat / before first cooling | After cooling |
-| --- | --- | --- |
-| A | 41 | 40 |
-| B | 40 | 41 |
-| C | 40 | 39 |
-| D | 39 | 38 |
+The master preheats all targets for five minutes. Each selected target then cools for 300 seconds.
 
-These are firmware defaults, not temperatures or transferable calibration values.
-
-<div class="build-sheet" markdown="1">
-
-### Cooling stages in the reviewed revision
-
-| Time in a 300 s cooling trial | PWM |
+| Stage | Output |
 | --- | --- |
-| 0–10 s | 100 |
-| 10–20 s | 90 |
-| 20–30 s | 80 |
-| 30–300 s | 70 |
+| Initial cooling | PWM 150 for 23 s |
+| Remaining 277 s | PWM 106 on first selection; 120 on a repeat |
+| Other targets | Heating at PWM 24 |
+| Return to heating | PWM 50 for 17 s, then 24 |
 
-The earlier 80→75→65→55 sequence belongs to an older revision. The figures above come from the newer supplied source.
+The intended target range is **23–25 °C**. Measured performance requires temperature traces for all four targets and the background; PWM settings alone do not establish surface temperature.
 
-</div>
+Every step in this program cools a target. The alternative bench controller uses different enable pins and the opposite PWM direction.
 
-## Coordinating the target and the display
-
-The current `EXP` command accepts **exactly eleven A–D letters**. After a three-minute preheat, trials 1–10 cool the selected target for five minutes each. Trial 11 displays its specified pattern while **all four targets heat**. It is not an eleventh cooling trial. The programmed duration is 58 minutes including preheat.
-
-For example, `EXP B-C-D-C-B-A-D-C-B-A-B` uses B for the final display state. The master sends `STATE:A`, `STATE:B`, `STATE:C`, or `STATE:D`; the display board applies the corresponding rotation. A radio acknowledgement confirms delivery, not the temperature or visual state of the apparatus. `LED A` is a standalone preview that cancels the experiment and stops the target outputs in this revision.
-
-<p class="source-note">Derived from the current supplied Master_Controller.ino, reviewed against its pin arrays, nodeToIdx mapping, timing constants, and trial functions. <a href="../../downloads/protocol.json">Download the extracted build parameters</a>.</p>
+[Master code](../firmware/master.md) · [Operating procedure](../operation.md) · [Wiring](pcb.md)

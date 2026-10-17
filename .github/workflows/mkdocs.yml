@@ -26,6 +26,7 @@ jobs:
       - run: python -m pip install -r requirements-site.txt
       - run: python -m mkdocs build --strict
       - run: python scripts/verify_site.py
+      - run: python scripts/verify_firmware_docs.py
       - run: node scripts/verify_interactions.cjs
       - name: Save reviewable static site
         uses: actions/upload-artifact@v4

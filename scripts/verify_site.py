@@ -37,21 +37,25 @@ search=json.loads((ROOT/'search/search_index.json').read_text())
 assert len(search['docs'])>25,'Search index unexpectedly small'
 assert 'sociability' not in json.dumps(search).lower(),'Excluded project remains in search'
 protocol=json.loads((ROOT/'downloads/protocol.json').read_text())
-assert protocol['required_sequence_length']==11
-assert len(protocol['example_sequence'])==11
-assert protocol['training_trials']==10 and protocol['final_all_heating_trials']==1
-assert protocol['preheat_s']+11*protocol['trial_duration_s']==3480
-assert [s['pwm'] for s in protocol['cooling_stages']]==[100,90,80,70]
-assert sum(s['duration_s'] for s in protocol['cooling_stages'])==300
-expected={'A':(2,25,26,13,15),'B':(4,19,18,2,16),'C':(1,32,33,4,5),'D':(3,27,14,22,23)}
+assert protocol['schema_version']==3
+assert protocol['minimum_sequence_length']==1 and protocol['maximum_sequence_length']==16
+assert protocol['required_sequence_length'] is None
+assert protocol['final_all_heating_trials']==0 and protocol['each_step_cools_selected_target']
+assert protocol['preheat_s']+len(protocol['example_sequence'])*protocol['trial_duration_s']==3600
+assert protocol['cooling_boost']=={'pwm':150,'duration_s':23}
+assert protocol['cooling_boost']['duration_s']+protocol['cooling_hold']['duration_s']==300
+assert protocol['cooling_hold']['first_selection_pwm']==106
+assert protocol['cooling_hold']['repeat_selection_pwm']==120
+expected={'A':(3,27,14,23,22),'B':(2,25,26,13,15),'C':(4,19,18,21,17),'D':(1,32,33,4,5)}
 for target,values in expected.items():
  assert tuple(protocol['targets'][target][k] for k in ['channel','rpwm','lpwm','ren','len'])==values
-assert protocol['display']['pattern_height_px']==33
+assert protocol['display']['horizontal_rows_inclusive']==[[0,10],[22,31]]
 assert protocol['display']['horizontal_length_px']*protocol['display']['pitch_mm']==344
+assert protocol['thermal_camera']['frame_bytes']==2+32*24*2
 assert not (ROOT/'research/sociability/index.html').exists()
 for line in (ROOT/'downloads/SHA256SUMS').read_text().splitlines():
  digest,name=line.split('  ',1)
  assert hashlib.sha256((ROOT/'downloads'/name).read_bytes()).hexdigest()==digest,f'Download checksum mismatch: {name}'
 if errors:
  raise SystemExit('\n'.join(errors))
-print(f'PASS: {len(docs)} HTML pages; internal links, anchors, assets, semantic landmarks, search, protocol metadata.')
+print(f'PASS: {len(docs)} HTML pages; internal links, anchors, assets, semantic landmarks, search, protocol metadata, and checksums.')

@@ -1,5 +1,5 @@
 site_name: Visual Place Learning
-site_description: "Makerspace construction notes for a visual place-learning replication: arena fabrication, Peltier control, PCB connections, and display geometry."
+site_description: "Hardware methods for a visual place-learning apparatus: arena fabrication, thermal control, electronics, display geometry and firmware."
 site_author: Ajad Ismail
 site_url: https://ajadismail2.github.io/Visual-place-learning/
 repo_url: https://github.com/ajadismail2/Visual-place-learning
@@ -17,7 +17,7 @@ markdown_extensions:
   - tables
   - fenced_code
   - toc:
-      permalink: true
+      permalink: false
       toc_depth: 2
 validation:
   nav:
@@ -27,11 +27,26 @@ validation:
     not_found: warn
     anchors: warn
 nav:
-  - Build overview: index.md
-  - Making the arena: build/arena.md
-  - Why Peltier modules: build/peltier.md
-  - PCB and connections: build/pcb.md
-  - Four separate channels: build/four-channels.md
-  - Setting the visual angle: build/visual-angle.md
-  - Where the heat goes: build/thermal-coupling.md
-  - Sources and revisions: resources/sources.md
+  - Overview: index.md
+  - Published specifications: build/published-specifications.md
+  - Equipment and materials: build/equipment.md
+  - Assembly:
+      - Arena assembly: build/arena.md
+      - PCB and wiring: build/pcb.md
+      - Visual display geometry: build/visual-angle.md
+  - Temperature control:
+      - Background circuit: build/peltier.md
+      - Four cooling targets: build/four-channels.md
+      - Heat removal: build/thermal-coupling.md
+  - Operating procedure: operation.md
+  - Code:
+      - Programs and setup: firmware/index.md
+      - Master controller: firmware/master.md
+      - 60-module background: firmware/background.md
+      - LED display slave: firmware/display.md
+      - Thermal ring: firmware/ring.md
+      - Thermal camera stream: firmware/camera.md
+      - Single-panel PCB test: firmware/panel-test.md
+      - Four-Peltier bench controller: firmware/four-peltier.md
+      - UART hot-output slave: firmware/hot-slave.md
+  - Downloads and references: resources/sources.md

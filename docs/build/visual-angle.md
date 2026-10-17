@@ -1,26 +1,26 @@
 ---
-title: From visual angle to LED pixels
-description: We connected the paper's angular dimensions to the real panel pitch, viewing distance, and full-size paper patterns.
-section: 05 / Display geometry
+title: Visual display geometry
+description: Setting the bar width from panel distance and pixel pitch.
+section: Display
 ---
-## Start with the viewing position
+The panels have a **4 mm pixel pitch**. Bar width is calculated from the viewing distance and then rounded to a whole number of pixels.
 
-The panels have a **4 mm pixel pitch**. A bar width specified in degrees therefore had to become a physical width, then a pixel count. We explored several panel distances in the design calculations; a distance discussed in a calculation is not automatically the final measured distance of the built arena.
+Original display specifications are listed in the [reference design](published-specifications.md).
 
-For a bar centred at the fly's height and viewed square-on, the width is:
+## Setting the bar width
+
+1. Measure the distance **D** from the reference viewing position to the panel plane.
+2. Calculate the width **W** for the required angular width **θ** using the equation below.
+3. Divide the width by 4 mm to obtain the pixel count. Recalculate the angle after rounding.
 
 <div class="equation">W = 2D tan(θ / 2)</div>
 
-Here **D** is the distance from the chosen viewing position to the panel plane, **θ** is the angular width, and **W** is the physical bar width. D is not the gap from the arena edge. A moving fly also changes its distance and viewing direction, so a centre-based calibration defines a reference geometry rather than a constant angle everywhere on the floor.
+Measure from the viewing position rather than the arena edge. This calculation assumes a bar centred on the viewing direction.
 
-## What eleven pixels actually means
-
-Eleven pixel pitches give a **44 mm bar footprint**. At **160 mm** distance and zero elevation, that subtends about **15.66°**. A 15° bar at the same distance is **42.13 mm**, or **10.53 pixel pitches**. Rounding to an integer pixel count is a real geometric change, not just a drawing preference.
-
-Conversely, a 44 mm bar subtends 15° at approximately **167.1 mm** under the same assumptions. If the bar is above fly height, the endpoints must be measured in three dimensions. In the 16-pixel elevation example, the centre is **64 mm higher**, which changes the angular width.
+At 160 mm, a 15° bar is **42.13 mm**, or **10.53 pixel pitches**. An 11-pixel bar is 44 mm and subtends about 15.66°. Full-size paper templates provided a dimensional check before display programming.
 
 <details class="calculation" markdown="1">
-<summary>Check the horizontal width for a different geometry</summary>
+<summary>Angular-width calculator</summary>
 <div class="angle-calculator" data-angle-calculator>
   <div class="calc-inputs">
     <label>Distance to panel plane (mm)<input id="distance-mm" type="number" min="1" value="160" step="1"></label>
@@ -32,20 +32,10 @@ Conversely, a 44 mm bar subtends 15° at approximately **167.1 mm** under the sa
 </div>
 </details>
 
-## Width and diagonal tilt were separate problems
+## Display pattern geometry
 
-The older sketch shifted a diagonal by 11 pixels over a 31-pixel height. That is about **19.5° from vertical**, not 45°. The later renderer shifts one pixel sideways per row, giving a **45° slope on the panel**.
+The included LED program draws diagonals at about **19.5° from vertical**. The archived 45° design uses a different pattern.
 
-The updated code uses **11-pixel bars and 11-pixel gaps**, four vertical bars, and two horizontal bars. The horizontal section is 86 columns long: **344 mm** at P4 pitch. The two horizontal bars occupy rows 0–10 and 22–32, with an 11-row gap. Pattern drawing uses continuous coordinates across panel joints rather than restarting at each panel.
+The horizontal region is **344 mm long**. Its bars are 11 and 10 rows thick in the supplied sketch. A moving fly sees a changing angle, so the centre-based calculation is a reference, not a constant across the arena.
 
-An 11-pixel width measured along a row is not an 11-pixel width perpendicular to a 45° diagonal. Its perpendicular footprint is **44 / √2 ≈ 31.1 mm**. This is why equal code widths should not be described as equal 15° apparent thicknesses for every orientation.
-
-<div class="build-sheet" markdown="1">
-
-### Paper before another hardware revision
-
-Full-size paper patterns made it possible to inspect bar lengths, gaps, clipped diagonals, and transitions before another panel or fixture change. The work moved from angular-width mockups to templates matching the real pixel pitch. Physical-size printing uses 100% scale; fitting a page to the printer margins changes the geometry.
-
-</div>
-
-<p class="source-note">Project geometry and print-template discussions, 11–15 October 2026; pattern dimensions checked against the current supplied LED_Slave(3).ino. Angles are calculations, not photometric measurements of the finished display.</p>
+[Read the display code](../firmware/display.md)

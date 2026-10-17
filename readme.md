@@ -1,30 +1,34 @@
 # Visual place-learning apparatus
 
-Makerspace build documentation for Ajad Ismail's replication of the visual place-learning apparatus described by Ofstad, Zuker & Reiser (2011), doi:10.1038/nature10131.
+Makerspace build documentation for Ajad Ismail's replication of the apparatus described by Ofstad, Zuker & Reiser, doi:10.1038/nature10131.
 
-The website focuses on six connected build topics: arena fabrication, Peltier operation, PCB connections, four independent target channels, visual-angle calculations, and heat transfer across the complete arena. It records how component choices and bench tests shaped the design, using concise articles and build sheets.
+The site covers arena fabrication, Peltier control, PCB and ESP32 wiring, four cooling tiles, visual angles, and heat removal. Eight supplied sketches are explained and available in full.
 
-## Build locally
+## Build and check
 
-Requires Python 3.10 or later and Node.js for the interaction checks.
+Requires Python 3.10 or later and Node.js.
 
 ```sh
 python -m pip install -r requirements-site.txt
+python scripts/package_firmware.py
 python -m mkdocs build --strict
 python scripts/verify_site.py
+python scripts/verify_firmware_docs.py
 node scripts/verify_interactions.cjs
 ```
 
-Open the generated `site/` through a static HTTP server to use search. Markdown content is in `docs/`, templates in `theme/`, and local CSS/JavaScript in `docs/assets/`.
+Content is in `docs/`, templates in `theme/`, and local CSS/JavaScript in `docs/assets/`. The output is `site/`.
 
-## What the documentation establishes
+## Source and measurement
 
-The source record combines project conversations, the existing repository, manufacturer documentation, and supplied controller revisions reviewed through 16 October 2026. Current pin assignments and timing defaults are recorded in `docs/downloads/protocol.json`. Source settings are not measured thermal performance.
+The supplied master uses a five-minute preheat and accepts 1 to 16 cooling steps. Current settings are recorded in `docs/downloads/protocol.json`; the earlier parameter record is archived separately. Setpoints are not measured temperatures.
 
-The current master has a three-minute preheat, ten cooling trials and an all-heating eleventh trial. It requires eleven A–D letters. The 15 October defaults supersede the older PWM sequence and display geometry in the first website draft.
+Measured temperature logs and STEP files are awaiting upload. The CNC-cut carrier, lower heat sinks, and thermal-controller ESP32 conversion are labelled proposals, not completed or validated hardware.
 
-PCB manufacturing details, complete thermal-response curves, final assembly validation, and a cost total are not invented where the records do not establish them. Private CAD and controller/application files are not distributed by this documentation change. Existing hardware and analysis source directories are retained unchanged and may represent earlier revisions.
+Personal AP credentials and the device MAC are excluded from published code. Configure the master locally using `local_config.example.h`. The original ring sketch's syntax error is documented, with a separate syntax-only correction. No firmware compilation or hardware test is claimed.
 
-## GitHub Pages
+## Website
 
-The workflow validates pull requests and uploads a reviewable static-site artifact. Public deployment runs only from `main`. Enable GitHub Pages with **GitHub Actions** as the source before deployment; then merge the website pull request. A successful build is separate from a successful deployment.
+[Website](https://ajadismail2.github.io/Visual-place-learning/) · [Download QR code](docs/downloads/website-qr.png)
+
+The workflow checks pull requests and publishes from `main`. In repository Settings → Pages, select **GitHub Actions** as the source to enable publication.

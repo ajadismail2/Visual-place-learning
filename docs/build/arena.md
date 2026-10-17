@@ -1,42 +1,34 @@
 ---
-title: Making the arena
-description: The physical assembly developed through a wooden base, CAD models, printed fixtures, and repeated fit checks.
-section: 01 / Mechanical build
+title: Arena assembly
+description: Assembly of the base, carrier and printed fixtures.
+section: Assembly
 ---
-## Start with parts that can be changed
+The base supports the arena, LED enclosure and overhead components. Printed fixtures provide the mounting points for the ring, illumination and camera.
 
-The early makerspace build used a wooden baseplate and printed parts for the thermal ring, infrared-light stands, and thermal-camera case. The LED surround was assembled from eight standard panels. Onshape brought the panel dimensions and mounting geometry into the same model before the fixtures were printed.
+The measured walking-area diameter is **200 mm**. Ring, lid, Peltier and heater details from the original apparatus are listed in [Published arena specifications](published-specifications.md).
 
-This divided the work into replaceable parts. A holder could be revised without replacing a display panel; a stand could be remade without rebuilding the thermal floor. It also made dimensions at the interfaces—the screw positions, support heights, and cable clearance—more important than a polished enclosure.
+## Base and mounts
 
-## The floor and its support are different parts
+1. Position the arena supports on the base and check that the walking surface is level.
+2. Fit the LED panel mounts around the arena. Keep the hinged panel accessible for loading.
+3. Fit the ring, illumination and camera supports. Check that the camera has an unobstructed view of the walking surface.
 
-The walking region is a **20 cm diameter arena** under a glass cover. The thermal design uses 60 background Peltier modules and four separate targets. The build notes also record acrylic support material and a later **4 mm aluminium plate, 220 × 225 mm**. These are revisions to the supporting assembly, not different measurements of the inner arena.
+## Aluminium carrier
 
-Aluminium has a thermal role as well as a structural one: it conducts heat between the modules and their support. Printed parts position the assembly, but their dimensions alone cannot establish the floor's temperature distribution. The [heat-flow page](thermal-coupling.md) explains why that distinction mattered during testing.
+The proposed carrier uses **four CNC-milled or conventionally machined openings** for the cooling targets. Fit each target level with the surrounding surface and attach a separate finned heat sink beneath its hot side.
 
-<div class="build-sheet" markdown="1">
+Minimise metal contact between the targets and background while keeping the mounts rigid and fly-tight. Opening dimensions, plate thickness and clearances must be taken from the assembly measurements.
 
-### Build sheet · supporting the arena
+## Printed parts
 
-| Part or operation | What the project record establishes |
+| Part | Function |
 | --- | --- |
-| Base construction | A wooden baseplate was made in the makerspace |
-| CAD and printing | Thermal ring, light stands, thermal-camera case, and mounting parts |
-| Later support design | Four approximately 100 mm supports for a Thorlabs breadboard |
-| Screw fit | A screw diameter of 5.42 mm was measured; this does not specify its thread |
-| Assembly check | Equal seating and an arena that does not rock or tilt |
+| Arena supports | Hold the walking surface level |
+| Thermal-ring holder | Position the ring around the arena |
+| Illumination stands | Support the IR lights |
+| Camera housing and mount | Fix the camera above the arena |
+| Panel mounts and hinge | Support the LED enclosure and access panel |
 
-</div>
+Check printed hole spacing and fit against the mounted component before final assembly. [STEP file availability](../resources/sources.md#cad-files).
 
-## Making access easier
-
-Opening the LED surround initially meant removing screws. The next design used a hinge on one edge of a panel and a removable pin or catch on the opposite edge. The first practical obstacle was simple: a panel cannot swing while its other edge is still rigidly screwed to the adjacent panel.
-
-The work then moved to hinge clearance, repeatable closure, and access to the retaining pin. Separate printed standoffs to raise the assembly by **16 mm** were requested in the later revision. These access and height changes remain design iterations until their assembled fit is checked; they are not a second arena design.
-
-## Mounting the illumination
-
-A PVC support with a light assembly exposed another limit of a cheap attachment: the taped holder did not stay fixed under the overhanging load. This became a support-design problem involving the footprint and load path, not just the amount of tape. A revised printed support was explored; a final stable mounting is not established in the available record.
-
-<p class="source-note">Project construction account, January 2026; arena and support notes, September–October 2026; hinge and standoff revisions through 16 October. Laser cutting was part of the makerspace skill set, but no specific cutting process is assigned to these parts without a fabrication record.</p>
+[Heat-sink arrangement](thermal-coupling.md) · [Electronics and wiring](pcb.md)

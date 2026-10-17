@@ -1,38 +1,32 @@
 ---
-title: Building a visual place-learning apparatus
-description: A makerspace replication using standard Peltier modules, LED panels, printed fixtures, and custom controller boards.
-section: Build overview
+title: Visual place-learning apparatus
+description: Equipment, assembly, temperature control and firmware for the arena.
+section: Overview
 ---
-This is the construction record of our replication of the visual place-learning apparatus described by [Ofstad, Zuker and Reiser (2011)](https://doi.org/10.1038/nature10131). The work was in making the parts fit, controlling the temperature, and matching the visual display to the four targets using equipment and fabrication tools available in the makerspace.
+The apparatus consists of a circular arena with a **measured inner diameter of 20 cm**, a heated background of 60 Peltier modules, four cooling targets and eight LED panels. The targets are controlled independently, and the LED pattern changes with the selected target.
 
-The arena has a **20 cm inner diameter**, a warm background made from **60 Peltier modules**, and **four separately controlled target modules**. Eight standard P4 LED panels surround it. The background and targets share a mechanical assembly, so their temperatures cannot be treated independently.
+## System operation
 
-## How the build came together
+Temperature feedback regulates the background and thermal ring. During a trial, one target cools while the other three heat. Separate ESP32 boards control the target sequence and display. A thermal camera records the temperature distribution.
 
-We made a wooden base and used Onshape and 3D printing for the thermal ring, illumination stands, camera case, and later mounting revisions. KiCad work covered the controller layout and ESP32 footprints. Wiring, soldering, and individual component tests connected these parts into an apparatus. The printed fixtures and standard modules let us change one part without remaking the whole assembly.
-
-The difficult work happened between those steps: a sensor could not stay on the walking surface; cooling a target warmed its underside; different ESP32 boards needed different footprints; a display that worked over USB did not yet work reliably from the standalone supply. The pages below follow those problems and the changes made in response.
+## Documentation
 
 <div class="chapter-list" markdown="1">
 
-[**01 · Making the arena**<br><span>Wooden base, CAD, printed fixtures, supports, and panel access.</span>](build/arena.md)
+[**Published arena specifications**<br><span>Reference dimensions, materials and components from the original paper.</span>](build/published-specifications.md)
 
-[**02 · Why Peltier modules**<br><span>Reversible heat flow, sensor placement, and the move to staged drive.</span>](build/peltier.md)
+[**Equipment and materials**<br><span>Thermal components, electronics and fabricated parts.</span>](build/equipment.md)
 
-[**03 · PCB and connections**<br><span>ESP32 footprints, power routing, and testing the assembled boards.</span>](build/pcb.md)
+[**Arena assembly**<br><span>Base, aluminium carrier and printed mounts.</span>](build/arena.md)
 
-[**04 · Four separate channels**<br><span>The actual pin map, individual heating values, and trial coordination.</span>](build/four-channels.md)
+[**PCB and wiring**<br><span>Power connections, ESP32 pin assignments and diagrams.</span>](build/pcb.md)
 
-[**05 · Setting the visual angle**<br><span>From millimetres and viewing distance to pixels and paper templates.</span>](build/visual-angle.md)
+[**Temperature control**<br><span>Background feedback, target cooling and heat removal.</span>](build/peltier.md)
 
-[**06 · Where the heat goes**<br><span>How a cooling target changes the thermal load of the whole arena.</span>](build/thermal-coupling.md)
+[**Visual display**<br><span>Panel distance, bar width and angular calibration.</span>](build/visual-angle.md)
+
+[**Operating procedure**<br><span>Controller setup, trial sequence and shutdown.</span>](operation.md)
+
+[**Code and downloads**<br><span>Programs for control, measurement and component tests.</span>](firmware/index.md)
 
 </div>
-
-## Keeping the build affordable
-
-The inexpensive parts were generic Peltier modules, standard HUB75 display panels, ESP32 boards, driver modules, and locally made fixtures. The savings came from adapting these components and reusing the makerspace's tools. The Thorlabs camera and breadboard remain part of the equipment cost, even when already available in the lab. We have not assigned an unsupported total price or percentage saving.
-
-The build combined mechanical modelling, printing, basic woodworking, electronics assembly, firmware, and temperature measurements. Reviewing the apparatus with lab members connected the fabrication work to the requirements of the experiment. This record concentrates on that work; the original study supplies the research background.
-
-<p class="source-note">Build notes compiled through 16 October 2026. Firmware details refer to the supplied 15 October revisions. <a href="resources/sources/">Sources and revision record →</a></p>
