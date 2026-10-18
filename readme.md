@@ -32,3 +32,13 @@ Personal AP credentials and the device MAC are excluded from published code. Con
 [Website](https://ajadismail2.github.io/Visual-place-learning/) · [Download QR code](docs/downloads/website-qr.png)
 
 The workflow checks pull requests and publishes from `main`. In repository Settings → Pages, select **GitHub Actions** as the source to enable publication.
+
+## Editable QR destination
+
+[Download print PNG](docs/downloads/website-dynamic-qr.png) · [Download vector SVG](docs/downloads/website-dynamic-qr.svg)
+
+The QR encodes the permanent address `https://ajadismail2.github.io/Visual-place-learning/go/`. GitHub Pages must be enabled before scans work. Preparing these files does not enable Pages.
+
+To change where existing printed codes lead, edit the `url` in `docs/go/target.json`, commit the change, and let the Pages workflow publish it. Use an HTTPS destination. Keep the repository name, Pages domain and `/go/` path unchanged. Allow the deployment and hosting caches to update before checking the new destination.
+
+The default destination is the future GitHub Pages homepage. There is no tracking service or third-party QR subscription. The image itself is fixed; the hosted redirect makes its destination editable. If JavaScript or the configuration request fails, the page provides a homepage link. Update that fallback in `docs/go/index.html` too if the homepage moves.

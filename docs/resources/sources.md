@@ -13,7 +13,9 @@ Network credentials are excluded. A separate [thermal-ring correction](../firmwa
 
 ## Website QR code
 
-[Download QR code](../downloads/website-qr.png) for the public website.
+[QR code PNG](../downloads/website-dynamic-qr.png) · [Print-ready SVG](../downloads/website-dynamic-qr.svg)
+
+The code opens a fixed redirect address whose destination can be updated without reprinting. It becomes usable when GitHub Pages is enabled.
 
 ## CAD files
 
