@@ -19,19 +19,19 @@ Test one subsystem at a time. First establish that the controller runs, then che
 
 ## A command does nothing
 
-Confirm which board owns the open serial port. A master command is not necessarily a valid command on the display or ring. Check the baud rate and line ending, then try the simplest command documented for that board. Close other applications that may already hold the same serial port.
+Confirm which board owns the open serial port. A experiment controller command is not necessarily a valid command on the display or ring. Check the baud rate and line ending, then try the simplest command documented for that board. Close other applications that may already hold the same serial port.
 
 ## A tile heats when it should cool
 
-Peltier heat flow depends on current direction. The master uses LPWM for heating and RPWM for cooling with its documented wiring. The alternative bench controller uses different pin assignments and direction conventions. Stop the output, identify the active sketch, and check the driver connections before changing the setup.
+Peltier heat flow depends on current direction. The experiment controller uses LPWM for heating and RPWM for cooling with its documented wiring. The alternative bench controller uses different pin assignments and direction conventions. Stop the output, identify the active sketch, and check the driver connections before changing the setup.
 
 ## Temperature changes over repeated trials
 
-Look at the complete temperature trace, not only the minimum. Check whether the underside is accumulating heat, whether airflow is obstructed and whether a sensor has moved. The target master follows preset PWM values; it does not correct those outputs from measured target temperatures. Changes in room temperature or heat-sink conditions can therefore change the achieved temperature.
+Look at the complete temperature trace, not only the minimum. Check whether the underside is accumulating heat, whether airflow is obstructed and whether a sensor has moved. The experiment controller follows preset PWM values; it does not correct those outputs from measured target temperatures. Changes in room temperature or heat-sink conditions can therefore change the achieved temperature.
 
 ## Stopping one controller leaves another warm
 
-The background and ring are independent. The master `STOP` command stops target drive and blanks the display; it does not stop their thermal loops. Use the shutdown sequence on the [run page](../operation.md#stop-and-shut-down).
+The background and ring are independent. The experiment controller `STOP` command stops target drive and blanks the display; it does not stop their thermal loops. Use the shutdown sequence on the [run page](../operation.md#stop-and-shut-down).
 
 ## Record the working configuration
 

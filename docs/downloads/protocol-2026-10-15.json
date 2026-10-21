@@ -116,5 +116,5 @@
       25
     ]
   },
-  "temperature_feedback_in_master": false
+  "temperature_feedback_in_experiment_controller": false
 }

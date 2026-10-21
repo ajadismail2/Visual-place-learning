@@ -11,7 +11,7 @@ const selectors=['.menu-toggle','#primary-nav','#site-search','#search-input','.
 const elements=Object.fromEntries(selectors.map(k=>[k,new Element()]));
 Object.entries({'#distance-mm':160,'#height-mm':0,'#angle-deg':15}).forEach(([k,v])=>elements[k].value=String(v));
 const document={currentScript:{dataset:{searchIndex:'../../search/search_index.json',root:'../../'}},baseURI:'https://example.test/Visual-place-learning/build/visual-angle/',querySelector:s=>elements[s]||null,createElement:()=>new Element(),addEventListener(){}};
-const sandbox={document,URL,module:{exports:{}},fetch:async()=>({ok:true,json:async()=>({docs:[{title:'Four separate channels',text:'Peltier connections and independent drivers.',location:'build/four-channels/#pin-map-from-the-current-master'},{title:'Arena',text:'Wooden base and printed parts.',location:'build/arena/'}]})})};
+const sandbox={document,URL,module:{exports:{}},fetch:async()=>({ok:true,json:async()=>({docs:[{title:'Four separate channels',text:'Peltier connections and independent drivers.',location:'build/four-channels/#target-controller-pin-map'},{title:'Arena',text:'Wooden base and printed parts.',location:'build/arena/'}]})})};
 vm.runInNewContext(fs.readFileSync('docs/assets/site.js','utf8'),sandbox);
 (async()=>{
  const {horizontalWidth}=sandbox.module.exports;
@@ -28,7 +28,7 @@ vm.runInNewContext(fs.readFileSync('docs/assets/site.js','utf8'),sandbox);
  await elements['#search-close'].fire('click');assert.equal(elements['#site-search'].hidden,true);
  elements['#search-input'].value='peltier';await elements['#search-input'].fire('input');
  assert.equal(elements['#search-results'].children.length,1);
- assert.equal(elements['#search-results'].children[0].children[0].href,'https://example.test/Visual-place-learning/build/four-channels/#pin-map-from-the-current-master');
+ assert.equal(elements['#search-results'].children[0].children[0].href,'https://example.test/Visual-place-learning/build/four-channels/#target-controller-pin-map');
  elements['#search-input'].value='missing phrase';await elements['#search-input'].fire('input');assert.match(elements['#search-status'].textContent,/No matches/);
  console.log('PASS: visual-angle geometry, invalid inputs, menu, search visibility, nested links, and no-results state.');
 })().catch(e=>{console.error(e);process.exit(1);});

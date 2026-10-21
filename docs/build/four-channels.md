@@ -7,9 +7,9 @@ One ESP32 controls four bidirectional drivers. Each driver connects to one Pelti
 
 ## Why each tile has its own driver
 
-A bidirectional driver, or **H-bridge**, can reverse the current through a load. This lets the same tile switch between heating and cooling. Four separate drivers allow the master to change one target without reversing the other three.
+A bidirectional driver, or **H-bridge**, can reverse the current through a load. This lets the same tile switch between heating and cooling. Four separate drivers allow the experiment controller to change one target without reversing the other three.
 
-Each tile has two wires, both connected to its driver's output pair. The master's GPIO pins connect only to the driver inputs. RPWM and LPWM select the two drive directions; R_EN and L_EN enable the driver. The load supply provides the energy used by the tile.
+Each tile has two wires, both connected to its driver's output pair. The experiment controller's GPIO pins connect only to the driver inputs. RPWM and LPWM select the two drive directions; R_EN and L_EN enable the driver. The load supply provides the energy used by the tile.
 
 ## Target controller pin map
 
@@ -20,7 +20,7 @@ Each tile has two wires, both connected to its driver's output pair. The master'
 | C | 3 | 4 | 19 | 18 | 21 | 17 |
 | D | 4 | 1 | 32 | 33 | 4 | 5 |
 
-RPWM, LPWM and enable values are ESP32 GPIO numbers. The master uses **LPWM for heating and RPWM for cooling** at 20 kHz with 8-bit PWM. Check the current direction against the installed Peltier polarity.
+RPWM, LPWM and enable values are ESP32 GPIO numbers. The experiment controller uses **LPWM for heating and RPWM for cooling** at 20 kHz with 8-bit PWM. Check the current direction against the installed Peltier polarity.
 
 ![Four separate driver channels connected to the target ESP32](../assets/target-wiring.svg)
 
@@ -36,7 +36,7 @@ Keep the same physical labels in the video, temperature regions and trial order.
 
 ## Trial sequence
 
-The master preheats all targets for five minutes. Each selected target then cools for 300 seconds.
+The experiment controller preheats all targets for five minutes. Each selected target then cools for 300 seconds.
 
 | Stage | Output |
 | --- | --- |
@@ -59,4 +59,4 @@ The tiles share their surroundings even though their electrical outputs are sepa
 
 Record all four temperatures and the background on the same time axis. For each selection, compare the time to cool, the temperature maintained during the hold, and recovery after switching away. The best single minimum does not show whether a target remained suitable for the whole trial. A measured comparison of A–D is not available.
 
-[Master code](../firmware/master.md) · [Operating procedure](../operation.md) · [Wiring](wiring.md)
+[Experiment controller code](../firmware/experiment.md) · [Operating procedure](../operation.md) · [Wiring](wiring.md)

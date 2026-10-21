@@ -3,8 +3,8 @@
   "status": "uploaded_source_snapshot_not_verified_installed_firmware",
   "source_revision": "upload-2026-10-17",
   "documented_through": "2026-10-17",
-  "master_file": "Master_Controller.ino",
-  "display_file": "LED_Slave.ino",
+  "experiment_file": "Experiment_Controller.ino",
+  "display_file": "Display_Controller.ino",
   "arena_inner_diameter_cm": 20,
   "background_modules": 60,
   "target_modules": 4,
@@ -82,7 +82,7 @@
     "pwm": 50,
     "duration_s": 17
   },
-  "temperature_feedback_in_master": false,
+  "temperature_feedback_in_experiment_controller": false,
   "display": {
     "virtual_shape_px": [
       256,

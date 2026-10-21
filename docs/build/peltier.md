@@ -37,7 +37,7 @@ These terms work together. Changing their gains changes the response of the asse
 
 ![Independent background and thermal-ring temperature feedback loops](../assets/setup/feedback-loops.svg)
 
-The background and ring have separate sensors and power outputs. The four target tiles follow a timed PWM sequence instead. The thermal camera records their temperatures but does not send corrections to the target master.
+The background and ring have separate sensors and power outputs. The four target tiles follow a timed PWM sequence instead. The thermal camera records their temperatures but does not send corrections to the experiment controller.
 
 ## Connect and check the background
 

@@ -1,5 +1,5 @@
 ---
-title: LED display slave
+title: LED display controller
 description: "An ESP32 translates a target letter into a panorama rotation across eight HUB75 panels."
 section: Software
 ---
@@ -7,7 +7,7 @@ section: Software
 
 <div class="download-links" markdown="1">
 
-[Download LED_Slave.ino](../downloads/firmware/LED_Slave/LED_Slave.ino){: download="LED_Slave.ino" } · [All sketches (.zip)](../downloads/arena-firmware-2026-10-17.zip)
+[Download Display_Controller.ino](../downloads/firmware/Display_Controller/Display_Controller.ino){: download="Display_Controller.ino" } · [All sketches (.zip)](../downloads/arena-firmware-2026-10-17.zip)
 
 </div>
 
@@ -37,37 +37,37 @@ The uploaded program requests a minimum refresh rate of **1000 Hz**, with double
 ## Full source
 
 <details class="source-code">
-<summary>Read LED_Slave.ino · 248 lines</summary>
-<pre tabindex="0" aria-label="LED_Slave.ino source code"><code>// LED_Slave.ino
-// Receives state commands from Master_Controller via ESP-NOW (wireless)
+<summary>Read Display_Controller.ino · 248 lines</summary>
+<pre tabindex="0" aria-label="Display_Controller.ino source code"><code>// Display_Controller.ino
+// Receives state commands from Experiment_Controller via ESP-NOW (wireless)
 // and displays the corresponding panorama rotation on the 8-panel
 // HUB75 octagon column. No wires between boards needed.
 //
 // ── First-time setup ─────────────────────────────────────────────────────
 //   1. Flash this sketch.
 //   2. Open Serial Monitor at 115200 baud.
-//   3. The slave prints its MAC address on boot — copy it into
-//      SLAVE_MAC[] in Master_Controller.ino, then flash the master.
+//   3. The display controller prints its MAC address on boot — copy it into
+//      DISPLAY_MAC[] in Experiment_Controller.ino, then flash the experiment controller.
 //
-// ── Commands received from master ────────────────────────────────────────
+// ── Commands received from experiment controller ────────────────────────────────────────
 //   OFF      → blank all panels
 //   STATE:A  → rotation offset 192 px
 //   STATE:B  → rotation offset   0 px
 //   STATE:C  → rotation offset  64 px
 //   STATE:D  → rotation offset 128 px
 //
-// All timing is controlled by the master. This board is purely reactive.
+// All timing is controlled by the experiment controller. This board is purely reactive.
 //
 // ── Standalone testing over Serial Monitor (115200 baud) ─────────────────
 //   Type A, B, C, D or OFF and press enter to preview a rotation without
-//   the master board connected.
+//   the experiment controller board connected.
 
 #include &lt;WiFi.h&gt;
 #include &lt;esp_now.h&gt;
 #include &lt;esp_wifi.h&gt;                 // for esp_wifi_set_channel
 #include &lt;ESP32-HUB75-MatrixPanel-I2S-DMA.h&gt;
 
-// ── Channel must match master AP_CHANNEL ─────────────────────────────────
+// ── Channel must match experiment controller AP_CHANNEL ─────────────────────────────────
 #define ESPNOW_CHANNEL  1
 
 // ── Display geometry ──────────────────────────────────────────────────────
@@ -162,16 +162,16 @@ static void applyState(char state) {
     case &#x27;C&#x27;: rotationOffset =  64; break;
     case &#x27;D&#x27;: rotationOffset = 128; break;
     default:
-      Serial.print(F(&quot;[SLAVE] Unknown state: &quot;)); Serial.println(state);
+      Serial.print(F(&quot;[DISPLAY] Unknown state: &quot;)); Serial.println(state);
       return;
   }
   drawPanorama();
-  Serial.print(F(&quot;[SLAVE] Showing state &quot;)); Serial.println(state);
+  Serial.print(F(&quot;[DISPLAY] Showing state &quot;)); Serial.println(state);
 }
 
 static void clearDisplay() {
   dma-&gt;clearScreen();
-  Serial.println(F(&quot;[SLAVE] Display off&quot;));
+  Serial.println(F(&quot;[DISPLAY] Display off&quot;));
 }
 
 // ── Command handler ────────────────────────────────────────────────────────
@@ -182,9 +182,9 @@ static void handleCommand(const String&amp; cmd) {
   } else if (cmd.length() == 7 &amp;&amp; cmd.startsWith(&quot;STATE:&quot;)) {
     char s = cmd.charAt(6);
     if (s == &#x27;A&#x27; || s == &#x27;B&#x27; || s == &#x27;C&#x27; || s == &#x27;D&#x27;) applyState(s);
-    else { Serial.print(F(&quot;[SLAVE] Bad state char: &quot;)); Serial.println(s); }
+    else { Serial.print(F(&quot;[DISPLAY] Bad state char: &quot;)); Serial.println(s); }
   } else {
-    Serial.print(F(&quot;[SLAVE] Unknown command: &quot;)); Serial.println(cmd);
+    Serial.print(F(&quot;[DISPLAY] Unknown command: &quot;)); Serial.println(cmd);
   }
 }
 
@@ -212,12 +212,12 @@ void setup() {
   WiFi.disconnect(false, true);   // don&#x27;t reconnect, preserve MAC
   delay(100);
 
-  // Lock to the same channel as the master&#x27;s AP
+  // Lock to the same channel as the experiment controller&#x27;s AP
   esp_wifi_set_channel(ESPNOW_CHANNEL, WIFI_SECOND_CHAN_NONE);
 
-  Serial.print(F(&quot;[SLAVE] MAC address: &quot;));
-  Serial.println(WiFi.macAddress());   // &lt;-- copy this into master SLAVE_MAC[]
-  Serial.print(F(&quot;[SLAVE] Channel: &quot;)); Serial.println(ESPNOW_CHANNEL);
+  Serial.print(F(&quot;[DISPLAY] MAC address: &quot;));
+  Serial.println(WiFi.macAddress());   // &lt;-- copy this into experiment controller DISPLAY_MAC[]
+  Serial.print(F(&quot;[DISPLAY] Channel: &quot;)); Serial.println(ESPNOW_CHANNEL);
 
   // ESP-NOW
   if (esp_now_init() != ESP_OK) {
@@ -242,10 +242,10 @@ void setup() {
   BLACK = dma-&gt;color565(0,   0, 0);
 
   clearDisplay();
-  Serial.println(F(&quot;[SLAVE] Ready. Waiting for master commands.&quot;));
+  Serial.println(F(&quot;[DISPLAY] Ready. Waiting for experiment controller commands.&quot;));
 }
 
-// ── Serial command handler (standalone testing, no master needed) ────────
+// ── Serial command handler (standalone testing, no experiment controller needed) ────────
 
 static void handleSerial() {
   static String buf;
@@ -263,7 +263,7 @@ static void handleSerial() {
                    (buf[0] == &#x27;A&#x27; || buf[0] == &#x27;B&#x27; || buf[0] == &#x27;C&#x27; || buf[0] == &#x27;D&#x27;)) {
           applyState(buf[0]);
         } else {
-          Serial.print(F(&quot;[SLAVE] Unknown command: &quot;)); Serial.println(buf);
+          Serial.print(F(&quot;[DISPLAY] Unknown command: &quot;)); Serial.println(buf);
         }
       }
       buf = &quot;&quot;;      // reset for next line, regardless of \n vs \r vs \r\n

@@ -27,4 +27,4 @@ The supplied code targets **45 °C at the sensor** and stops heating above **57 
 
 ## Stopping the heater
 
-Stopping an experiment on the master does not stop this controller. The supplied ring sketch has no `STOP` command. Switch off its heater supply separately and verify cooling before handling it. Use the syntax-corrected ring sketch when uploading; the [program page](../firmware/ring.md) explains the correction and serial commands.
+Stopping an experiment on the experiment controller does not stop this controller. The supplied ring sketch has no `STOP` command. Switch off its heater supply separately and verify cooling before handling it. Use the syntax-corrected ring sketch when uploading; the [program page](../firmware/ring.md) explains the correction and serial commands.

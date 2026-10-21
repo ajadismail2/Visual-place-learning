@@ -10,8 +10,8 @@ root=Path(__file__).resolve().parents[1]
 site=root/'site'
 downloads=site/'downloads'
 manifest=json.loads((downloads/'firmware-manifest.json').read_text())
-assert manifest['uploaded_sketch_count']==len(manifest['files'])==8
-page_for={'Master_Controller.ino':'master','Closedloop_60peltier.ino':'background','LED_Slave.ino':'display','Thermal_ring.ino':'ring','thermal_camera.ino':'camera','SinglePanelTest.ino':'panel-test','4_peltier_mosfet_hbridge.ino':'four-peltier','hot_slave.ino':'hot-slave'}
+assert manifest['uploaded_sketch_count']==len(manifest['files'])==7
+page_for={'Experiment_Controller.ino':'experiment','Closedloop_60peltier.ino':'background','Display_Controller.ino':'display','Thermal_ring.ino':'ring','thermal_camera.ino':'camera','SinglePanelTest.ino':'panel-test','4_peltier_mosfet_hbridge.ino':'four-peltier'}
 class Source(HTMLParser):
  def __init__(self,text):
   super().__init__();self.inside=False;self.code=False;self.parts=[];self.feed(text)
@@ -26,6 +26,7 @@ class Source(HTMLParser):
   if self.inside and self.code:self.parts.append(data)
 with zipfile.ZipFile(downloads/'arena-firmware-2026-10-17.zip') as archive:
  assert all(not x.endswith('/local_config.h') for x in archive.namelist())
+ assert all('hot_slave' not in x for x in archive.namelist())
  for item in manifest['files']:
   path=downloads/item['path'];data=path.read_bytes()
   assert hashlib.sha256(data).hexdigest()==item['sha256'],item['filename']
@@ -34,19 +35,19 @@ with zipfile.ZipFile(downloads/'arena-firmware-2026-10-17.zip') as archive:
   assert [line.rstrip() for line in ''.join(Source(html).parts).splitlines()]==[line.rstrip() for line in data.decode().splitlines()],f'Displayed source differs: {item["filename"]}'
  for path in (downloads/'firmware').rglob('*'):
   if path.is_file():assert archive.read(path.relative_to(downloads/'firmware').as_posix())==path.read_bytes()
-master=(downloads/'firmware/Master_Controller/Master_Controller.ino').read_text()
-assert '#include "local_config.h"' in master
-assert not re.search(r'static\s+(?:uint8_t\s+SLAVE_MAC|const\s+char\*\s+AP_(?:SSID|PASS))',master)
-assert 'ledcWrite(LPWM_PIN[idx], pwm);' in master
-assert '#define PRE_HOT_DURATION_MS (5UL' in master
-assert '#define MAX_STEPS           16' in master
-assert '#define COOL_BOOST_PWM     150' in master
-assert '#define COOL_HOLD_PWM       106' in master
-assert '#define COOL_HOLD_PWM_REPEAT 120' in master
+experiment=(downloads/'firmware/Experiment_Controller/Experiment_Controller.ino').read_text()
+assert '#include "local_config.h"' in experiment
+assert not re.search(r'static\s+(?:uint8_t\s+DISPLAY_MAC|const\s+char\*\s+AP_(?:SSID|PASS))',experiment)
+assert 'ledcWrite(LPWM_PIN[idx], pwm);' in experiment
+assert '#define PRE_HOT_DURATION_MS (5UL' in experiment
+assert '#define MAX_STEPS           16' in experiment
+assert '#define COOL_BOOST_PWM     150' in experiment
+assert '#define COOL_HOLD_PWM       106' in experiment
+assert '#define COOL_HOLD_PWM_REPEAT 120' in experiment
 ring=(downloads/'firmware/Thermal_ring/Thermal_ring.ino').read_text()
 fixed=(downloads/'firmware/Thermal_ring_syntax_fixed/Thermal_ring_syntax_fixed.ino').read_text()
 assert 'float Kd = 150;3' in ring
 assert fixed==ring.replace('float Kd = 150;3','float Kd = 150;')
 old=json.loads((downloads/'protocol-2026-10-15.json').read_text())
 assert old['final_all_heating_trials']==1
-print('PASS: all eight displayed sketches match downloads and ZIP; configuration is excluded; syntax correction and revision boundary are explicit.')
+print('PASS: all seven displayed sketches match downloads and ZIP; configuration is excluded; syntax correction and revision boundary are explicit.')

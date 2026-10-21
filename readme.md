@@ -2,7 +2,7 @@
 
 Practical documentation for assembling and operating the visual place-learning arena.
 
-The manual has three main sections: Hardware, Software and CAD. It covers arena fabrication, Peltier control, ESP32 and Arduino wiring, four cooling tiles, visual angles, recording and heat removal. Eight supplied sketches are explained and available in full. Labelled photo spaces and CAD part outlines are ready for the build records.
+The manual has three main sections: Hardware, Software and CAD. It covers arena fabrication, Peltier control, ESP32 and Arduino wiring, four cooling tiles, visual angles, recording and heat removal. Seven controller sketches are explained and available in full. Labelled photo spaces and CAD part outlines are ready for the build records.
 
 ## Build and check
 
@@ -21,11 +21,11 @@ Content is in `docs/`, templates in `theme/`, and local CSS/JavaScript in `docs/
 
 ## Source and measurement
 
-The supplied master uses a five-minute preheat and accepts 1 to 16 cooling steps. Current settings are recorded in `docs/downloads/protocol.json`; the earlier parameter record is archived separately. Setpoints are not measured temperatures.
+The supplied experiment controller uses a five-minute preheat and accepts 1 to 16 cooling steps. Current settings are recorded in `docs/downloads/protocol.json`; the earlier parameter record is archived separately. Setpoints are not measured temperatures.
 
 Measured temperature logs and STEP files are awaiting upload. The CNC-cut carrier, lower heat sinks, and thermal-controller ESP32 conversion are labelled proposals, not completed or validated hardware.
 
-Personal AP credentials and the device MAC are excluded from published code. Configure the master locally using `local_config.example.h`. The original ring sketch's syntax error is documented, with a separate syntax-only correction. No firmware compilation or hardware test is claimed.
+Personal AP credentials and the device MAC are excluded from published code. Configure the experiment controller locally using `local_config.example.h`. The original ring sketch's syntax error is documented, with a separate syntax-only correction. No firmware compilation or hardware test is claimed.
 
 ## Website
 

@@ -23,7 +23,7 @@ Use the supply specified on the illumination hardware. LED-panel power and IR-li
 
 Measure the inner arena diameter in a frame and divide that pixel diameter by **20 cm** to obtain pixels per centimetre. Measure the walking-area boundary rather than the outer ring. An angled view can distort the circle, so correct the camera alignment before relying on a single scale factor.
 
-Check the actual recorded frame rate and timestamps. Do not assume a video exported from another program has the same timing as the original. Keep the original recording and note the frame or time at which the first cooling step begins; the master's preheat is not the first cooling trial.
+Check the actual recorded frame rate and timestamps. Do not assume a video exported from another program has the same timing as the original. Keep the original recording and note the frame or time at which the first cooling step begins; the experiment controller's preheat is not the first cooling trial.
 
 ## Set up the thermal camera
 

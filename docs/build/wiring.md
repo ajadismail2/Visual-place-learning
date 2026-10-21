@@ -9,8 +9,8 @@ A controller sends low-power instructions to a driver and reads information from
 
 | Label to put on the board | Program | Job |
 | --- | --- | --- |
-| Target ESP32 | Master_Controller | Four target tiles and experiment timing |
-| Display ESP32 | LED_Slave | The eight-panel panorama |
+| Target ESP32 | Experiment_Controller | Four target tiles and experiment timing |
+| Display ESP32 | Display_Controller | The eight-panel panorama |
 | Background Arduino | Closedloop_60peltier | One temperature loop for the 60-module circuit |
 | Ring Arduino | Thermal_ring | A separate temperature loop for the ring heater |
 | Thermal-camera ESP32 | thermal_camera | Temperature images sent to the computer |
@@ -25,7 +25,7 @@ The ESP32 pin maps here refer to the classic ESP32 used by the supplied programs
 
 **GPIO** means a numbered signal pin on an ESP32. GPIO 27 means the pin labelled 27, not the twenty-seventh pin along the header. **GND** is the electrical reference shared by the controller and the connected driver or sensor. **VCC**, **VIN** and **3V3** are supply labels, but they are not interchangeable: check the particular module before connecting power.
 
-**SDA** and **SCL** are the data and clock wires of I²C, a two-wire sensor interface. **PWM** means the output switches on and off rapidly; changing its on-time changes the average drive. The master uses values from 0 to 255. A value of 150 is an output setting, not 150 °C or a guaranteed cooling temperature.
+**SDA** and **SCL** are the data and clock wires of I²C, a two-wire sensor interface. **PWM** means the output switches on and off rapidly; changing its on-time changes the average drive. The experiment controller uses values from 0 to 255. A value of 150 is an output setting, not 150 °C or a guaranteed cooling temperature.
 
 ## Power and target connections
 
@@ -58,7 +58,7 @@ Use a separate ESP32 for the display. The following pins belong to the supplied 
 
 Connect the controller to the first panel's **IN** connector. Connect that panel's **OUT** to the next panel's **IN** and continue in the documented panel order. The ribbon cable carries display signals; supply panel power through the rated power connectors. Check whether the actual panels require a suitable logic-level interface between the 3.3 V ESP32 signals and their inputs.
 
-First test a single panel using the [panel-test program](../firmware/panel-test.md). Restore the LED-slave program before testing the full experiment. ESP-NOW sends the selected target wirelessly from master to display; it does not replace panel power or the HUB75 cable.
+First test a single panel using the [panel-test program](../firmware/panel-test.md). Restore the display controller program before testing the full experiment. ESP-NOW sends the selected target wirelessly from experiment controller to display; it does not replace panel power or the HUB75 cable.
 
 ## Background, ring and camera
 

@@ -1,15 +1,54 @@
-// Master_Controller.ino
-// Controls 4 Peltier plates and synchronises the LED slave via ESP-NOW.
+---
+title: Experiment controller
+description: "One ESP32 sets the four target outputs and sends the matching visual state to the display ESP32."
+section: Software
+---
+[← Controller programs](index.md)
+
+<div class="download-links" markdown="1">
+
+[Download Experiment_Controller.ino](../downloads/firmware/Experiment_Controller/Experiment_Controller.ino){: download="Experiment_Controller.ino" } · [All sketches (.zip)](../downloads/arena-firmware-2026-10-17.zip)
+
+</div>
+
+The experiment controller controls four target drivers and sends the selected target letter to the display ESP32. The background and ring use separate controllers.
+
+## Timing
+
+| Stage | Setting |
+| --- | --- |
+| Preheat | All targets at PWM 29 for 5 min |
+| Initial cooling | PWM 150 for 23 s |
+| Cooling hold | PWM 106 on first selection, 120 on repeat |
+| Other targets | Heating at PWM 24 |
+| Return to heating | PWM 50 for 17 s, then 24 |
+
+## Commands
+
+Connect at **115200 baud**. Enter <code>EXP A-D-C-D</code> to run a sequence or <code>STOP</code> to end it. Manual numbers 1–4 select A–D. Stop a running sequence before using manual commands.
+
+The program accepts up to 16 steps, with one target cooling in every step.
+
+Before compiling, copy the [configuration example](../downloads/firmware/Experiment_Controller/local_config.example.h) to <code>local_config.h</code>, enter the required settings and remove its <code>#error</code> line.
+
+[Pin map and wiring](../build/four-channels.md)
+
+## Full source
+
+<details class="source-code">
+<summary>Read Experiment_Controller.ino · 431 lines</summary>
+<pre tabindex="0" aria-label="Experiment_Controller.ino source code"><code>// Experiment_Controller.ino
+// Controls 4 Peltier plates and synchronises the display controller via ESP-NOW.
 // Controlled over the Serial Monitor (115200 baud).
 //
 // ── No wires needed between the two boards ───────────────────────────────
-//   The master sends one-way ESP-NOW packets to the slave over the air.
+//   The experiment controller sends one-way ESP-NOW packets to the display controller over the air.
 //   Range: ~100 m line-of-sight. No router required.
 //
 // ── Setup steps ──────────────────────────────────────────────────────────
-//   1. Flash LED_Slave to the LED matrix ESP32.
-//   2. Open the slave's Serial Monitor to read its MAC address printout.
-//   3. Paste that MAC into SLAVE_MAC[] below, then flash this sketch.
+//   1. Flash Display_Controller to the LED matrix ESP32.
+//   2. Open the display controller&#x27;s Serial Monitor to read its MAC address printout.
+//   3. Paste that MAC into DISPLAY_MAC[] below, then flash this sketch.
 //
 // ── Serial commands ────────────────────────────────────────────────────────
 //   EXP A-D-C-D   → pre-heat, then run pattern (A/B/C/D letters, dashes optional)
@@ -35,27 +74,27 @@
 //                                                       then HOT_PWM
 //   A plate holds at PRE_HOT_PWM only during the initial pre-heat. Once the
 //   EXPERIMENT phase starts, a plate that has never been cooled holds at
-//   EXP_HOT_PWM instead — the two need different PWM because the plate's
+//   EXP_HOT_PWM instead — the two need different PWM because the plate&#x27;s
 //   own thermal state has already shifted by the time steps begin. The
 //   moment a plate finishes cooling it gets a short POST_COOL_BOOST_PWM
 //   pulse to bring it back up to temperature quickly, then settles at
 //   HOT_PWM permanently.
 
-#include <WiFi.h>
-#include <esp_now.h>
+#include &lt;WiFi.h&gt;
+#include &lt;esp_now.h&gt;
 
-// ── Slave MAC address ─────────────────────────────────────────────────────
-// Flash LED_Slave first, read its MAC from Serial Monitor, paste here.
+// ── Display controller MAC address ─────────────────────────────────────────────────────
+// Flash Display_Controller first, read its MAC from Serial Monitor, paste here.
 // Example: {0xAA, 0xB  B, 0xCC, 0xDD, 0xEE, 0xFF}
-// Updated slave MAC address
+// Updated display controller MAC address
 // Personal radio address and access-point credentials stay in a local file.
-#include "local_config.h"
+#include &quot;local_config.h&quot;
 // The default FF:FF:FF:FF:FF:FF is broadcast — works without knowing the
-// slave MAC but has no delivery confirmation. Replace with the real MAC
+// display controller MAC but has no delivery confirmation. Replace with the real MAC
 // for reliable unicast once you have it.
 
 // ── Wi-Fi credentials ─────────────────────────────────────────────────────
-#define AP_CHANNEL  1                              // must match slave channel
+#define AP_CHANNEL  1                              // must match display controller channel
 
 // ── Peltier pin assignments ───────────────────────────────────────────────
 #define RPWM1 32
@@ -118,7 +157,7 @@ static unsigned long modeStartMs = 0;
 static unsigned long stepStartMs = 0;
 static unsigned long lastLogMs   = 0;
 
-// Plate index -> has this plate ever finished a cool step? A plate needs
+// Plate index -&gt; has this plate ever finished a cool step? A plate needs
 // PRE_HOT_PWM to hold at 36C before its first cool cycle, and HOT_PWM
 // after, since post-cool the plate reaches 36C at a different PWM.
 static bool hasCooled[4] = {false, false, false, false};
@@ -140,8 +179,8 @@ static unsigned long postCoolBoostUntilMs[4] = {0, 0, 0, 0};
 
 static int nodeToIdx(char c) {
   switch (toupper((unsigned char)c)) {
-    case 'A': return 0; case 'B': return 1;
-    case 'C': return 2; case 'D': return 3;
+    case &#x27;A&#x27;: return 0; case &#x27;B&#x27;: return 1;
+    case &#x27;C&#x27;: return 2; case &#x27;D&#x27;: return 3;
     default:  return -1;
   }
 }
@@ -162,7 +201,7 @@ static void stopPlate(int idx) {
 }
 
 static void stopAllPlates() {
-  for (int i = 0; i < 4; i++) stopPlate(i);
+  for (int i = 0; i &lt; 4; i++) stopPlate(i);
 }
 
 // justCooledIdx is the plate that just finished cooling (or -1 if none,
@@ -175,7 +214,7 @@ static void applyStep(int coolIdx, int justCooledIdx, unsigned long now) {
   currentCoolIsRepeat    = hasCooled[coolIdx]; // was this plate already cooled before now?
   hasCooled[coolIdx]      = true;   // this plate has now been through a cool cycle
   inPostCoolBoost[coolIdx] = false;
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i &lt; 4; i++) {
     if (i == coolIdx) continue;
     if (i == justCooledIdx) {
       heatPlate(i, POST_COOL_BOOST_PWM);
@@ -188,11 +227,11 @@ static void applyStep(int coolIdx, int justCooledIdx, unsigned long now) {
   }
 }
 
-// Called every loop() tick — ends a plate's post-cool boost once its
+// Called every loop() tick — ends a plate&#x27;s post-cool boost once its
 // POST_COOL_BOOST_DURATION_MS has elapsed, independent of the step clock.
 static void servicePostCoolBoost(unsigned long now) {
-  for (int i = 0; i < 4; i++) {
-    if (inPostCoolBoost[i] && now >= postCoolBoostUntilMs[i]) {
+  for (int i = 0; i &lt; 4; i++) {
+    if (inPostCoolBoost[i] &amp;&amp; now &gt;= postCoolBoostUntilMs[i]) {
       inPostCoolBoost[i] = false;
       heatPlate(i, HOT_PWM);
     }
@@ -202,11 +241,11 @@ static void servicePostCoolBoost(unsigned long now) {
 // ── ESP-NOW helpers ───────────────────────────────────────────────────────
 
 static void espNowSend(const char* msg) {
-  esp_err_t r = esp_now_send(SLAVE_MAC,
+  esp_err_t r = esp_now_send(DISPLAY_MAC,
                               (const uint8_t*)msg,
                               (size_t)(strlen(msg) + 1));
   if (r != ESP_OK) {
-    Serial.print(F("[ESP-NOW] Send error: "));
+    Serial.print(F(&quot;[ESP-NOW] Send error: &quot;));
     Serial.println(esp_err_to_name(r));
   }
 }
@@ -214,14 +253,14 @@ static void espNowSend(const char* msg) {
 static void onDataSent(const wifi_tx_info_t* tx_info, esp_now_send_status_t status) {
   (void)tx_info;
   Serial.println(status == ESP_NOW_SEND_SUCCESS
-                    ? F("[ESP-NOW] Delivery OK")
-                    : F("[ESP-NOW] Delivery FAILED — check SLAVE_MAC / channel"));
+                    ? F(&quot;[ESP-NOW] Delivery OK&quot;)
+                    : F(&quot;[ESP-NOW] Delivery FAILED — check DISPLAY_MAC / channel&quot;));
 }
 
-static void slaveOff()              { espNowSend("OFF"); }
-static void slaveShowState(char s)  {
+static void displayOff()              { espNowSend(&quot;OFF&quot;); }
+static void displayShowState(char s)  {
   char buf[10];
-  snprintf(buf, sizeof(buf), "STATE:%c", s);
+  snprintf(buf, sizeof(buf), &quot;STATE:%c&quot;, s);
   espNowSend(buf);
 }
 
@@ -229,20 +268,20 @@ static void slaveShowState(char s)  {
 
 static void hardStop() {
   stopAllPlates();
-  slaveOff();
+  displayOff();
   mode    = IDLE;
   patLen  = 0;
   stepIdx = 0;
-  for (int i = 0; i < 4; i++) { hasCooled[i] = false; inPostCoolBoost[i] = false; }
-  Serial.println(F("[MASTER] Hard stop — all plates off, LED off."));
+  for (int i = 0; i &lt; 4; i++) { hasCooled[i] = false; inPostCoolBoost[i] = false; }
+  Serial.println(F(&quot;[EXPERIMENT] Hard stop — all plates off, LED off.&quot;));
 }
 
-static bool startExperiment(const String& raw) {
+static bool startExperiment(const String&amp; raw) {
   char newPat[MAX_STEPS];
   int  newLen = 0;
-  for (int i = 0; i < (int)raw.length() && newLen < MAX_STEPS; i++) {
+  for (int i = 0; i &lt; (int)raw.length() &amp;&amp; newLen &lt; MAX_STEPS; i++) {
     char c = toupper((unsigned char)raw.charAt(i));
-    if (c == 'A' || c == 'B' || c == 'C' || c == 'D')
+    if (c == &#x27;A&#x27; || c == &#x27;B&#x27; || c == &#x27;C&#x27; || c == &#x27;D&#x27;)
       newPat[newLen++] = c;
   }
   if (newLen == 0) return false;
@@ -254,17 +293,17 @@ static bool startExperiment(const String& raw) {
 
   stopAllPlates();
   delayMicroseconds(200);
-  for (int i = 0; i < 4; i++) heatPlate(i, PRE_HOT_PWM);
-  slaveOff();
+  for (int i = 0; i &lt; 4; i++) heatPlate(i, PRE_HOT_PWM);
+  displayOff();
 
   unsigned long now = millis();
   modeStartMs = now;
   lastLogMs   = now;
   mode        = PRE_HOT;
 
-  Serial.print(F("[MASTER] Pre-heat started. Pattern ("));
-  Serial.print(patLen); Serial.print(F(" steps × 5 min): "));
-  for (int i = 0; i < patLen; i++) { if (i) Serial.print('-'); Serial.print(pat[i]); }
+  Serial.print(F(&quot;[EXPERIMENT] Pre-heat started. Pattern (&quot;));
+  Serial.print(patLen); Serial.print(F(&quot; steps × 5 min): &quot;));
+  for (int i = 0; i &lt; patLen; i++) { if (i) Serial.print(&#x27;-&#x27;); Serial.print(pat[i]); }
   Serial.println();
   return true;
 }
@@ -276,7 +315,7 @@ void setup() {
   delay(100);
 
   // All Peltier channels off immediately on boot
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i &lt; 4; i++) {
     pinMode(REN_PIN[i], OUTPUT);
     pinMode(LEN_PIN[i], OUTPUT);
     digitalWrite(REN_PIN[i], HIGH);
@@ -289,37 +328,37 @@ void setup() {
   }
 
   // WiFi: AP_STA mode — soft AP only used to pin the radio to AP_CHANNEL
-  // so ESP-NOW has a fixed channel to talk to the slave on; no HTTP served.
+  // so ESP-NOW has a fixed channel to talk to the display controller on; no HTTP served.
   WiFi.mode(WIFI_AP_STA);
   WiFi.softAP(AP_SSID, AP_PASS, AP_CHANNEL);
   delay(200);
-  Serial.print(F("[WiFi] AP SSID : ")); Serial.println(AP_SSID);
-  Serial.print(F("[WiFi] IP      : ")); Serial.println(WiFi.softAPIP());
-  Serial.print(F("[WiFi] Channel : ")); Serial.println(AP_CHANNEL);
-  Serial.print(F("[Master MAC STA]: ")); Serial.println(WiFi.macAddress());
+  Serial.print(F(&quot;[WiFi] AP SSID : &quot;)); Serial.println(AP_SSID);
+  Serial.print(F(&quot;[WiFi] IP      : &quot;)); Serial.println(WiFi.softAPIP());
+  Serial.print(F(&quot;[WiFi] Channel : &quot;)); Serial.println(AP_CHANNEL);
+  Serial.print(F(&quot;[Experiment controller MAC STA]: &quot;)); Serial.println(WiFi.macAddress());
 
   // ESP-NOW
   if (esp_now_init() != ESP_OK) {
-    Serial.println(F("[ESP-NOW] Init FAILED — halting"));
+    Serial.println(F(&quot;[ESP-NOW] Init FAILED — halting&quot;));
     while (true) delay(1000);
   }
 
   esp_now_peer_info_t peer = {};
-  memcpy(peer.peer_addr, SLAVE_MAC, 6);
+  memcpy(peer.peer_addr, DISPLAY_MAC, 6);
   peer.channel = 0;       // 0 = use current channel
   peer.encrypt = false;
-  if (esp_now_add_peer(&peer) != ESP_OK) {
-    Serial.println(F("[ESP-NOW] Add peer FAILED — halting"));
+  if (esp_now_add_peer(&amp;peer) != ESP_OK) {
+    Serial.println(F(&quot;[ESP-NOW] Add peer FAILED — halting&quot;));
     while (true) delay(1000);
   }
   esp_now_register_send_cb(onDataSent);
   // NOTE: if this fails to compile on arduino-esp32 2.x, the send callback
   // signature there is the same (mac_addr, status) — only recv changed.
-  Serial.println(F("[ESP-NOW] Ready."));
+  Serial.println(F(&quot;[ESP-NOW] Ready.&quot;));
 
-  slaveOff();   // ensure slave starts dark
+  displayOff();   // ensure display controller starts dark
 
-  Serial.println(F("[MASTER] Ready. Commands: EXP A-D-C-D | STOP | 1 h200 / 2 c150 / 3 s"));
+  Serial.println(F(&quot;[EXPERIMENT] Ready. Commands: EXP A-D-C-D | STOP | 1 h200 / 2 c150 / 3 s&quot;));
 }
 
 // ── Serial command handler ───────────────────────────────────────────────
@@ -327,35 +366,35 @@ void setup() {
 static void handleSerial() {
   if (!Serial.available()) return;
 
-  String input = Serial.readStringUntil('\n');
+  String input = Serial.readStringUntil(&#x27;\n&#x27;);
   input.trim();
   if (input.length() == 0) return;
 
-  if (input.equalsIgnoreCase("STOP")) {
+  if (input.equalsIgnoreCase(&quot;STOP&quot;)) {
     hardStop();
-  } else if (input.length() > 4 && input.substring(0, 4).equalsIgnoreCase("EXP ")) {
+  } else if (input.length() &gt; 4 &amp;&amp; input.substring(0, 4).equalsIgnoreCase(&quot;EXP &quot;)) {
     if (startExperiment(input.substring(4)))
-      Serial.println(F("[OK] Experiment starting."));
+      Serial.println(F(&quot;[OK] Experiment starting.&quot;));
     else
-      Serial.println(F("[ERR] Invalid pattern — use letters A/B/C/D only"));
-  } else if (input.charAt(0) >= '1' && input.charAt(0) <= '4' && input.length() >= 3) {
-    // Manual per-plate control: "1 h200" (heat), "2 c150" (cool), "3 s" (stop)
-    int  id  = input.charAt(0) - '1';
+      Serial.println(F(&quot;[ERR] Invalid pattern — use letters A/B/C/D only&quot;));
+  } else if (input.charAt(0) &gt;= &#x27;1&#x27; &amp;&amp; input.charAt(0) &lt;= &#x27;4&#x27; &amp;&amp; input.length() &gt;= 3) {
+    // Manual per-plate control: &quot;1 h200&quot; (heat), &quot;2 c150&quot; (cool), &quot;3 s&quot; (stop)
+    int  id  = input.charAt(0) - &#x27;1&#x27;;
     char cmd = tolower(input.charAt(2));
-    if (cmd == 's') {
+    if (cmd == &#x27;s&#x27;) {
       stopPlate(id);
-      Serial.print(F("[OK] P")); Serial.print(id + 1); Serial.println(F(" stopped"));
-    } else if (cmd == 'h' || cmd == 'c') {
+      Serial.print(F(&quot;[OK] P&quot;)); Serial.print(id + 1); Serial.println(F(&quot; stopped&quot;));
+    } else if (cmd == &#x27;h&#x27; || cmd == &#x27;c&#x27;) {
       int pwm = constrain(input.substring(3).toInt(), 0, 255);
-      if (cmd == 'h') heatPlate(id, pwm); else coolPlate(id, pwm);
-      Serial.print(F("[OK] P")); Serial.print(id + 1);
-      Serial.print(cmd == 'h' ? F(" Heating  PWM=") : F(" Cooling  PWM="));
+      if (cmd == &#x27;h&#x27;) heatPlate(id, pwm); else coolPlate(id, pwm);
+      Serial.print(F(&quot;[OK] P&quot;)); Serial.print(id + 1);
+      Serial.print(cmd == &#x27;h&#x27; ? F(&quot; Heating  PWM=&quot;) : F(&quot; Cooling  PWM=&quot;));
       Serial.println(pwm);
     } else {
-      Serial.println(F("[ERR] Unknown command (h/c/s expected)"));
+      Serial.println(F(&quot;[ERR] Unknown command (h/c/s expected)&quot;));
     }
   } else {
-    Serial.println(F("[ERR] Unknown command. Use: EXP A-D-C-D | STOP | 1 h200 / 2 c150 / 3 s"));
+    Serial.println(F(&quot;[ERR] Unknown command. Use: EXP A-D-C-D | STOP | 1 h200 / 2 c150 / 3 s&quot;));
   }
 }
 
@@ -370,21 +409,21 @@ void loop() {
   // ── PRE_HOT ──────────────────────────────────────────────────────────
   if (mode == PRE_HOT) {
     unsigned long elapsed = now - modeStartMs;
-    if (now - lastLogMs >= LOG_INTERVAL_MS) {
+    if (now - lastLogMs &gt;= LOG_INTERVAL_MS) {
       lastLogMs = now;
-      unsigned long rem = (elapsed < PRE_HOT_DURATION_MS) ? (PRE_HOT_DURATION_MS - elapsed) / 1000UL : 0;
-      Serial.print(F("[PRE_HOT] ")); Serial.print(rem/60); Serial.print(F("m ")); Serial.print(rem%60); Serial.println(F("s remaining"));
+      unsigned long rem = (elapsed &lt; PRE_HOT_DURATION_MS) ? (PRE_HOT_DURATION_MS - elapsed) / 1000UL : 0;
+      Serial.print(F(&quot;[PRE_HOT] &quot;)); Serial.print(rem/60); Serial.print(F(&quot;m &quot;)); Serial.print(rem%60); Serial.println(F(&quot;s remaining&quot;));
     }
-    if (elapsed >= PRE_HOT_DURATION_MS) {
+    if (elapsed &gt;= PRE_HOT_DURATION_MS) {
       stepIdx     = 0;
       inBoost     = true;
       stepStartMs = now;
       lastLogMs   = now;
       mode        = EXPERIMENT;
       applyStep(nodeToIdx(pat[0]), -1, now);
-      slaveShowState(pat[0]);
-      Serial.print(F("[EXP] Pre-heat done. Step 1/")); Serial.print(patLen);
-      Serial.print(F(" — cooling ")); Serial.println(pat[0]);
+      displayShowState(pat[0]);
+      Serial.print(F(&quot;[EXP] Pre-heat done. Step 1/&quot;)); Serial.print(patLen);
+      Serial.print(F(&quot; — cooling &quot;)); Serial.println(pat[0]);
     }
   }
 
@@ -393,39 +432,41 @@ void loop() {
     unsigned long elapsed = now - stepStartMs;
     int ci = nodeToIdx(pat[stepIdx]);
 
-    if (inBoost && elapsed >= COOL_BOOST_MS) {
+    if (inBoost &amp;&amp; elapsed &gt;= COOL_BOOST_MS) {
       inBoost = false;
       uint8_t holdPwm = currentCoolIsRepeat ? COOL_HOLD_PWM_REPEAT : COOL_HOLD_PWM;
       coolPlate(ci, holdPwm);
-      Serial.print(F("[EXP] Node ")); Serial.print(pat[stepIdx]);
-      Serial.print(F(" → hold (PWM ")); Serial.print(holdPwm); Serial.println(')');
+      Serial.print(F(&quot;[EXP] Node &quot;)); Serial.print(pat[stepIdx]);
+      Serial.print(F(&quot; → hold (PWM &quot;)); Serial.print(holdPwm); Serial.println(&#x27;)&#x27;);
     }
 
-    if (now - lastLogMs >= LOG_INTERVAL_MS) {
+    if (now - lastLogMs &gt;= LOG_INTERVAL_MS) {
       lastLogMs = now;
-      unsigned long rem = (elapsed < STEP_DURATION_MS) ? (STEP_DURATION_MS - elapsed) / 1000UL : 0;
-      Serial.print(F("[EXP] Step ")); Serial.print(stepIdx+1); Serial.print('/'); Serial.print(patLen);
-      Serial.print(F(" node=")); Serial.print(pat[stepIdx]);
-      Serial.print(F(" remain=")); Serial.print(rem/60); Serial.print('m'); Serial.print(rem%60); Serial.println('s');
+      unsigned long rem = (elapsed &lt; STEP_DURATION_MS) ? (STEP_DURATION_MS - elapsed) / 1000UL : 0;
+      Serial.print(F(&quot;[EXP] Step &quot;)); Serial.print(stepIdx+1); Serial.print(&#x27;/&#x27;); Serial.print(patLen);
+      Serial.print(F(&quot; node=&quot;)); Serial.print(pat[stepIdx]);
+      Serial.print(F(&quot; remain=&quot;)); Serial.print(rem/60); Serial.print(&#x27;m&#x27;); Serial.print(rem%60); Serial.println(&#x27;s&#x27;);
     }
 
-    if (elapsed >= STEP_DURATION_MS) {
+    if (elapsed &gt;= STEP_DURATION_MS) {
       stepIdx++;
-      if (stepIdx >= patLen) {
+      if (stepIdx &gt;= patLen) {
         stopAllPlates();
-        slaveOff();
+        displayOff();
         mode   = IDLE;
         patLen = 0;
-        Serial.println(F("[EXP] All steps complete. Plates stopped. LED off."));
+        Serial.println(F(&quot;[EXP] All steps complete. Plates stopped. LED off.&quot;));
       } else {
         inBoost     = true;
         stepStartMs = now;
         lastLogMs   = now;
         applyStep(nodeToIdx(pat[stepIdx]), ci, now);
-        slaveShowState(pat[stepIdx]);
-        Serial.print(F("[EXP] Step ")); Serial.print(stepIdx+1); Serial.print('/'); Serial.print(patLen);
-        Serial.print(F(" — cooling ")); Serial.println(pat[stepIdx]);
+        displayShowState(pat[stepIdx]);
+        Serial.print(F(&quot;[EXP] Step &quot;)); Serial.print(stepIdx+1); Serial.print(&#x27;/&#x27;); Serial.print(patLen);
+        Serial.print(F(&quot; — cooling &quot;)); Serial.println(pat[stepIdx]);
       }
     }
   }
 }
+</code></pre>
+</details>

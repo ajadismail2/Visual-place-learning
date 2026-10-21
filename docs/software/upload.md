@@ -19,26 +19,26 @@ Download and extract the [controller bundle](../downloads/arena-firmware-2026-10
 
 | Board | Upload this program | Extra libraries |
 | --- | --- | --- |
-| Target ESP32 | Master_Controller | Uses ESP32 board-package networking and PWM support |
-| Display ESP32 | LED_Slave | ESP32-HUB75-MatrixPanel-I2S-DMA |
+| Target ESP32 | Experiment_Controller | Uses ESP32 board-package networking and PWM support |
+| Display ESP32 | Display_Controller | ESP32-HUB75-MatrixPanel-I2S-DMA |
 | Background Arduino | Closedloop_60peltier | PID_v1 |
 | Ring Arduino | Thermal_ring_syntax_fixed | OneWire and DallasTemperature |
 | Thermal-camera ESP32 | thermal_camera | Adafruit_MLX90640 and its dependencies |
 
 Install the required libraries through Library Manager or the library's documented method. `Wire` supplies the sensor-bus interface; WiFi and ESP-NOW support come from the ESP32 board package. Do not install unrelated libraries to resolve a missing-header error. Use the name in the sketch and the [display library's documentation](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA).
 
-The master uses the pin-based `ledcAttach` and `ledcWrite` interface. Select a compatible ESP32 package and confirm compilation; the supplied set of sketches has not been compiled as a validated release in this documentation. The background and ring programs retain Arduino pin assignments and must be adapted before moving them to ESP32 hardware.
+The experiment controller uses the pin-based `ledcAttach` and `ledcWrite` interface. Select a compatible ESP32 package and confirm compilation; the supplied set of sketches has not been compiled as a validated release in this documentation. The background and ring programs retain Arduino pin assignments and must be adapted before moving them to ESP32 hardware.
 
-## 3. Pair the master and display
+## 3. Pair the experiment controller and display
 
-The display receives short wireless messages from the master. Its **MAC address** identifies the destination device. It is different from a Wi-Fi password or a serial port.
+The display receives short wireless messages from the experiment controller. Its **MAC address** identifies the destination device. It is different from a Wi-Fi password or a serial port.
 
-1. Upload `LED_Slave` to the display ESP32 first.
+1. Upload `Display_Controller` to the display ESP32 first.
 2. Open its Serial Monitor at **115200 baud** and read the address printed at startup. Reset the board if you need to see the startup message again.
-3. In the master sketch folder, copy `local_config.example.h` to `local_config.h`.
+3. In the experiment controller sketch folder, copy `local_config.example.h` to `local_config.h`.
 4. Enter that display address and the local network settings required by the example. Remove its `#error` line after filling in the values. Keep this file local.
-5. Upload the master program to the target ESP32. Keep the boards on the radio configuration expected by the supplied sketches.
-6. Send `A` directly to the display board and verify the visible pattern. Then, with target load power disconnected, run a short master sequence to check the wireless state change after preheat. End the check with `STOP` on the master.
+5. Upload the experiment controller program to the target ESP32. Keep the boards on the radio configuration expected by the supplied sketches.
+6. Send `A` directly to the display board and verify the visible pattern. Then, with target load power disconnected, run a short experiment controller sequence to check the wireless state change after preheat. End the check with `STOP` on the experiment controller.
 
 ESP-NOW sends the target state directly between boards. A successful upload does not confirm that the destination address, panel orientation or physical target mapping is correct; those are separate checks.
 
@@ -48,7 +48,7 @@ The **Verify** button compiles the sketch. Fix any compiler error before uploadi
 
 Open Serial Monitor after upload. Set its baud rate to the value on the relevant program page. A baud rate is the serial communication speed; a mismatch can make messages unreadable. Send commands with a line ending so the controller receives a complete command.
 
-The master, display, background and ring use **115200 baud**. The thermal camera uses **921600 baud** and sends binary packets. Its output will not appear as ordinary temperature text in Serial Monitor.
+The experiment controller, display, background and ring use **115200 baud**. The thermal camera uses **921600 baud** and sends binary packets. Its output will not appear as ordinary temperature text in Serial Monitor.
 
 <figure class="photo-slot" data-photo-id="serial-commands"><div class="photo-space" aria-label="Blank screenshot of the serial monitor"></div><figcaption><span>Screenshot · S02</span><strong>A successful command and response</strong></figcaption></figure>
 

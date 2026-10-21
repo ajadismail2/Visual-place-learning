@@ -44,14 +44,13 @@ nav:
       - Install and upload: software/upload.md
       - Run an experiment: operation.md
       - Checks and troubleshooting: software/checks.md
-      - Master controller: firmware/master.md
+      - Experiment controller: firmware/experiment.md
       - 60-module background: firmware/background.md
-      - LED display slave: firmware/display.md
+      - LED display controller: firmware/display.md
       - Thermal ring: firmware/ring.md
       - Thermal camera stream: firmware/camera.md
       - Single-panel test: firmware/panel-test.md
       - Four-Peltier bench controller: firmware/four-peltier.md
-      - UART hot-output slave: firmware/hot-slave.md
       - Downloads and references: resources/sources.md
   - CAD:
       - Parts and file outline: cad/index.md

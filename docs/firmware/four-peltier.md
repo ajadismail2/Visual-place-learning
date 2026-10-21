@@ -24,7 +24,7 @@ This program operates the four targets during bench tests. Each output can be ad
 
 Its experiment cooling stages are **85 for 10 s, 75 for 5 s, 65 for 5 s, then 55 for 280 s**.
 
-This version uses **RPWM for heating**, opposite to the supplied master. Driver channels A–D are 3, 2, 4, 1. Channel 3 enables are GPIO 22/23, and channel 4 enables are GPIO 2/16. Do not substitute the master's wiring table.
+This version uses **RPWM for heating**, opposite to the supplied experiment controller. Driver channels A–D are 3, 2, 4, 1. Channel 3 enables are GPIO 22/23, and channel 4 enables are GPIO 2/16. Do not substitute the experiment controller's wiring table.
 
 Send <code>STOP</code> before manual testing. Some comments and help messages contain older values; the constants determine the outputs.
 

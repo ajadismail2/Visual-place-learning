@@ -3,14 +3,14 @@ title: Run an experiment
 description: Prepare the apparatus, record a sequence and stop each independent subsystem.
 section: Software
 ---
-This procedure follows the supplied master and LED programs. Test the mechanical setup, sensor readings and individual outputs before introducing animals. A complete run needs the target controller, display, thermal controllers and recording system prepared separately.
+This procedure follows the supplied experiment controller and LED programs. Test the mechanical setup, sensor readings and individual outputs before introducing animals. A complete run needs the target controller, display, thermal controllers and recording system prepared separately.
 
 ## Before a run
 
 1. **Check the assembly.** The arena is level, the cover is seated as intended, the camera sees the entire floor, and the underside airflow is unobstructed.
 2. **Check the controller identities.** Confirm the correct program is loaded on each labelled board and that the computer ports match those labels.
 3. **Check target mapping.** Use the physical A–D labels and the [wiring table](build/four-channels.md#target-controller-pin-map). Confirm the corresponding display states before starting a sequence.
-4. **Check temperature readings.** Verify background and ring sensor responses. Measure the target surfaces separately; the master has no target-temperature feedback.
+4. **Check temperature readings.** Verify background and ring sensor responses. Measure the target surfaces separately; the experiment controller has no target-temperature feedback.
 5. **Allow conditions to settle.** Record the starting temperatures and wait for reproducible conditions rather than relying only on elapsed warm-up time.
 6. **Prepare recording.** Set focus, exposure and frame rate, choose the output folder, and make a short recording to confirm that files are saved correctly.
 
@@ -18,7 +18,7 @@ This procedure follows the supplied master and LED programs. Test the mechanical
 
 ## Start a sequence
 
-Open the master's serial connection at **115200 baud**. Start behaviour and temperature recording before issuing the sequence, then record the command time. For example:
+Open the experiment controller's serial connection at **115200 baud**. Start behaviour and temperature recording before issuing the sequence, then record the command time. For example:
 
 ```text
 EXP A-D-C-D
@@ -48,7 +48,7 @@ Observe the temperature traces as well as the controller messages. If the intend
 
 ## Stop and shut down
 
-Send `STOP` to the master to stop the four target outputs and blank the display. The program also stops these outputs when its sequence finishes.
+Send `STOP` to the experiment controller to stop the four target outputs and blank the display. The program also stops these outputs when its sequence finishes.
 
 The background and ring remain independent. Send `STOP` to the background controller through its own serial connection. The supplied ring program has no `STOP` command, so switch off the ring heater supply separately. Check that the loads are off and allow the hot undersides to cool before switching off the fan or handling the assembly.
 
