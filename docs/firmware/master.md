@@ -1,7 +1,7 @@
 ---
 title: Master controller
 description: "One ESP32 sets the four target outputs and sends the matching visual state to the display ESP32."
-section: Controller code
+section: Software
 ---
 [← Controller programs](index.md)
 

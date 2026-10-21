@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="432pt" viewBox="0 0 720 432" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T14:03:23.964458</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432 
+L 720 432 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 42.048 176.976 
+L 214.272 176.976 
+L 214.272 129.024 
+L 42.048 129.024 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 42.048 294.192 
+L 214.272 294.192 
+L 214.272 227.592 
+L 42.048 227.592 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 293.76 299.52 
+L 472.608 299.52 
+L 472.608 219.6 
+L 293.76 219.6 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 532.224 294.192 
+L 677.952 294.192 
+L 677.952 227.592 
+L 532.224 227.592 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 293.76 176.976 
+L 472.608 176.976 
+L 472.608 129.024 
+L 293.76 129.024 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #f8eee8; stroke: #b75337; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 128.16 178.974813 
+Q 128.16 202.281923 128.16 223.688376 
+" clip-path="url(#pe9e4643bae)" style="fill: none; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 130.76 218.488376 
+L 128.16 223.688376 
+L 125.56 218.488376 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #216b8c; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 216.275695 259.56 
+Q 254.017608 259.56 289.858862 259.56 
+" clip-path="url(#pe9e4643bae)" style="fill: none; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 284.658862 256.96 
+L 289.858862 259.56 
+L 284.658862 262.16 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #216b8c; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 383.184 178.976602 
+Q 383.184 198.28908 383.184 215.700901 
+" clip-path="url(#pe9e4643bae)" style="fill: none; stroke: #b75337; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 385.784 210.500901 
+L 383.184 215.700901 
+L 380.584 210.500901 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #b75337; stroke: #b75337; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 474.605631 259.56 
+Q 502.414301 259.56 528.322314 259.56 
+" clip-path="url(#pe9e4643bae)" style="fill: none; stroke: #b75337; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 523.122314 256.96 
+L 528.322314 259.56 
+L 523.122314 262.16 
+z
+" clip-path="url(#pe9e4643bae)" style="fill: #b75337; stroke: #b75337; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 128.16 294.192 
+L 128.16 347.472 
+L 383.184 347.472 
+L 383.184 299.52 
+" clip-path="url(#pe9e4643bae)" style="fill: none; stroke: #62727c; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="128.16" y="156.035312" transform="rotate(-0 128.16 156.035312)">Regulated logic supply</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(90.3475 257.768516)">Master ESP32</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(67.458906 270.086109)">trial sequence + PWM</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(327.016969 250.12475)">4 × H-bridge drivers</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(344.054078 262.442344)">RPWM · LPWM</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(350.373922 274.759937)">R_EN · L_EN</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(554.788781 257.768516)">4 × Peltier targets</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(547.552844 270.086109)">one output pair each</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="383.184" y="156.035312" transform="rotate(-0 383.184 156.035312)">Load supply + fuses</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #216b8c" x="254.016" y="252.6336" transform="rotate(-0 254.016 252.6336)">GPIO</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #b75337" x="383.184" y="191.8944" transform="rotate(-0 383.184 191.8944)">load power</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #62727c" x="254.016" y="360.792" transform="rotate(-0 254.016 360.792)">Common logic ground</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="42.048" y="398.088" transform="rotate(-0 42.048 398.088)">Load current returns to the power supply. It must not pass through the ESP32 or signal tracks.</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(518.976 138.596375)">Both Peltier leads</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(518.976 149.794187)">go to driver outputs.</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(518.976 160.992)">Neither lead is GPIO.</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="42.048" y="105.048" transform="rotate(-0 42.048 105.048)">Driver logic VCC must also use its specified supply and ESP32-compatible signal levels.</text>
+   </g>
+  </g>
+  <g id="text_12">
+   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="28.8" y="40.357031" transform="rotate(-0 28.8 40.357031)">Target board: power and signals</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="59.438437" transform="rotate(-0 28.8 59.438437)">Four independent H-bridges. Terminal names and ratings must match the installed driver.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe9e4643bae">
+   <rect x="28.8" y="86.4" width="662.4" height="319.68"/>
+  </clipPath>
+ </defs>
+</svg>

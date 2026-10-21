@@ -1,7 +1,7 @@
 ---
 title: 60-module background
 description: "A separate TMP117 feedback loop adjusts one PWM output for the background circuit."
-section: Controller code
+section: Software
 ---
 [← Controller programs](index.md)
 
@@ -31,7 +31,7 @@ Connect at **115200 baud**. Use <code>SET</code> for the target temperature, <co
 
 If a sensor read fails after startup, the program retains the previous reading. This version does not shut down on stale data.
 
-[Proposed ESP32 wiring](../build/pcb.md#background-ring-and-camera)
+[Arduino wiring and proposed ESP32 conversion](../build/wiring.md#background-ring-and-camera)
 
 ## Full source
 

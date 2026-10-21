@@ -3,29 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f9fa">
+  <meta name="theme-color" content="#123f41">
   <title>{% if page %}{{ page.title }} · {% endif %}{{ config.site_name }}</title>
   <meta name="description" content="{{ page.meta.description if page and page.meta.description else config.site_description }}">
   {% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
   <link rel="icon" type="image/svg+xml" href="{{ 'assets/favicon.svg' | url }}">
-  <link rel="stylesheet" href="{{ 'assets/site.css' | url }}">
+  <link rel="stylesheet" href="{{ 'assets/site.css' | url }}?v=hardware-software-cad">
   <script src="{{ 'assets/site.js' | url }}" defer data-search-index="{{ 'search/search_index.json' | url }}" data-root="{{ '.' | url }}"></script>
 </head>
-<body>
+<body data-section="{{ page.meta.section | lower if page and page.meta.section else 'overview' }}">
 <a class="skip" href="#main">Skip to content</a>
 <div class="site-shell">
 <header class="masthead">
-  <a class="brand" href="{{ '.' | url }}">Visual Place Learning<span>Apparatus and methods</span></a>
+  <a class="brand" href="{{ '.' | url }}"><span class="brand-mark" aria-hidden="true">VPL</span><span class="brand-name">Visual Place Learning<small>APPARATUS MANUAL</small></span></a>
   <div class="header-actions"><a href="{{ 'resources/sources/' | url }}">Downloads</a><button type="button" class="search-toggle" aria-expanded="false" aria-controls="site-search">Search</button><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Contents</button></div>
 </header>
+<nav class="section-tabs" aria-label="Main sections"><a href="{{ 'hardware/' | url }}" data-section="hardware" {% if page and page.meta.section == 'Hardware' %}aria-current="true"{% endif %}><span>01</span> HARDWARE</a><a href="{{ 'firmware/' | url }}" data-section="software" {% if page and page.meta.section == 'Software' %}aria-current="true"{% endif %}><span>02</span> SOFTWARE</a><a href="{{ 'cad/' | url }}" data-section="cad" {% if page and page.meta.section == 'CAD' %}aria-current="true"{% endif %}><span>03</span> CAD</a></nav>
 <section class="search-panel" id="site-search" aria-label="Search documentation" hidden>
-  <div class="search-inner"><label for="search-input">Search documentation</label><div class="search-row"><input id="search-input" type="search" placeholder="Peltier, footprint, angle…" autocomplete="off"><button type="button" id="search-close">Close</button></div><p id="search-status" role="status">Enter at least two characters.</p><ul id="search-results"></ul></div>
+  <div class="search-inner"><label for="search-input">Search documentation</label><div class="search-row"><input id="search-input" type="search" placeholder="Peltier, wiring, angle…" autocomplete="off"><button type="button" id="search-close">Close</button></div><p id="search-status" role="status">Enter at least two characters.</p><ul id="search-results"></ul></div>
 </section>
 <div class="document-layout">
   <aside class="sidebar" id="primary-nav">
     <p class="nav-label">DOCUMENTATION</p>
     <nav aria-label="Main navigation">{% for item in nav %}{% if item.children %}<details class="nav-group" {% if item.active %}open{% endif %}><summary>{{ item.title }}</summary><div>{% for child in item.children %}<a href="{{ child.url | url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>{% endfor %}</div></details>{% else %}<a href="{{ item.url | url }}" {% if item.active %}aria-current="page"{% endif %}>{{ item.title }}</a>{% endif %}{% endfor %}</nav>
-    <div class="sidebar-meta"><p>Reference study</p><a href="https://doi.org/10.1038/nature10131">Ofstad et al. ↗</a><p>Ajad Ismail</p></div>
+    <div class="sidebar-meta"><p>Build · connect · test</p><p>Ajad Ismail<br>Visual place-learning apparatus</p></div>
   </aside>
   <main id="main" class="article">
     <header class="article-header"><p class="breadcrumb">{{ page.meta.section if page and page.meta.section else 'Documentation' }}</p><h1>{{ page.meta.title if page and page.meta.title else (page.title if page else 'Page not found') }}</h1></header>

@@ -1,7 +1,7 @@
 ---
 title: Four-Peltier bench controller
 description: "A standalone serial controller for testing four independent thermal outputs without the display."
-section: Controller code
+section: Software
 ---
 [← Controller programs](index.md)
 

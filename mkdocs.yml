@@ -1,5 +1,5 @@
 site_name: Visual Place Learning
-site_description: "Hardware methods for a visual place-learning apparatus: arena fabrication, thermal control, electronics, display geometry and firmware."
+site_description: "A practical laboratory manual for building, wiring and operating a visual place-learning arena. Hardware, software and CAD."
 site_author: Ajad Ismail
 site_url: https://ajadismail2.github.io/Visual-place-learning/
 repo_url: https://github.com/ajadismail2/Visual-place-learning
@@ -27,26 +27,31 @@ validation:
     not_found: warn
     anchors: warn
 nav:
-  - Overview: index.md
-  - Published specifications: build/published-specifications.md
-  - Equipment and materials: build/equipment.md
-  - Assembly:
-      - Arena assembly: build/arena.md
-      - PCB and wiring: build/pcb.md
+  - HARDWARE:
+      - Overview: index.md
+      - Start with the hardware: hardware/index.md
+      - Equipment and materials: build/equipment.md
+      - Arena and dimensions: build/arena.md
+      - ESP32 and Arduino wiring: build/wiring.md
       - Visual display geometry: build/visual-angle.md
-  - Temperature control:
       - Background circuit: build/peltier.md
       - Four cooling targets: build/four-channels.md
+      - Thermal ring: hardware/ring.md
       - Heat removal: build/thermal-coupling.md
-  - Operating procedure: operation.md
-  - Code:
-      - Programs and setup: firmware/index.md
+      - Cameras and illumination: hardware/imaging.md
+  - SOFTWARE:
+      - How the programs work: firmware/index.md
+      - Install and upload: software/upload.md
+      - Run an experiment: operation.md
+      - Checks and troubleshooting: software/checks.md
       - Master controller: firmware/master.md
       - 60-module background: firmware/background.md
       - LED display slave: firmware/display.md
       - Thermal ring: firmware/ring.md
       - Thermal camera stream: firmware/camera.md
-      - Single-panel PCB test: firmware/panel-test.md
+      - Single-panel test: firmware/panel-test.md
       - Four-Peltier bench controller: firmware/four-peltier.md
       - UART hot-output slave: firmware/hot-slave.md
-  - Downloads and references: resources/sources.md
+      - Downloads and references: resources/sources.md
+  - CAD:
+      - Parts and file outline: cad/index.md

@@ -19,11 +19,11 @@
     {
       "filename": "LED_Slave.ino",
       "path": "firmware/LED_Slave/LED_Slave.ino",
-      "upload_date": "2026-10-17",
+      "upload_date": "2026-10-19",
       "publication_changes": [
         "Replaced a project label in a comment that matched the private AP name; program logic unchanged."
       ],
-      "sha256": "e3d701bc38ef7ff6afbe96c77c9b50c1e6cc433a09a815d1adad3bcd138d4504"
+      "sha256": "f4e0d37f8ad4098ae539c3e3b972a989b217e2618f9961c9c04b6c0d5643b204"
     },
     {
       "filename": "Master_Controller.ino",

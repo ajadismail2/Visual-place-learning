@@ -1,7 +1,7 @@
 ---
 title: UART hot-output slave
 description: "An alternative split-controller experiment receives heating commands over a wired serial link."
-section: Controller code
+section: Software
 ---
 [← Controller programs](index.md)
 

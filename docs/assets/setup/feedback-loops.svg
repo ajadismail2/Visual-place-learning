@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="504pt" viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T14:03:24.039603</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 504 
+L 720 504 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 42.048 212.688 
+L 141.408 212.688 
+L 141.408 162.96 
+L 42.048 162.96 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 227.52 212.688 
+L 360 212.688 
+L 360 162.96 
+L 227.52 162.96 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 432.864 212.688 
+L 664.704 212.688 
+L 664.704 162.96 
+L 432.864 162.96 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 143.407854 187.824 
+Q 184.46412 187.824 223.619728 187.824 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 218.419728 185.224 
+L 223.619728 187.824 
+L 218.419728 190.424 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #216b8c; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 361.996822 187.824 
+Q 396.429084 187.824 428.960687 187.824 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 423.760687 185.224 
+L 428.960687 187.824 
+L 423.760687 190.424 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #216b8c; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 237.456 274.848 
+L 462.672 274.848 
+L 462.672 237.552 
+L 237.456 237.552 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #edf2ed; stroke: #53745b; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 235.457763 256.2 
+Q 212.616557 256.2 191.676009 256.2 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 196.876009 258.8 
+L 191.676009 256.2 
+L 196.876009 253.6 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #53745b; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 189.779695 205.2288 
+Q 207.647832 205.2288 223.61531 205.2288 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 218.41531 202.6288 
+L 223.61531 205.2288 
+L 218.41531 207.8288 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #53745b; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 42.048 389.844 
+L 141.408 389.844 
+L 141.408 340.116 
+L 42.048 340.116 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 227.52 389.844 
+L 360 389.844 
+L 360 340.116 
+L 227.52 340.116 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 432.864 389.844 
+L 664.704 389.844 
+L 664.704 340.116 
+L 432.864 340.116 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #f1f6f8; stroke: #216b8c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 143.407854 364.98 
+Q 184.46412 364.98 223.619728 364.98 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 218.419728 362.38 
+L 223.619728 364.98 
+L 218.419728 367.58 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #216b8c; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 361.996822 364.98 
+Q 396.429084 364.98 428.960687 364.98 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 423.760687 362.38 
+L 428.960687 364.98 
+L 423.760687 367.58 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #216b8c; stroke: #216b8c; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 237.456 452.004 
+L 462.672 452.004 
+L 462.672 414.708 
+L 237.456 414.708 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #edf2ed; stroke: #53745b; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 235.457763 433.356 
+Q 212.616557 433.356 191.676009 433.356 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 196.876009 435.956 
+L 191.676009 433.356 
+L 196.876009 430.756 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #53745b; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 189.779695 382.3848 
+Q 207.647832 382.3848 223.61531 382.3848 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 218.41531 379.7848 
+L 223.61531 382.3848 
+L 218.41531 384.9848 
+z
+" clip-path="url(#pa20619b5e1)" style="fill: #53745b; stroke: #53745b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 558.72 212.688 
+L 558.72 256.2 
+L 462.672 256.2 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 187.776 256.2 
+L 187.776 205.2288 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 558.72 389.844 
+L 558.72 433.356 
+L 462.672 433.356 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 187.776 433.356 
+L 187.776 382.3848 
+" clip-path="url(#pa20619b5e1)" style="fill: none; stroke: #53745b; stroke-width: 1.7; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #216b8c" x="42.048" y="138.096" transform="rotate(-0 42.048 138.096)">BACKGROUND</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="91.728" y="190.859312" transform="rotate(-0 91.728 190.859312)">34.8 °C</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="293.76" y="190.859312" transform="rotate(-0 293.76 190.859312)">PID controller</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(483.928531 184.984469)">Power stage → 60-module</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(519.212906 196.182281)">background</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #216b8c" x="184.464" y="179.7432" transform="rotate(-0 184.464 179.7432)">setpoint</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #216b8c" x="396.432" y="179.7432" transform="rotate(-0 396.432 179.7432)">PWM</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="350.064" y="259.235312" transform="rotate(-0 350.064 259.235312)">TMP117</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #53745b" x="492.48" y="277.956" transform="rotate(-0 492.48 277.956)">temperature feedback</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #216b8c" x="42.048" y="315.252" transform="rotate(-0 42.048 315.252)">THERMAL RING</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="91.728" y="368.015312" transform="rotate(-0 91.728 368.015312)">45 °C</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="293.76" y="368.015312" transform="rotate(-0 293.76 368.015312)">PID controller</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="548.784" y="367.739375" transform="rotate(-0 548.784 367.739375)">Power stage → Ring heater</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #216b8c" x="184.464" y="356.8992" transform="rotate(-0 184.464 356.8992)">setpoint</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #216b8c" x="396.432" y="356.8992" transform="rotate(-0 396.432 356.8992)">PWM</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="350.064" y="436.391312" transform="rotate(-0 350.064 436.391312)">OneWire sensor</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #53745b" x="492.48" y="455.112" transform="rotate(-0 492.48 455.112)">temperature feedback</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="42.048" y="489.3" transform="rotate(-0 42.048 489.3)">Place each sensor in reproducible thermal contact with the region it controls. Ring cutoff: 57 °C.</text>
+   </g>
+  </g>
+  <g id="text_18">
+   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="28.8" y="44.677031" transform="rotate(-0 28.8 44.677031)">Two independent temperature loops</text>
+  </g>
+  <g id="text_19">
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="68.078438" transform="rotate(-0 28.8 68.078438)">Setpoints from the supplied sketches. The four target tiles use timed PWM, not these feedback loops.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa20619b5e1">
+   <rect x="28.8" y="100.8" width="662.4" height="372.96"/>
+  </clipPath>
+ </defs>
+</svg>

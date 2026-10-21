@@ -1,41 +1,57 @@
 ---
-title: Controller programs
-description: Programs and libraries for the arena controllers.
-section: Code
+title: Software
+description: How the controller programs cooperate and how to load and operate them.
+section: Software
 ---
-Each controller runs a separate program. The master controls the targets, the LED controller sets the visual pattern, and the background and ring controllers regulate temperature. The thermal-camera program sends measurements to a computer.
+The apparatus uses several small programs rather than one program controlling everything. Each controller keeps running its own sketch while powered. The master coordinates the four targets and display; the background and ring regulate temperature independently.
 
-## Controller files
+## Follow one experiment through the system
 
-| Code | Purpose |
-| --- | --- |
-| [Master_Controller](master.md) | Four target tiles and experiment timing |
-| [Closedloop_60peltier](background.md) | Background temperature control |
-| [LED_Slave](display.md) | Eight-panel visual panorama |
-| [Thermal_ring](ring.md) | Ring heater and temperature feedback |
-| [thermal_camera](camera.md) | Thermal-image stream |
-| [SinglePanelTest](panel-test.md) | Display PCB and panel test |
-| [4_peltier_mosfet_hbridge](four-peltier.md) | Alternative target bench controller |
-| [hot_slave](hot-slave.md) | Alternative UART heating controller |
+1. You send a target order to the master through a USB serial connection.
+2. The master starts the preheat interval, then selects each target in turn.
+3. The selected driver's output cools its tile. The other target outputs heat.
+4. The master sends the target letter to the display ESP32, which chooses the corresponding panorama position.
+5. The background and ring controllers keep reading their own sensors and adjusting their own outputs.
+6. Recording software captures behaviour and temperature data. The supplied master does not save the behavioural video or receive target-temperature feedback.
 
-## Program setup
+This separation matters when testing and stopping the apparatus: a response from the master does not show that every sensor or recorder is working.
 
-1. Open the program in its own sketch folder and select the board connected to the computer.
-2. Install the libraries used by that program. WiFi, ESP-NOW and Wire are provided by the relevant board package.
-3. For the master, copy `local_config.example.h` to `local_config.h`, enter the network and display settings, then remove the example's `#error` line.
-4. Compile and upload to the corresponding controller. Use the command and pin tables on its code page.
+## Start here
 
-| Program | Additional libraries |
-| --- | --- |
-| Background | PID_v1 |
-| LED display and panel test | ESP32-HUB75-MatrixPanel-I2S-DMA |
-| Thermal ring | OneWire, DallasTemperature |
-| Thermal camera | Adafruit_MLX90640 |
+<div class="chapter-list" markdown="1">
 
-The background and ring programs still require conversion to the [proposed ESP32 pins](../build/pcb.md#background-ring-and-camera) and PWM APIs. The master's ESP32 APIs must match the installed board package.
+[**Install and upload**<br><span>Board selection, libraries, sketch folders and pairing the display.</span>](../software/upload.md)
 
-[**Download all code**](../downloads/arena-firmware-2026-10-17.zip) · [Settings](../downloads/protocol.json)
+[**Run an experiment**<br><span>Pre-run checks, target order, recording and shutdown.</span>](../operation.md)
 
-Alternative controllers have different pin assignments. Use the separately labelled syntax-corrected ring file when compiling; the original is retained for reference.
+[**Checks and troubleshooting**<br><span>Observable tests for each controller and load.</span>](../software/checks.md)
 
-[Operating procedure](../operation.md) · [ESP32 wiring](../build/pcb.md)
+</div>
+
+## Programs for the main setup
+
+| Program | Board and job | What it does not do |
+| --- | --- | --- |
+| [Master_Controller](master.md) | Target ESP32; timing and four drivers | Does not regulate target output from measured target temperature |
+| [LED_Slave](display.md) | Display ESP32; visual pattern | Does not power the Peltier drivers |
+| [Closedloop_60peltier](background.md) | Arduino; background temperature loop | One sensor does not measure all 60 module temperatures separately |
+| [Thermal_ring](ring.md) | Arduino; perimeter heater loop | Does not stop when the master receives STOP |
+| [thermal_camera](camera.md) | ESP32; thermal-image stream | Does not save a file on the computer by itself |
+
+## Diagnostic and alternative programs
+
+[SinglePanelTest](panel-test.md) checks one display panel before connecting the full chain. Uploading it replaces the LED-slave program on that board, so restore the display program before running an experiment.
+
+[4_peltier_mosfet_hbridge](four-peltier.md) and [hot_slave](hot-slave.md) are alternative controller programs. Their pin assignments and command interfaces differ from the main setup. Do not combine their wiring tables with the master wiring.
+
+## Three terms used throughout
+
+**Setpoint** is the temperature requested from a feedback controller. **Measured temperature** is what a sensor reports at its location. **PWM output** is the electrical drive setting. These are different quantities: a setpoint or PWM table is not proof that the whole walking surface reached a particular temperature.
+
+## Source files and configuration
+
+The full code is available under a collapsible section on each program page. Read the operating explanation and connection table before changing the source. Local master settings belong in `local_config.h`; the published example deliberately contains no working device address or private password.
+
+Use the separate syntax-corrected ring file for compilation. The original uploaded file is retained alongside it. The background and ring ESP32 conversion is still pending; their supplied Arduino assignments remain documented.
+
+[Download all programs](../downloads/arena-firmware-2026-10-17.zip) · [Settings record](../downloads/protocol.json) · [Wiring guide](../build/wiring.md)

@@ -1,32 +1,34 @@
 ---
-title: Visual place-learning apparatus
-description: Equipment, assembly, temperature control and firmware for the arena.
+title: The visual place-learning arena
+description: A practical build and operating manual for a temperature-controlled behavioural arena.
 section: Overview
 ---
-The apparatus consists of a circular arena with a **measured inner diameter of 20 cm**, a heated background of 60 Peltier modules, four cooling targets and eight LED panels. The targets are controlled independently, and the LED pattern changes with the selected target.
+A guide to assembling, connecting and operating the arena. Start with the physical components, then load the controller programs and check each subsystem before running an experiment.
 
-## System operation
+<div class="section-cards" markdown="1">
 
-Temperature feedback regulates the background and thermal ring. During a trial, one target cools while the other three heat. Separate ESP32 boards control the target sequence and display. A thermal camera records the temperature distribution.
+[**01 · HARDWARE**<br><span>Arena, temperature control, ESP32 and Arduino wiring, visual display and cameras.</span>](hardware/index.md)
 
-## Documentation
+[**02 · SOFTWARE**<br><span>Install the programs, pair the controllers, test responses and run a sequence.</span>](firmware/index.md)
 
-<div class="chapter-list" markdown="1">
-
-[**Published arena specifications**<br><span>Reference dimensions, materials and components from the original paper.</span>](build/published-specifications.md)
-
-[**Equipment and materials**<br><span>Thermal components, electronics and fabricated parts.</span>](build/equipment.md)
-
-[**Arena assembly**<br><span>Base, aluminium carrier and printed mounts.</span>](build/arena.md)
-
-[**PCB and wiring**<br><span>Power connections, ESP32 pin assignments and diagrams.</span>](build/pcb.md)
-
-[**Temperature control**<br><span>Background feedback, target cooling and heat removal.</span>](build/peltier.md)
-
-[**Visual display**<br><span>Panel distance, bar width and angular calibration.</span>](build/visual-angle.md)
-
-[**Operating procedure**<br><span>Controller setup, trial sequence and shutdown.</span>](operation.md)
-
-[**Code and downloads**<br><span>Programs for control, measurement and component tests.</span>](firmware/index.md)
+[**03 · CAD**<br><span>Printed-part records, photograph spaces and model-file outlines.</span>](cad/index.md)
 
 </div>
+
+<figure class="photo-slot hero-photo" data-photo-id="overview-arena"><div class="photo-space" aria-label="Blank space for the assembled arena photograph"></div><figcaption><span>Photo to add · A01</span><strong>The assembled arena</strong><p>A clear overall view showing the walking surface, LED enclosure and recording setup.</p></figcaption></figure>
+
+## How the system works
+
+The walking area is **20 cm in diameter**. Sixty Peltier modules form the heated background, and four target modules are controlled separately. During a trial, one target cools while the remaining targets heat. Eight LED panels surround the arena and display the visual pattern associated with the selected target.
+
+The target ESP32 runs the sequence and sends the corresponding state to the display ESP32. Separate temperature controllers regulate the background and perimeter ring. A behaviour camera records movement; temperature measurements check whether the intended thermal conditions were achieved.
+
+## If you are starting from scratch
+
+Read [Hardware](hardware/index.md) first to identify the components and distinguish signal wiring from load power. Then follow [Install and upload](software/upload.md), test each part, and use the [experiment procedure](operation.md). Keep the wiring labels and temperature records with the video.
+
+## How to use this manual
+
+Each hardware chapter explains the component's role, its connections, and what to observe during a first test. The software chapters explain commands in plain language before showing the downloadable source code. Photo spaces are labelled so the relevant assembly views can be added later.
+
+The documented pin maps follow the supplied sketches. Proposed changes are marked where they occur. Temperature setpoints describe what a controller requests; they are not experimental temperature readings. CAD dimensions and part instructions will be filled in from the actual models and your explanations.

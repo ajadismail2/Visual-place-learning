@@ -1,7 +1,7 @@
 ---
 title: Thermal camera stream
 description: "An MLX90640 supplies a temperature image for measurement; it does not close the target-control loop."
-section: Controller code
+section: Software
 ---
 [← Controller programs](index.md)
 

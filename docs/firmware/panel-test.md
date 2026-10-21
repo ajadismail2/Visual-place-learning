@@ -1,7 +1,7 @@
 ---
-title: Single-panel PCB test
+title: Single-panel test
 description: "A small display diagnostic separates wiring and panel problems from experiment sequencing."
-section: Controller code
+section: Software
 ---
 [← Controller programs](index.md)
 
@@ -26,7 +26,7 @@ Use this program to test one panel before connecting the full enclosure. It uses
 
 Send commands at 115200 baud. These patterns check colours, address lines and orientation. Flashing this test replaces the LED-slave program on that board.
 
-[Display pin map](../build/pcb.md#display-board-pin-map)
+[Display pin map](../build/wiring.md#display-board-pin-map)
 
 ## Full source
 

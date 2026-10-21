@@ -1,8 +1,8 @@
 # Visual place-learning apparatus
 
-Makerspace build documentation for Ajad Ismail's replication of the apparatus described by Ofstad, Zuker & Reiser, doi:10.1038/nature10131.
+Practical documentation for assembling and operating the visual place-learning arena.
 
-The site covers arena fabrication, Peltier control, PCB and ESP32 wiring, four cooling tiles, visual angles, and heat removal. Eight supplied sketches are explained and available in full.
+The manual has three main sections: Hardware, Software and CAD. It covers arena fabrication, Peltier control, ESP32 and Arduino wiring, four cooling tiles, visual angles, recording and heat removal. Eight supplied sketches are explained and available in full. Labelled photo spaces and CAD part outlines are ready for the build records.
 
 ## Build and check
 
@@ -41,4 +41,4 @@ The QR encodes the permanent address `https://ajadismail2.github.io/Visual-place
 
 To change where existing printed codes lead, edit the `url` in `docs/go/target.json`, commit the change, and let the Pages workflow publish it. Use an HTTPS destination. Keep the repository name, Pages domain and `/go/` path unchanged. Allow the deployment and hosting caches to update before checking the new destination.
 
-The default destination is the future GitHub Pages homepage. There is no tracking service or third-party QR subscription. The image itself is fixed; the hosted redirect makes its destination editable. If JavaScript or the configuration request fails, the page provides a homepage link. Update that fallback in `docs/go/index.html` too if the homepage moves.
+The default destination is the GitHub Pages homepage. There is no tracking service or third-party QR subscription. The image itself is fixed; the hosted redirect makes its destination editable. If JavaScript or the configuration request fails, the page provides a homepage link. Update that fallback in `docs/go/index.html` too if the homepage moves.

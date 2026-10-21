@@ -1,7 +1,7 @@
 ---
 title: LED display slave
 description: "An ESP32 translates a target letter into a panorama rotation across eight HUB75 panels."
-section: Controller code
+section: Software
 ---
 [← Controller programs](index.md)
 
@@ -30,7 +30,9 @@ The diagonals in this program are about 19.5° from vertical. The horizontal bar
 
 Send <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> or <code>OFF</code> to the display board at **115200 baud**. The program uses the ESP32-HUB75-MatrixPanel-I2S-DMA library.
 
-[Display wiring](../build/pcb.md#display-board-pin-map) · [Angle calculation](../build/visual-angle.md)
+The uploaded program requests a minimum refresh rate of **1000 Hz**, with double buffering disabled. This is a configuration request, not a measured refresh rate or a guarantee that every panel and library configuration achieves it.
+
+[Display wiring](../build/wiring.md#display-board-pin-map) · [Angle calculation](../build/visual-angle.md)
 
 ## Full source
 
@@ -229,7 +231,7 @@ void setup() {
   HUB75_I2S_CFG mxconfig(64, 32, PANELS_IN_CHAIN, pins);
   mxconfig.driver           = HUB75_I2S_CFG::FM6126A;
   mxconfig.clkphase         = false;
-  mxconfig.min_refresh_rate = 250;
+  mxconfig.min_refresh_rate = 1000;
   mxconfig.double_buff = false;
   
   dma = new MatrixPanel_I2S_DMA(mxconfig);

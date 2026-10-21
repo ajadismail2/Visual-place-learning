@@ -191,7 +191,7 @@ void setup() {
   HUB75_I2S_CFG mxconfig(64, 32, PANELS_IN_CHAIN, pins);
   mxconfig.driver           = HUB75_I2S_CFG::FM6126A;
   mxconfig.clkphase         = false;
-  mxconfig.min_refresh_rate = 250;
+  mxconfig.min_refresh_rate = 1000;
   mxconfig.double_buff = false;
   
   dma = new MatrixPanel_I2S_DMA(mxconfig);
