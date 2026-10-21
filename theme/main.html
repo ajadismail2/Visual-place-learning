@@ -15,7 +15,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="site-shell">
 <header class="masthead">
-  <a class="brand" href="{{ '.' | url }}"><span class="brand-mark" aria-hidden="true">VPL</span><span class="brand-name">Visual Place Learning<small>APPARATUS MANUAL</small></span></a>
+  <a class="brand" href="{{ '.' | url }}"><span class="brand-name">Visual Place Learning<small>APPARATUS MANUAL</small></span></a>
   <div class="header-actions"><a href="{{ 'resources/sources/' | url }}">Downloads</a><button type="button" class="search-toggle" aria-expanded="false" aria-controls="site-search">Search</button><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Contents</button></div>
 </header>
 <nav class="section-tabs" aria-label="Main sections"><a href="{{ 'hardware/' | url }}" data-section="hardware" {% if page and page.meta.section == 'Hardware' %}aria-current="true"{% endif %}><span>01</span> HARDWARE</a><a href="{{ 'firmware/' | url }}" data-section="software" {% if page and page.meta.section == 'Software' %}aria-current="true"{% endif %}><span>02</span> SOFTWARE</a><a href="{{ 'cad/' | url }}" data-section="cad" {% if page and page.meta.section == 'CAD' %}aria-current="true"{% endif %}><span>03</span> CAD</a></nav>
@@ -26,7 +26,7 @@
   <aside class="sidebar" id="primary-nav">
     <p class="nav-label">DOCUMENTATION</p>
     <nav aria-label="Main navigation">{% for item in nav %}{% if item.children %}<details class="nav-group" {% if item.active %}open{% endif %}><summary>{{ item.title }}</summary><div>{% for child in item.children %}<a href="{{ child.url | url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>{% endfor %}</div></details>{% else %}<a href="{{ item.url | url }}" {% if item.active %}aria-current="page"{% endif %}>{{ item.title }}</a>{% endif %}{% endfor %}</nav>
-    <div class="sidebar-meta"><p>Build · connect · test</p><p>Ajad Ismail<br>Visual place-learning apparatus</p></div>
+    <div class="sidebar-meta"><p>Build · connect · test</p><p>Visual place-learning apparatus</p></div>
   </aside>
   <main id="main" class="article">
     <header class="article-header"><p class="breadcrumb">{{ page.meta.section if page and page.meta.section else 'Documentation' }}</p><h1>{{ page.meta.title if page and page.meta.title else (page.title if page else 'Page not found') }}</h1></header>
