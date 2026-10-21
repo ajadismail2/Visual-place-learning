@@ -19,7 +19,7 @@ The background and ring sketches use Arduino-style pin assignments. Confirm the 
 
 The ESP32 pin maps here refer to the classic ESP32 used by the supplied programs. Other ESP32 families, such as the C3, have different pins and peripherals. Match the board itself, not just the word ESP32 on its label.
 
-<div class="photo-pair"><figure class="photo-slot" data-photo-id="esp32-board"><div class="photo-space" aria-label="Blank ESP32 photograph"></div><figcaption><span>Photo to add · H02</span><strong>ESP32 board and pin labels</strong><p>Top view with the module name, USB socket and both header rows visible.</p></figcaption></figure><figure class="photo-slot" data-photo-id="arduino-board"><div class="photo-space" aria-label="Blank Arduino photograph"></div><figcaption><span>Photo to add · H03</span><strong>Arduino thermal controller</strong><p>Show the exact board model and its printed pin names.</p></figcaption></figure></div>
+<div class="photo-pair"><figure class="photo-slot" data-photo-id="esp32-board"><div class="photo-space" aria-label="Blank ESP32 photograph"></div><figcaption><span>Photo · H02</span><strong>ESP32 board and pin labels</strong></figcaption></figure><figure class="photo-slot" data-photo-id="arduino-board"><div class="photo-space" aria-label="Blank Arduino photograph"></div><figcaption><span>Photo · H03</span><strong>Arduino thermal controller</strong></figcaption></figure></div>
 
 ## Read a connection table
 
@@ -40,7 +40,7 @@ The ESP32 pin maps here refer to the classic ESP32 used by the supplied programs
 
 The ESP32 supply powers the controller. The Peltier supply powers the load through its driver. Use the development board's documented power-input method; do not assume USB and an external supply can be connected together without checking the board's power circuit.
 
-<figure class="photo-slot" data-photo-id="driver-connections"><div class="photo-space" aria-label="Blank photograph of one fully wired driver"></div><figcaption><span>Photo to add · H04</span><strong>One complete target channel</strong><p>Show the ESP32 signal wires, driver input labels, power terminals and Peltier output pair.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="driver-connections"><div class="photo-space" aria-label="Blank photograph of one fully wired driver"></div><figcaption><span>Photo · H04</span><strong>One complete target channel</strong></figcaption></figure>
 
 ## Display board pin map
 
@@ -75,7 +75,7 @@ First test a single panel using the [panel-test program](../firmware/panel-test.
 
 The two pin-9 outputs are on **different boards**. Do not connect them together. The TMP117 requires I²C wiring, whereas the ring sensor uses a single data line. Confirm the OneWire sensor model and the required pull-up arrangement before assembling it; a pull-up is a resistor that holds a data line at its idle logic level.
 
-The background circuit is documented as 60 modules in series. Its load supply and power stage must be selected for the complete circuit. A GPIO pin, USB output or small breadboard power rail cannot drive this string. Its actual module, supply and driver ratings are still required for a complete power schematic.
+The background circuit is documented as 60 modules in series. Its load supply and power stage must be selected for the complete circuit. A GPIO pin, USB output or small breadboard power rail cannot drive this string. The diagram shows connection paths; module, supply and driver ratings are not specified.
 
 The power stage must accept the controller's logic level. With a non-isolated stage, connect its signal ground to the corresponding controller ground as specified by the driver. Route load current through the supply and load terminals. A PWM signal connected without its required reference ground can behave unpredictably even when the pin numbers are correct.
 

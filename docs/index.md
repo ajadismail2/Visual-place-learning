@@ -11,11 +11,11 @@ A guide to assembling, connecting and operating the arena. Start with the physic
 
 [**02 · SOFTWARE**<br><span>Install the programs, pair the controllers, test responses and run a sequence.</span>](firmware/index.md)
 
-[**03 · CAD**<br><span>Printed-part records, photograph spaces and model-file outlines.</span>](cad/index.md)
+[**03 · CAD**<br><span>Printed components and their positions in the assembly.</span>](cad/index.md)
 
 </div>
 
-<figure class="photo-slot hero-photo" data-photo-id="overview-arena"><div class="photo-space" aria-label="Blank space for the assembled arena photograph"></div><figcaption><span>Photo to add · A01</span><strong>The assembled arena</strong><p>A clear overall view showing the walking surface, LED enclosure and recording setup.</p></figcaption></figure>
+<figure class="photo-slot hero-photo" data-photo-id="overview-arena"><div class="photo-space" aria-label="Blank space for the assembled arena photograph"></div><figcaption><span>Photo · A01</span><strong>The assembled arena</strong></figcaption></figure>
 
 ## How the system works
 
@@ -29,6 +29,6 @@ Read [Hardware](hardware/index.md) first to identify the components and distingu
 
 ## How to use this manual
 
-Each hardware chapter explains the component's role, its connections, and what to observe during a first test. The software chapters explain commands in plain language before showing the downloadable source code. Photo spaces are labelled so the relevant assembly views can be added later.
+Each hardware chapter explains the component's role, its connections, and what to observe during a first test. The software chapters explain commands in plain language before showing the downloadable source code.
 
-The documented pin maps follow the supplied sketches. Proposed changes are marked where they occur. Temperature setpoints describe what a controller requests; they are not experimental temperature readings. CAD dimensions and part instructions will be filled in from the actual models and your explanations.
+The documented pin maps follow the supplied sketches. Proposed changes are marked where they occur. Temperature setpoints describe what a controller requests; they are not experimental temperature readings.

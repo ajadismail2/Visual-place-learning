@@ -11,7 +11,7 @@ Install Arduino IDE and connect one controller using a USB cable that supports d
 
 For ESP32 boards, install Espressif's ESP32 board package through Boards Manager. Its [installation guide](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html) lists the package URL and setup steps. For Arduino boards, select the actual model and the appropriate board package. Record the working package and library versions with the build rather than changing them immediately before an experiment.
 
-<figure class="photo-slot" data-photo-id="ide-board-port"><div class="photo-space" aria-label="Blank screenshot of Arduino IDE board and port selection"></div><figcaption><span>Screenshot to add · S01</span><strong>Board and port selection</strong><p>Show the correct selection for each controller, without private network details.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="ide-board-port"><div class="photo-space" aria-label="Blank screenshot of Arduino IDE board and port selection"></div><figcaption><span>Screenshot · S01</span><strong>Board and port selection</strong></figcaption></figure>
 
 ## 2. Open one sketch at a time
 
@@ -50,7 +50,7 @@ Open Serial Monitor after upload. Set its baud rate to the value on the relevant
 
 The master, display, background and ring use **115200 baud**. The thermal camera uses **921600 baud** and sends binary packets. Its output will not appear as ordinary temperature text in Serial Monitor.
 
-<figure class="photo-slot" data-photo-id="serial-commands"><div class="photo-space" aria-label="Blank screenshot of the serial monitor"></div><figcaption><span>Screenshot to add · S02</span><strong>A successful command and response</strong><p>Include the selected port, baud rate and a short test response. Exclude passwords and device addresses.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="serial-commands"><div class="photo-space" aria-label="Blank screenshot of the serial monitor"></div><figcaption><span>Screenshot · S02</span><strong>A successful command and response</strong></figcaption></figure>
 
 ## 5. Test before connecting all loads
 

@@ -19,7 +19,7 @@ The code opens the [website redirect](../go/index.html). Its destination can be 
 
 ## CAD files
 
-Model downloads will be added to the [CAD part records](../cad/index.md) after each part is identified. Each record has spaces for a separate-part photograph, an installed photograph, its function, fit dimensions and STEP or print files.
+See [CAD and printed parts](../cad/index.md). Model downloads are not currently available.
 
 ## Original experiment
 

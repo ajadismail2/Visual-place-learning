@@ -13,7 +13,7 @@ Connect the first panel's OUT connector to the next panel's IN connector, contin
 
 The program treats the rotated panels as a logical image 256 pixels wide and 64 pixels high. Physical panel order and orientation must match this mapping. Send A, B, C and D directly to the display board to check each pattern position before testing the wireless link.
 
-<div class="photo-pair"><figure class="photo-slot" data-photo-id="led-enclosure"><div class="photo-space" aria-label="Blank photograph of the LED enclosure"></div><figcaption><span>Photo to add · V01</span><strong>Panel enclosure and cable order</strong><p>Show the first panel, chain direction and access panel.</p></figcaption></figure><figure class="photo-slot" data-photo-id="led-pattern"><div class="photo-space" aria-label="Blank photograph of the displayed visual pattern"></div><figcaption><span>Photo to add · V02</span><strong>Displayed visual pattern</strong><p>Show the vertical, horizontal and diagonal regions in a known target state.</p></figcaption></figure></div>
+<div class="photo-pair"><figure class="photo-slot" data-photo-id="led-enclosure"><div class="photo-space" aria-label="Blank photograph of the LED enclosure"></div><figcaption><span>Photo · V01</span><strong>Panel enclosure and cable order</strong></figcaption></figure><figure class="photo-slot" data-photo-id="led-pattern"><div class="photo-space" aria-label="Blank photograph of the displayed visual pattern"></div><figcaption><span>Photo · V02</span><strong>Displayed visual pattern</strong></figcaption></figure></div>
 
 ## Setting the bar width
 

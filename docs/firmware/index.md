@@ -52,6 +52,6 @@ This separation matters when testing and stopping the apparatus: a response from
 
 The full code is available under a collapsible section on each program page. Read the operating explanation and connection table before changing the source. Local master settings belong in `local_config.h`; the published example deliberately contains no working device address or private password.
 
-Use the separate syntax-corrected ring file for compilation. The original uploaded file is retained alongside it. The background and ring ESP32 conversion is still pending; their supplied Arduino assignments remain documented.
+Use the separate syntax-corrected ring file for compilation. The original uploaded file is retained alongside it. The background and ring sketches use Arduino pin assignments; the ESP32 conversion is a proposed adaptation.
 
 [Download all programs](../downloads/arena-firmware-2026-10-17.zip) · [Settings record](../downloads/protocol.json) · [Wiring guide](../build/wiring.md)

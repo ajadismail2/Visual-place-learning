@@ -5,7 +5,7 @@ section: Hardware
 ---
 The ring surrounds the walking area. Its heater is controlled separately from the floor, so the perimeter temperature can be adjusted without changing the four target outputs. The ring controller responds to its own temperature sensor; it does not measure the temperature of every point in the enclosure.
 
-<figure class="photo-slot" data-photo-id="ring-heater"><div class="photo-space" aria-label="Blank photograph of the ring heater and sensor"></div><figcaption><span>Photo to add · H05</span><strong>Ring, heater and sensor mounting</strong><p>Show where the heater is attached, how it is electrically insulated and where the sensor touches the ring.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="ring-heater"><div class="photo-space" aria-label="Blank photograph of the ring heater and sensor"></div><figcaption><span>Photo · H05</span><strong>Ring, heater and sensor mounting</strong></figcaption></figure>
 
 ## What each part does
 
@@ -24,8 +24,6 @@ The OneWire sensor sends a temperature reading back to the controller. The progr
 ## Setpoint and cutoff
 
 The supplied code targets **45 °C at the sensor** and stops heating above **57 °C**. It can resume after the reading falls again. This cutoff is not a separate, latching hardware protection, and the sensor temperature should not be described as the temperature of all enclosed air.
-
-The sensor model, insulation thickness, wire routing and exact ring dimensions still need assembly records. Keep these fields with the ring's future photographs and CAD files.
 
 ## Stopping the heater
 

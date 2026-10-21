@@ -14,7 +14,7 @@ This procedure follows the supplied master and LED programs. Test the mechanical
 5. **Allow conditions to settle.** Record the starting temperatures and wait for reproducible conditions rather than relying only on elapsed warm-up time.
 6. **Prepare recording.** Set focus, exposure and frame rate, choose the output folder, and make a short recording to confirm that files are saved correctly.
 
-<figure class="photo-slot" data-photo-id="run-ready"><div class="photo-space" aria-label="Blank photograph of the prepared recording setup"></div><figcaption><span>Photo to add · S03</span><strong>Ready-to-run setup</strong><p>Show the camera view, target labels and the computer's recording and controller windows.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="run-ready"><div class="photo-space" aria-label="Blank photograph of the prepared recording setup"></div><figcaption><span>Photo · S03</span><strong>Ready-to-run setup</strong></figcaption></figure>
 
 ## Start a sequence
 

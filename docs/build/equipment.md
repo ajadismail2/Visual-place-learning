@@ -31,13 +31,13 @@ A Peltier's current rating, its intended voltage and the rating of its driver mu
 | Signal cables and labelled connectors | Connect controller outputs to their destinations |
 | Rated load supplies and suitable distribution wiring | Carry power independently of signal pins |
 
-<figure class="photo-slot" data-photo-id="equipment-components"><div class="photo-space" aria-label="Blank component inventory photograph"></div><figcaption><span>Photo to add · H07</span><strong>Component inventory</strong><p>Lay out one example of each controller, driver, sensor, Peltier and connector with its model label visible.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="equipment-components"><div class="photo-space" aria-label="Blank component inventory photograph"></div><figcaption><span>Photo · H07</span><strong>Component inventory</strong></figcaption></figure>
 
 ## Imaging and mechanical parts
 
 The recording setup needs a behaviour camera, a suitable lens, infrared illumination and a stable overhead mount. An MLX90640 and its ESP32 interface provide temperature measurements. Keep the thermal-camera viewing requirements separate from those of the behaviour camera.
 
-The physical assembly includes the base, carrier, ring, glass cover, panel enclosure and printed fixtures. Exact base material, thicknesses, fasteners and printed-part dimensions should be entered with the assembly photographs and [CAD records](../cad/index.md).
+The physical assembly includes the base, carrier, ring, glass cover, panel enclosure and printed fixtures.
 
 ## Before assembly
 

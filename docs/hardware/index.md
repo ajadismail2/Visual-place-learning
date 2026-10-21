@@ -11,7 +11,7 @@ The floor has a warm background and four independently driven target tiles. Duri
 
 The target controller changes both the selected tile and the display state. The background and ring controllers continue to regulate their own temperatures. Starting or stopping the target sequence therefore does not start or stop every part of the apparatus.
 
-<figure class="photo-slot" data-photo-id="hardware-complete"><div class="photo-space" aria-label="Blank space for a photograph of the complete apparatus"></div><figcaption><span>Photo to add · H01</span><strong>Complete apparatus</strong><p>Show the arena, LED enclosure, overhead camera, lights and lower cooling arrangement in one view.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="hardware-complete"><div class="photo-space" aria-label="Blank space for a photograph of the complete apparatus"></div><figcaption><span>Photo · H01</span><strong>Complete apparatus</strong></figcaption></figure>
 
 ## Follow the build in this order
 
@@ -34,8 +34,8 @@ The target controller changes both the selected tile and the display state. The 
 
 **Feedback:** a measurement returned to the controller so it can correct its output. **Open-loop control** follows preset output values without making this correction from temperature measurements.
 
-## What is documented and what still needs measuring?
+## Configuration
 
-The pin maps and timing tables follow the supplied programs. The target heat-sink arrangement and conversion of the thermal controllers to ESP32 are proposed changes. Exact supply ratings, carrier openings, mount dimensions and experimental temperature traces still need to be added. Check these against the components in hand before fabrication or full-power operation.
+The pin maps and timing tables follow the supplied programs. The target heat-sink arrangement and conversion of the thermal controllers to ESP32 are proposed changes. Supply ratings and detailed fabrication dimensions are not specified in this manual.
 
 [Equipment list](../build/equipment.md) · [Software setup](../software/upload.md) · [CAD parts](../cad/index.md)

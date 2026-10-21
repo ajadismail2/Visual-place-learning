@@ -9,7 +9,7 @@ The behaviour camera records where the flies move. The thermal camera measures s
 
 Mount the camera above the arena with the walking area centred in the image. Adjust the lens and height until the entire circular floor is visible, including its edge. Tighten the support only after confirming that the camera remains stable and that no mount blocks the view.
 
-<figure class="photo-slot" data-photo-id="camera-view"><div class="photo-space" aria-label="Blank photograph of the overhead camera and illumination"></div><figcaption><span>Photo to add · H06</span><strong>Camera and IR illumination</strong><p>Include a side view of the mount and an example frame showing the complete arena.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="camera-view"><div class="photo-space" aria-label="Blank photograph of the overhead camera and illumination"></div><figcaption><span>Photo · H06</span><strong>Camera and IR illumination</strong></figcaption></figure>
 
 Focus at the walking surface, then inspect the centre and edge of the image. Keep the same camera position and lens settings across recordings that share a spatial calibration. Moving the camera changes the number of image pixels corresponding to a centimetre.
 

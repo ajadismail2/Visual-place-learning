@@ -23,7 +23,7 @@ This energy-balance plot is calculated, not an experimental trace. It explains w
 
 The fan removes heat from the sinks, reducing heat accumulation beneath the cooling tiles.
 
-<figure class="photo-slot" data-photo-id="underside-airflow"><div class="photo-space" aria-label="Blank photograph of the underside heat sinks and fan"></div><figcaption><span>Photo to add · H10</span><strong>Underside and airflow path</strong><p>Show each target's lower contact, the fin direction, fan position and warm-air exit.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="underside-airflow"><div class="photo-space" aria-label="Blank photograph of the underside heat sinks and fan"></div><figcaption><span>Photo · H10</span><strong>Underside and airflow path</strong></figcaption></figure>
 
 Fan position alone is not enough. Leave space for air to enter, pass through the fins and leave without returning directly to the intake. Keep the airflow below the walking chamber so it does not introduce an additional behavioural cue. Record the fan orientation and operating setting with the thermal measurements.
 

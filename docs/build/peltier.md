@@ -17,7 +17,7 @@ The documented background uses 60 modules in one series circuit. In a series cir
 
 The TMP117 sensor measures temperature at its mounting location. The Arduino reads it over I²C and sends a PWM signal from pin 9 to a separate power stage. That stage controls the module circuit. Sensor wires carry information; load wires carry the Peltier current.
 
-<figure class="photo-slot" data-photo-id="background-sensor"><div class="photo-space" aria-label="Blank photograph of the background modules and temperature sensor"></div><figcaption><span>Photo to add · H08</span><strong>Background circuit and sensor position</strong><p>Show the module connections, the sensor contact point and the leads leaving the arena.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="background-sensor"><div class="photo-space" aria-label="Blank photograph of the background modules and temperature sensor"></div><figcaption><span>Photo · H08</span><strong>Background circuit and sensor position</strong></figcaption></figure>
 
 ## Why closed-loop control is used
 
@@ -53,6 +53,6 @@ The supplied code starts at **34.8 °C** and limits PWM to **150/255**. It attem
 
 Record a temperature map of the assembled surface and compare representative background regions while A, B, C and D are selected. Look for gradients, edge losses and slow warming over repeated trials. One feedback sensor cannot detect every local hot or cold area.
 
-Experimental readings have not been added to this manual. The feedback figure describes the control connections, not measured performance. See [temperature recording](../hardware/imaging.md#set-up-the-thermal-camera) for how to collect the missing measurements.
+The feedback figure describes the control connections; it does not present measured performance. See [temperature recording](../hardware/imaging.md#set-up-the-thermal-camera) for the measurement procedure.
 
 [Background code](../firmware/background.md) · [Four-target control](four-channels.md) · [Heat removal](thermal-coupling.md)

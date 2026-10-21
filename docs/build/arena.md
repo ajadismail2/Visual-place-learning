@@ -21,7 +21,7 @@ The arena provides a level walking surface with a controlled thermal pattern. It
 
 The 200 mm measurement is the inner walking diameter. Use it for image scaling and arena layout. Ring height, cover clearance, module dimensions, carrier thickness and mounting-hole positions must be recorded from the actual components before machining or printing. Do not infer these from a photograph.
 
-<figure class="photo-slot" data-photo-id="arena-top"><div class="photo-space" aria-label="Blank top-view arena photograph"></div><figcaption><span>Photo to add · A02</span><strong>Walking surface and target positions</strong><p>Top view with the inner diameter and the physical A–D labels identified.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="arena-top"><div class="photo-space" aria-label="Blank top-view arena photograph"></div><figcaption><span>Photo · A02</span><strong>Walking surface and target positions</strong></figcaption></figure>
 
 ## Walking surface and target tiles
 
@@ -33,7 +33,7 @@ Label the physical targets A–D after testing their driver channels. Keep that 
 
 Fit the supports to a stable base, check that their mounting faces sit evenly, and then place the carrier. Check level in more than one direction. Mount the LED enclosure and overhead components so they do not pull or tilt the arena through cables or shared supports.
 
-The [CAD section](../cad/index.md) reserves a record for each printed component. The actual print material, fastening details and fit measurements will be added with those part records.
+See [CAD and printed parts](../cad/index.md) for the component overview.
 
 ## Work through the makerspace build
 
@@ -43,9 +43,9 @@ Use CAD to check the relationships between the floor, panel enclosure and record
 
 For the carrier, transfer the measured layout into a machining drawing. Use the workshop's CNC or conventional machine tools for controlled openings and mounting features. Deburr edges, inspect the finished dimensions and test the assembly without power before fitting the full thermal circuit. Printing is useful for fixtures and supports; the thermal contact beneath a Peltier needs a suitable heat-conducting part.
 
-The low-cost approach depends on checking each interface before making the next part. Standard panels, controller boards and drivers can be tested independently while the mounts are being refined. Exact costs and workshop settings will be added only from the actual build records.
+The low-cost approach depends on checking each interface before making the next part. Standard panels, controller boards and drivers can be tested independently while the mounts are being refined.
 
-<figure class="photo-slot" data-photo-id="arena-side"><div class="photo-space" aria-label="Blank side-view photograph of arena clearances"></div><figcaption><span>Photo to add · A03</span><strong>Ring, cover and supporting structure</strong><p>Side view showing the cover clearance and how the arena is supported.</p></figcaption></figure>
+<figure class="photo-slot" data-photo-id="arena-side"><div class="photo-space" aria-label="Blank side-view photograph of arena clearances"></div><figcaption><span>Photo · A03</span><strong>Ring, cover and supporting structure</strong></figcaption></figure>
 
 ## Ring and cover
 
