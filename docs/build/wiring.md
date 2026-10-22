@@ -5,6 +5,14 @@ section: Hardware
 ---
 A controller sends low-power instructions to a driver and reads information from a sensor. The driver switches the larger current used by a heater or Peltier. Keep these two paths separate when following the connections below.
 
+## Arena connection overview
+
+[![Arena electrical architecture: target and display ESP32 controllers, Arduino heating loops, power supplies and recording connections](../assets/arena-wiring-conference.png)](../assets/arena-wiring-conference.png)
+
+Power, control, wireless commands and temperature feedback are colour-coded. Each target tile has its own driver; the background and ring use separate temperature-control loops.
+
+[Download full-resolution PNG](../assets/arena-wiring-conference.png) · [Download vector diagram](../assets/arena-wiring-conference.svg)
+
 ## Identify and label the boards
 
 | Label to put on the board | Program | Job |
