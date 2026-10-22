@@ -11,7 +11,9 @@ A guide to assembling, connecting and operating the arena. Start with the physic
 
 [**02 · SOFTWARE**<br><span>Install the programs, pair the controllers, test responses and run a sequence.</span>](firmware/index.md)
 
-[**03 · CAD**<br><span>Printed components and their positions in the assembly.</span>](cad/index.md)
+[**03 · ANALYSIS**<br><span>Track identities with AMADEUS, register cool targets and quantify behaviour.</span>](analysis/index.md)
+
+[**04 · CAD**<br><span>Editable STEP models, component roles and assembly positions.</span>](cad/index.md)
 
 </div>
 
@@ -29,6 +31,6 @@ Read [Hardware](hardware/index.md) first to identify the components and distingu
 
 ## How to use this manual
 
-Each hardware chapter explains the component's role, its connections, and what to observe during a first test. The software chapters explain commands in plain language before showing the downloadable source code.
+Each hardware chapter explains the component's role, its connections, and what to observe during a first test. The software chapters explain commands in plain language before showing the downloadable source code. The analysis chapters follow the recording from identity tracking to target-reaching and movement measurements.
 
 The documented pin maps follow the supplied sketches. Proposed changes are marked where they occur. Temperature setpoints describe what a controller requests; they are not experimental temperature readings.

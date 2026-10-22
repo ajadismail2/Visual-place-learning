@@ -1,5 +1,5 @@
 site_name: Visual Place Learning
-site_description: "A practical laboratory manual for building, wiring and operating a visual place-learning arena. Hardware, software and CAD."
+site_description: "A practical laboratory manual for building, wiring and operating a visual place-learning arena. Hardware, software, analysis and CAD."
 site_author: Ajad Ismail
 site_url: https://ajadismail2.github.io/Visual-place-learning/
 repo_url: https://github.com/ajadismail2/Visual-place-learning
@@ -52,5 +52,10 @@ nav:
       - Single-panel test: firmware/panel-test.md
       - Four-Peltier bench controller: firmware/four-peltier.md
       - Downloads and references: resources/sources.md
+  - ANALYSIS:
+      - From video to measurements: analysis/index.md
+      - Tracking with AMADEUS: analysis/tracking.md
+      - Using the analysis GUI: analysis/gui.md
+      - Measurements and outputs: analysis/measurements.md
   - CAD:
       - Parts and STEP files: cad/index.md

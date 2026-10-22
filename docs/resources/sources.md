@@ -17,9 +17,13 @@ Network credentials are excluded. A separate [thermal-ring correction](../firmwa
 
 The code opens the [website redirect](../go/index.html). Its destination can be updated without replacing a printed QR code.
 
+## Analysis software
+
+[AMADEUS tracking and analysis workflow](../analysis/index.md) · [Download the arena analysis GUI](../downloads/analysis/fly_target_time_gui_amadeus.py)
+
 ## CAD files
 
-See [CAD and printed parts](../cad/index.md). Model downloads are not currently available.
+Six editable STEP models are available in [CAD and fabricated parts](../cad/index.md).
 
 ## Original experiment
 
