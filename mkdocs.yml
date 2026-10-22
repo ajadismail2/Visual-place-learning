@@ -53,4 +53,4 @@ nav:
       - Four-Peltier bench controller: firmware/four-peltier.md
       - Downloads and references: resources/sources.md
   - CAD:
-      - Parts and file outline: cad/index.md
+      - Parts and STEP files: cad/index.md
