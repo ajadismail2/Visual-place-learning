@@ -24,9 +24,7 @@ py fly_target_time_gui_amadeus.py --self-test
 
 Choose the reviewed AMADEUS CSV, then the matching video. The CSV contains coordinates in pixels, not centimetres. Check that the displayed markers follow the same flies in the video before calculating results.
 
-![Analysis GUI showing file inputs, settings, fly selection, playback and measurement panels](../assets/analysis/gui-overview.svg)
-
-*Interface guide based on the supplied code, not a screenshot. The groups correspond to the controls in the application.*
+![Analysis GUI showing file inputs, settings, fly selection, playback and measurement panels](../assets/analysis/analysis-gui.png)
 
 ## 3 · Register the four targets
 
@@ -34,9 +32,7 @@ Open **Draw / load**. Select A, B, C or D, then drag a rectangle over that tile.
 
 Use the pre-experiment mask to identify tile positions. Confirm the labels against the physical target controller, then choose **Use Boxes** and save the box JSON. All four regions are required and overlapping regions are rejected.
 
-![Target-box editor with named regions and frame navigation](../assets/analysis/gui-boxes.svg)
-
-*Target-editor guide with a synthetic arena layout. These positions illustrate the controls, not the physical target coordinates.*
+![Target-box editor with named regions and frame navigation](../assets/analysis/target-registration.png)
 
 ## 4 · Set time, scale and trials
 
