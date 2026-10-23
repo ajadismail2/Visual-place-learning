@@ -27,8 +27,8 @@ validation:
     not_found: warn
     anchors: warn
 nav:
+  - Home: index.md
   - HARDWARE:
-      - Overview: index.md
       - Start with the hardware: hardware/index.md
       - Equipment and materials: build/equipment.md
       - Arena and dimensions: build/arena.md
@@ -44,7 +44,6 @@ nav:
       - Install and upload: software/upload.md
       - Run an experiment: operation.md
       - Checks and troubleshooting: software/checks.md
-      - Experiment controller: firmware/experiment.md
       - 60-module background: firmware/background.md
       - LED display controller: firmware/display.md
       - Thermal ring: firmware/ring.md

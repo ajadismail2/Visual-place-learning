@@ -32,7 +32,6 @@ This separation matters when testing and stopping the apparatus: a response from
 
 | Program | Board and job | What it does not do |
 | --- | --- | --- |
-| [Experiment_Controller](experiment.md) | Target ESP32; timing and four drivers | Does not regulate target output from measured target temperature |
 | [Display_Controller](display.md) | Display ESP32; visual pattern | Does not power the Peltier drivers |
 | [Closedloop_60peltier](background.md) | Arduino; background temperature loop | One sensor does not measure all 60 module temperatures separately |
 | [Thermal_ring](ring.md) | Arduino; perimeter heater loop | Does not stop when the experiment controller receives STOP |

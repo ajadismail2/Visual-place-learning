@@ -59,4 +59,4 @@ The tiles share their surroundings even though their electrical outputs are sepa
 
 Record all four temperatures and the background on the same time axis. For each selection, compare the time to cool, the temperature maintained during the hold, and recovery after switching away. The best single minimum does not show whether a target remained suitable for the whole trial. A measured comparison of A–D is not available.
 
-[Experiment controller code](../firmware/experiment.md) · [Operating procedure](../operation.md) · [Wiring](wiring.md)
+[Operating procedure](../operation.md) · [Wiring](wiring.md)

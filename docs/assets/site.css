@@ -21,3 +21,27 @@
 @media(max-width:460px){body{font-size:15px}.masthead{padding:18px;gap:10px}.brand{gap:10px}.brand-mark{width:34px;height:34px;font-size:12px}.brand-name{font-size:17px}.brand-name small{font-size:8px;letter-spacing:1.3px}.header-actions{gap:12px}.header-actions button{font-size:11px}.section-tabs a{padding:14px 10px;font-size:10px;letter-spacing:.7px;text-align:center}.section-tabs a span{display:none}.article{padding:28px 20px 24px}.article-header h1{font-size:34px;letter-spacing:-.6px}.prose h2{font-size:25px}.prose table{font-size:12px}.prose th,.prose td{padding:10px 12px}.photo-pair{grid-template-columns:1fr}.photo-pair .photo-space{height:160px}.calc-inputs{grid-template-columns:1fr}.page-contents ul{columns:1}.equation{font-size:22px}.page-nav{font-size:12px;gap:20px}}
 @media(pointer:coarse){button,summary,.sidebar nav a{min-height:44px}}
 @media print{body,.site-shell{background:white;border:0}.masthead{padding:0 0 18px;background:none;color:var(--ink)}.brand-name small{color:var(--muted)}.header-actions,.sidebar,.search-panel,.page-contents,.page-nav,.section-tabs,.page-footer,.calculation{display:none!important}.document-layout{display:block}.article{padding:24px 0;max-width:none}.prose{font-size:11pt}.photo-slot,.build-sheet{break-inside:avoid}.prose h2,.prose h3{break-after:avoid}.article-header h1{font-size:28pt}a{color:inherit}}
+/* Independent research homepage and its link alongside the four manuals. */
+.section-tabs{grid-template-columns:.7fr repeat(4,minmax(0,1fr))}
+.section-tabs a{padding-inline:22px}
+body[data-section=home] .document-layout{display:block}
+body[data-section=home] .sidebar{display:none}
+body[data-section=home] .sidebar.open{display:block}
+body[data-section=home] .article{max-width:1180px;margin:auto;padding:52px 58px 28px}
+body[data-section=home] .article-header h1{max-width:none;font-size:clamp(34px,4.3vw,58px)}
+.home-intro{display:grid;grid-template-columns:minmax(0,1fr) 255px;gap:52px;align-items:center;margin:32px 0}
+.home-intro>div>p:first-child{font:25px/1.5 var(--serif);color:var(--teal)}
+.home-link{display:inline-block;margin:4px 22px 0 0;font-size:14px;font-weight:600}
+.prose .home-figure{margin:0;min-width:0}
+.prose .home-figure img{margin:0;width:100%;height:auto}
+.home-figure figcaption{font-size:12px;line-height:1.6;color:var(--muted);padding-top:12px}
+.prose .arena-photo img{width:100%;border:0}
+.home-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;border-block:1px solid var(--line);padding:24px 0;margin:36px 0;font-size:12px;color:var(--muted)}
+.home-facts strong{display:block;font:27px/1.3 var(--serif);color:var(--teal);margin-bottom:5px}
+.home-build{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:48px;align-items:start}
+.home-build .home-figure{background:#edf0e8;padding:18px}
+.home-build .home-figure img{height:330px;object-fit:contain;border:0;background:transparent}
+.prose .analysis-photo{max-width:850px;margin:26px auto 0}
+body[data-section=home] .section-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:760px){.section-tabs a{padding:14px 8px;font-size:10px;letter-spacing:.6px}.section-tabs a span{display:none}body[data-section=home] .article{padding:32px 24px 24px}.home-intro{grid-template-columns:minmax(0,1fr) 185px;gap:25px}.home-build{grid-template-columns:minmax(0,1fr) 185px;gap:24px}.home-build .home-figure img{height:280px}.home-facts{gap:12px}.home-facts strong{font-size:23px}}
+@media(max-width:540px){.home-intro,.home-build{grid-template-columns:1fr}.prose .arena-photo{max-width:255px;margin:auto}.home-build .home-figure{max-width:260px;margin:auto}.home-facts{grid-template-columns:repeat(2,1fr);gap:22px}.home-intro>div>p:first-child{font-size:23px}body[data-section=home] .section-cards{grid-template-columns:1fr}}

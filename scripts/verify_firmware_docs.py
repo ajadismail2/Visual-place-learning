@@ -11,7 +11,7 @@ site=root/'site'
 downloads=site/'downloads'
 manifest=json.loads((downloads/'firmware-manifest.json').read_text())
 assert manifest['uploaded_sketch_count']==len(manifest['files'])==7
-page_for={'Experiment_Controller.ino':'experiment','Closedloop_60peltier.ino':'background','Display_Controller.ino':'display','Thermal_ring.ino':'ring','thermal_camera.ino':'camera','SinglePanelTest.ino':'panel-test','4_peltier_mosfet_hbridge.ino':'four-peltier'}
+page_for={'Closedloop_60peltier.ino':'background','Display_Controller.ino':'display','Thermal_ring.ino':'ring','thermal_camera.ino':'camera','SinglePanelTest.ino':'panel-test','4_peltier_mosfet_hbridge.ino':'four-peltier'}
 class Source(HTMLParser):
  def __init__(self,text):
   super().__init__();self.inside=False;self.code=False;self.parts=[];self.feed(text)
@@ -31,6 +31,7 @@ with zipfile.ZipFile(downloads/'arena-firmware-2026-10-17.zip') as archive:
   path=downloads/item['path'];data=path.read_bytes()
   assert hashlib.sha256(data).hexdigest()==item['sha256'],item['filename']
   assert archive.read(str(Path(item['path']).relative_to('firmware')))==data,item['filename']
+  if item['filename'] not in page_for:continue
   html=(site/'firmware'/page_for[item['filename']]/'index.html').read_text()
   assert [line.rstrip() for line in ''.join(Source(html).parts).splitlines()]==[line.rstrip() for line in data.decode().splitlines()],f'Displayed source differs: {item["filename"]}'
  for path in (downloads/'firmware').rglob('*'):
@@ -50,4 +51,5 @@ assert 'float Kd = 150;3' in ring
 assert fixed==ring.replace('float Kd = 150;3','float Kd = 150;')
 old=json.loads((downloads/'protocol-2026-10-15.json').read_text())
 assert old['final_all_heating_trials']==1
-print('PASS: all seven displayed sketches match downloads and ZIP; configuration is excluded; syntax correction and revision boundary are explicit.')
+assert not (site/'firmware/experiment/index.html').exists()
+print('PASS: six displayed sketches match downloads; all seven downloads match ZIP; configuration is excluded; syntax correction and revision boundary are explicit.')

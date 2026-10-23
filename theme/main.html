@@ -8,7 +8,7 @@
   <meta name="description" content="{{ page.meta.description if page and page.meta.description else config.site_description }}">
   {% if page and page.canonical_url %}<link rel="canonical" href="{{ page.canonical_url }}">{% endif %}
   <link rel="icon" type="image/svg+xml" href="{{ 'assets/favicon.svg' | url }}">
-  <link rel="stylesheet" href="{{ 'assets/site.css' | url }}?v=hardware-software-analysis-cad">
+  <link rel="stylesheet" href="{{ 'assets/site.css' | url }}?v=research-home">
   <script src="{{ 'assets/site.js' | url }}" defer data-search-index="{{ 'search/search_index.json' | url }}" data-root="{{ '.' | url }}"></script>
 </head>
 <body data-section="{{ page.meta.section | lower if page and page.meta.section else 'overview' }}">
@@ -18,7 +18,7 @@
   <a class="brand" href="{{ '.' | url }}"><span class="brand-name">Visual Place Learning<small>APPARATUS MANUAL</small></span></a>
   <div class="header-actions"><a href="{{ 'resources/sources/' | url }}">Downloads</a><button type="button" class="search-toggle" aria-expanded="false" aria-controls="site-search">Search</button><button type="button" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Contents</button></div>
 </header>
-<nav class="section-tabs" aria-label="Main sections"><a href="{{ 'hardware/' | url }}" data-section="hardware" {% if page and page.meta.section == 'Hardware' %}aria-current="true"{% endif %}><span>01</span> HARDWARE</a><a href="{{ 'firmware/' | url }}" data-section="software" {% if page and page.meta.section == 'Software' %}aria-current="true"{% endif %}><span>02</span> SOFTWARE</a><a href="{{ 'analysis/' | url }}" data-section="analysis" {% if page and page.meta.section == 'Analysis' %}aria-current="true"{% endif %}><span>03</span> ANALYSIS</a><a href="{{ 'cad/' | url }}" data-section="cad" {% if page and page.meta.section == 'CAD' %}aria-current="true"{% endif %}><span>04</span> CAD</a></nav>
+<nav class="section-tabs" aria-label="Main sections"><a class="home-tab" href="{{ '.' | url }}" {% if page and page.is_homepage %}aria-current="true"{% endif %}>HOME</a><a href="{{ 'hardware/' | url }}" data-section="hardware" {% if page and page.meta.section == 'Hardware' %}aria-current="true"{% endif %}><span>01</span> HARDWARE</a><a href="{{ 'firmware/' | url }}" data-section="software" {% if page and page.meta.section == 'Software' %}aria-current="true"{% endif %}><span>02</span> SOFTWARE</a><a href="{{ 'analysis/' | url }}" data-section="analysis" {% if page and page.meta.section == 'Analysis' %}aria-current="true"{% endif %}><span>03</span> ANALYSIS</a><a href="{{ 'cad/' | url }}" data-section="cad" {% if page and page.meta.section == 'CAD' %}aria-current="true"{% endif %}><span>04</span> CAD</a></nav>
 <section class="search-panel" id="site-search" aria-label="Search documentation" hidden>
   <div class="search-inner"><label for="search-input">Search documentation</label><div class="search-row"><input id="search-input" type="search" placeholder="Peltier, wiring, angle…" autocomplete="off"><button type="button" id="search-close">Close</button></div><p id="search-status" role="status">Enter at least two characters.</p><ul id="search-results"></ul></div>
 </section>
@@ -32,7 +32,7 @@
     <header class="article-header"><p class="breadcrumb">{{ page.meta.section if page and page.meta.section else 'Documentation' }}</p><h1>{{ page.meta.title if page and page.meta.title else (page.title if page else 'Page not found') }}</h1></header>
     {% if page and not page.is_homepage and page.toc %}<details class="page-contents"><summary>On this page</summary><ul>{% for item in page.toc %}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endfor %}</ul></details>{% endif %}
     <div class="prose">{% if page %}{{ page.content }}{% else %}<p>This page is no longer part of the build documentation. <a href="{{ '.' | url }}">Open the build overview</a> or use the contents to find a component.</p>{% endif %}</div>
-    {% if page %}<nav class="page-nav" aria-label="Adjacent pages">{% if page.previous_page %}<a href="{{ page.previous_page.url | url }}"><small>Previous</small>← {{ page.previous_page.title }}</a>{% endif %}{% if page.next_page %}<a href="{{ page.next_page.url | url }}"><small>Next</small>{{ page.next_page.title }} →</a>{% endif %}</nav>{% endif %}
+    {% if page and not page.is_homepage %}<nav class="page-nav" aria-label="Adjacent pages">{% if page.previous_page %}<a href="{{ page.previous_page.url | url }}"><small>Previous</small>← {{ page.previous_page.title }}</a>{% endif %}{% if page.next_page %}<a href="{{ page.next_page.url | url }}"><small>Next</small>{{ page.next_page.title }} →</a>{% endif %}</nav>{% endif %}
     <footer class="page-footer"><span>Ajad Ismail · Visual place-learning apparatus</span><a href="{{ 'resources/sources/' | url }}">Downloads and references</a></footer>
   </main>
 </div>
