@@ -11,7 +11,7 @@ site=root/'site'
 downloads=site/'downloads'
 manifest=json.loads((downloads/'firmware-manifest.json').read_text())
 assert manifest['uploaded_sketch_count']==len(manifest['files'])==7
-page_for={'Closedloop_60peltier.ino':'background','Display_Controller.ino':'display','Thermal_ring.ino':'ring','thermal_camera.ino':'camera','SinglePanelTest.ino':'panel-test','4_peltier_mosfet_hbridge.ino':'four-peltier'}
+page_for={'Closedloop_60peltier.ino':'background','Display_Controller.ino':'display','Thermal_ring.ino':'ring','thermal_camera.ino':'camera','SinglePanelTest.ino':'panel-test'}
 class Source(HTMLParser):
  def __init__(self,text):
   super().__init__();self.inside=False;self.code=False;self.parts=[];self.feed(text)
@@ -52,4 +52,5 @@ assert fixed==ring.replace('float Kd = 150;3','float Kd = 150;')
 old=json.loads((downloads/'protocol-2026-10-15.json').read_text())
 assert old['final_all_heating_trials']==1
 assert not (site/'firmware/experiment/index.html').exists()
-print('PASS: six displayed sketches match downloads; all seven downloads match ZIP; configuration is excluded; syntax correction and revision boundary are explicit.')
+assert not (site/'firmware/four-peltier/index.html').exists()
+print('PASS: five displayed sketches match downloads; all seven downloads match ZIP; configuration is excluded; syntax correction and revision boundary are explicit.')

@@ -49,7 +49,6 @@ nav:
       - Thermal ring: firmware/ring.md
       - Thermal camera stream: firmware/camera.md
       - Single-panel test: firmware/panel-test.md
-      - Four-Peltier bench controller: firmware/four-peltier.md
       - Downloads and references: resources/sources.md
   - ANALYSIS:
       - From video to measurements: analysis/index.md

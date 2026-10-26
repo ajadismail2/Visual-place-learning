@@ -37,7 +37,7 @@ This distinction matters when interpreting our recordings. Arrival time measures
 
 The aim is to make the assay practical to build, repair and adapt with accessible parts. Custom fabrication is concentrated in the supports and fittings that hold the components together.
 
-<div class="home-build" markdown="1">
+<div markdown="1">
 
 <div markdown="1">
 
@@ -51,7 +51,6 @@ These choices reduce dependence on custom instruments. The camera, power supplie
 
 </div>
 
-<figure class="home-figure"><img src="hardware/images/ir_stand.png" alt="CAD model of the infrared light stand with a pipe support and adjustable lampshade" loading="lazy"><figcaption>Infrared-light support: pipe, printed fittings and a lampshade.</figcaption></figure>
 
 </div>
 

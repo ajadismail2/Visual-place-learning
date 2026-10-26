@@ -37,11 +37,10 @@ This separation matters when testing and stopping the apparatus: a response from
 | [Thermal_ring](ring.md) | Arduino; perimeter heater loop | Does not stop when the experiment controller receives STOP |
 | [thermal_camera](camera.md) | ESP32; thermal-image stream | Does not save a file on the computer by itself |
 
-## Diagnostic and alternative programs
+## Diagnostic program
 
 [SinglePanelTest](panel-test.md) checks one display panel before connecting the full chain. Uploading it replaces the display controller program on that board, so restore the display program before running an experiment.
 
-[4_peltier_mosfet_hbridge](four-peltier.md) is an alternative bench-control program. Its pin assignments and commands differ from the main setup. Use its own wiring table.
 
 ## Three terms used throughout
 
