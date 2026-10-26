@@ -5,7 +5,7 @@ site_url: https://ajadismail2.github.io/Visual-place-learning/
 repo_url: https://github.com/ajadismail2/Visual-place-learning
 edit_uri: edit/main/docs/
 theme:
-  name: mkdocs
+  name: readthedocs
 plugins:
   - search
 markdown_extensions:
