@@ -24,7 +24,7 @@ ESP-NOW messages `STATE:A`–`STATE:D` select the panorama position. The display
 
 The sketch maps a 256 × 64 logical canvas onto eight panels.
 
-The diagonals in this program are about 19.5° from vertical. The horizontal bars are 11 and 10 rows thick.
+The horizontal bars are 11 and 10 rows thick.
 
 ## Direct control
 
