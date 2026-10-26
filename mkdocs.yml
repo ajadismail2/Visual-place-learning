@@ -33,6 +33,7 @@ nav:
       - Equipment and materials: build/equipment.md
       - Arena and dimensions: build/arena.md
       - ESP32 and Arduino wiring: build/wiring.md
+      - LED panels: hardware/led-panels.md
       - Visual display geometry: build/visual-angle.md
       - Background circuit: build/peltier.md
       - Four cooling targets: build/four-channels.md
@@ -46,6 +47,7 @@ nav:
       - Checks and troubleshooting: software/checks.md
       - Four-Peltier controller: firmware/target-controller.md
       - 60-module background: firmware/background.md
+      - LED matrix library: software/led-library.md
       - LED display controller: firmware/display.md
       - Thermal ring: firmware/ring.md
       - Thermal camera stream: firmware/camera.md

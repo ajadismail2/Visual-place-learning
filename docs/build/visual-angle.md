@@ -56,4 +56,4 @@ Check the direction of rotation, bar count and continuity across panel boundarie
 
 The LED program's requested refresh setting is separate from the behaviour camera's frame rate. A firmware setting is not a measured panel refresh rate. Assess the actual display timing on the assembled hardware before assigning a measured value to it.
 
-[Read the display code](../firmware/display.md)
+[Panel choice and refresh](../hardware/led-panels.md) · [Read the display code](../firmware/display.md)
