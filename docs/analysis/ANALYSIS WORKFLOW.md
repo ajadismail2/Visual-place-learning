@@ -1,5 +1,5 @@
 ---
-title: From video to behavioural measurements
+title: Analysis Workflow
 description: Identity tracking, target registration and reproducible analysis of the visual place-learning experiment.
 section: Analysis
 ---
