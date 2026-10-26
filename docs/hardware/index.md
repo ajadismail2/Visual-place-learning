@@ -9,7 +9,6 @@ The apparatus combines a heated walking arena, four cooling Peltier plates, an L
 
 One Peltier plate cools during each trial while the other three heat. The Peltier-plate ESP32 synchronises the selected position with the visual panorama; the background and ring run independent temperature-control loops.
 
-<figure class="photo-slot" data-photo-id="hardware-complete"><div class="photo-space" aria-label="Blank space for a photograph of the complete apparatus"></div><figcaption><span>Photo · H01</span><strong>Complete apparatus</strong></figcaption></figure>
 
 ## Assembly
 

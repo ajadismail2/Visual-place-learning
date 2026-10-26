@@ -6,10 +6,6 @@ section: Home
 
 # Visual place learning in Drosophila
 
-<div class="home-intro" markdown="1">
-
-<div markdown="1">
-
 This custom-built system is used to study how individual *Drosophila* learn the location of a cool target from surrounding visual cues. It adapts the place-learning assay described by Ofstad, Zuker and Reiser using accessible electronics and locally fabricated parts. [1](#reference)
 
 The documentation covers:
@@ -19,21 +15,16 @@ The documentation covers:
 - **Controller software:** installation, configuration and operation of the Arduino and ESP32 programs.
 - **Tracking and analysis:** AMADEUS tracking, target registration and behavioural measurements.
 
-[Explore the hardware](hardware/index.md){: .home-link } [Run an experiment](operation.md){: .home-link } [Follow the analysis](analysis/index.md){: .home-link }
-
-</div>
-
-<figure class="home-figure arena-photo"><img src="hardware/images/LED.jpg" alt="Overhead photograph of the arena surrounded by green LED panels" width="187" height="185"><figcaption>The visual place-learning arena.</figcaption></figure>
-
-</div>
+[Explore the hardware](hardware/index.md){: .home-link } [Run an experiment](software/operation.md){: .home-link } [Follow the analysis](analysis/index.md){: .home-link }
 
 This documentation describes the current apparatus and will be updated as the system develops.
 
 ## Documentation
 
 1. [Hardware](hardware/index.md) — components, construction, wiring and imaging.
-2. [Software](firmware/index.md) — controller programs, installation and operation.
+2. [Software](software/index.md) — controller programs, installation and operation.
 3. [Analysis](analysis/index.md) — tracking, target registration and behavioural measurements.
 4. [CAD](cad/index.md) — editable STEP files for fabricated parts.
+5. [Resources](resources/index.md) — downloads, checksums and technical references.
 
 <p class="source-note" id="reference"><strong>1 · Reference</strong><br>Ofstad, T. A., Zuker, C. S. &amp; Reiser, M. B. <em>Visual place learning in Drosophila melanogaster.</em> Nature 474, 204–207 (2011). <a href="https://doi.org/10.1038/nature10131">doi:10.1038/nature10131</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3169673/">Full text</a></p>

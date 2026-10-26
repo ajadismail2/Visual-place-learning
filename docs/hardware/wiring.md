@@ -5,14 +5,6 @@ section: Hardware
 ---
 Pin maps for the Peltier-plate, display, background, ring and thermal-camera controllers.
 
-## Arena connection overview
-
-[![Arena electrical architecture: Peltier-plate and display ESP32 controllers, Arduino heating loops, power supplies and recording connections](../assets/arena-wiring-conference.png)](../assets/arena-wiring-conference.png)
-
-Separate Peltier-plate drivers, background and ring feedback loops, and camera connections are shown above.
-
-[Download full-resolution PNG](../assets/arena-wiring-conference.png) · [Download vector diagram](../assets/arena-wiring-conference.svg)
-
 ## Controller assignments
 
 | Label to put on the board | Program | Job |
@@ -27,11 +19,8 @@ Background and ring pin maps refer to Arduino boards; confirm board-specific I²
 
 ESP32 assignments refer to the classic ESP32, not the C3.
 
-<div class="photo-pair"><figure class="photo-slot" data-photo-id="esp32-board"><div class="photo-space" aria-label="Blank ESP32 photograph"></div><figcaption><span>Photo · H02</span><strong>ESP32 board and pin labels</strong></figcaption></figure><figure class="photo-slot" data-photo-id="arduino-board"><div class="photo-space" aria-label="Blank Arduino photograph"></div><figcaption><span>Photo · H03</span><strong>Arduino thermal controller</strong></figcaption></figure></div>
 
 ## Power and Peltier-plate connections
-
-[![Separate load power and ESP32 signal paths](../assets/setup/power-paths.svg)](../assets/setup/power-paths.svg)
 
 1. Disconnect supplies and label the Peltier plates using the [pin table](peltier.md#target-controller-pin-map).
 2. Connect ESP32 PWM and enable pins to driver inputs.
@@ -42,7 +31,6 @@ ESP32 assignments refer to the classic ESP32, not the C3.
 
 Follow the development board's power-input specification before combining USB and external power.
 
-<figure class="photo-slot" data-photo-id="driver-connections"><div class="photo-space" aria-label="Blank photograph of one fully wired driver"></div><figcaption><span>Photo · H04</span><strong>One complete Peltier-plate channel</strong></figcaption></figure>
 
 ## Display board pin map
 
@@ -56,11 +44,10 @@ Display ESP32 assignments:
 | LAT / OE / CLK | 25 / 26 / 22 | Latch, output enable and clock |
 | GND | Controller and panel signal ground | Shared signal reference |
 
-![Display signal chain and separate panel power](../assets/display-wiring.svg)
 
 Connect the ESP32 to panel 1 **IN**, then chain **OUT → IN**. Power panels separately. Use level conversion if required for 3.3 V control signals.
 
-Run the [single-panel test](../firmware/panel-test.md), then restore the display sketch. ESP-NOW carries the selected A–D state.
+Run the [single-panel test](../software/panel-test.md), then restore the display sketch. ESP-NOW carries the selected A–D state.
 
 ## Background, ring and camera
 
@@ -82,8 +69,6 @@ Size the supply and power stage for all 60 Peltier modules in series. Peltier mo
 Match driver input logic levels and share signal ground for non-isolated stages. Keep load returns separate from signal wiring.
 
 ### Proposed ESP32 conversion
-
-![Proposed ESP32 thermal-controller wiring, distinct from the supplied Arduino pin assignments](../assets/thermal-wiring.svg)
 
 | Separate controller | Sensor pins | Proposed drive pin |
 | --- | --- | --- |

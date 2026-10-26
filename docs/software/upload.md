@@ -11,7 +11,6 @@ Install Arduino IDE. Connect one board with a data-capable USB cable and select 
 
 For ESP32 boards, install the [Espressif board package](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html). For Arduino boards, select the matching model and package. Record working package and library versions.
 
-<figure class="photo-slot" data-photo-id="ide-board-port"><div class="photo-space" aria-label="Blank screenshot of Arduino IDE board and port selection"></div><figcaption><span>Screenshot · S01</span><strong>Board and port selection</strong></figcaption></figure>
 
 ## 2. Open one sketch at a time
 
@@ -50,10 +49,9 @@ Open Serial Monitor at the program's baud rate and send commands with a line end
 
 Peltier-plate, display, background and ring controllers use **115200 baud**. The thermal camera uses **921600 baud** and binary packets, which are not readable as temperature text in Serial Monitor.
 
-<figure class="photo-slot" data-photo-id="serial-commands"><div class="photo-space" aria-label="Blank screenshot of the serial monitor"></div><figcaption><span>Screenshot · S02</span><strong>A successful command and response</strong></figcaption></figure>
 
 ## 5. Test before connecting all loads
 
-Test one panel or driver channel at a time. Confirm Peltier-plate mapping and temperature response. Restore experiment firmware after diagnostics, then follow the [operating procedure](../operation.md).
+Test one panel or driver channel at a time. Confirm Peltier-plate mapping and temperature response. Restore experiment firmware after diagnostics, then follow the [operating procedure](operation.md).
 
 [Arduino upload guide](https://support.arduino.cc/hc/en-us/articles/4733418441116-Upload-a-sketch-in-Arduino-IDE) · [Troubleshooting](checks.md)

@@ -21,7 +21,6 @@ Secure each stand, allow heat dissipation and provide cable strain relief. Check
 
 [IR stand and lampshade CAD](../cad/index.md#03-infrared-light-stand) · [Download the STEP model](../downloads/cad/ir-light-stand.step)
 
-<figure class="photo-slot" data-photo-id="illumination-assembly"><div class="photo-space" aria-label="Space for a photograph of the IR array, diffuser, printed lampshade and PVC stand"></div><figcaption><strong>IR array, diffuser and printed shade on the PVC stand</strong></figcaption></figure>
 
 ## Power and positioning
 

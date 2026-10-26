@@ -11,7 +11,6 @@ The 60 Peltier modules form one series circuit with a single power-control outpu
 
 Peltier current direction determines heat-flow direction. The achieved surface temperature depends on current, thermal contact and heat dissipation. Verify polarity and temperature on the assembled arena.
 
-<figure class="photo-slot" data-photo-id="background-sensor"><div class="photo-space" aria-label="Blank photograph of the 60 Peltier modules and temperature sensor"></div><figcaption><span>Photo · H08</span><strong>Background circuit and sensor position</strong></figcaption></figure>
 
 ### Set the background temperature
 
@@ -42,11 +41,9 @@ One ESP32 drives four BTS7960 bridges. LPWM heats each Peltier plate and RPWM co
 
 The outputs use **20 kHz, 8-bit PWM**. Connect each Peltier plate across its driver output and verify the installed polarity under temperature monitoring.
 
-![Four separate driver channels connected to the Peltier-plate ESP32](../assets/target-wiring.svg)
 
 Wire with power disconnected using the [connection guide](wiring.md#power-and-peltier-plate-connections). Label both ends of each cable A–D and retain these labels in the video and analysis.
 
-<figure class="photo-slot" data-photo-id="target-four"><div class="photo-space" aria-label="Blank photograph of the four cooling Peltier plates"></div><figcaption><span>Photo · H09</span><strong>Four cooling Peltier plates</strong></figcaption></figure>
 
 ### Trial sequence {#trial-sequence}
 
@@ -61,7 +58,6 @@ The Peltier-plate controller heats all four Peltier plates for five minutes befo
 | Peltier plates previously cooled | Heating at PWM 24 |
 | Return to heating | PWM 50 for 17 s, then 24 |
 
-![Programmed cooling and return-to-heating outputs over one trial](../assets/setup/target-pwm.svg)
 
 These are programmed outputs rather than measured temperatures. The selected Peltier plate should reach **23–25 °C**; confirm this from recorded surface temperatures.
 
@@ -79,10 +75,8 @@ The four Peltier plates add heat to the arena while the 60-Peltier background is
 
 A 10-trial run lasts **55 minutes** including preheat; an 11-trial run lasts **60 minutes**. Report both the TMP117 reading and spatial surface measurements because one sensor cannot describe the entire arena.
 
-<figure class="photo-slot" data-photo-id="peltier-temperature-series"><div class="photo-space" aria-label="Reserved space for a plot of background and Peltier-plate temperatures over 10 or 11 trials"></div><figcaption><span>Plot · to be added</span><strong>Background and Peltier-plate temperatures across the complete experiment</strong></figcaption></figure>
 
-<figure class="photo-slot" data-photo-id="peltier-temperature-rise"><div class="photo-space" aria-label="Reserved space for a plot of additional heating relative to the reference run"></div><figcaption><span>Plot · to be added</span><strong>Additional heating relative to the background-only reference</strong></figcaption></figure>
 
 If the background temperature rises consistently, adjust the `SET` temperature in a later validation run and measure the result again. Report the commanded temperature, sensor location and measured surface temperatures together.
 
-[Background controller](../firmware/background.md) · [Four-Peltier controller](../firmware/target-controller.md) · [Operating procedure](../operation.md) · [Thermal imaging](imaging.md#set-up-the-thermal-camera)
+[Background controller](../software/background.md) · [Four-Peltier controller](../software/target-controller.md) · [Operating procedure](../software/operation.md) · [Thermal imaging](imaging.md#set-up-the-thermal-camera)

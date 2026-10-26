@@ -32,7 +32,7 @@ with zipfile.ZipFile(downloads/'arena-firmware-2026-10-17.zip') as archive:
   assert hashlib.sha256(data).hexdigest()==item['sha256'],item['filename']
   assert archive.read(str(Path(item['path']).relative_to('firmware')))==data,item['filename']
   if item['filename'] not in page_for:continue
-  html=(site/'firmware'/page_for[item['filename']]/'index.html').read_text()
+  html=(site/'software'/page_for[item['filename']]/'index.html').read_text()
   assert [line.rstrip() for line in ''.join(Source(html).parts).splitlines()]==[line.rstrip() for line in data.decode().splitlines()],f'Displayed source differs: {item["filename"]}'
  for path in (downloads/'firmware').rglob('*'):
   if path.is_file():assert archive.read(path.relative_to(downloads/'firmware').as_posix())==path.read_bytes()
@@ -55,6 +55,5 @@ assert 'float Kd = 150;3' in ring
 assert fixed==ring.replace('float Kd = 150;3','float Kd = 150;')
 old=json.loads((downloads/'protocol-2026-10-15.json').read_text())
 assert old['final_all_heating_trials']==1
-assert not (site/'firmware/experiment/index.html').exists()
-assert not (site/'firmware/four-peltier/index.html').exists()
+assert not (site/'firmware').exists()
 print('PASS: six displayed sketches match downloads; all seven downloads match ZIP; configuration is excluded; syntax correction and revision boundary are explicit.')

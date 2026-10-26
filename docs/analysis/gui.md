@@ -24,7 +24,6 @@ py fly_target_time_gui_amadeus.py --self-test
 
 Load the reviewed AMADEUS CSV and matching video. Coordinates are in pixels. Confirm markers follow the correct flies.
 
-![Analysis GUI showing file inputs, settings, fly selection, playback and measurement panels](../assets/analysis/analysis-gui.png)
 
 ## 3 · Register the four targets
 
@@ -32,7 +31,6 @@ Open **Draw / load**, select A–D and drag a rectangle over each tile. Use the 
 
 Locate tiles with the pre-experiment mask and verify labels against the controller. Select **Use Boxes** and save the JSON. All four boxes are required; overlaps are rejected.
 
-![Target-box editor with named regions and frame navigation](../assets/analysis/target-registration.png)
 
 ## 4 · Set time, scale and trials
 
@@ -62,6 +60,5 @@ Review jumps and low coverage before export. Flags do not remove points or repai
 
 Use **Export CSV**, **Choose export...** or **Export MP4**. Tables and plots can be saved separately.
 
-![Export chooser showing separate selections for tables, metadata and trajectory plots](../assets/analysis/gui-exports.svg)
 
 [What each output means](measurements.md)

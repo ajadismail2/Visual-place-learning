@@ -21,7 +21,6 @@ A ring and glass cover enclose the temperature-controlled walking surface, with 
 
 The **200 mm inner diameter** defines the walking area and image scale. Fabrication dimensions should follow measured components and CAD.
 
-<figure class="photo-slot" data-photo-id="arena-top"><div class="photo-space" aria-label="Blank top-view arena photograph"></div><figcaption><span>Photo · A02</span><strong>Walking surface and Peltier-plate positions</strong></figcaption></figure>
 
 ## Walking surface and Peltier plates
 
@@ -35,7 +34,6 @@ Mount the carrier on a rigid, level base. Supports and cables must not tilt the 
 
 See [CAD and printed parts](../cad/index.md) for the component overview.
 
-<figure class="photo-slot" data-photo-id="arena-side"><div class="photo-space" aria-label="Blank side-view photograph of arena clearances"></div><figcaption><span>Photo · A03</span><strong>Ring, glass cover and supporting structure</strong></figcaption></figure>
 
 ## Ring and glass cover
 

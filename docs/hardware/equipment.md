@@ -30,7 +30,6 @@ Match supplies and drivers to the Peltier modules' voltage and current ratings.
 | Signal cables and labelled connectors | Connect controller outputs to their destinations |
 | Rated load supplies and suitable distribution wiring | Carry power independently of signal pins |
 
-<figure class="photo-slot" data-photo-id="equipment-components"><div class="photo-space" aria-label="Blank component inventory photograph"></div><figcaption><span>Photo · H07</span><strong>Component inventory</strong></figcaption></figure>
 
 ## Imaging and mechanical parts
 

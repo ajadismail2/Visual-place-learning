@@ -7,7 +7,7 @@ edit_uri: edit/main/docs/
 theme:
   name: readthedocs
 extra_css:
-  - assets/readthedocs-extra.css
+  - styles/readthedocs-extra.css
 plugins:
   - search
 markdown_extensions:
@@ -39,18 +39,17 @@ nav:
       - Illumination: hardware/illumination.md
       - Cameras: hardware/imaging.md
   - SOFTWARE:
-      - How the programs work: firmware/index.md
+      - How the programs work: software/index.md
       - Install and upload: software/upload.md
-      - Run an experiment: operation.md
+      - Run an experiment: software/operation.md
       - Checks and troubleshooting: software/checks.md
-      - Four-Peltier controller: firmware/target-controller.md
-      - 60-Peltier background: firmware/background.md
+      - Four-Peltier controller: software/target-controller.md
+      - 60-Peltier background: software/background.md
       - LED matrix library: software/led-library.md
-      - LED display controller: firmware/display.md
-      - Thermal ring: firmware/ring.md
-      - Thermal camera stream: firmware/camera.md
-      - Single-panel test: firmware/panel-test.md
-      - Downloads and references: resources/sources.md
+      - LED display controller: software/display.md
+      - Thermal ring: software/ring.md
+      - Thermal camera stream: software/camera.md
+      - Single-panel test: software/panel-test.md
   - ANALYSIS:
       - From video to measurements: analysis/index.md
       - Tracking with AMADEUS: analysis/tracking.md
@@ -58,3 +57,5 @@ nav:
       - Measurements and outputs: analysis/measurements.md
   - CAD:
       - Parts and STEP files: cad/index.md
+  - RESOURCES:
+      - Downloads and references: resources/index.md

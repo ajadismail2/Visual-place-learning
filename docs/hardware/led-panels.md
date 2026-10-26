@@ -5,7 +5,6 @@ section: Hardware
 ---
 Eight inward-facing Waveshare P4 RGB panels form the visual enclosure. The display shows green bars on black and rotates the panorama when the selected Peltier plate changes.
 
-![The green visual pattern surrounding the arena](images/LED.jpg)
 
 ## Panel configuration
 
@@ -29,7 +28,6 @@ The supplied display sketch selects the FM6126A driver configuration, `clkphase 
 
 Centre the panels around the arena and leave clearance for the hinged access panel. Verify panel order, orientation and A–D panorama rotations before pairing the Peltier-plate controller.
 
-<div class="photo-pair"><figure class="photo-slot" data-photo-id="led-enclosure"><div class="photo-space" aria-label="Blank photograph of the LED enclosure"></div><figcaption><span>Photo · V01</span><strong>Panel enclosure and cable order</strong></figcaption></figure><figure class="photo-slot" data-photo-id="led-pattern"><div class="photo-space" aria-label="Blank photograph of the displayed visual pattern"></div><figcaption><span>Photo · V02</span><strong>Displayed visual pattern</strong></figcaption></figure></div>
 
 ## Setting the bar width
 
@@ -39,7 +37,6 @@ Measure the distance **D** from the reference viewing position to the panel plan
 
 At D = 160 mm, a 15° bar spans **42.13 mm (10.53 pixels)**. Eleven pixels span 44 mm, or **15.66°**. This calculation assumes a centred bar on a flat panel; apparent width varies with fly position and elevation.
 
-![Viewing geometry and calculated pixel width for a 15-degree bar](../assets/setup/display-geometry.svg)
 
 <details class="calculation" markdown="1">
 <summary>Angular-width calculator</summary>
@@ -58,10 +55,10 @@ At D = 160 mm, a 15° bar spans **42.13 mm (10.53 pixels)**. Eleven pixels span 
 
 The included program draws diagonals at about **19.5° from vertical**. The archived 45° design uses a different pattern. The horizontal region spans **344 mm**, with bars 11 and 10 rows thick.
 
-The sketch requests `min_refresh_rate = 1000`, a minimum scan-refresh setting. It is not a measured optical refresh rate. The library's estimated refresh depends on chain length, clock and colour depth. A–D pattern updates occur at trial transitions, separately from continuous scanning; the 24 fps behaviour video cannot measure panel refresh. See the [library documentation](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA) and [arena sketch](../firmware/display.md).
+The sketch requests `min_refresh_rate = 1000`, a minimum scan-refresh setting. It is not a measured optical refresh rate. The library's estimated refresh depends on chain length, clock and colour depth. A–D pattern updates occur at trial transitions, separately from continuous scanning; the 24 fps behaviour video cannot measure panel refresh. See the [library documentation](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA) and [arena sketch](../software/display.md).
 
 ## Check the display
 
 Test one panel, then the full chain at fixed brightness. Check A–D states, seams and ghosting. For optical refresh, measure light from several rows and panels with a fast photodiode and oscilloscope during steady display and transitions.
 
-Replacement panels must match the scan arrangement, supported driver, geometry, supply and firmware mapping. A HUB75 connector alone does not establish compatibility. [Display wiring](wiring.md#display-board-pin-map) · [Single-panel test](../firmware/panel-test.md).
+Replacement panels must match the scan arrangement, supported driver, geometry, supply and firmware mapping. A HUB75 connector alone does not establish compatibility. [Display wiring](wiring.md#display-board-pin-map) · [Single-panel test](../software/panel-test.md).
