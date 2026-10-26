@@ -9,10 +9,6 @@ AMADEUS learns from unlabelled recordings and represents each animal with an **o
 
 Segmentation extracts isolated animals for training. Movement supplies initial direction labels; synthetic crossings and clusters extend the training set. A YOLO detector locates animals, and temporal association links detections into tracks. Direction and identity are refined separately. [Method and preprint](https://www.biorxiv.org/content/10.64898/2026.09.19.752854v1).
 
-![How isolated animal images become training examples and reviewed identity tracks](../assets/analysis/tracking-method.svg)
-
-*Method diagram, not an experimental recording.*
-
 ## Choice of tracker
 
 This assay requires stable identities and centre coordinates, rather than detailed poses. Our earlier SLEAP workflow showed identity swaps during contact and missed detections near the edge. AMADEUS supports recording-specific training, synthetic interactions and identity review.
@@ -35,7 +31,7 @@ This choice is not a measured accuracy comparison. Review AMADEUS identities aro
 
 Use stable lighting and a fixed camera. See the [AMADEUS manual](https://amadeus.jpmyrmecol.com/Manual_EN.html) for installation and current controls.
 
-## Hand-off to the arena GUI
+## Tracking data for analysis
 
 Preserve the tracked video geometry. The GUI expects a wide CSV with `frame` and paired centre columns (`cx0, cy0, cx1, cy1`, etc.). Width, height and heading are optional; original IDs are retained.
 

@@ -44,7 +44,7 @@ The build uses standard electronics and locally fabricated supports.
 
 <div markdown="1">
 
-**Temperature.** Sixty Peltier modules heat the background; four independently driven tiles provide cooling targets. Underside cooling removes heat from the modules.
+**Temperature.** Sixty Peltier modules heat the background; four independently driven tiles provide cooling targets. Cooling rejects heat beneath each target.
 
 **Display.** Eight 64 × 32 LED panels form an octagon, with printed supports and a hinged access panel.
 

@@ -7,7 +7,7 @@ Prepare and test each controller, the thermal system and recording equipment bef
 
 ## Before a run
 
-1. Level the arena, seat the cover, clear the underside airflow and check the full camera view.
+1. Level the arena, seat the glass cover, clear the underside airflow and check the full camera view.
 2. Confirm board programs and serial-port assignments.
 3. Verify physical A–D labels against the [wiring table](hardware/four-channels.md#target-controller-pin-map) and display states.
 4. Check background and ring sensors. Measure target surfaces separately; the target controller has no temperature feedback.

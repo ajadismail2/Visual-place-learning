@@ -5,8 +5,6 @@ section: CAD
 ---
 Six editable STEP models cover the arena supports, display enclosure, lighting, thermal ring and target registration.
 
-<div class="download-links"><p><strong>CAD downloads:</strong> [wooden baseplate](../downloads/cad/wooden-baseplate.step) · [LED matrix octagon](../downloads/cad/led-matrix-octagon.step) · [IR light stand](../downloads/cad/ir-light-stand.step) · [thermal ring](../downloads/cad/thermal-ring.step) · [cool-spot mask](../downloads/cad/cool-spot-mask.step) · [Peltier tile holder](../downloads/cad/peltier-tile-holder.step)</p></div>
-
 ## 01 · Structural baseplate
 
 The wooden baseplate fixes the arena and supports in position. The geometry can also be cut from acrylic, aluminium or another rigid sheet.

@@ -1,6 +1,6 @@
 ---
 title: Arena and dimensions
-description: The walking surface, perimeter, cover and supporting structure.
+description: The walking surface, perimeter, glass cover and supporting structure.
 section: Hardware
 ---
 A ring and glass cover enclose the temperature-controlled walking surface, with an LED panorama around it and a camera above.
@@ -11,10 +11,10 @@ A ring and glass cover enclose the temperature-controlled walking surface, with 
 | --- | --- |
 | Walking-area inner diameter | **200 mm** |
 | Background | 60 Peltier modules operated as one circuit |
-| Targets | Four separately driven modules, A–D |
+| Targets | Four separately driven Peltier modules, A–D |
 | Visual enclosure | Eight P4 HUB75 panels, 64 × 32 pixels each |
 | Pixel pitch | 4 mm |
-| Cover | Glass cover above the walking surface |
+| Glass cover | Above the walking surface |
 | Background sensor setpoint | 34.8 °C in the supplied sketch |
 | Ring sensor setpoint | 45 °C in the supplied sketch |
 | Target cooling interval | 300 s for each selected target |
@@ -35,27 +35,13 @@ Mount the carrier on a rigid, level base. Supports and cables must not tilt the 
 
 See [CAD and printed parts](../cad/index.md) for the component overview.
 
-## Fabrication
+<figure class="photo-slot" data-photo-id="arena-side"><div class="photo-space" aria-label="Blank side-view photograph of arena clearances"></div><figcaption><span>Photo · A03</span><strong>Ring, glass cover and supporting structure</strong></figcaption></figure>
 
-Measure component dimensions and hole spacing before machining or printing mounts.
+## Ring and glass cover
 
-Check one printed fitting against the hardware before producing the remaining parts.
-
-Machine and deburr carrier openings to measured tolerances. Use printed parts for supports and conductive material at Peltier thermal interfaces.
-
-<figure class="photo-slot" data-photo-id="arena-side"><div class="photo-space" aria-label="Blank side-view photograph of arena clearances"></div><figcaption><span>Photo · A03</span><strong>Ring, cover and supporting structure</strong></figcaption></figure>
-
-## Ring and cover
-
-The ring and glass cover enclose the walking surface. Fit the cover without disturbing the ring or sensor wiring; clearance depends on the assembly.
+The ring and glass cover enclose the walking surface. See [Glass cover](glass-cover.md) for fit and handling.
 
 The ring uses independent temperature feedback. See [thermal ring](../hardware/ring.md).
-
-## Aluminium carrier
-
-The proposed aluminium carrier has four target openings. Targets must remain supported, flush and thermally separated from the surrounding floor.
-
-Separate target heat sinks are proposed to reduce heating of the carrier. See [heat removal](thermal-coupling.md).
 
 ## Check the mechanical setup
 

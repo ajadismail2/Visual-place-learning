@@ -19,12 +19,13 @@ One target cools during each trial while the other three heat. The target ESP32 
 | [Wiring](../hardware/wiring.md) | Board labels, pin assignments, supply ratings |
 | [Background control](../hardware/peltier.md) | Sensor response and heating polarity |
 | [Four targets](../hardware/four-channels.md) | A–D mapping and temperature response |
-| [Display](../hardware/visual-angle.md) | Panel order, orientation, bar dimensions |
+| [LED display](led-panels.md) | Panel order, orientation, bar dimensions |
+| [Glass cover](glass-cover.md) | Fit, clearance, camera view |
 | [Illumination](illumination.md) | Uniformity, mounting, reflections |
 | [Cameras](imaging.md) | Focus, calibration, timing |
 
 ## Configuration
 
-Pin maps and timings match the published sketches. Separate target heat sinks and ESP32 thermal controllers remain proposed modifications. Supply ratings and fabrication tolerances depend on the installed components.
+Pin maps and timings match the published sketches. Supply ratings and fabrication tolerances depend on the installed components.
 
 [Equipment list](../hardware/equipment.md) · [Software setup](../software/upload.md) · [CAD parts](../cad/index.md)

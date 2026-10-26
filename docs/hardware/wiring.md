@@ -19,7 +19,7 @@ Separate target drivers, background and ring feedback loops, and camera connecti
 | --- | --- | --- |
 | Target ESP32 | Experiment_Controller | Four target tiles and experiment timing |
 | Display ESP32 | Display_Controller | The eight-panel panorama |
-| Background Arduino | Closedloop_60peltier | One temperature loop for the 60-module circuit |
+| Background Arduino | Closedloop_60peltier | One loop for the background of 60 Peltier modules |
 | Ring Arduino | Thermal_ring | A separate temperature loop for the ring heater |
 | Thermal-camera ESP32 | thermal_camera | Temperature images sent to the computer |
 
@@ -77,7 +77,7 @@ Run the [single-panel test](../firmware/panel-test.md), then restore the display
 
 Pin 9 belongs to two separate boards; do not join these outputs. Use the OneWire sensor's specified pull-up resistor.
 
-Size the supply and power stage for the complete 60-module series circuit. Module and supply ratings are not specified here.
+Size the supply and power stage for all 60 Peltier modules in series. Peltier module and supply ratings are not specified here.
 
 Match driver input logic levels and share signal ground for non-isolated stages. Keep load returns separate from signal wiring.
 

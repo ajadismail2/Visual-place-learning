@@ -12,13 +12,12 @@ Components are grouped by function. Confirm specifications against the installed
 | Background Peltier modules | 60 in the documented series circuit | Form the common temperature background |
 | Target Peltier modules | Four | Provide independently selected cooling locations |
 | Bidirectional drivers | One per target | Reverse and regulate current through each target |
-| Background power stage | One controlled output | Switch load power for the background circuit |
 | TMP117 sensor | Background feedback sensor | Reports temperature to the background controller |
 | Ring heater, sensor and MOSFET stage | Separate thermal loop | Regulate the perimeter at the sensor location |
 | Target heat sinks | Proposed separate lower sinks | Carry rejected heat away from the target undersides |
 | Fan | Match to the fitted heat-removal arrangement | Move air through the heat sinks |
 
-Match supplies and drivers to the modules' voltage and current ratings.
+Match supplies and drivers to the Peltier modules' voltage and current ratings.
 
 ## Controllers and display
 

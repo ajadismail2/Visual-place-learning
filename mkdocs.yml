@@ -28,16 +28,15 @@ validation:
 nav:
   - Home: index.md
   - HARDWARE:
-      - Start with the hardware: hardware/index.md
+      - Overview: hardware/index.md
       - Equipment and materials: hardware/equipment.md
       - Arena and dimensions: hardware/arena.md
       - ESP32 and Arduino wiring: hardware/wiring.md
-      - LED panels: hardware/led-panels.md
-      - Visual display geometry: hardware/visual-angle.md
+      - LED display: hardware/led-panels.md
       - Background circuit: hardware/peltier.md
       - Four cooling targets: hardware/four-channels.md
       - Thermal ring: hardware/ring.md
-      - Heat removal: hardware/thermal-coupling.md
+      - Glass cover: hardware/glass-cover.md
       - Illumination: hardware/illumination.md
       - Cameras: hardware/imaging.md
   - SOFTWARE:

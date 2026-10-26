@@ -25,9 +25,9 @@ Secure each stand, allow heat dissipation and provide cable strain relief. Check
 
 ## Power and positioning
 
-Use each module's rated voltage and polarity, with a supply sized for all four arrays. Power arrays through their supply terminals.
+Use each IR array's rated voltage and polarity, with a supply sized for all four. Power arrays through their supply terminals.
 
-Position lights around the arena for even coverage. Adjust angles to suppress reflections from the cover and carrier.
+Position lights around the arena for even coverage. Adjust angles to suppress reflections from the glass cover and carrier.
 
 ## Check before recording
 

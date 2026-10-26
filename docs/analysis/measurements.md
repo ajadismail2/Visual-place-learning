@@ -11,10 +11,6 @@ Success requires the centre to remain inside the target rectangle for three cont
 
 Time to target runs from trial start to the **end of the frame completing dwell**. The CSV also records the dwell-start frame.
 
-![Illustrative timeline distinguishing target entry from the completion of a three-second dwell](../assets/analysis/target-dwell.svg)
-
-*Illustrative timing example, not measured data.*
-
 **Team time** is the latest individual success time; simultaneous occupancy is not required. Team time and the **all-fly mean** remain blank unless every included fly succeeds. Non-reaching flies are not assigned zero or 300 seconds.
 
 ## Movement and occupancy

@@ -1,6 +1,6 @@
 ---
 title: Background temperature control
-description: Peltier operation and temperature feedback for the 60-module background.
+description: Temperature feedback for the background of 60 Peltier modules.
 section: Hardware
 ---
 Sixty Peltier modules regulate the background temperature independently of the four cooling targets.
@@ -9,11 +9,11 @@ Sixty Peltier modules regulate the background temperature independently of the f
 
 Peltier current direction determines heat-flow direction. Cooling the walking face requires heat removal from the underside.
 
-Achieved temperature depends on current, thermal contact and heat dissipation. Verify polarity by measuring the installed module.
+Achieved temperature depends on current, thermal contact and heat dissipation. Verify polarity by measuring the installed Peltier module.
 
 ## Background circuit
 
-Sixty modules form one series circuit with a single power-control output.
+Sixty Peltier modules form one series circuit with a single power-control output.
 
 An Arduino reads the TMP117 over I²C and drives the external power stage from pin 9.
 
@@ -47,4 +47,4 @@ Map target and background temperatures across a complete sequence to assess grad
 
 See [thermal imaging](../hardware/imaging.md#set-up-the-thermal-camera) for measurement details.
 
-[Background code](../firmware/background.md) · [Four-target control](four-channels.md) · [Heat removal](thermal-coupling.md)
+[Background code](../firmware/background.md) · [Four-target control](four-channels.md)

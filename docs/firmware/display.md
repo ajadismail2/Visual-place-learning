@@ -32,7 +32,7 @@ Send <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> or <code>OFF
 
 The sketch requests **1000 Hz** refresh and uses one buffer. Optical refresh has not been measured.
 
-[LED panels](../hardware/led-panels.md) · [Library operation and settings](../software/led-library.md) · [Display wiring](../hardware/wiring.md#display-board-pin-map) · [Angle calculation](../hardware/visual-angle.md)
+[LED display and geometry](../hardware/led-panels.md) · [Library operation and settings](../software/led-library.md) · [Display wiring](../hardware/wiring.md#display-board-pin-map)
 
 ## Full source
 

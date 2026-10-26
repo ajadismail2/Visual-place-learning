@@ -13,7 +13,7 @@ An Arduino regulates heater PWM through a MOSFET using OneWire temperature feedb
 
 ## Wire and mount the ring
 
-1. Fit the ring and check cover clearance.
+1. Fit the ring and check glass cover clearance.
 2. Insulate and secure the heater.
 3. Fix the sensor in reliable thermal contact; detachment can cause excessive heating.
 4. Connect sensor data to Arduino pin 2 and MOSFET control to pin 9. See [wiring](../hardware/wiring.md#background-ring-and-camera).

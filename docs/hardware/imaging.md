@@ -34,16 +34,6 @@ Mount the camera vertically above the arena, with the entire walking surface in 
 
 Focus across the centre and perimeter. Recalibrate after changing the lens, framing or camera position.
 
-## Illumination for the behaviour camera
-
-Four generic IR arrays on printed shades and PVC stands provide illumination. See [Illumination](illumination.md).
-
-## Calibrate distance and time
-
-Spatial scale = inner arena diameter in pixels / **20 cm**. Align the camera perpendicular to the floor before using a single scale factor.
-
-Verify frame rate and timestamps after export. Record the first cooling frame separately from preheat.
-
 ## Set up the thermal camera
 
 [![Thermal-camera wiring and four schematic target regions](../assets/setup/measurement-setup.svg)](../assets/setup/measurement-setup.svg)
@@ -51,12 +41,6 @@ Verify frame rate and timestamps after export. Record the first cooling frame se
 The **MLX90640** provides 32 × 24 surface-temperature estimates from emitted infrared radiation. [Sensor documentation](https://www.melexis.com/en/product/mlx90640/far-infrared-thermal-sensor-array).
 
 An ESP32 reads the array over I²C and streams frames over USB. Its spatial resolution supports target and background measurements, not individual-fly tracking.
-
-The sensor requires direct optical access: ordinary glass blocks thermal infrared, so measurements through the cover may reflect cover temperature. [Viewing limitations](https://www.flir.com/discover/home-outdoor/can-thermal-imaging-see-through-walls/).
-
-Check emissivity and reflections on metal surfaces against a contact thermometer. [Emissivity guidance](https://www.flir.com/discover/professional-tools/how-does-emissivity-affect-thermal-imaging/).
-
-Register regions over A–D and the background, away from tile boundaries. Diagram positions are schematic.
 
 ## Temperature recording
 

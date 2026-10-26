@@ -1,9 +1,9 @@
 ---
-title: Visual display geometry
+title: LED display
 ---
 
-<meta http-equiv="refresh" content="0; url=../../hardware/visual-angle/">
+<meta http-equiv="refresh" content="0; url=../../hardware/led-panels/">
 
-<script>window.location.replace("../../hardware/visual-angle/");</script>
+<script>window.location.replace("../../hardware/led-panels/");</script>
 
-This page has moved to [Hardware → Visual display geometry](../../hardware/visual-angle/).
+This page has moved to [Hardware → LED display](../../hardware/led-panels/).

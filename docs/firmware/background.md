@@ -13,7 +13,7 @@ section: Software
 
 ## Temperature feedback
 
-PID control uses filtered TMP117 readings to regulate the 60-module background through one PWM output.
+PID control uses filtered TMP117 readings to regulate the background of 60 Peltier modules through one PWM output.
 
 | Setting | Value |
 | --- | --- |
