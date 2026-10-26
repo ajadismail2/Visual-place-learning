@@ -3,7 +3,7 @@ title: Thermal ring
 description: How the perimeter heater, temperature sensor and controller work together.
 section: Hardware
 ---
-The perimeter heater has its own temperature sensor and controller, independent of the floor and targets.
+The perimeter heater has its own temperature sensor and controller, independent of the floor and four Peltier plates.
 
 <figure class="photo-slot" data-photo-id="ring-heater"><div class="photo-space" aria-label="Blank photograph of the ring heater and sensor"></div><figcaption><span>Photo · H05</span><strong>Ring, heater and sensor mounting</strong></figcaption></figure>
 
@@ -25,4 +25,4 @@ Setpoint: **45 °C at the sensor**. Heating stops above **57 °C** and can resum
 
 ## Stopping the heater
 
-The sketch has no `STOP` command. Switch off the ring supply separately from target control. Use the [syntax-corrected sketch](../firmware/ring.md).
+The sketch has no `STOP` command. Switch off the ring supply separately from Peltier-plate control. Use the [syntax-corrected sketch](../firmware/ring.md).

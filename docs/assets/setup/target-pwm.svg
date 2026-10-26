@@ -244,7 +244,7 @@ L 98.1 204.294996
 " style="fill: none; stroke-dasharray: 7.4,3.2; stroke-dashoffset: 0; stroke: #b75337; stroke-width: 2"/>
     </g>
     <g id="text_7">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="105.3" y="207.444996" transform="rotate(-0 105.3 207.444996)">Repeated target</text>
+     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="105.3" y="207.444996" transform="rotate(-0 105.3 207.444996)">Repeated Peltier plate</text>
     </g>
     <g id="line2d_25">
      <path d="M 80.1 217.505308 
@@ -360,7 +360,7 @@ L 673.723636 260.772973
      </g>
     </g>
     <g id="text_15">
-     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="385.2" y="427.804219" transform="rotate(-0 385.2 427.804219)">Time from start of target cooling (s)</text>
+     <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #243846" x="385.2" y="427.804219" transform="rotate(-0 385.2 427.804219)">Time from start of Peltier-plate cooling (s)</text>
     </g>
    </g>
    <g id="matplotlib.axis_4">
@@ -478,7 +478,7 @@ L 95.2 271.251723
 " style="fill: none; stroke: #b75337; stroke-width: 2; stroke-linecap: square"/>
     </g>
     <g id="text_21">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="101.6" y="274.051723" transform="rotate(-0 101.6 274.051723)">Selected tile: return to heating</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="101.6" y="274.051723" transform="rotate(-0 101.6 274.051723)">Selected Peltier plate: return to heating</text>
     </g>
     <g id="line2d_50">
      <path d="M 79.2 282.994223 
@@ -487,18 +487,18 @@ L 95.2 282.994223
 " style="fill: none; stroke-dasharray: 2,3.3; stroke-dashoffset: 0; stroke: #62727c; stroke-width: 2"/>
     </g>
     <g id="text_22">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="101.6" y="285.794223" transform="rotate(-0 101.6 285.794223)">Other tiles at steady heating: PWM 24</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="101.6" y="285.794223" transform="rotate(-0 101.6 285.794223)">Other Peltier plates at steady heating: PWM 24</text>
     </g>
    </g>
   </g>
   <g id="text_23">
-   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="28.8" y="28.08" transform="rotate(-0 28.8 28.08)">Target controller: one cooling interval</text>
+   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="28.8" y="28.08" transform="rotate(-0 28.8 28.08)">Peltier-plate controller: one cooling interval</text>
   </g>
   <g id="text_24">
    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="56.16" transform="rotate(-0 28.8 56.16)">Output commands from the supplied controller. PWM is not a temperature measurement.</text>
   </g>
   <g id="text_25">
-   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="449.28" transform="rotate(-0 28.8 449.28)">Before the sequence: all targets preheat for 300 s. Return heating shown only when the tile leaves cooling.</text>
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="449.28" transform="rotate(-0 28.8 449.28)">Before the sequence: all Peltier plates preheat for 300 s. Return heating shown only when the Peltier plate leaves cooling.</text>
   </g>
  </g>
  <defs>

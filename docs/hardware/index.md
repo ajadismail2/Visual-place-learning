@@ -3,11 +3,11 @@ title: Hardware
 description: Arena, thermal control, visual display and recording.
 section: Hardware
 ---
-The apparatus combines a heated walking arena, four cooling targets, an LED panorama and overhead video recording.
+The apparatus combines a heated walking arena, four cooling Peltier plates, an LED panorama and overhead video recording.
 
 ## Experimental setup
 
-One target cools during each trial while the other three heat. The target ESP32 synchronises target selection with the visual panorama; the background and ring run independent temperature-control loops.
+One Peltier plate cools during each trial while the other three heat. The Peltier-plate ESP32 synchronises the selected position with the visual panorama; the background and ring run independent temperature-control loops.
 
 <figure class="photo-slot" data-photo-id="hardware-complete"><div class="photo-space" aria-label="Blank space for a photograph of the complete apparatus"></div><figcaption><span>Photo · H01</span><strong>Complete apparatus</strong></figcaption></figure>
 
@@ -15,10 +15,9 @@ One target cools during each trial while the other three heat. The target ESP32 
 
 | Component | Assembly checks |
 | --- | --- |
-| [Arena](../hardware/arena.md) | Level floor, secure supports, sealed tile edges |
+| [Arena](../hardware/arena.md) | Level floor, secure supports, sealed Peltier-plate edges |
 | [Wiring](../hardware/wiring.md) | Board labels, pin assignments, supply ratings |
-| [Background control](../hardware/peltier.md) | Sensor response and heating polarity |
-| [Four targets](../hardware/four-channels.md) | A–D mapping and temperature response |
+| [Peltier temperature system](peltier.md) | Background feedback, A–D mapping and temperature response |
 | [LED display](led-panels.md) | Panel order, orientation, bar dimensions |
 | [Glass cover](glass-cover.md) | Fit, clearance, camera view |
 | [Illumination](illumination.md) | Uniformity, mounting, reflections |

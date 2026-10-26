@@ -33,8 +33,7 @@ nav:
       - Arena and dimensions: hardware/arena.md
       - ESP32 and Arduino wiring: hardware/wiring.md
       - LED display: hardware/led-panels.md
-      - Background circuit: hardware/peltier.md
-      - Four cooling targets: hardware/four-channels.md
+      - Peltier temperature system: hardware/peltier.md
       - Thermal ring: hardware/ring.md
       - Glass cover: hardware/glass-cover.md
       - Illumination: hardware/illumination.md
@@ -45,7 +44,7 @@ nav:
       - Run an experiment: operation.md
       - Checks and troubleshooting: software/checks.md
       - Four-Peltier controller: firmware/target-controller.md
-      - 60-module background: firmware/background.md
+      - 60-Peltier background: firmware/background.md
       - LED matrix library: software/led-library.md
       - LED display controller: firmware/display.md
       - Thermal ring: firmware/ring.md

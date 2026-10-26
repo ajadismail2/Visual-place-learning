@@ -22,7 +22,7 @@ This site documents our adaptation of the assay: apparatus, controller programs,
 
 </div>
 
-<div class="home-facts"><span><strong>20 cm</strong> walking arena</span><span><strong>4</strong> selectable targets</span><span><strong>8</strong> LED panels</span><span><strong>Individual</strong> fly trajectories</span></div>
+<div class="home-facts"><span><strong>20 cm</strong> walking arena</span><span><strong>4</strong> cooling Peltier plates</span><span><strong>8</strong> LED panels</span><span><strong>Individual</strong> fly trajectories</span></div>
 
 ## Visual place learning
 
@@ -44,7 +44,7 @@ The build uses standard electronics and locally fabricated supports.
 
 <div markdown="1">
 
-**Temperature.** Sixty Peltier modules heat the background; four independently driven tiles provide cooling targets. Cooling rejects heat beneath each target.
+**Temperature.** Sixty Peltier modules heat the background; four independently driven Peltier plates provide cooling locations. Cooling rejects heat beneath each Peltier plate.
 
 **Display.** Eight 64 × 32 LED panels form an octagon, with printed supports and a hinged access panel.
 

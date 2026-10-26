@@ -11,23 +11,23 @@ A ring and glass cover enclose the temperature-controlled walking surface, with 
 | --- | --- |
 | Walking-area inner diameter | **200 mm** |
 | Background | 60 Peltier modules operated as one circuit |
-| Targets | Four separately driven Peltier modules, A–D |
+| Cooling Peltier plates | Four separately driven Peltier plates, A–D |
 | Visual enclosure | Eight P4 HUB75 panels, 64 × 32 pixels each |
 | Pixel pitch | 4 mm |
 | Glass cover | Above the walking surface |
 | Background sensor setpoint | 34.8 °C in the supplied sketch |
 | Ring sensor setpoint | 45 °C in the supplied sketch |
-| Target cooling interval | 300 s for each selected target |
+| Peltier-plate cooling interval | 300 s for each selected Peltier plate |
 
 The **200 mm inner diameter** defines the walking area and image scale. Fabrication dimensions should follow measured components and CAD.
 
-<figure class="photo-slot" data-photo-id="arena-top"><div class="photo-space" aria-label="Blank top-view arena photograph"></div><figcaption><span>Photo · A02</span><strong>Walking surface and target positions</strong></figcaption></figure>
+<figure class="photo-slot" data-photo-id="arena-top"><div class="photo-space" aria-label="Blank top-view arena photograph"></div><figcaption><span>Photo · A02</span><strong>Walking surface and Peltier-plate positions</strong></figcaption></figure>
 
-## Walking surface and target tiles
+## Walking surface and Peltier plates
 
-Mount targets flush with the background, with no accessible gaps.
+Mount the four Peltier plates flush with the background, with no accessible gaps.
 
-Label targets A–D using the tested driver mapping, and retain these labels in recordings and analysis.
+Label the Peltier plates A–D using the tested driver mapping, and retain these labels in recordings and analysis.
 
 ## Base and mounts
 

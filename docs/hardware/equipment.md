@@ -10,11 +10,11 @@ Components are grouped by function. Confirm specifications against the installed
 | Component | Quantity or arrangement | Why it is needed |
 | --- | --- | --- |
 | Background Peltier modules | 60 in the documented series circuit | Form the common temperature background |
-| Target Peltier modules | Four | Provide independently selected cooling locations |
-| Bidirectional drivers | One per target | Reverse and regulate current through each target |
+| Cooling Peltier plates | Four | Provide independently selected cooling locations |
+| Bidirectional drivers | One per Peltier plate | Reverse and regulate current through each Peltier plate |
 | TMP117 sensor | Background feedback sensor | Reports temperature to the background controller |
 | Ring heater, sensor and MOSFET stage | Separate thermal loop | Regulate the perimeter at the sensor location |
-| Target heat sinks | Proposed separate lower sinks | Carry rejected heat away from the target undersides |
+| Peltier-plate heat sinks | Proposed separate lower sinks | Carry rejected heat away from the Peltier-plate undersides |
 | Fan | Match to the fitted heat-removal arrangement | Move air through the heat sinks |
 
 Match supplies and drivers to the Peltier modules' voltage and current ratings.
@@ -23,7 +23,7 @@ Match supplies and drivers to the Peltier modules' voltage and current ratings.
 
 | Component | Role |
 | --- | --- |
-| Target ESP32 | Runs timing, four target outputs and display messages |
+| Peltier-plate ESP32 | Runs timing, four Peltier-plate outputs and display messages |
 | Display ESP32 | Produces the HUB75 visual pattern |
 | Background and ring Arduino boards | Run the supplied temperature-control sketches |
 | Eight P4 HUB75 panels | Display around the arena, with 4 mm pixel pitch |

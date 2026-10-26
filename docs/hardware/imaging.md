@@ -36,14 +36,14 @@ Focus across the centre and perimeter. Recalibrate after changing the lens, fram
 
 ## Set up the thermal camera
 
-[![Thermal-camera wiring and four schematic target regions](../assets/setup/measurement-setup.svg)](../assets/setup/measurement-setup.svg)
+[![Thermal-camera wiring and four schematic Peltier-plate regions](../assets/setup/measurement-setup.svg)](../assets/setup/measurement-setup.svg)
 
 The **MLX90640** provides 32 × 24 surface-temperature estimates from emitted infrared radiation. [Sensor documentation](https://www.melexis.com/en/product/mlx90640/far-infrared-thermal-sensor-array).
 
-An ESP32 reads the array over I²C and streams frames over USB. Its spatial resolution supports target and background measurements, not individual-fly tracking.
+An ESP32 reads the array over I²C and streams frames over USB. Its spatial resolution supports Peltier-plate and background measurements, not individual-fly tracking.
 
 ## Temperature recording
 
-Record preheat, the full 300-second cooling interval and recovery for each target, retaining timestamps and target order.
+Record preheat, the full 300-second cooling interval and recovery for each Peltier plate, retaining timestamps and the A–D order.
 
 Validate readings against a contact reference and retain raw data. The [camera sketch](../firmware/camera.md) supplies a binary stream; computer-side recording is separate.

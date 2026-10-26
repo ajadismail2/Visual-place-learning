@@ -146,7 +146,7 @@ z
    <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="28.8" y="40.357031" transform="rotate(-0 28.8 40.357031)">Temperature measurement: align, label, record</text>
   </g>
   <g id="text_10">
-   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="59.438437" transform="rotate(-0 28.8 59.438437)">A region map for collecting data. Positions are schematic; identify A–D by testing each physical tile.</text>
+   <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="59.438437" transform="rotate(-0 28.8 59.438437)">A region map for collecting data. Positions are schematic; identify A–D by testing each physical Peltier plate.</text>
   </g>
  </g>
  <defs>

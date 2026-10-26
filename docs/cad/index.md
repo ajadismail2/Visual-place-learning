@@ -45,10 +45,10 @@ Image the mask before each experiment to register the four target positions. Rem
 
 <div class="photo-pair"><figure class="photo-slot" data-photo-id="cad-mask-part"><div class="photo-space" aria-label="Blank photograph of the registration mask"></div><figcaption><span>Photo · C09</span><strong>Cool-spot registration mask</strong></figcaption></figure><figure class="photo-slot" data-photo-id="cad-mask-view"><div class="photo-space" aria-label="Blank camera image of the registration mask"></div><figcaption><span>Photo · C10</span><strong>Mask visible in the camera image</strong></figcaption></figure></div>
 
-## 06 · Peltier tile holder and fan support
+## 06 · Peltier-plate holder and fan support
 
-The holder stabilises the baseplate around the four targets and supports a fan below. Underside airflow removes heat from the cooling hardware.
+The holder stabilises the baseplate around the four Peltier plates and supports a fan below. Underside airflow removes heat from the cooling hardware.
 
-[Download the Peltier tile holder STEP file](../downloads/cad/peltier-tile-holder.step)
+[Download the Peltier-plate holder STEP file](../downloads/cad/peltier-tile-holder.step)
 
-<div class="photo-pair"><figure class="photo-slot" data-photo-id="cad-tile-holder"><div class="photo-space" aria-label="Blank photograph of the Peltier tile holder"></div><figcaption><span>Photo · C11</span><strong>Peltier tile holder</strong></figcaption></figure><figure class="photo-slot" data-photo-id="cad-fan-fit"><div class="photo-space" aria-label="Blank photograph of the fan installed beneath the tile holder"></div><figcaption><span>Photo · C12</span><strong>Fan position beneath the baseplate</strong></figcaption></figure></div>
+<div class="photo-pair"><figure class="photo-slot" data-photo-id="cad-tile-holder"><div class="photo-space" aria-label="Blank photograph of the Peltier-plate holder"></div><figcaption><span>Photo · C11</span><strong>Peltier-plate holder</strong></figcaption></figure><figure class="photo-slot" data-photo-id="cad-fan-fit"><div class="photo-space" aria-label="Blank photograph of the fan installed beneath the Peltier-plate holder"></div><figcaption><span>Photo · C12</span><strong>Fan position beneath the baseplate</strong></figcaption></figure></div>

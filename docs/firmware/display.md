@@ -1,6 +1,6 @@
 ---
 title: LED display controller
-description: "An ESP32 translates a target letter into a panorama rotation across eight HUB75 panels."
+description: "An ESP32 translates the selected Peltier-plate letter into a panorama rotation across eight HUB75 panels."
 section: Software
 ---
 [← Controller programs](index.md)

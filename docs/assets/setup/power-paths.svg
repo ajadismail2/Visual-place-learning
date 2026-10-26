@@ -129,7 +129,7 @@ L 383.184 299.52
     <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(350.373922 274.759937)">R_EN · L_EN</text>
    </g>
    <g id="text_4">
-    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(554.788781 257.768516)">4 × Peltier targets</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(554.788781 257.768516)">4 × cooling Peltier plates</text>
     <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #243846" transform="translate(547.552844 270.086109)">one output pair each</text>
    </g>
    <g id="text_5">
@@ -157,7 +157,7 @@ L 383.184 299.52
    </g>
   </g>
   <g id="text_12">
-   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="28.8" y="40.357031" transform="rotate(-0 28.8 40.357031)">Target board: power and signals</text>
+   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #243846" x="28.8" y="40.357031" transform="rotate(-0 28.8 40.357031)">Peltier-plate board: power and signals</text>
   </g>
   <g id="text_13">
    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #62727c" x="28.8" y="59.438437" transform="rotate(-0 28.8 59.438437)">Four independent H-bridges. Terminal names and ratings must match the installed driver.</text>

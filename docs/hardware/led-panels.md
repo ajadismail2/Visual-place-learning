@@ -3,7 +3,7 @@ title: LED display
 description: Panel configuration, visual geometry and display timing.
 section: Hardware
 ---
-Eight inward-facing Waveshare P4 RGB panels form the visual enclosure. The display shows green bars on black and rotates the panorama when the selected target changes.
+Eight inward-facing Waveshare P4 RGB panels form the visual enclosure. The display shows green bars on black and rotates the panorama when the selected Peltier plate changes.
 
 ![The green visual pattern surrounding the arena](images/LED.jpg)
 
@@ -27,7 +27,7 @@ Connect each panel OUT to the next panel IN. The [ESP32-HUB75-MatrixPanel-DMA li
 
 The supplied display sketch selects the FM6126A driver configuration, `clkphase = false`, one DMA buffer and `setBrightness8(120)`. Confirm driver compatibility for replacement panels. Library brightness is a 0–255 command, not a light measurement. [Library settings and code](../software/led-library.md).
 
-Centre the panels around the arena and leave clearance for the hinged access panel. Verify panel order, orientation and A–D panorama rotations before pairing the target controller.
+Centre the panels around the arena and leave clearance for the hinged access panel. Verify panel order, orientation and A–D panorama rotations before pairing the Peltier-plate controller.
 
 <div class="photo-pair"><figure class="photo-slot" data-photo-id="led-enclosure"><div class="photo-space" aria-label="Blank photograph of the LED enclosure"></div><figcaption><span>Photo · V01</span><strong>Panel enclosure and cable order</strong></figcaption></figure><figure class="photo-slot" data-photo-id="led-pattern"><div class="photo-space" aria-label="Blank photograph of the displayed visual pattern"></div><figcaption><span>Photo · V02</span><strong>Displayed visual pattern</strong></figcaption></figure></div>
 

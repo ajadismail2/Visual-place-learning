@@ -955,7 +955,7 @@ z
     <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="88.800012" y="277.297338" transform="rotate(-0 88.800012 277.297338)">1</text>
    </g>
    <g id="text_8">
-    <text style="font-weight: 700; font-size: 13.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #16303d" x="115.200012" y="278.152745" transform="rotate(-0 115.200012 278.152745)">FOUR INDEPENDENT PELTIER TARGETS</text>
+    <text style="font-weight: 700; font-size: 13.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #16303d" x="115.200012" y="278.152745" transform="rotate(-0 115.200012 278.152745)">FOUR INDEPENDENT PELTIER PLATES</text>
    </g>
    <g id="text_9">
     <text style="font-weight: 700; font-size: 10.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="968.799995" y="277.297338" transform="rotate(-0 968.799995 277.297338)">2</text>
@@ -991,13 +991,13 @@ z
     <text style="font-weight: 700; font-size: 11.8px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="196.00001" y="339.209962" transform="rotate(-0 196.00001 339.209962)">USB / logic DC</text>
    </g>
    <g id="text_20">
-    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #506674" x="196.00001" y="538.814552" transform="rotate(-0 196.00001 538.814552)">Trial timing &amp; target selection</text>
+    <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #506674" x="196.00001" y="538.814552" transform="rotate(-0 196.00001 538.814552)">Trial timing &amp; plate selection</text>
    </g>
    <g id="text_21">
     <text style="font-size: 10.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #506674" x="196.00001" y="565.214552" transform="rotate(-0 196.00001 565.214552)">USB: setup / commands</text>
    </g>
    <g id="text_22">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="488.000004" y="339.264369" transform="rotate(-0 488.000004 339.264369)">Target DC supply</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="488.000004" y="339.264369" transform="rotate(-0 488.000004 339.264369)">Peltier-plate DC supply</text>
    </g>
    <g id="text_23">
     <text style="font-weight: 700; font-size: 11.6px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="488.000004" y="403.155555" transform="rotate(-0 488.000004 403.155555)">4 × H-bridge drivers</text>
@@ -1006,25 +1006,25 @@ z
     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="488.000004" y="437.573273" transform="rotate(-0 488.000004 437.573273)">Channel A</text>
    </g>
    <g id="text_25">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="437.711242" transform="rotate(-0 779.999999 437.711242)">Tile A</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="437.711242" transform="rotate(-0 779.999999 437.711242)">Peltier plate A</text>
    </g>
    <g id="text_26">
     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="488.000004" y="485.573272" transform="rotate(-0 488.000004 485.573272)">Channel B</text>
    </g>
    <g id="text_27">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="485.711241" transform="rotate(-0 779.999999 485.711241)">Tile B</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="485.711241" transform="rotate(-0 779.999999 485.711241)">Peltier plate B</text>
    </g>
    <g id="text_28">
     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="488.000004" y="533.573271" transform="rotate(-0 488.000004 533.573271)">Channel C</text>
    </g>
    <g id="text_29">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="533.71124" transform="rotate(-0 779.999999 533.71124)">Tile C</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="533.71124" transform="rotate(-0 779.999999 533.71124)">Peltier plate C</text>
    </g>
    <g id="text_30">
     <text style="font-size: 11.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="488.000004" y="581.57327" transform="rotate(-0 488.000004 581.57327)">Channel D</text>
    </g>
    <g id="text_31">
-    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="581.711239" transform="rotate(-0 779.999999 581.711239)">Tile D</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="779.999999" y="581.711239" transform="rotate(-0 779.999999 581.711239)">Peltier plate D</text>
    </g>
    <g id="text_32">
     <g id="patch_77">
@@ -1060,7 +1060,7 @@ z
     <text style="font-size: 9.8px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #087f83" x="336.000007" y="482.704178" transform="rotate(-0 336.000007 482.704178)">enable</text>
    </g>
    <g id="text_35">
-    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #506674" x="488.000004" y="621.269738" transform="rotate(-0 488.000004 621.269738)">One driver and one output pair per tile</text>
+    <text style="font-size: 10.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #506674" x="488.000004" y="621.269738" transform="rotate(-0 488.000004 621.269738)">One driver and one output pair per Peltier plate</text>
    </g>
    <g id="text_36">
     <text style="font-weight: 700; font-size: 11.3px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="196.00001" y="663.07394" transform="rotate(-0 196.00001 663.07394)">Fan DC supply</text>
@@ -1077,7 +1077,7 @@ L 388.030277 197.500293
 z
 " style="fill: #ffffff"/>
     </g>
-    <text style="font-size: 11.7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #7750a8" x="512.000004" y="208.028465" transform="rotate(-0 512.000004 208.028465)">ESP-NOW  •  selected target / visual state</text>
+    <text style="font-size: 11.7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #7750a8" x="512.000004" y="208.028465" transform="rotate(-0 512.000004 208.028465)">ESP-NOW  •  selected Peltier plate / visual state</text>
    </g>
    <g id="text_39">
     <text style="font-weight: 700; font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #16303d" x="1063.999993" y="338.992337" transform="rotate(-0 1063.999993 338.992337)">USB / logic DC</text>

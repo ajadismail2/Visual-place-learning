@@ -35,7 +35,7 @@ Eight chained panels form a 512 × 32 physical strip. The sketch's `putV()` func
 | `clearDisplay()` | Write a blank image |
 | `handleCommand()` | Interpret a received state or OFF command |
 
-ESP-NOW sends state commands, not pixels. DMA scans the image until the buffer changes; the target controller supplies trial timing.
+ESP-NOW sends state commands, not pixels. DMA scans the image until the buffer changes; the Peltier-plate controller supplies trial timing.
 
 ## Settings in the published display program
 

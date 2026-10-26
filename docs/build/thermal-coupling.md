@@ -1,9 +1,9 @@
 ---
-title: Four-target control
+title: Peltier temperature system
 ---
 
-<meta http-equiv="refresh" content="0; url=../../hardware/four-channels/">
+<meta http-equiv="refresh" content="0; url=../../hardware/peltier/">
 
-<script>window.location.replace("../../hardware/four-channels/");</script>
+<script>window.location.replace("../../hardware/peltier/");</script>
 
-This page has moved to [Hardware → Four targets](../../hardware/four-channels/).
+This page has moved to [Hardware → Peltier temperature system](../../hardware/peltier/).

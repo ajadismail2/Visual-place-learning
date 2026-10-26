@@ -1,6 +1,6 @@
 ---
 title: Thermal camera stream
-description: "An MLX90640 supplies a temperature image for measurement; it does not close the target-control loop."
+description: "An MLX90640 supplies a temperature image for measurement; it does not close the Peltier-plate control loop."
 section: Software
 ---
 [← Controller programs](index.md)
@@ -11,7 +11,7 @@ section: Software
 
 </div>
 
-The MLX90640 streams **32 × 24 temperature frames** over USB serial, independently of target control.
+The MLX90640 streams **32 × 24 temperature frames** over USB serial, independently of Peltier-plate control.
 
 ## Connections and output
 

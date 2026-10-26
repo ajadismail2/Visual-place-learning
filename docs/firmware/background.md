@@ -25,13 +25,13 @@ PID control uses filtered TMP117 readings to regulate the background of 60 Pelti
 
 The sensor measures its local temperature; floor uniformity requires separate measurements.
 
-## Commands
+## Set the temperature
 
-Serial: **115200 baud**. Commands: `SET` (temperature), `KP`, `KI`, `KD` (gains), `STATUS`, `START`, `STOP`.
+Open Serial Monitor at **115200 baud** with a newline ending. Send `SET 34.8` to set the requested sensor temperature. Send `STATUS` to inspect the temperature and PWM output. Other commands are `KP`, `KI`, `KD`, `START` and `STOP`.
 
 Failed reads retain the previous value. There is no stale-data shutdown.
 
-[Arduino wiring and proposed ESP32 conversion](../hardware/wiring.md#background-ring-and-camera)
+[Temperature system and full-run measurement](../hardware/peltier.md) · [Arduino wiring and proposed ESP32 conversion](../hardware/wiring.md#background-ring-and-camera)
 
 ## Full source
 

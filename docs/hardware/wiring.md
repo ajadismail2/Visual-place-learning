@@ -3,13 +3,13 @@ title: ESP32 and Arduino wiring
 description: Identify each controller, separate power from signals, and connect one subsystem at a time.
 section: Hardware
 ---
-Pin maps for the target, display, background, ring and thermal-camera controllers.
+Pin maps for the Peltier-plate, display, background, ring and thermal-camera controllers.
 
 ## Arena connection overview
 
-[![Arena electrical architecture: target and display ESP32 controllers, Arduino heating loops, power supplies and recording connections](../assets/arena-wiring-conference.png)](../assets/arena-wiring-conference.png)
+[![Arena electrical architecture: Peltier-plate and display ESP32 controllers, Arduino heating loops, power supplies and recording connections](../assets/arena-wiring-conference.png)](../assets/arena-wiring-conference.png)
 
-Separate target drivers, background and ring feedback loops, and camera connections are shown above.
+Separate Peltier-plate drivers, background and ring feedback loops, and camera connections are shown above.
 
 [Download full-resolution PNG](../assets/arena-wiring-conference.png) · [Download vector diagram](../assets/arena-wiring-conference.svg)
 
@@ -17,7 +17,7 @@ Separate target drivers, background and ring feedback loops, and camera connecti
 
 | Label to put on the board | Program | Job |
 | --- | --- | --- |
-| Target ESP32 | Experiment_Controller | Four target tiles and experiment timing |
+| Peltier-plate ESP32 | Experiment_Controller | Four Peltier plates and experiment timing |
 | Display ESP32 | Display_Controller | The eight-panel panorama |
 | Background Arduino | Closedloop_60peltier | One loop for the background of 60 Peltier modules |
 | Ring Arduino | Thermal_ring | A separate temperature loop for the ring heater |
@@ -29,20 +29,20 @@ ESP32 assignments refer to the classic ESP32, not the C3.
 
 <div class="photo-pair"><figure class="photo-slot" data-photo-id="esp32-board"><div class="photo-space" aria-label="Blank ESP32 photograph"></div><figcaption><span>Photo · H02</span><strong>ESP32 board and pin labels</strong></figcaption></figure><figure class="photo-slot" data-photo-id="arduino-board"><div class="photo-space" aria-label="Blank Arduino photograph"></div><figcaption><span>Photo · H03</span><strong>Arduino thermal controller</strong></figcaption></figure></div>
 
-## Power and target connections
+## Power and Peltier-plate connections
 
 [![Separate load power and ESP32 signal paths](../assets/setup/power-paths.svg)](../assets/setup/power-paths.svg)
 
-1. Disconnect supplies and label targets using the [pin table](four-channels.md#target-controller-pin-map).
+1. Disconnect supplies and label the Peltier plates using the [pin table](peltier.md#target-controller-pin-map).
 2. Connect ESP32 PWM and enable pins to driver inputs.
 3. Share controller and driver logic ground. Return load current directly to the supply.
-4. Connect each Peltier across its driver's output pair, never to GPIO or ground.
+4. Connect each Peltier plate across its driver's output pair, never to GPIO or ground.
 5. Connect logic and load supplies to the correct terminals at the driver's rated voltage.
 6. Test polarity on one channel under temperature monitoring before powering all four.
 
 Follow the development board's power-input specification before combining USB and external power.
 
-<figure class="photo-slot" data-photo-id="driver-connections"><div class="photo-space" aria-label="Blank photograph of one fully wired driver"></div><figcaption><span>Photo · H04</span><strong>One complete target channel</strong></figcaption></figure>
+<figure class="photo-slot" data-photo-id="driver-connections"><div class="photo-space" aria-label="Blank photograph of one fully wired driver"></div><figcaption><span>Photo · H04</span><strong>One complete Peltier-plate channel</strong></figcaption></figure>
 
 ## Display board pin map
 
@@ -60,7 +60,7 @@ Display ESP32 assignments:
 
 Connect the ESP32 to panel 1 **IN**, then chain **OUT → IN**. Power panels separately. Use level conversion if required for 3.3 V control signals.
 
-Run the [single-panel test](../firmware/panel-test.md), then restore the display sketch. ESP-NOW carries target-state commands.
+Run the [single-panel test](../firmware/panel-test.md), then restore the display sketch. ESP-NOW carries the selected A–D state.
 
 ## Background, ring and camera
 

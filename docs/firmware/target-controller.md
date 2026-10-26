@@ -1,30 +1,30 @@
 ---
 title: Four-Peltier controller
-description: ESP32 program for four independently driven Peltier targets, timed trials and wireless display synchronisation.
+description: ESP32 program for four independently driven Peltier plates, timed trials and wireless display synchronisation.
 section: Software
 ---
-An ESP32 drives four BTS7960 bridges and sends target states to the display over ESP-NOW.
+An ESP32 drives four BTS7960 bridges and sends the selected A–D state to the display over ESP-NOW.
 
 [Download Experiment_Controller.ino](../downloads/firmware/Experiment_Controller/Experiment_Controller.ino) · [Configuration example](../downloads/firmware/Experiment_Controller/local_config.example.h)
 
 ## Control
 
-Each BTS7960 drives one Peltier. LPWM heats and RPWM cools; the opposite output is zeroed before reversal.
+Each BTS7960 drives one Peltier plate. LPWM heats and RPWM cools; the opposite output is zeroed before reversal.
 
-Target control is open-loop, using **20 kHz, 8-bit PWM (0–255)**. Background and ring control are independent.
+Peltier-plate control is open-loop, using **20 kHz, 8-bit PWM (0–255)**. Background and ring control are independent.
 
-## Target labels and wiring
+## Peltier-plate labels and wiring
 
-| Arena target | Manual number | Driver channel | RPWM | LPWM | R_EN | L_EN |
+| Peltier plate | Manual number | Driver channel | RPWM | LPWM | R_EN | L_EN |
 | --- | --- | --- | --- | --- | --- | --- |
 | A | 1 | 3 | 27 | 14 | 23 | 22 |
 | B | 2 | 2 | 25 | 26 | 13 | 15 |
 | C | 3 | 4 | 19 | 18 | 2 | 16 |
 | D | 4 | 1 | 32 | 33 | 4 | 5 |
 
-Values are ESP32 GPIO numbers. Share controller and driver logic ground. Enables remain HIGH; stopping zeros both PWM inputs. See [power connections](../hardware/wiring.md#power-and-target-connections).
+Values are ESP32 GPIO numbers. Share controller and driver logic ground. Enables remain HIGH; stopping zeros both PWM inputs. See [power connections](../hardware/wiring.md#power-and-peltier-plate-connections).
 
-![ESP32 GPIO mapping to four independent target drivers](../assets/target-wiring.svg)
+![ESP32 GPIO mapping to four independent Peltier-plate drivers](../assets/target-wiring.svg)
 
 ## Prepare and start
 
@@ -32,7 +32,7 @@ Values are ESP32 GPIO numbers. Share controller and driver logic ground. Enables
 2. Copy `local_config.example.h` to `local_config.h` in that folder. Enter the display board's MAC address and local AP settings, then remove the example's `#error` line. Use an AP password of at least eight characters.
 3. Use an ESP32 board package supporting the sketch's `ledcAttach` interface and `wifi_tx_info_t` send callback. Older package versions can require API changes. Firmware compilation and hardware operation have not been verified here.
 4. Configure both boards for radio channel **1**. The sketch sets both the AP channel and peer channel; changing one alone is insufficient. The AP fixes the radio channel and provides no web interface.
-5. Open Serial Monitor at **115200 baud** with a newline ending. Verify target labels and display states, then enter the sequence.
+5. Open Serial Monitor at **115200 baud** with a newline ending. Verify Peltier-plate labels and display states, then enter the sequence.
 
 ```text
 EXP B-C-D-C-B-A-D-C-B-A
@@ -42,36 +42,36 @@ Ten trials take **55 minutes including five-minute preheat**. Analysis starts at
 
 ## One complete sequence
 
-Startup zeros target outputs and sends `OFF`. `EXP` resets the sequence and starts preheat.
+Startup zeros the Peltier-plate outputs and sends `OFF`. `EXP` resets the sequence and starts preheat.
 
 | Phase | Output | Duration |
 | --- | --- | --- |
-| Preheat | All four targets heat at PWM 30; display off | 300 s |
-| Cooling boost | Selected target cools at PWM 150 | First 23 s of each trial |
-| Cooling hold, first selection | Selected target cools at PWM 106 | Remaining 277 s |
-| Cooling hold, repeat selection | Selected target cools at PWM 120 | Remaining 277 s |
-| Other targets, never selected | Heat at PWM 29 | While another target cools |
-| Other targets, previously selected | Heat at PWM 24 | After their return boost |
-| Return from cooling | Previous target heats at PWM 50, then 24 | Boost lasts 17 s |
-| Sequence complete | All target PWM outputs zero; display off | Until another command |
+| Preheat | All four Peltier plates heat at PWM 30; display off | 300 s |
+| Cooling boost | Selected Peltier plate cools at PWM 150 | First 23 s of each trial |
+| Cooling hold, first selection | Selected Peltier plate cools at PWM 106 | Remaining 277 s |
+| Cooling hold, repeat selection | Selected Peltier plate cools at PWM 120 | Remaining 277 s |
+| Other Peltier plates, never selected | Heat at PWM 29 | While another Peltier plate cools |
+| Other Peltier plates, previously selected | Heat at PWM 24 | After their return boost |
+| Return from cooling | Previous Peltier plate heats at PWM 50, then 24 | Boost lasts 17 s |
+| Sequence complete | All Peltier-plate PWM outputs zero; display off | Until another command |
 
-Each tile's repeat flag selects its hold PWM and resets at the next experiment.
+Each Peltier plate's repeat flag selects its hold PWM and resets at the next experiment.
 
-At trial boundaries, `applyStep()` zeros outputs, starts cooling boost and sets heating levels. Consecutive selections of the same tile restart cooling with the repeat hold PWM and no intervening heating boost.
+At trial boundaries, `applyStep()` zeros outputs, starts cooling boost and sets heating levels. Consecutive selections of the same Peltier plate restart cooling with the repeat hold PWM and no intervening heating boost.
 
-Every letter initiates cooling, including an eleventh selection. The sketch has no all-heating probe trial.
+Every letter initiates cooling of a Peltier plate, including an eleventh selection. The sketch has no all-heating probe trial.
 
 ## Commands and display synchronisation
 
 | Command | Action |
 | --- | --- |
 | `EXP A-D-C-D` | Reset the current sequence, preheat and run four trials |
-| `STOP` | Zero all four target outputs, clear the sequence and send display OFF |
+| `STOP` | Zero all four Peltier-plate outputs, clear the sequence and send display OFF |
 | `LED A` | Send visual state A; B, C and D work the same way |
 | `LED OFF` | Request a blank display |
-| `1 h30` | Heat target A at PWM 30 |
-| `2 c150` | Cool target B at PWM 150 |
-| `3 s` | Stop target C |
+| `1 h30` | Heat Peltier plate A at PWM 30 |
+| `2 c150` | Cool Peltier plate B at PWM 150 |
+| `3 s` | Stop Peltier plate C |
 
 Send `STOP` before manual commands; they do not cancel the sequence. `LED OFF` affects only the display.
 
@@ -81,7 +81,7 @@ Each trial sends `STATE:A`–`STATE:D`. Radio delivery does not confirm the visi
 
 `millis()` controls `IDLE`, `PRE_HOT`, trial transitions and the 17-second heating boost. Progress prints about once a minute. Serial line reads can briefly block timing.
 
-Record tile temperatures alongside video. `STOP` zeros target outputs and requests display shutdown; stop background and ring heating separately.
+Record Peltier-plate temperatures alongside video. `STOP` zeros the four plate outputs and requests display shutdown; stop background and ring heating separately.
 
 ## Full source
 
