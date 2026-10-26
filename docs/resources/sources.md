@@ -29,7 +29,7 @@ Six editable STEP models are available in [CAD and fabricated parts](../cad/inde
 
 Ofstad, Zuker and Reiser. **Visual place learning in Drosophila melanogaster.** [Original paper](https://doi.org/10.1038/nature10131) · [PubMed record](https://pubmed.ncbi.nlm.nih.gov/21654803/).
 
-The [arena chapter](../build/arena.md) contains the dimensions and configuration used in this build. Temperature settings are documented beside the relevant controller.
+The [arena chapter](../hardware/arena.md) contains the dimensions and configuration used in this build. Temperature settings are documented beside the relevant controller.
 
 ## Technical references
 

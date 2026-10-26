@@ -31,7 +31,7 @@ Connect at **115200 baud**. Use <code>SET</code> for the target temperature, <co
 
 If a sensor read fails after startup, the program retains the previous reading. This version does not shut down on stale data.
 
-[Arduino wiring and proposed ESP32 conversion](../build/wiring.md#background-ring-and-camera)
+[Arduino wiring and proposed ESP32 conversion](../hardware/wiring.md#background-ring-and-camera)
 
 ## Full source
 

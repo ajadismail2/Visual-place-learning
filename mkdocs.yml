@@ -30,15 +30,15 @@ nav:
   - Home: index.md
   - HARDWARE:
       - Start with the hardware: hardware/index.md
-      - Equipment and materials: build/equipment.md
-      - Arena and dimensions: build/arena.md
-      - ESP32 and Arduino wiring: build/wiring.md
+      - Equipment and materials: hardware/equipment.md
+      - Arena and dimensions: hardware/arena.md
+      - ESP32 and Arduino wiring: hardware/wiring.md
       - LED panels: hardware/led-panels.md
-      - Visual display geometry: build/visual-angle.md
-      - Background circuit: build/peltier.md
-      - Four cooling targets: build/four-channels.md
+      - Visual display geometry: hardware/visual-angle.md
+      - Background circuit: hardware/peltier.md
+      - Four cooling targets: hardware/four-channels.md
       - Thermal ring: hardware/ring.md
-      - Heat removal: build/thermal-coupling.md
+      - Heat removal: hardware/thermal-coupling.md
       - Illumination: hardware/illumination.md
       - Cameras: hardware/imaging.md
   - SOFTWARE:

@@ -22,7 +22,7 @@ PWM switches the drive at **20 kHz**. Its 8-bit setting ranges from 0 to 255 and
 | C | 3 | 4 | 19 | 18 | 2 | 16 |
 | D | 4 | 1 | 32 | 33 | 4 | 5 |
 
-The pin values are ESP32 GPIO numbers. Manual numbers follow A, B, C, D, not the driver-channel numbering. Connect each driver's output pair to its Peltier and share a ground reference between the ESP32 and driver logic. The enable signals are held HIGH; stopping sets both PWM inputs to zero. Follow the [power and wiring guide](../build/wiring.md#power-and-target-connections) before connecting the loads.
+The pin values are ESP32 GPIO numbers. Manual numbers follow A, B, C, D, not the driver-channel numbering. Connect each driver's output pair to its Peltier and share a ground reference between the ESP32 and driver logic. The enable signals are held HIGH; stopping sets both PWM inputs to zero. Follow the [power and wiring guide](../hardware/wiring.md#power-and-target-connections) before connecting the loads.
 
 ![ESP32 GPIO mapping to four independent target drivers](../assets/target-wiring.svg)
 

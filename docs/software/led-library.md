@@ -79,7 +79,7 @@ For this green-and-black stimulus, smooth colour gradients are not the experimen
 
 1. Install the library through Arduino Library Manager and its documented Adafruit GFX dependency. The header used by the sketch is `ESP32-HUB75-MatrixPanel-I2S-DMA.h`, despite the shorter GitHub repository name.
 2. Select the correct board. The library supports the original ESP32 used here; support should not be assumed for every ESP32 variant. In particular, ESP32-C3 is not a substitute for this display driver. [1](#references)
-3. Follow the [display-board pin map](../build/wiring.md#display-board-pin-map), connect the panel's external supply and common ground, and run the [single-panel test](../firmware/panel-test.md).
+3. Follow the [display-board pin map](../hardware/wiring.md#display-board-pin-map), connect the panel's external supply and common ground, and run the [single-panel test](../firmware/panel-test.md).
 4. Connect the full chain in the documented order and load the [display controller](../firmware/display.md). Test A, B, C and D over serial before pairing the wireless controller.
 5. Check the light output using the [hardware timing procedure](../hardware/led-panels.md#check-the-assembled-display). Record the library version, board package, brightness and panel-driver configuration with the experiment settings.
 

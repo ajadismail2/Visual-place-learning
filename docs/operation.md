@@ -9,7 +9,7 @@ This procedure follows the supplied experiment controller and LED programs. Test
 
 1. **Check the assembly.** The arena is level, the cover is seated as intended, the camera sees the entire floor, and the underside airflow is unobstructed.
 2. **Check the controller identities.** Confirm the correct program is loaded on each labelled board and that the computer ports match those labels.
-3. **Check target mapping.** Use the physical A–D labels and the [wiring table](build/four-channels.md#target-controller-pin-map). Confirm the corresponding display states before starting a sequence.
+3. **Check target mapping.** Use the physical A–D labels and the [wiring table](hardware/four-channels.md#target-controller-pin-map). Confirm the corresponding display states before starting a sequence.
 4. **Check temperature readings.** Verify background and ring sensor responses. Measure the target surfaces separately; the experiment controller has no target-temperature feedback.
 5. **Allow conditions to settle.** Record the starting temperatures and wait for reproducible conditions rather than relying only on elapsed warm-up time.
 6. **Prepare recording.** Set focus, exposure and frame rate, choose the output folder, and make a short recording to confirm that files are saved correctly.
@@ -30,7 +30,7 @@ The first cooling trial starts after preheat. Record this boundary in the video 
 
 ## What to observe during a step
 
-The selected tile receives an initial cooling boost and then a lower hold output. The display receives the selected target letter. Other tiles heat, with a short boost when a tile returns from cooling. The [PWM plot](build/four-channels.md#trial-sequence) shows these output commands.
+The selected tile receives an initial cooling boost and then a lower hold output. The display receives the selected target letter. Other tiles heat, with a short boost when a tile returns from cooling. The [PWM plot](hardware/four-channels.md#trial-sequence) shows these output commands.
 
 Observe the temperature traces as well as the controller messages. If the intended tile does not cool or the background drifts, the command sequence alone is not evidence of a valid temperature condition. Check the thermal and wiring setup before continuing data collection.
 

@@ -18,7 +18,7 @@ The OneWire sensor sends a temperature reading back to the controller. The progr
 1. Fit the ring support so the perimeter stays fixed relative to the walking surface. Check the glass-cover fit and fly clearance against the actual assembly.
 2. Secure the heater using the intended electrical insulation and mounting method. Keep exposed conductors away from metal parts they are not meant to contact.
 3. Fix the sensor at a reproducible position with reliable thermal contact. A loose sensor may read cooler than the ring and cause excessive heater drive.
-4. Connect sensor data to Arduino pin 2 and the power-stage control input to Arduino pin 9. Use the [wiring guide](../build/wiring.md#background-ring-and-camera) for power and ground connections.
+4. Connect sensor data to Arduino pin 2 and the power-stage control input to Arduino pin 9. Use the [wiring guide](../hardware/wiring.md#background-ring-and-camera) for power and ground connections.
 5. Check a plausible sensor reading before enabling heater power. Observe the reading and an independent temperature reference as the ring warms.
 
 ## Setpoint and cutoff

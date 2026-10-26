@@ -30,7 +30,7 @@ Connect at **115200 baud**. Use <code>T</code> for the target, <code>O</code> fo
 
 Use the [syntax-corrected copy](../downloads/firmware/Thermal_ring_syntax_fixed/Thermal_ring_syntax_fixed.ino) for compilation. It removes the stray <code>3</code> after <code>float Kd = 150;</code> in the original.
 
-[Arduino wiring and proposed ESP32 conversion](../build/wiring.md#background-ring-and-camera)
+[Arduino wiring and proposed ESP32 conversion](../hardware/wiring.md#background-ring-and-camera)
 
 ## Full source
 

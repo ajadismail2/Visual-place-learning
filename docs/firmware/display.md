@@ -32,7 +32,7 @@ Send <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> or <code>OFF
 
 The uploaded program requests a minimum refresh rate of **1000 Hz**, with double buffering disabled. This is a configuration request, not a measured refresh rate or a guarantee that every panel and library configuration achieves it.
 
-[LED panels](../hardware/led-panels.md) · [Library operation and settings](../software/led-library.md) · [Display wiring](../build/wiring.md#display-board-pin-map) · [Angle calculation](../build/visual-angle.md)
+[LED panels](../hardware/led-panels.md) · [Library operation and settings](../software/led-library.md) · [Display wiring](../hardware/wiring.md#display-board-pin-map) · [Angle calculation](../hardware/visual-angle.md)
 
 ## Full source
 

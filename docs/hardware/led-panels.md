@@ -45,7 +45,7 @@ Refresh rate controls temporal presentation. Pixel pitch and viewing distance de
 
 For a centred view of a flat panel, a 4 mm pitch spans approximately **1.43° at 160 mm**. An 11-pixel bar spans 44 mm, or **15.66°** at that distance. These are geometric calculations, not measurements of fly visual acuity. The relevant stimulus is the multi-pixel bar and its contrast with the background. The place-learning assay uses the relationship between the visual panorama and the target location. [5](#references)
 
-P4 provides a practical pixel grid for these broad bars without needing a fine-pitch video wall. The animal's viewing angle changes as it walks, so calculate dimensions from the installed enclosure rather than treating the centre example as valid everywhere. Use the [geometry chapter and calculator](../build/visual-angle.md) for bar width and elevation.
+P4 provides a practical pixel grid for these broad bars without needing a fine-pitch video wall. The animal's viewing angle changes as it walks, so calculate dimensions from the installed enclosure rather than treating the centre example as valid everywhere. Use the [geometry chapter and calculator](../hardware/visual-angle.md) for bar width and elevation.
 
 ## Affordable alternatives
 
@@ -69,7 +69,7 @@ Test one panel first, then the complete eight-panel chain. Check the A–D state
 
 For a timing check, place a fast photodiode facing a lit area and record its signal with an oscilloscope. Inspect the pulse train and any slower brightness modulation on several rows and panels, using the actual pattern and brightness setting. Record a pattern transition as well as a steady state. A library timing estimate is useful for diagnosis; the photodiode measures emitted light. Phone video or the behaviour camera can reveal some artefacts but cannot certify their absence.
 
-[Library operation and settings](../software/led-library.md) · [Display wiring](../build/wiring.md#display-board-pin-map) · [Display controller code](../firmware/display.md)
+[Library operation and settings](../software/led-library.md) · [Display wiring](../hardware/wiring.md#display-board-pin-map) · [Display controller code](../firmware/display.md)
 
 ## References
 

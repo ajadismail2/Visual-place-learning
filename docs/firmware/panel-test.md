@@ -26,7 +26,7 @@ Use this program to test one panel before connecting the full enclosure. It uses
 
 Send commands at 115200 baud. These patterns check colours, address lines and orientation. Flashing this test replaces the display controller program on that board.
 
-[Display pin map](../build/wiring.md#display-board-pin-map)
+[Display pin map](../hardware/wiring.md#display-board-pin-map)
 
 ## Full source
 
