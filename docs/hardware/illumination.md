@@ -19,7 +19,7 @@ Printed shades hold the arrays and diffusers; PVC pipes set their height. Printe
 
 Secure each stand, allow heat dissipation and provide cable strain relief. Check diffuser transmission in the camera image.
 
-[IR stand and lampshade CAD](../cad/index.md#03-infrared-light-stand) · [Download the STEP model](../downloads/cad/ir-light-stand.step)
+[IR stand and lampshade CAD](../cad/parts-and-step-files.md#03-infrared-light-stand) · [Download the STEP model](../downloads/cad/ir-light-stand.step)
 
 
 ## Power and positioning
@@ -41,4 +41,4 @@ Position lights around the arena for even coverage. Adjust angles to suppress re
 
 Use fixed exposure and gain. Check moving flies and close encounters at full resolution before recording.
 
-[Camera selection and recording](imaging.md) · [Tracking with AMADEUS](../analysis/tracking.md)
+[Camera selection and recording](cameras.md) · [Tracking with AMADEUS](../analysis/tracking-with-amadeus.md)

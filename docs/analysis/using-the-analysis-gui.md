@@ -61,4 +61,4 @@ Review jumps and low coverage before export. Flags do not remove points or repai
 Use **Export CSV**, **Choose export...** or **Export MP4**. Tables and plots can be saved separately.
 
 
-[What each output means](measurements.md)
+[What each output means](measurements-and-outputs.md)

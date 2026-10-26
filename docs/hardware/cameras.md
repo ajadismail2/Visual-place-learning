@@ -44,4 +44,4 @@ An ESP32 reads the array over I²C and streams frames over USB. Its spatial reso
 
 Record preheat, the full 300-second cooling interval and recovery for each Peltier plate, retaining timestamps and the A–D order.
 
-Validate readings against a contact reference and retain raw data. The [camera sketch](../software/camera.md) supplies a binary stream; computer-side recording is separate.
+Validate readings against a contact reference and retain raw data. The [camera sketch](../software/thermal-camera-stream.md) supplies a binary stream; computer-side recording is separate.

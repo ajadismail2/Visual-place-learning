@@ -31,7 +31,7 @@ Inspect the full temperature trace for heat accumulation, obstructed airflow or 
 
 ## Stopping one controller leaves another warm
 
-Peltier-plate `STOP` disables the four Peltier plates and blanks the display. Background and ring controllers remain active. Follow the [shutdown sequence](operation.md#stop-and-shut-down).
+Peltier-plate `STOP` disables the four Peltier plates and blanks the display. Background and ring controllers remain active. Follow the [shutdown sequence](run-an-experiment.md#stop-and-shut-down).
 
 ## Record the working configuration
 

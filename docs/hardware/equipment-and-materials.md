@@ -37,4 +37,4 @@ Behaviour recording requires an IR-sensitive camera, lens, illumination and over
 
 The physical assembly includes the base, carrier, ring, glass cover, panel enclosure and printed fixtures.
 
-[Start the wiring guide](wiring.md) · [Arena and dimensions](arena.md)
+[Start the wiring guide](esp32-and-arduino-wiring.md) · [Arena and dimensions](arena-and-dimensions.md)

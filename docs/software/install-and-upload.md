@@ -52,6 +52,6 @@ Peltier-plate, display, background and ring controllers use **115200 baud**. The
 
 ## 5. Test before connecting all loads
 
-Test one panel or driver channel at a time. Confirm Peltier-plate mapping and temperature response. Restore experiment firmware after diagnostics, then follow the [operating procedure](operation.md).
+Test one panel or driver channel at a time. Confirm Peltier-plate mapping and temperature response. Restore experiment firmware after diagnostics, then follow the [operating procedure](run-an-experiment.md).
 
-[Arduino upload guide](https://support.arduino.cc/hc/en-us/articles/4733418441116-Upload-a-sketch-in-Arduino-IDE) · [Troubleshooting](checks.md)
+[Arduino upload guide](https://support.arduino.cc/hc/en-us/articles/4733418441116-Upload-a-sketch-in-Arduino-IDE) · [Troubleshooting](checks-and-troubleshooting.md)

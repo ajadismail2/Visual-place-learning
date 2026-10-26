@@ -22,7 +22,7 @@ Peltier-plate control is open-loop, using **20 kHz, 8-bit PWM (0–255)**. Backg
 | C | 3 | 4 | 19 | 18 | 2 | 16 |
 | D | 4 | 1 | 32 | 33 | 4 | 5 |
 
-Values are ESP32 GPIO numbers. Share controller and driver logic ground. Enables remain HIGH; stopping zeros both PWM inputs. See [power connections](../hardware/wiring.md#power-and-peltier-plate-connections).
+Values are ESP32 GPIO numbers. Share controller and driver logic ground. Enables remain HIGH; stopping zeros both PWM inputs. See [power connections](../hardware/esp32-and-arduino-wiring.md#power-and-peltier-plate-connections).
 
 
 ## Prepare and start

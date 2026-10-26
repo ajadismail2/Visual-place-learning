@@ -28,34 +28,34 @@ validation:
 nav:
   - Home: index.md
   - HARDWARE:
-      - Overview: hardware/index.md
-      - Equipment and materials: hardware/equipment.md
-      - Arena and dimensions: hardware/arena.md
-      - ESP32 and Arduino wiring: hardware/wiring.md
-      - LED display: hardware/led-panels.md
-      - Peltier temperature system: hardware/peltier.md
-      - Thermal ring: hardware/ring.md
+      - Overview: hardware/overview.md
+      - Equipment and materials: hardware/equipment-and-materials.md
+      - Arena and dimensions: hardware/arena-and-dimensions.md
+      - ESP32 and Arduino wiring: hardware/esp32-and-arduino-wiring.md
+      - LED display: hardware/led-display.md
+      - Peltier temperature system: hardware/peltier-temperature-system.md
+      - Thermal ring: hardware/thermal-ring.md
       - Glass cover: hardware/glass-cover.md
       - Illumination: hardware/illumination.md
-      - Cameras: hardware/imaging.md
+      - Cameras: hardware/cameras.md
   - SOFTWARE:
-      - How the programs work: software/index.md
-      - Install and upload: software/upload.md
-      - Run an experiment: software/operation.md
-      - Checks and troubleshooting: software/checks.md
-      - Four-Peltier controller: software/target-controller.md
-      - 60-Peltier background: software/background.md
-      - LED matrix library: software/led-library.md
-      - LED display controller: software/display.md
-      - Thermal ring: software/ring.md
-      - Thermal camera stream: software/camera.md
-      - Single-panel test: software/panel-test.md
+      - How the programs work: software/how-the-programs-work.md
+      - Install and upload: software/install-and-upload.md
+      - Run an experiment: software/run-an-experiment.md
+      - Checks and troubleshooting: software/checks-and-troubleshooting.md
+      - Four-Peltier controller: software/four-peltier-controller.md
+      - 60-Peltier background: software/60-peltier-background.md
+      - LED matrix library: software/led-matrix-library.md
+      - LED display controller: software/led-display-controller.md
+      - Thermal ring: software/thermal-ring.md
+      - Thermal camera stream: software/thermal-camera-stream.md
+      - Single-panel test: software/single-panel-test.md
   - ANALYSIS:
-      - From video to measurements: analysis/index.md
-      - Tracking with AMADEUS: analysis/tracking.md
-      - Using the analysis GUI: analysis/gui.md
-      - Measurements and outputs: analysis/measurements.md
+      - From video to measurements: analysis/from-video-to-measurements.md
+      - Tracking with AMADEUS: analysis/tracking-with-amadeus.md
+      - Using the analysis GUI: analysis/using-the-analysis-gui.md
+      - Measurements and outputs: analysis/measurements-and-outputs.md
   - CAD:
-      - Parts and STEP files: cad/index.md
+      - Parts and STEP files: cad/parts-and-step-files.md
   - RESOURCES:
-      - Downloads and references: resources/index.md
+      - Downloads and references: resources/downloads-and-references.md

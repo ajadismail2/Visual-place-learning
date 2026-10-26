@@ -13,4 +13,4 @@ Seat the glass cover on the assembled ring without pressing on the temperature s
 
 Clean both faces and inspect the camera view for reflections, condensation and obscured edges. Keep the glass cover in the same position across recordings.
 
-[Arena dimensions](arena.md) · [Camera](imaging.md)
+[Arena dimensions](arena-and-dimensions.md) · [Camera](cameras.md)

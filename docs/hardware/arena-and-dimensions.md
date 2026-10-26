@@ -32,14 +32,14 @@ Label the Peltier plates A–D using the tested driver mapping, and retain these
 
 Mount the carrier on a rigid, level base. Supports and cables must not tilt the floor or obstruct the camera.
 
-See [CAD and printed parts](../cad/index.md) for the component overview.
+See [CAD and printed parts](../cad/parts-and-step-files.md) for the component overview.
 
 
 ## Ring and glass cover
 
 The ring and glass cover enclose the walking surface. See [Glass cover](glass-cover.md) for fit and handling.
 
-The ring uses independent temperature feedback. See [thermal ring](../hardware/ring.md).
+The ring uses independent temperature feedback. See [thermal ring](thermal-ring.md).
 
 ## Check the mechanical setup
 

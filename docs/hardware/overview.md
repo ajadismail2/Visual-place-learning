@@ -14,16 +14,16 @@ One Peltier plate cools during each trial while the other three heat. The Peltie
 
 | Component | Assembly checks |
 | --- | --- |
-| [Arena](../hardware/arena.md) | Level floor, secure supports, sealed Peltier-plate edges |
-| [Wiring](../hardware/wiring.md) | Board labels, pin assignments, supply ratings |
-| [Peltier temperature system](peltier.md) | Background feedback, A–D mapping and temperature response |
-| [LED display](led-panels.md) | Panel order, orientation, bar dimensions |
+| [Arena](arena-and-dimensions.md) | Level floor, secure supports, sealed Peltier-plate edges |
+| [Wiring](esp32-and-arduino-wiring.md) | Board labels, pin assignments, supply ratings |
+| [Peltier temperature system](peltier-temperature-system.md) | Background feedback, A–D mapping and temperature response |
+| [LED display](led-display.md) | Panel order, orientation, bar dimensions |
 | [Glass cover](glass-cover.md) | Fit, clearance, camera view |
 | [Illumination](illumination.md) | Uniformity, mounting, reflections |
-| [Cameras](imaging.md) | Focus, calibration, timing |
+| [Cameras](cameras.md) | Focus, calibration, timing |
 
 ## Configuration
 
 Pin maps and timings match the published sketches. Supply ratings and fabrication tolerances depend on the installed components.
 
-[Equipment list](../hardware/equipment.md) · [Software setup](../software/upload.md) · [CAD parts](../cad/index.md)
+[Equipment list](equipment-and-materials.md) · [Software setup](../software/install-and-upload.md) · [CAD parts](../cad/parts-and-step-files.md)

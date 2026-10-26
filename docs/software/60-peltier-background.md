@@ -3,7 +3,7 @@ title: 60-module background
 description: "A separate TMP117 feedback loop adjusts one PWM output for the background circuit."
 section: Software
 ---
-[← Controller programs](index.md)
+[← Controller programs](how-the-programs-work.md)
 
 <div class="download-links" markdown="1">
 
@@ -31,7 +31,7 @@ Open Serial Monitor at **115200 baud** with a newline ending. Send `SET 34.8` to
 
 Failed reads retain the previous value. There is no stale-data shutdown.
 
-[Temperature system and full-run measurement](../hardware/peltier.md) · [Arduino wiring and proposed ESP32 conversion](../hardware/wiring.md#background-ring-and-camera)
+[Temperature system and full-run measurement](../hardware/peltier-temperature-system.md) · [Arduino wiring and proposed ESP32 conversion](../hardware/esp32-and-arduino-wiring.md#background-ring-and-camera)
 
 ## Full source
 
