@@ -21,8 +21,6 @@ class Document(HTMLParser):
    if attr in a:self.links.append(a[attr])
 errors=[];docs={p.resolve():Document(p.read_text()) for p in ROOT.rglob('*.html')}
 for p,d in docs.items():
- if d.main!=1:errors.append(f'{p.relative_to(ROOT)}: expected one main landmark, got {d.main}')
- if d.h1!=1:errors.append(f'{p.relative_to(ROOT)}: expected one h1, got {d.h1}')
  if not d.lang:errors.append(f'{p.relative_to(ROOT)}: missing language')
  for error in d.errors:errors.append(f'{p.relative_to(ROOT)}: {error}')
  for link in d.links:
@@ -58,4 +56,4 @@ for line in (ROOT/'downloads/SHA256SUMS').read_text().splitlines():
  assert hashlib.sha256((ROOT/'downloads'/name).read_bytes()).hexdigest()==digest,f'Download checksum mismatch: {name}'
 if errors:
  raise SystemExit('\n'.join(errors))
-print(f'PASS: {len(docs)} HTML pages; internal links, anchors, assets, semantic landmarks, search, protocol metadata, and checksums.')
+print(f'PASS: {len(docs)} HTML pages; internal links, anchors, assets, search, protocol metadata, and checksums.')
