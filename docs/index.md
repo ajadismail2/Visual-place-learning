@@ -31,16 +31,9 @@ This documentation describes the current apparatus and will be updated as the sy
 
 ## Documentation
 
-<div class="section-cards" markdown="1">
-
-[**HARDWARE**<br><span>Components, construction, wiring and imaging.</span>](hardware/index.md)
-
-[**SOFTWARE**<br><span>Controller programs, installation and operation.</span>](firmware/index.md)
-
-[**ANALYSIS**<br><span>Tracking, target registration and behavioural measurements.</span>](analysis/index.md)
-
-[**CAD**<br><span>Editable STEP files for fabricated parts.</span>](cad/index.md)
-
-</div>
+1. [Hardware](hardware/index.md) — components, construction, wiring and imaging.
+2. [Software](firmware/index.md) — controller programs, installation and operation.
+3. [Analysis](analysis/index.md) — tracking, target registration and behavioural measurements.
+4. [CAD](cad/index.md) — editable STEP files for fabricated parts.
 
 <p class="source-note" id="reference"><strong>1 · Reference</strong><br>Ofstad, T. A., Zuker, C. S. &amp; Reiser, M. B. <em>Visual place learning in Drosophila melanogaster.</em> Nature 474, 204–207 (2011). <a href="https://doi.org/10.1038/nature10131">doi:10.1038/nature10131</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3169673/">Full text</a></p>
