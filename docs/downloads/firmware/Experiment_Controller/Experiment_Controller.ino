@@ -1,20 +1,20 @@
 // Experiment_Controller.ino
-// Controls 4 Peltier plates and synchronises the display controller via ESP-NOW.
+// Controls 4 Peltier plates and synchronises the LED display controller via ESP-NOW.
 // Controlled over the Serial Monitor (115200 baud).
 //
 // ── No wires needed between the two boards ───────────────────────────────
-//   The experiment controller sends one-way ESP-NOW packets to the display controller over the air.
-//   Range: ~100 m line-of-sight. No router required.
+//   The controller sends one-way ESP-NOW packets to the display controller over the air.
+//   No router is required. Verify radio delivery in the installed setup.
 //
 // ── Setup steps ──────────────────────────────────────────────────────────
 //   1. Flash Display_Controller to the LED matrix ESP32.
 //   2. Open the display controller's Serial Monitor to read its MAC address printout.
-//   3. Paste that MAC into DISPLAY_MAC[] below, then flash this sketch.
+//   3. Configure DISPLAY_MAC in local_config.h, then flash this sketch.
 //
 // ── Serial commands ────────────────────────────────────────────────────────
-//   EXP A-D-C-D   → pre-heat, then run pattern (A/B/C/D letters, dashes optional)
-//   STOP          → emergency stop, all plates off, LED off
-//   1 h200 / 2 c150 / 3 s → manual per-plate control (plate 1-4, heat/cool PWM 0-255, stop)
+//   EXP A-D-C-D   -> pre-heat, then run pattern (A/B/C/D letters, dashes optional)
+//   STOP          -> emergency stop, all plates off, LED off
+//   1 h200 / 2 c150 / 3 s -> manual per-plate control (plate 1-4, heat/cool PWM 0-255, stop)
 //
 // ── Node map ─────────────────────────────────────────────────────────────
 //   A = ch3 (idx 0)   B = ch2 (idx 1)   C = ch4 (idx 2)   D = ch1 (idx 3)
@@ -22,9 +22,9 @@
 //
 // ── Timing ───────────────────────────────────────────────────────────────
 //   Pre-heat  : all 4 plates at PRE_HOT_PWM for PRE_HOT_DURATION_MS
-//   Each step : cool plate  → boost (COOL_BOOST_PWM, 23 s)
-//                           → hold  (COOL_HOLD_PWM on 1st cool,
-//                                    COOL_HOLD_PWM_REPEAT on 2nd+ cool —
+//   Each step : cool plate  -> boost (COOL_BOOST_PWM, 23 s)
+//                           -> hold  (COOL_HOLD_PWM on 1st cool,
+//                                    COOL_HOLD_PWM_REPEAT on 2nd+ cool ;
 //                                    a plate drifts hotter each time it
 //                                    has cooled before, so it needs more
 //                                    cooling PWM to hold at temp)
@@ -35,7 +35,7 @@
 //                                                       then HOT_PWM
 //   A plate holds at PRE_HOT_PWM only during the initial pre-heat. Once the
 //   EXPERIMENT phase starts, a plate that has never been cooled holds at
-//   EXP_HOT_PWM instead — the two need different PWM because the plate's
+//   EXP_HOT_PWM instead ; the two need different PWM because the plate's
 //   own thermal state has already shifted by the time steps begin. The
 //   moment a plate finishes cooling it gets a short POST_COOL_BOOST_PWM
 //   pulse to bring it back up to temperature quickly, then settles at
@@ -44,17 +44,8 @@
 #include <WiFi.h>
 #include <esp_now.h>
 
-// ── Display controller MAC address ─────────────────────────────────────────────────────
-// Flash Display_Controller first, read its MAC from Serial Monitor, paste here.
-// Example: {0xAA, 0xB  B, 0xCC, 0xDD, 0xEE, 0xFF}
-// Updated display controller MAC address
-// Personal radio address and access-point credentials stay in a local file.
+// Local radio settings are configured in the private header.
 #include "local_config.h"
-// The default FF:FF:FF:FF:FF:FF is broadcast — works without knowing the
-// display controller MAC but has no delivery confirmation. Replace with the real MAC
-// for reliable unicast once you have it.
-
-// ── Wi-Fi credentials ─────────────────────────────────────────────────────
 #define AP_CHANNEL  1                              // must match display controller channel
 
 // ── Peltier pin assignments ───────────────────────────────────────────────
@@ -75,8 +66,8 @@
 
 #define RPWM4 19
 #define LPWM4 18
-#define REN4  21
-#define LEN4  17  // was 22 (duplicate of LEN3) — GPIO17 is UART2 TX2, unused here
+#define REN4  2
+#define LEN4  16
 
 #define PWM_FREQ 20000
 #define PWM_RES  8
@@ -91,8 +82,8 @@ static const uint8_t LEN_PIN[4]  = {LEN3,  LEN2,  LEN4,  LEN1};
 
 // ── Experiment constants ──────────────────────────────────────────────────
 #define HOT_PWM             24
-#define PRE_HOT_PWM         29
-#define EXP_HOT_PWM         24  // not-yet-cooled plates once EXPERIMENT has started (PRE_HOT phase still uses PRE_HOT_PWM)
+#define PRE_HOT_PWM         30
+#define EXP_HOT_PWM         29  // not-yet-cooled plates once EXPERIMENT has started (PRE_HOT phase still uses PRE_HOT_PWM)
 #define COOL_BOOST_PWM     150
 #define COOL_HOLD_PWM       106
 #define COOL_HOLD_PWM_REPEAT 120  // 2nd+ cool cycle: plate drifts hotter, needs more    to hold
@@ -123,7 +114,7 @@ static unsigned long lastLogMs   = 0;
 // after, since post-cool the plate reaches 36C at a different PWM.
 static bool hasCooled[4] = {false, false, false, false};
 
-// Set by applyStep() for the plate currently cooling — true if this plate
+// Set by applyStep() for the plate currently cooling ; true if this plate
 // has cooled before (its 2nd+ cool cycle), which needs COOL_HOLD_PWM_REPEAT
 // instead of COOL_HOLD_PWM because the plate drifts to the hotter side.
 static bool currentCoolIsRepeat = false;
@@ -166,7 +157,7 @@ static void stopAllPlates() {
 }
 
 // justCooledIdx is the plate that just finished cooling (or -1 if none,
-// e.g. the very first cool step after pre-heat) — it gets the post-cool
+// e.g. the very first cool step after pre-heat) ; it gets the post-cool
 // boost instead of jumping straight to its steady-state PWM.
 static void applyStep(int coolIdx, int justCooledIdx, unsigned long now) {
   stopAllPlates();
@@ -188,7 +179,7 @@ static void applyStep(int coolIdx, int justCooledIdx, unsigned long now) {
   }
 }
 
-// Called every loop() tick — ends a plate's post-cool boost once its
+// Called every loop() tick ; ends a plate's post-cool boost once its
 // POST_COOL_BOOST_DURATION_MS has elapsed, independent of the step clock.
 static void servicePostCoolBoost(unsigned long now) {
   for (int i = 0; i < 4; i++) {
@@ -215,7 +206,7 @@ static void onDataSent(const wifi_tx_info_t* tx_info, esp_now_send_status_t stat
   (void)tx_info;
   Serial.println(status == ESP_NOW_SEND_SUCCESS
                     ? F("[ESP-NOW] Delivery OK")
-                    : F("[ESP-NOW] Delivery FAILED — check DISPLAY_MAC / channel"));
+                    : F("[ESP-NOW] Delivery FAILED ; check DISPLAY_MAC / channel"));
 }
 
 static void displayOff()              { espNowSend("OFF"); }
@@ -234,7 +225,7 @@ static void hardStop() {
   patLen  = 0;
   stepIdx = 0;
   for (int i = 0; i < 4; i++) { hasCooled[i] = false; inPostCoolBoost[i] = false; }
-  Serial.println(F("[EXPERIMENT] Hard stop — all plates off, LED off."));
+  Serial.println(F("[CONTROLLER] Hard stop ; all plates off, LED off."));
 }
 
 static bool startExperiment(const String& raw) {
@@ -262,7 +253,7 @@ static bool startExperiment(const String& raw) {
   lastLogMs   = now;
   mode        = PRE_HOT;
 
-  Serial.print(F("[EXPERIMENT] Pre-heat started. Pattern ("));
+  Serial.print(F("[CONTROLLER] Pre-heat started. Pattern ("));
   Serial.print(patLen); Serial.print(F(" steps × 5 min): "));
   for (int i = 0; i < patLen; i++) { if (i) Serial.print('-'); Serial.print(pat[i]); }
   Serial.println();
@@ -288,7 +279,7 @@ void setup() {
     ledcWrite(LPWM_PIN[i], 0);
   }
 
-  // WiFi: AP_STA mode — soft AP only used to pin the radio to AP_CHANNEL
+  // WiFi: AP_STA mode ; soft AP only used to pin the radio to AP_CHANNEL
   // so ESP-NOW has a fixed channel to talk to the display controller on; no HTTP served.
   WiFi.mode(WIFI_AP_STA);
   WiFi.softAP(AP_SSID, AP_PASS, AP_CHANNEL);
@@ -296,30 +287,29 @@ void setup() {
   Serial.print(F("[WiFi] AP SSID : ")); Serial.println(AP_SSID);
   Serial.print(F("[WiFi] IP      : ")); Serial.println(WiFi.softAPIP());
   Serial.print(F("[WiFi] Channel : ")); Serial.println(AP_CHANNEL);
-  Serial.print(F("[Experiment controller MAC STA]: ")); Serial.println(WiFi.macAddress());
+  Serial.print(F("[Controller MAC STA]: ")); Serial.println(WiFi.macAddress());
 
   // ESP-NOW
   if (esp_now_init() != ESP_OK) {
-    Serial.println(F("[ESP-NOW] Init FAILED — halting"));
+    Serial.println(F("[ESP-NOW] Init FAILED ; halting"));
     while (true) delay(1000);
   }
 
   esp_now_peer_info_t peer = {};
   memcpy(peer.peer_addr, DISPLAY_MAC, 6);
-  peer.channel = 0;       // 0 = use current channel
+  peer.channel = 1;       // 0 = use current channel
   peer.encrypt = false;
   if (esp_now_add_peer(&peer) != ESP_OK) {
-    Serial.println(F("[ESP-NOW] Add peer FAILED — halting"));
+    Serial.println(F("[ESP-NOW] Add peer FAILED ; halting"));
     while (true) delay(1000);
   }
   esp_now_register_send_cb(onDataSent);
-  // NOTE: if this fails to compile on arduino-esp32 2.x, the send callback
-  // signature there is the same (mac_addr, status) — only recv changed.
+  // Use an ESP32 board package compatible with wifi_tx_info_t.
   Serial.println(F("[ESP-NOW] Ready."));
 
   displayOff();   // ensure display controller starts dark
 
-  Serial.println(F("[EXPERIMENT] Ready. Commands: EXP A-D-C-D | STOP | 1 h200 / 2 c150 / 3 s"));
+  Serial.println(F("[CONTROLLER] Ready. Commands: EXP A-D-C-D | STOP | LED A/B/C/D/OFF | 1 h200 / 2 c150 / 3 s"));
 }
 
 // ── Serial command handler ───────────────────────────────────────────────
@@ -337,7 +327,19 @@ static void handleSerial() {
     if (startExperiment(input.substring(4)))
       Serial.println(F("[OK] Experiment starting."));
     else
-      Serial.println(F("[ERR] Invalid pattern — use letters A/B/C/D only"));
+      Serial.println(F("[ERR] Invalid pattern ; use letters A/B/C/D only"));
+  } else if (input.equalsIgnoreCase("LED OFF")) {
+    displayOff();
+    Serial.println(F("[OK] LED OFF sent"));
+  } else if (input.length() == 5 && input.substring(0,4).equalsIgnoreCase("LED ")) {
+    char s = toupper(input.charAt(4));
+    if (s>='A' && s<='D') {
+      displayShowState(s);
+      Serial.print(F("[OK] LED "));
+      Serial.println(s);
+    } else {
+      Serial.println(F("[ERR] Use LED A, LED B, LED C, LED D or LED OFF"));
+    }
   } else if (input.charAt(0) >= '1' && input.charAt(0) <= '4' && input.length() >= 3) {
     // Manual per-plate control: "1 h200" (heat), "2 c150" (cool), "3 s" (stop)
     int  id  = input.charAt(0) - '1';
@@ -355,7 +357,7 @@ static void handleSerial() {
       Serial.println(F("[ERR] Unknown command (h/c/s expected)"));
     }
   } else {
-    Serial.println(F("[ERR] Unknown command. Use: EXP A-D-C-D | STOP | 1 h200 / 2 c150 / 3 s"));
+    Serial.println(F("[ERR] Unknown command. Use: EXP A-D-C-D | STOP | LED A/B/C/D/OFF | 1 h200 / 2 c150 / 3 s"));
   }
 }
 
@@ -384,7 +386,7 @@ void loop() {
       applyStep(nodeToIdx(pat[0]), -1, now);
       displayShowState(pat[0]);
       Serial.print(F("[EXP] Pre-heat done. Step 1/")); Serial.print(patLen);
-      Serial.print(F(" — cooling ")); Serial.println(pat[0]);
+      Serial.print(F(" ; cooling ")); Serial.println(pat[0]);
     }
   }
 
@@ -398,7 +400,7 @@ void loop() {
       uint8_t holdPwm = currentCoolIsRepeat ? COOL_HOLD_PWM_REPEAT : COOL_HOLD_PWM;
       coolPlate(ci, holdPwm);
       Serial.print(F("[EXP] Node ")); Serial.print(pat[stepIdx]);
-      Serial.print(F(" → hold (PWM ")); Serial.print(holdPwm); Serial.println(')');
+      Serial.print(F(" -> hold (PWM ")); Serial.print(holdPwm); Serial.println(')');
     }
 
     if (now - lastLogMs >= LOG_INTERVAL_MS) {
@@ -424,7 +426,7 @@ void loop() {
         applyStep(nodeToIdx(pat[stepIdx]), ci, now);
         displayShowState(pat[stepIdx]);
         Serial.print(F("[EXP] Step ")); Serial.print(stepIdx+1); Serial.print('/'); Serial.print(patLen);
-        Serial.print(F(" — cooling ")); Serial.println(pat[stepIdx]);
+        Serial.print(F(" ; cooling ")); Serial.println(pat[stepIdx]);
       }
     }
   }

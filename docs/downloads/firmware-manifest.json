@@ -29,12 +29,13 @@
     {
       "filename": "Experiment_Controller.ino",
       "path": "firmware/Experiment_Controller/Experiment_Controller.ino",
-      "upload_date": "2026-10-17",
+      "upload_date": "2026-10-26",
       "publication_changes": [
-        "Device MAC address and AP credentials moved to an untracked local_config.h; configure from local_config.example.h. Control logic unchanged.",
-        "Renamed the sketch, comments, serial-log labels and controller identifiers to experiment/display terminology; control logic and commands unchanged."
+        "Replaced previous controller with the supplied Master_Controller(1).ino; control logic and numeric settings preserved.",
+        "Moved device address and AP credentials into private local_config.h.",
+        "Used experiment/display controller terminology and clarified setup comments."
       ],
-      "sha256": "423c2083955f5913d4b16fd5a4d4c4cf2f346f7452a32034ae65ac8f87d3aefb"
+      "sha256": "42a2355e13e918257ad4321715499420977da8d6b4508e2a0f7728ded59e4030"
     },
     {
       "filename": "SinglePanelTest.ino",

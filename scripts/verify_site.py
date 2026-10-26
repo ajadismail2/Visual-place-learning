@@ -46,7 +46,7 @@ assert protocol['cooling_boost']=={'pwm':150,'duration_s':23}
 assert protocol['cooling_boost']['duration_s']+protocol['cooling_hold']['duration_s']==300
 assert protocol['cooling_hold']['first_selection_pwm']==106
 assert protocol['cooling_hold']['repeat_selection_pwm']==120
-expected={'A':(3,27,14,23,22),'B':(2,25,26,13,15),'C':(4,19,18,21,17),'D':(1,32,33,4,5)}
+expected={'A':(3,27,14,23,22),'B':(2,25,26,13,15),'C':(4,19,18,2,16),'D':(1,32,33,4,5)}
 for target,values in expected.items():
  assert tuple(protocol['targets'][target][k] for k in ['channel','rpwm','lpwm','ren','len'])==values
 assert protocol['display']['horizontal_rows_inclusive']==[[0,10],[22,31]]

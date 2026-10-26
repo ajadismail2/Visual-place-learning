@@ -44,6 +44,7 @@ nav:
       - Install and upload: software/upload.md
       - Run an experiment: operation.md
       - Checks and troubleshooting: software/checks.md
+      - Four-Peltier controller: firmware/target-controller.md
       - 60-module background: firmware/background.md
       - LED display controller: firmware/display.md
       - Thermal ring: firmware/ring.md

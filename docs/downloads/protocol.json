@@ -1,15 +1,15 @@
 {
   "schema_version": 3,
   "status": "uploaded_source_snapshot_not_verified_installed_firmware",
-  "source_revision": "upload-2026-10-17",
-  "documented_through": "2026-10-17",
+  "source_revision": "upload-2026-10-26",
+  "documented_through": "2026-10-26",
   "experiment_file": "Experiment_Controller.ino",
   "display_file": "Display_Controller.ino",
   "arena_inner_diameter_cm": 20,
   "background_modules": 60,
   "target_modules": 4,
   "preheat_s": 300,
-  "preheat_pwm": 29,
+  "preheat_pwm": 30,
   "trial_duration_s": 300,
   "minimum_sequence_length": 1,
   "maximum_sequence_length": 16,
@@ -55,8 +55,8 @@
       "channel": 4,
       "rpwm": 19,
       "lpwm": 18,
-      "ren": 21,
-      "len": 17,
+      "ren": 2,
+      "len": 16,
       "manual_number": 3
     },
     "D": {
@@ -77,7 +77,7 @@
     "first_selection_pwm": 106,
     "repeat_selection_pwm": 120
   },
-  "experiment_heat_pwm": 24,
+  "experiment_heat_pwm": 29,
   "post_cool_boost": {
     "pwm": 50,
     "duration_s": 17
@@ -141,5 +141,6 @@
     "configured_refresh_hz": 8,
     "frame_bytes": 1538
   },
-  "previous_record": "protocol-2026-10-15.json"
+  "previous_record": "protocol-2026-10-15.json",
+  "previously_cooled_heat_pwm": 24
 }

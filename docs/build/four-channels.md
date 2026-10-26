@@ -17,7 +17,7 @@ Each tile has two wires, both connected to its driver's output pair. The experim
 | --- | --- | --- | --- | --- | --- | --- |
 | A | 1 | 3 | 27 | 14 | 23 | 22 |
 | B | 2 | 2 | 25 | 26 | 13 | 15 |
-| C | 3 | 4 | 19 | 18 | 21 | 17 |
+| C | 3 | 4 | 19 | 18 | 2 | 16 |
 | D | 4 | 1 | 32 | 33 | 4 | 5 |
 
 RPWM, LPWM and enable values are ESP32 GPIO numbers. The experiment controller uses **LPWM for heating and RPWM for cooling** at 20 kHz with 8-bit PWM. Check the current direction against the installed Peltier polarity.
@@ -42,7 +42,9 @@ The experiment controller preheats all targets for five minutes. Each selected t
 | --- | --- |
 | Initial cooling | PWM 150 for 23 s |
 | Remaining 277 s | PWM 106 on first selection; 120 on a repeat |
-| Other targets | Heating at PWM 24 |
+| Preheat | Heating at PWM 30 for 300 s |
+| Other targets, not yet cooled | Heating at PWM 29 |
+| Other targets, previously cooled | Heating at PWM 24 |
 | Return to heating | PWM 50 for 17 s, then 24 |
 
 ![Programmed cooling and return-to-heating outputs over one target interval](../assets/setup/target-pwm.svg)
@@ -51,7 +53,7 @@ The plot shows the commands sent to the driver. It is not a temperature trace. A
 
 The intended target range is **23–25 °C**. Measured performance requires temperature traces for all four targets and the background; PWM settings alone do not establish surface temperature.
 
-Every step in this program cools a target. The alternative bench controller uses different enable pins and the opposite PWM direction.
+Every step in this program cools a target.
 
 ## How the four targets affect the rest of the arena
 
@@ -59,4 +61,4 @@ The tiles share their surroundings even though their electrical outputs are sepa
 
 Record all four temperatures and the background on the same time axis. For each selection, compare the time to cool, the temperature maintained during the hold, and recovery after switching away. The best single minimum does not show whether a target remained suitable for the whole trial. A measured comparison of A–D is not available.
 
-[Operating procedure](../operation.md) · [Wiring](wiring.md)
+[Four-Peltier controller](../firmware/target-controller.md) · [Operating procedure](../operation.md) · [Wiring](wiring.md)
