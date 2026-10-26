@@ -3,6 +3,9 @@ title: Visual place learning in Drosophila
 description: Studying visually guided navigation with a makerspace-built thermal arena, accessible electronics and individual fly tracking.
 section: Home
 ---
+
+# Visual place learning in Drosophila
+
 <div class="home-intro" markdown="1">
 
 <div markdown="1">
