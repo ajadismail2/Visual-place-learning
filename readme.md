@@ -23,10 +23,6 @@ Content is in `docs/`, templates in `theme/`, and local CSS/JavaScript in `docs/
 
 The supplied experiment controller uses a five-minute preheat and accepts 1 to 16 cooling steps. Current settings are recorded in `docs/downloads/protocol.json`; the earlier parameter record is archived separately. Setpoints are not measured temperatures.
 
-Measured temperature logs and STEP files are awaiting upload. The CNC-cut carrier, lower heat sinks, and thermal-controller ESP32 conversion are labelled proposals, not completed or validated hardware.
-
-Personal AP credentials and the device MAC are excluded from published code. Configure the experiment controller locally using `local_config.example.h`. The original ring sketch's syntax error is documented, with a separate syntax-only correction. No firmware compilation or hardware test is claimed.
-
 ## Website
 
 [Website](https://ajadismail2.github.io/Visual-place-learning/) · [Download QR code](docs/downloads/website-qr.png)
