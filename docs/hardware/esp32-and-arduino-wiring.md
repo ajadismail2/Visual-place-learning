@@ -22,7 +22,7 @@ ESP32 assignments refer to the classic ESP32, not the C3.
 
 ## Power and Peltier-plate connections
 
-1. Disconnect supplies and label the Peltier plates using the [pin table](peltier.md#target-controller-pin-map).
+1. Disconnect supplies and label the Peltier plates using the [pin table](peltier-temperature-system.md#target-controller-pin-map).
 2. Connect ESP32 PWM and enable pins to driver inputs.
 3. Share controller and driver logic ground. Return load current directly to the supply.
 4. Connect each Peltier plate across its driver's output pair, never to GPIO or ground.
@@ -47,7 +47,7 @@ Display ESP32 assignments:
 
 Connect the ESP32 to panel 1 **IN**, then chain **OUT → IN**. Power panels separately. Use level conversion if required for 3.3 V control signals.
 
-Run the [single-panel test](../software/panel-test.md), then restore the display sketch. ESP-NOW carries the selected A–D state.
+Run the [single-panel test](../software/single-panel-test.md), then restore the display sketch. ESP-NOW carries the selected A–D state.
 
 ## Background, ring and camera
 
@@ -87,4 +87,4 @@ Camera ESP32: **GPIO21 → SDA**, **GPIO22 → SCL**, compatible breakout supply
 
 With power off, check polarity, continuity and loose strands. Verify USB communication before enabling loads.
 
-[ESP32 board power and pin reference](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html) · [Install and upload](../software/upload.md)
+[ESP32 board power and pin reference](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html) · [Install and upload](../software/install-and-upload.md)

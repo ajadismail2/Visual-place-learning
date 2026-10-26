@@ -3,7 +3,7 @@ title: LED display controller
 description: "An ESP32 translates the selected Peltier-plate letter into a panorama rotation across eight HUB75 panels."
 section: Software
 ---
-[← Controller programs](index.md)
+[← Controller programs](how-the-programs-work.md)
 
 <div class="download-links" markdown="1">
 
@@ -32,7 +32,7 @@ Send <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> or <code>OFF
 
 The sketch requests **1000 Hz** refresh and uses one buffer. Optical refresh has not been measured.
 
-[LED display and geometry](../hardware/led-panels.md) · [Library operation and settings](../software/led-library.md) · [Display wiring](../hardware/wiring.md#display-board-pin-map)
+[LED display and geometry](../hardware/led-display.md) · [Library operation and settings](led-matrix-library.md) · [Display wiring](../hardware/esp32-and-arduino-wiring.md#display-board-pin-map)
 
 ## Full source
 

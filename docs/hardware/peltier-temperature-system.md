@@ -42,7 +42,7 @@ One ESP32 drives four BTS7960 bridges. LPWM heats each Peltier plate and RPWM co
 The outputs use **20 kHz, 8-bit PWM**. Connect each Peltier plate across its driver output and verify the installed polarity under temperature monitoring.
 
 
-Wire with power disconnected using the [connection guide](wiring.md#power-and-peltier-plate-connections). Label both ends of each cable A–D and retain these labels in the video and analysis.
+Wire with power disconnected using the [connection guide](esp32-and-arduino-wiring.md#power-and-peltier-plate-connections). Label both ends of each cable A–D and retain these labels in the video and analysis.
 
 
 ### Trial sequence {#trial-sequence}
@@ -79,4 +79,4 @@ A 10-trial run lasts **55 minutes** including preheat; an 11-trial run lasts **6
 
 If the background temperature rises consistently, adjust the `SET` temperature in a later validation run and measure the result again. Report the commanded temperature, sensor location and measured surface temperatures together.
 
-[Background controller](../software/background.md) · [Four-Peltier controller](../software/target-controller.md) · [Operating procedure](../software/operation.md) · [Thermal imaging](imaging.md#set-up-the-thermal-camera)
+[Background controller](../software/60-peltier-background.md) · [Four-Peltier controller](../software/four-peltier-controller.md) · [Operating procedure](../software/run-an-experiment.md) · [Thermal imaging](cameras.md#set-up-the-thermal-camera)

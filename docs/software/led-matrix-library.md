@@ -3,7 +3,7 @@ title: LED matrix library
 description: How ESP32-HUB75-MatrixPanel-DMA drives the arena display and how its settings relate to the supplied sketch.
 section: Software
 ---
-[ESP32-HUB75-MatrixPanel-DMA](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA/) drives the eight-panel panorama. See [Hardware](../hardware/led-panels.md) for panel selection.
+[ESP32-HUB75-MatrixPanel-DMA](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA/) drives the eight-panel panorama. See [Hardware](../hardware/led-display.md) for panel selection.
 
 ## Panel scanning
 
@@ -79,9 +79,9 @@ Keep contrast and measured timing consistent across runs.
 
 1. Install the library and Adafruit GFX dependency. The sketch includes `ESP32-HUB75-MatrixPanel-I2S-DMA.h`.
 2. Use the supported original ESP32. ESP32-C3 is not a compatible substitute. [1](#references)
-3. Follow the [pin map](../hardware/wiring.md#display-board-pin-map), connect external power and common ground, then run the [single-panel test](panel-test.md).
-4. Connect the full chain, upload the [display program](display.md) and test A–D over serial before wireless pairing.
-5. [Measure display timing](../hardware/led-panels.md#check-the-display). Record library and board-package versions, brightness and driver configuration.
+3. Follow the [pin map](../hardware/esp32-and-arduino-wiring.md#display-board-pin-map), connect external power and common ground, then run the [single-panel test](single-panel-test.md).
+4. Connect the full chain, upload the [display program](led-display-controller.md) and test A–D over serial before wireless pairing.
+5. [Measure display timing](../hardware/led-display.md#check-the-display). Record library and board-package versions, brightness and driver configuration.
 
 For blank panels, check power, IN/OUT orientation, pin mapping and driver compatibility. For repeated rows or columns, check scan type, dimensions and mapping. Faint duplicates may require latch-blanking adjustment, which also affects brightness. [1](#references)
 

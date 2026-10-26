@@ -3,7 +3,7 @@ title: Thermal camera stream
 description: "An MLX90640 supplies a temperature image for measurement; it does not close the Peltier-plate control loop."
 section: Software
 ---
-[← Controller programs](index.md)
+[← Controller programs](how-the-programs-work.md)
 
 <div class="download-links" markdown="1">
 
