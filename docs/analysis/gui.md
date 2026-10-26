@@ -3,18 +3,18 @@ title: Using the arena analysis GUI
 description: Install the Python application, register targets, configure trials and inspect individual trajectories.
 section: Analysis
 ---
-The arena GUI combines video playback, four target regions and the reviewed AMADEUS tracks in one window. It runs locally and calculates measurements from the supplied coordinates.
+The local GUI combines video playback, target registration and analysis of reviewed AMADEUS coordinates.
 
 ## 1 · Install and launch
 
-[Download fly_target_time_gui_amadeus.py](../downloads/analysis/fly_target_time_gui_amadeus.py). Use Python 3.10 or later with Tkinter. In PowerShell, open the folder containing the file and run:
+[Download the GUI](../downloads/analysis/fly_target_time_gui_amadeus.py). Requires Python 3.10+ and Tkinter. From its folder, run in PowerShell:
 
 ```powershell
 py -m pip install numpy opencv-python pillow
 py fly_target_time_gui_amadeus.py
 ```
 
-The download is the supplied **version 1.3.0**, unchanged. Its built-in numerical checks can be run without opening a window:
+The supplied **version 1.3.0** includes numerical checks:
 
 ```powershell
 py fly_target_time_gui_amadeus.py --self-test
@@ -22,15 +22,15 @@ py fly_target_time_gui_amadeus.py --self-test
 
 ## 2 · Load the tracks and video
 
-Choose the reviewed AMADEUS CSV, then the matching video. The CSV contains coordinates in pixels, not centimetres. Check that the displayed markers follow the same flies in the video before calculating results.
+Load the reviewed AMADEUS CSV and matching video. Coordinates are in pixels. Confirm markers follow the correct flies.
 
 ![Analysis GUI showing file inputs, settings, fly selection, playback and measurement panels](../assets/analysis/analysis-gui.png)
 
 ## 3 · Register the four targets
 
-Open **Draw / load**. Select A, B, C or D, then drag a rectangle over that tile. Boxes can be drawn in any order, replaced or deleted individually. Browse the video using the frame slider or exact-frame control to find a clear reference image. The boxes remain fixed in the original image coordinates while frames change.
+Open **Draw / load**, select A–D and drag a rectangle over each tile. Use the frame slider or exact-frame control to locate a reference frame. Boxes can be replaced or deleted; their image coordinates remain fixed.
 
-Use the pre-experiment mask to identify tile positions. Confirm the labels against the physical target controller, then choose **Use Boxes** and save the box JSON. All four regions are required and overlapping regions are rejected.
+Locate tiles with the pre-experiment mask and verify labels against the controller. Select **Use Boxes** and save the JSON. All four boxes are required; overlaps are rejected.
 
 ![Target-box editor with named regions and frame navigation](../assets/analysis/target-registration.png)
 
@@ -46,21 +46,21 @@ Use the pre-experiment mask to identify tile positions. Confirm the labels again
 | Scale | Pixels per centimetre for distance and speed |
 | Video offset | Video frame = CSV frame − offset |
 
-The full-mode default order is **B–C–D–C–B–A–D–C–B–A**. Edit it to match the actual experiment. At 24 fps, each five-minute trial spans 7,200 frames. Full mode requires exactly ten targets; single-trial mode runs from the selected start to the end of the CSV.
+Full mode requires ten targets, each lasting 300 seconds (7,200 frames at 24 fps). Replace the default **B–C–D–C–B–A–D–C–B–A** order with the recorded sequence. Single-trial mode extends from the selected start to the CSV end.
 
-Measure scale from the known arena diameter in the same video. For example, a 20 cm arena spanning 916 pixels gives **45.8 px/cm**. Recalculate after any crop or change in camera framing. A temporal offset can align a trimmed clip, but cannot correct resizing, rotation or a changed frame rate.
+Calibrate scale from the arena in the same video: 916 pixels across 20 cm gives **45.8 px/cm**. Recalibrate after cropping or reframing. Video offset aligns trimmed clips; it does not correct resizing, rotation or frame-rate changes.
 
 ## 5 · Select flies and calculate
 
-The **Flies included in analysis** checkboxes define the analysis population. Excluded IDs disappear from calculations and exports; retained IDs keep their original numbers and colours. The separate **Fly** selector changes the displayed individual, not the analysis population.
+**Flies included in analysis** controls calculations and exports. Retained IDs keep their original numbers and colours. The separate **Fly** selector only changes the displayed individual.
 
-Choose **Recalculate** after changing settings, target boxes or fly selection. Inspect target dwell, occupancy and first-success times beside the video. Playback continues following a fly after it succeeds; trajectory exports stop that fly's path at its first completed dwell.
+Select **Recalculate** after changing settings, boxes or included flies. Review dwell, occupancy and success times against the video. Live playback continues after success; exported paths stop at the first completed dwell.
 
 ## 6 · Review and export
 
-Review flagged jumps and low tracking coverage before exporting. Flags identify large displacements but do not remove points or repair identity errors. Correct those upstream in AMADEUS, then reload the reviewed CSV.
+Review jumps and low coverage before export. Flags do not remove points or repair identities; correct tracking in AMADEUS and reload the CSV.
 
-Choose **Export CSV**, **Choose export...** or **Export MP4**. The export selector lets each table and plot be saved independently.
+Use **Export CSV**, **Choose export...** or **Export MP4**. Tables and plots can be saved separately.
 
 ![Export chooser showing separate selections for tables, metadata and trajectory plots](../assets/analysis/gui-exports.svg)
 

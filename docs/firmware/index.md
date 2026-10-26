@@ -3,18 +3,15 @@ title: Software
 description: How the controller programs cooperate and how to load and operate them.
 section: Software
 ---
-The apparatus uses several small programs rather than one program controlling everything. Each controller keeps running its own sketch while powered. The experiment controller coordinates the four targets and display; the background and ring regulate temperature independently.
+The target controller coordinates four Peltiers and the display. Background and ring controllers run independent temperature loops.
 
-## Follow one experiment through the system
+## Experiment sequence
 
-1. You send a target order to the experiment controller through a USB serial connection.
-2. The experiment controller starts the preheat interval, then selects each target in turn.
-3. The selected driver's output cools its tile. The other target outputs heat.
-4. The experiment controller sends the target letter to the display ESP32, which chooses the corresponding panorama position.
-5. The background and ring controllers keep reading their own sensors and adjusting their own outputs.
-6. Recording software captures behaviour and temperature data. The supplied experiment controller does not save the behavioural video or receive target-temperature feedback.
-
-This separation matters when testing and stopping the apparatus: a response from the experiment controller does not show that every sensor or recorder is working.
+1. Send the target order over USB serial.
+2. The target controller preheats the tiles, then cools each selected target and heats the others.
+3. ESP-NOW sends the corresponding panorama state to the display.
+4. Background and ring feedback loops run independently.
+5. Record behaviour and temperature separately; the target controller does not log video or use temperature feedback.
 
 ## Start here
 
@@ -30,27 +27,22 @@ This separation matters when testing and stopping the apparatus: a response from
 
 ## Programs for the main setup
 
-| Program | Board and job | What it does not do |
-| --- | --- | --- |
-| [Experiment_Controller](target-controller.md) | Target ESP32; four Peltier outputs and display timing | Uses preset drive levels, without target-temperature feedback |
-| [Display_Controller](display.md) | Display ESP32; visual pattern | Does not power the Peltier drivers |
-| [Closedloop_60peltier](background.md) | Arduino; background temperature loop | One sensor does not measure all 60 module temperatures separately |
-| [Thermal_ring](ring.md) | Arduino; perimeter heater loop | Does not stop when the experiment controller receives STOP |
-| [thermal_camera](camera.md) | ESP32; thermal-image stream | Does not save a file on the computer by itself |
+| Program | Function |
+| --- | --- |
+| [Experiment_Controller](target-controller.md) | Four target outputs and display timing; no target-temperature feedback |
+| [Display_Controller](display.md) | Panorama generation on the display ESP32 |
+| [Closedloop_60peltier](background.md) | Background feedback from one temperature sensor |
+| [Thermal_ring](ring.md) | Independent perimeter-heater feedback |
+| [thermal_camera](camera.md) | Thermal-image stream; requires computer-side recording |
 
 ## Diagnostic program
 
-[SinglePanelTest](panel-test.md) checks one display panel before connecting the full chain. Uploading it replaces the display controller program on that board, so restore the display program before running an experiment.
-
-
-## Three terms used throughout
-
-**Setpoint** is the temperature requested from a feedback controller. **Measured temperature** is what a sensor reports at its location. **PWM output** is the electrical drive setting. These are different quantities: a setpoint or PWM table is not proof that the whole walking surface reached a particular temperature.
+[SinglePanelTest](panel-test.md) checks panel wiring and orientation. Restore the display sketch after testing.
 
 ## Source files and configuration
 
-The full code is available under a collapsible section on each program page. Read the operating explanation and connection table before changing the source. Local experiment controller settings belong in `local_config.h`; the published example deliberately contains no working device address or private password.
+Each program page includes its source. Store device addresses and network settings in local `local_config.h`.
 
-Use the separate syntax-corrected ring file for compilation. The original uploaded file is retained alongside it. The background and ring sketches use Arduino pin assignments; the ESP32 conversion is a proposed adaptation.
+Use the corrected ring sketch. Background and ring programs retain Arduino pin assignments; their ESP32 conversion is proposed.
 
 [Download all programs](../downloads/arena-firmware-2026-10-17.zip) · [Settings record](../downloads/protocol.json) · [Wiring guide](../hardware/wiring.md)

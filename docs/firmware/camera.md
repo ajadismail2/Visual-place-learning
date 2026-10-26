@@ -11,7 +11,7 @@ section: Software
 
 </div>
 
-The MLX90640 records a **32 × 24 temperature image** and sends it to a computer over USB serial. These measurements are independent of target control.
+The MLX90640 streams **32 × 24 temperature frames** over USB serial, independently of target control.
 
 ## Connections and output
 
@@ -24,9 +24,9 @@ The MLX90640 records a **32 × 24 temperature image** and sends it to a computer
 | Packet | AA 55 header, then 768 signed 16-bit values |
 | Conversion | Little-endian integer ÷ 100 gives °C |
 
-Read each 1,538-byte packet as binary data. Convert the signed values to temperatures using the scale above. The program skips failed frames.
+Decode each 1,538-byte binary packet using the scale above. Failed frames are skipped.
 
-The sketch uses Adafruit_MLX90640. Check sensor calibration and viewing position before using its readings as surface temperatures.
+Requires Adafruit_MLX90640. Validate calibration and optical access before measurement.
 
 ## Full source
 

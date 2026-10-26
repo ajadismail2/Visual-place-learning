@@ -3,38 +3,38 @@ title: Run an experiment
 description: Prepare the apparatus, record a sequence and stop each independent subsystem.
 section: Software
 ---
-This procedure follows the supplied experiment controller and LED programs. Test the mechanical setup, sensor readings and individual outputs before introducing animals. A complete run needs the target controller, display, thermal controllers and recording system prepared separately.
+Prepare and test each controller, the thermal system and recording equipment before introducing animals.
 
 ## Before a run
 
-1. **Check the assembly.** The arena is level, the cover is seated as intended, the camera sees the entire floor, and the underside airflow is unobstructed.
-2. **Check the controller identities.** Confirm the correct program is loaded on each labelled board and that the computer ports match those labels.
-3. **Check target mapping.** Use the physical A–D labels and the [wiring table](hardware/four-channels.md#target-controller-pin-map). Confirm the corresponding display states before starting a sequence.
-4. **Check temperature readings.** Verify background and ring sensor responses. Measure the target surfaces separately; the experiment controller has no target-temperature feedback.
-5. **Allow conditions to settle.** Record the starting temperatures and wait for reproducible conditions rather than relying only on elapsed warm-up time.
-6. **Prepare recording.** Set focus, exposure and frame rate, choose the output folder, and make a short recording to confirm that files are saved correctly.
+1. Level the arena, seat the cover, clear the underside airflow and check the full camera view.
+2. Confirm board programs and serial-port assignments.
+3. Verify physical A–D labels against the [wiring table](hardware/four-channels.md#target-controller-pin-map) and display states.
+4. Check background and ring sensors. Measure target surfaces separately; the target controller has no temperature feedback.
+5. Wait for stable conditions and record starting temperatures.
+6. Set focus, exposure, frame rate and output folder; confirm a test recording saves correctly.
 
 <figure class="photo-slot" data-photo-id="run-ready"><div class="photo-space" aria-label="Blank photograph of the prepared recording setup"></div><figcaption><span>Photo · S03</span><strong>Ready-to-run setup</strong></figcaption></figure>
 
 ## Start a sequence
 
-Open the experiment controller's serial connection at **115200 baud**. Start behaviour and temperature recording before issuing the sequence, then record the command time. For example:
+Open the target controller at **115200 baud**. Start behaviour and temperature recording, then log the command time:
 
 ```text
 EXP A-D-C-D
 ```
 
-The letters give the order in which targets are selected. This example selects A, then D, then C, then D again. The program accepts **1–16 selections**. Each cooling interval lasts **300 seconds**, preceded by **300 seconds of preheating** for all targets. The example therefore lasts 25 minutes including preheat.
+`EXP A-D-C-D` selects A, D, C, then D. Commands accept **1–16 selections**, each cooled for **300 seconds**, after a single **300-second preheat**. This example lasts 25 minutes.
 
-The first cooling trial starts after preheat. Record this boundary in the video or timing notes so the subsequent analysis does not treat warm-up frames as trial 1.
+Mark the first cooling onset in the recording or timing log; analysis trial 1 starts after preheat.
 
-## What to observe during a step
+## During a trial
 
-The selected tile receives an initial cooling boost and then a lower hold output. The display receives the selected target letter. Other tiles heat, with a short boost when a tile returns from cooling. The [PWM plot](hardware/four-channels.md#trial-sequence) shows these output commands.
+The selected tile receives a cooling boost followed by a lower hold output. Other tiles heat, with a brief boost after cooling. The display receives the target letter. See the [PWM plot](hardware/four-channels.md#trial-sequence).
 
-Observe the temperature traces as well as the controller messages. If the intended tile does not cool or the background drifts, the command sequence alone is not evidence of a valid temperature condition. Check the thermal and wiring setup before continuing data collection.
+Monitor measured temperatures. Stop data collection if the selected tile fails to cool or the background drifts.
 
-## Keep a record with each experiment
+## Experiment record
 
 | Record | Why it matters |
 | --- | --- |
@@ -48,10 +48,10 @@ Observe the temperature traces as well as the controller messages. If the intend
 
 ## Stop and shut down
 
-Send `STOP` to the experiment controller to stop the four target outputs and blank the display. The program also stops these outputs when its sequence finishes.
+Send `STOP` to the target controller to disable all four targets and blank the display. These outputs also stop at sequence completion.
 
-The background and ring remain independent. Send `STOP` to the background controller through its own serial connection. The supplied ring program has no `STOP` command, so switch off the ring heater supply separately. Check that the loads are off and allow the hot undersides to cool before switching off the fan or handling the assembly.
+Send `STOP` separately to the background controller. The ring program has no `STOP` command: switch off its heater supply. Confirm loads are off, and let the hot undersides cool before stopping the fan or handling the assembly.
 
-Stop the recordings and open the saved files to check that the intended interval was captured. Keep the raw recordings; plots and processed tracks should be saved separately.
+Check the saved recording interval. Retain raw files separately from processed tracks and plots.
 
 [Software checks](software/checks.md) · [Thermal-camera data format](firmware/camera.md)

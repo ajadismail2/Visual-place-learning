@@ -11,7 +11,7 @@ section: Software
 
 </div>
 
-The display ESP32 receives <code>STATE:A</code> to <code>STATE:D</code> over ESP-NOW. Each state shifts the pattern across the eight HUB75 panels. The display remains in that state until another command arrives.
+ESP-NOW messages `STATE:A`–`STATE:D` select the panorama position. The display holds that state until the next command.
 
 ## Pattern positions
 
@@ -22,7 +22,7 @@ The display ESP32 receives <code>STATE:A</code> to <code>STATE:D</code> over ESP
 | C | 64 px |
 | D | 128 px |
 
-The logical canvas is 256 × 64 pixels. The program maps it to the physical panel chain.
+The sketch maps a 256 × 64 logical canvas onto eight panels.
 
 The diagonals in this program are about 19.5° from vertical. The horizontal bars are 11 and 10 rows thick.
 
@@ -30,7 +30,7 @@ The diagonals in this program are about 19.5° from vertical. The horizontal bar
 
 Send <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> or <code>OFF</code> to the display board at **115200 baud**. The program uses the ESP32-HUB75-MatrixPanel-I2S-DMA library.
 
-The uploaded program requests a minimum refresh rate of **1000 Hz**, with double buffering disabled. This is a configuration request, not a measured refresh rate or a guarantee that every panel and library configuration achieves it.
+The sketch requests **1000 Hz** refresh and uses one buffer. Optical refresh has not been measured.
 
 [LED panels](../hardware/led-panels.md) · [Library operation and settings](../software/led-library.md) · [Display wiring](../hardware/wiring.md#display-board-pin-map) · [Angle calculation](../hardware/visual-angle.md)
 

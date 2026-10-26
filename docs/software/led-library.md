@@ -3,11 +3,11 @@ title: LED matrix library
 description: How ESP32-HUB75-MatrixPanel-DMA drives the arena display and how its settings relate to the supplied sketch.
 section: Software
 ---
-[ESP32-HUB75-MatrixPanel-DMA](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA/) turns pixel data in ESP32 memory into the timed electrical signals required by HUB75 panels. The arena's display sketch uses this library to draw and maintain the visual panorama. Panel selection belongs in [Hardware](../hardware/led-panels.md); drawing, memory and refresh settings are described here.
+[ESP32-HUB75-MatrixPanel-DMA](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA/) drives the eight-panel panorama. See [Hardware](../hardware/led-panels.md) for panel selection.
 
-## From a pixel to an illuminated panel
+## Panel scanning
 
-A HUB75 panel is scanned rather than illuminated as one continuous image. On a conventional 64 × 32, 1/16-scan panel, two rows are addressed together and the scan cycles through 16 row positions. RGB data are shifted into the panel, latched and displayed for controlled intervals.
+A conventional 64 × 32, 1/16-scan panel addresses two rows at a time across 16 positions. RGB data are shifted, latched and displayed for timed intervals.
 
 | Connection | Role |
 | --- | --- |
@@ -17,15 +17,15 @@ A HUB75 panel is scanned rather than illuminated as one continuous image. On a c
 | LAT | Transfers shifted data to the display outputs |
 | OE | Enables or blanks the light output |
 
-The library prepares these signals in a **DMA buffer**, a block of memory read directly by the ESP32's display-capable peripheral. DMA means direct memory access. Repeated scanning is handled by hardware, leaving the processor available for commands and drawing. [1](#references)
+A **DMA buffer** supplies scan signals directly to the ESP32 peripheral, leaving the processor available for commands and drawing. [1](#references)
 
-The library also represents colour intensity using timed bit planes, called **binary-code modulation**. Different bits contribute different illumination durations. This explains why colour precision, panel-chain length and refresh timing are linked. The implementation adjusts bit-plane scheduling when trying to meet a requested refresh rate. [2](#references)
+**Binary-code modulation** encodes intensity through timed bit planes. Colour depth, chain length and refresh timing therefore interact; the library adjusts bit-plane scheduling toward the requested refresh rate. [2](#references)
 
-## How our sketch uses it
+## Panorama mapping
 
-The library sees eight 64 × 32 panels in a chain, equivalent to a 512 × 32 physical pixel strip. Our own `putV()` function maps a **256 × 64 virtual panorama** onto those rotated panels. This coordinate conversion belongs to the arena sketch, not to an automatic octagon-detection feature.
+Eight chained panels form a 512 × 32 physical strip. The sketch's `putV()` function maps the **256 × 64 virtual panorama** onto the rotated panels.
 
-`putV()` adds the selected horizontal offset, wraps it around the panorama, chooses the panel and converts the pixel to that panel's orientation. It then calls `dma->drawPixel()`. The rectangle and parallelogram helpers build the vertical, horizontal and diagonal bars from those pixels.
+`putV()` applies and wraps the horizontal offset, selects the panel, transforms orientation and calls `dma->drawPixel()`. Shape helpers draw the stimulus bars.
 
 | Function in the arena sketch | Role |
 | --- | --- |
@@ -35,11 +35,11 @@ The library sees eight 64 × 32 panels in a chain, equivalent to a 512 × 32 phy
 | `clearDisplay()` | Write a blank image |
 | `handleCommand()` | Interpret a received state or OFF command |
 
-ESP-NOW delivers the state message separately. It does not stream every pixel. Once drawn, the DMA hardware keeps scanning the image until the buffer changes. Trial timing remains with the four-Peltier controller.
+ESP-NOW sends state commands, not pixels. DMA scans the image until the buffer changes; the target controller supplies trial timing.
 
 ## Settings in the published display program
 
-The following is an extract from the existing sketch, not a second firmware download:
+Extract from the supplied sketch:
 
 ```cpp
 HUB75_I2S_CFG mxconfig(64, 32, PANELS_IN_CHAIN, pins);
@@ -63,27 +63,27 @@ dma->setBrightness8(120);
 | `double_buff = false` | Draw into one buffer to conserve memory |
 | `setBrightness8(120)` | Global brightness command on a 0–255 scale, not calibrated luminance |
 
-The colour values are full green, `color565(0, 255, 0)`, and black. Global brightness is applied separately. Neither the RGB value nor the brightness number establishes the light intensity reaching a fly.
+The stimulus uses `color565(0, 255, 0)` and black, with global brightness applied separately. These values are not calibrated light intensity.
 
 ## Refresh, colour depth and memory
 
-Each additional panel increases the data shifted for a row. More colour bit planes require more memory and display time. The library calculates a refresh estimate from the clock, row count and bit-plane schedule, then adjusts its scheduling toward `min_refresh_rate`. There is a limit to what a given chain and clock can achieve. Raising the requested number cannot remove that limit. [2](#references)
+Longer chains increase row-transfer time; more bit planes increase memory and display time. The library estimates refresh from the clock, row count and schedule. Raising `min_refresh_rate` cannot exceed hardware limits. [2](#references)
 
-The upstream implementation exposes `calculated_refresh_rate` after initialisation. This is a calculated diagnostic, not a photodiode reading. Check the API in the installed library version before adding diagnostic output. [2, 3](#references)
+`calculated_refresh_rate` reports an estimate after initialisation, not an optical measurement. Check its availability in the installed version. [2, 3](#references)
 
-With one buffer, a pattern can be partly redrawn while scanning continues. Double buffering uses separate drawing and display buffers and a buffer swap, at the cost of additional memory. Our supplied program uses one buffer and does not call `flipDMABuffer()`. Enabling double buffering would therefore require changes to the drawing sequence, not just changing the flag. [3](#references)
+Single-buffer drawing can overlap scanning. Double buffering separates drawing and display at added memory cost. This sketch does not call `flipDMABuffer()`; enabling double buffering also requires changes to drawing. [3](#references)
 
-For this green-and-black stimulus, smooth colour gradients are not the experimental goal. Stable contrast and verified timing are more relevant than maximum RGB colour depth. Keep the tested settings consistent across runs.
+Keep contrast and measured timing consistent across runs.
 
 ## Install and bring up the display
 
-1. Install the library through Arduino Library Manager and its documented Adafruit GFX dependency. The header used by the sketch is `ESP32-HUB75-MatrixPanel-I2S-DMA.h`, despite the shorter GitHub repository name.
-2. Select the correct board. The library supports the original ESP32 used here; support should not be assumed for every ESP32 variant. In particular, ESP32-C3 is not a substitute for this display driver. [1](#references)
-3. Follow the [display-board pin map](../hardware/wiring.md#display-board-pin-map), connect the panel's external supply and common ground, and run the [single-panel test](../firmware/panel-test.md).
-4. Connect the full chain in the documented order and load the [display controller](../firmware/display.md). Test A, B, C and D over serial before pairing the wireless controller.
-5. Check the light output using the [hardware timing procedure](../hardware/led-panels.md#check-the-assembled-display). Record the library version, board package, brightness and panel-driver configuration with the experiment settings.
+1. Install the library and Adafruit GFX dependency. The sketch includes `ESP32-HUB75-MatrixPanel-I2S-DMA.h`.
+2. Use the supported original ESP32. ESP32-C3 is not a compatible substitute. [1](#references)
+3. Follow the [pin map](../hardware/wiring.md#display-board-pin-map), connect external power and common ground, then run the [single-panel test](../firmware/panel-test.md).
+4. Connect the full chain, upload the [display program](../firmware/display.md) and test A–D over serial before wireless pairing.
+5. [Measure display timing](../hardware/led-panels.md#check-the-assembled-display). Record library and board-package versions, brightness and driver configuration.
 
-If a panel stays blank, first check power, IN/OUT orientation, pin mapping and driver compatibility. If rows or columns repeat, check scan type, panel dimensions and mapping. Faint duplicate pixels can require latch-blanking adjustment, which blanks output around row switching and can affect brightness. Do not treat every display fault as a need for a more expensive panel. [1](#references)
+For blank panels, check power, IN/OUT orientation, pin mapping and driver compatibility. For repeated rows or columns, check scan type, dimensions and mapping. Faint duplicates may require latch-blanking adjustment, which also affects brightness. [1](#references)
 
 ## References
 

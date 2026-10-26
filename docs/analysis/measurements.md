@@ -3,19 +3,19 @@ title: Measurements and outputs
 description: Exact definitions of target success, movement, occupancy and exported files in the supplied analysis GUI.
 section: Analysis
 ---
-Measurements are calculated per included fly and per trial. Target success and movement use different time windows: a trajectory plot stops at first success, while movement statistics cover the full available trial.
+Measurements are calculated per fly and trial. Exported trajectories stop at first success; movement statistics cover the full available trial.
 
 ## First success at the cool target
 
-A centre position inside the selected rectangle counts toward target dwell. With the default three-second threshold at 24 fps, success requires 72 consecutive in-target frames. The fly can walk inside the region. Leaving the region resets the dwell; success is retained once achieved.
+Success requires the centre to remain inside the target rectangle for three continuous seconds: 72 frames at 24 fps. Movement within the region is allowed. Exit resets dwell; completed success is retained.
 
-Time to target is measured from trial start to the **end of the frame that completes the dwell**, not the initial entry time. The CSV also records the dwell-start frame.
+Time to target runs from trial start to the **end of the frame completing dwell**. The CSV also records the dwell-start frame.
 
 ![Illustrative timeline distinguishing target entry from the completion of a three-second dwell](../assets/analysis/target-dwell.svg)
 
 *Illustrative timing example, not measured data.*
 
-**Team time** is the latest first-success time among all included flies. They do not have to occupy the target simultaneously. In the supplied version, the **all-fly mean** is available only when every included fly succeeds. If a fly does not reach the target, the team time and all-fly mean remain blank; it is not assigned zero or 300 seconds.
+**Team time** is the latest individual success time; simultaneous occupancy is not required. Team time and the **all-fly mean** remain blank unless every included fly succeeds. Non-reaching flies are not assigned zero or 300 seconds.
 
 ## Movement and occupancy
 
@@ -31,17 +31,17 @@ Time to target is measured from trial start to the **end of the frame that compl
 | Net displacement | Distance between the first and last valid positions |
 | Tracking coverage | Valid positions as a percentage of available trial frames |
 
-A missing scale leaves physical movement metrics unavailable; it does not prevent target timing. Missing tracking is not interpreted as a stationary fly. Movement is not joined across missing frames or trial boundaries.
+Without scale, target timing remains available but physical movement metrics do not. Missing positions are not treated as stationary; paths do not bridge missing frames or trial boundaries.
 
 ## Missing data and review
 
-**Missing-data gap = 0** requires strict continuity. A nonzero tolerance permits a short unobserved gap only when the fly reappears inside the target; it assumes continuity across that gap. Bridged frames are recorded separately and do not increase observed occupancy.
+**Missing-data gap = 0** requires strict continuity. A nonzero tolerance bridges short gaps only if the fly reappears inside the target, assuming continuous dwell. Bridged frames are logged separately and excluded from observed occupancy.
 
-The GUI distinguishes complete, partial and absent trial coverage. Incomplete recording coverage cannot establish a complete-trial failure. Even a complete frame span can contain missing positions, so interpret non-reaching outcomes alongside each fly's coverage.
+Coverage is marked complete, partial or absent. Partial recordings cannot establish complete-trial failure; inspect missing positions even when the full frame span is present.
 
-Jump review flags steps above the selected displacement threshold, by default 0.5 cm per frame. Flagged positions remain in calculations. The GUI neither smooths coordinates nor interpolates missing positions nor reassigns identities.
+Jump review flags displacements above the selected threshold (default **0.5 cm/frame**). Flagged points remain in calculations. The GUI does not smooth, interpolate or reassign identities.
 
-## Choose the outputs
+## Exports
 
 | Output | Contents |
 | --- | --- |
@@ -56,10 +56,10 @@ Jump review flags steps above the selected displacement threshold, by default 0.
 | `READ_ME.txt` | Workflow and measurement definitions |
 | Annotated MP4 | Tracking overlay; exported trails and markers stop at success within each trial |
 
-Plots in this supplied version are **JPEG**. Full-experiment time-to-target axes run from 0 to 300 seconds. CSVs retain floating-point values for further plotting or statistics. Exported MP4 behaviour differs from live playback, which keeps following flies after success.
+Plots are **JPEG**, with full-experiment time axes of 0–300 seconds. CSVs retain floating-point values. Exported MP4 trails and markers stop at success; live playback continues.
 
 ## Reproducible analysis
 
-Save the tracking CSV, box JSON, metadata and video together. Record exclusions consistently: changing the included population changes group completion and averages. The source includes 47 automated numerical checks covering timing, missing data, trial boundaries and exports; passing these checks does not validate the identities in an experimental recording.
+Keep the CSV, box JSON, metadata and video together; document exclusions. Changing included flies changes group results. The source includes 47 numerical checks for timing, gaps, trial boundaries and exports; these do not validate tracking identities.
 
 [Download the exact analysis source](../downloads/analysis/fly_target_time_gui_amadeus.py) · [Return to the GUI workflow](gui.md)

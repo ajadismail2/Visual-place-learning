@@ -7,7 +7,7 @@ section: Software
 
 [Download all controller programs](../downloads/arena-firmware-2026-10-17.zip) · [Individual programs](../firmware/index.md) · [Download checksums](../downloads/SHA256SUMS)
 
-The [current settings](../downloads/protocol.json) match the included programs. The [archived configuration](../downloads/protocol-2026-10-15.json) uses a different final-trial protocol and display pattern.
+[Current settings](../downloads/protocol.json) match the supplied programs. The [archived configuration](../downloads/protocol-2026-10-15.json) has a different final trial and display pattern.
 
 Network credentials are excluded. A separate [thermal-ring correction](../firmware/ring.md) removes a syntax error from the original file.
 
@@ -15,7 +15,7 @@ Network credentials are excluded. A separate [thermal-ring correction](../firmwa
 
 [QR code PNG](../downloads/website-dynamic-qr.png) · [Print-ready SVG](../downloads/website-dynamic-qr.svg)
 
-The code opens the [website redirect](../go/index.html). Its destination can be updated without replacing a printed QR code.
+The QR code opens an [editable redirect](../go/index.html), allowing destination changes after printing.
 
 ## Analysis software
 
@@ -29,7 +29,7 @@ Six editable STEP models are available in [CAD and fabricated parts](../cad/inde
 
 Ofstad, Zuker and Reiser. **Visual place learning in Drosophila melanogaster.** [Original paper](https://doi.org/10.1038/nature10131) · [PubMed record](https://pubmed.ncbi.nlm.nih.gov/21654803/).
 
-The [arena chapter](../hardware/arena.md) contains the dimensions and configuration used in this build. Temperature settings are documented beside the relevant controller.
+[Arena dimensions](../hardware/arena.md) · Temperature settings accompany each controller.
 
 ## Technical references
 

@@ -3,19 +3,19 @@ title: Install and upload the programs
 description: Put the correct program on each controller and check its response before connecting loads.
 section: Software
 ---
-The **Arduino IDE** is the computer application used to compile and transfer a program to a board. A **sketch** is the program, usually stored in an `.ino` file. **Uploading** copies the compiled program into the board's memory; after upload, the board runs it whenever it is powered.
+Upload each program to its labelled controller using Arduino IDE.
 
 ## 1. Prepare the computer
 
-Install Arduino IDE and connect one controller using a USB cable that supports data. Some cables only provide power. Select the board model and its port in the IDE. The port identifies the connected device; it is not the experiment's target number.
+Install Arduino IDE. Connect one board with a data-capable USB cable and select its model and port.
 
-For ESP32 boards, install Espressif's ESP32 board package through Boards Manager. Its [installation guide](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html) lists the package URL and setup steps. For Arduino boards, select the actual model and the appropriate board package. Record the working package and library versions with the build rather than changing them immediately before an experiment.
+For ESP32 boards, install the [Espressif board package](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html). For Arduino boards, select the matching model and package. Record working package and library versions.
 
 <figure class="photo-slot" data-photo-id="ide-board-port"><div class="photo-space" aria-label="Blank screenshot of Arduino IDE board and port selection"></div><figcaption><span>Screenshot · S01</span><strong>Board and port selection</strong></figcaption></figure>
 
 ## 2. Open one sketch at a time
 
-Download and extract the [controller bundle](../downloads/arena-firmware-2026-10-17.zip). Each `.ino` belongs in its own matching sketch folder. Open the program for the board you have physically connected. Keep the board labelled while programming it.
+Extract the [controller bundle](../downloads/arena-firmware-2026-10-17.zip). Place each `.ino` in a matching sketch folder and open the program for the connected board.
 
 | Board | Upload this program | Extra libraries |
 | --- | --- | --- |
@@ -25,35 +25,35 @@ Download and extract the [controller bundle](../downloads/arena-firmware-2026-10
 | Ring Arduino | Thermal_ring_syntax_fixed | OneWire and DallasTemperature |
 | Thermal-camera ESP32 | thermal_camera | Adafruit_MLX90640 and its dependencies |
 
-Install the required libraries through Library Manager or the library's documented method. `Wire` supplies the sensor-bus interface; WiFi and ESP-NOW support come from the ESP32 board package. Do not install unrelated libraries to resolve a missing-header error. Use the name in the sketch and the [display library's documentation](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA).
+Install the listed libraries using Library Manager or their documented installers. `Wire`, WiFi and ESP-NOW come with the relevant board package. See the [display library documentation](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA).
 
-The experiment controller uses the pin-based `ledcAttach` and `ledcWrite` interface. Select a compatible ESP32 package and confirm compilation; the supplied set of sketches has not been compiled as a validated release in this documentation. The background and ring programs retain Arduino pin assignments and must be adapted before moving them to ESP32 hardware.
+The target controller requires the pin-based `ledcAttach`/`ledcWrite` API. Confirm compilation with the selected ESP32 package; these sketches are not a validated compiled release. Background and ring pin assignments require adaptation for ESP32 hardware.
 
 ## 3. Pair the experiment controller and display
 
-The display receives short wireless messages from the experiment controller. Its **MAC address** identifies the destination device. It is different from a Wi-Fi password or a serial port.
+Pair the target controller with the display ESP32's MAC address.
 
-1. Upload `Display_Controller` to the display ESP32 first.
-2. Open its Serial Monitor at **115200 baud** and read the address printed at startup. Reset the board if you need to see the startup message again.
-3. In the experiment controller sketch folder, copy `local_config.example.h` to `local_config.h`.
-4. Enter that display address and the local network settings required by the example. Remove its `#error` line after filling in the values. Keep this file local.
-5. Upload the experiment controller program to the target ESP32. Keep the boards on the radio configuration expected by the supplied sketches.
-6. Send `A` directly to the display board and verify the visible pattern. Then, with target load power disconnected, run a short experiment controller sequence to check the wireless state change after preheat. End the check with `STOP` on the experiment controller.
+1. Upload `Display_Controller` first.
+2. Read its startup MAC address in Serial Monitor at **115200 baud**; reset if needed.
+3. Copy `local_config.example.h` to `local_config.h` in the target-controller folder.
+4. Enter the display address and network settings, then remove the `#error` line. Keep this file local.
+5. Upload the target program and retain the radio configuration expected by both sketches.
+6. Send `A` directly to the display. With target load power disconnected, test a short target sequence and verify the wireless display change after preheat. End with `STOP`.
 
-ESP-NOW sends the target state directly between boards. A successful upload does not confirm that the destination address, panel orientation or physical target mapping is correct; those are separate checks.
+ESP-NOW transmits target states between boards. Verify the destination address, panel orientation and physical A–D mapping.
 
 ## 4. Compile, upload and read a response
 
-The **Verify** button compiles the sketch. Fix any compiler error before uploading. The **Upload** button sends it to the selected board. Watch the IDE's completion message rather than assuming the board's power light means upload succeeded.
+Select **Verify** and resolve compiler errors, then **Upload**. Confirm completion in the IDE.
 
-Open Serial Monitor after upload. Set its baud rate to the value on the relevant program page. A baud rate is the serial communication speed; a mismatch can make messages unreadable. Send commands with a line ending so the controller receives a complete command.
+Open Serial Monitor at the program's baud rate and send commands with a line ending.
 
-The experiment controller, display, background and ring use **115200 baud**. The thermal camera uses **921600 baud** and sends binary packets. Its output will not appear as ordinary temperature text in Serial Monitor.
+Target, display, background and ring controllers use **115200 baud**. The thermal camera uses **921600 baud** and binary packets, which are not readable as temperature text in Serial Monitor.
 
 <figure class="photo-slot" data-photo-id="serial-commands"><div class="photo-space" aria-label="Blank screenshot of the serial monitor"></div><figcaption><span>Screenshot · S02</span><strong>A successful command and response</strong></figcaption></figure>
 
 ## 5. Test before connecting all loads
 
-Start with one panel or one driver channel. Confirm which tile and display state respond, then restore the intended experiment firmware if a diagnostic program was used. Keep temperature measurement running while testing a Peltier output. Follow the [operating procedure](../operation.md) only after the individual checks pass.
+Test one panel or driver channel at a time. Confirm target mapping and temperature response. Restore experiment firmware after diagnostics, then follow the [operating procedure](../operation.md).
 
 [Arduino upload guide](https://support.arduino.cc/hc/en-us/articles/4733418441116-Upload-a-sketch-in-Arduino-IDE) · [Troubleshooting](checks.md)

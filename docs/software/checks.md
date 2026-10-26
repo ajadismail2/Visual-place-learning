@@ -3,7 +3,7 @@ title: Checks and troubleshooting
 description: Use an observable response to check each stage before running an experiment.
 section: Software
 ---
-Test one subsystem at a time. First establish that the controller runs, then check its signals, then add the load. This keeps a wiring problem from being mistaken for a software problem.
+Test each subsystem separately: controller, signals, then load.
 
 ## First-run checks
 
@@ -19,20 +19,20 @@ Test one subsystem at a time. First establish that the controller runs, then che
 
 ## A command does nothing
 
-Confirm which board owns the open serial port. A experiment controller command is not necessarily a valid command on the display or ring. Check the baud rate and line ending, then try the simplest command documented for that board. Close other applications that may already hold the same serial port.
+Check the board, serial port, baud rate and line ending. Use a command supported by that board, and close other applications using the port.
 
 ## A tile heats when it should cool
 
-Peltier heat flow depends on current direction. The experiment controller uses LPWM for heating and RPWM for cooling with its documented wiring. The alternative bench controller uses different pin assignments and direction conventions. Stop the output, identify the active sketch, and check the driver connections before changing the setup.
+Stop the output and check the active sketch, driver wiring and Peltier polarity. The target controller uses LPWM for heating and RPWM for cooling; the alternative bench controller uses different assignments and conventions.
 
 ## Temperature changes over repeated trials
 
-Look at the complete temperature trace, not only the minimum. Check whether the underside is accumulating heat, whether airflow is obstructed and whether a sensor has moved. The experiment controller follows preset PWM values; it does not correct those outputs from measured target temperatures. Changes in room temperature or heat-sink conditions can therefore change the achieved temperature.
+Inspect the full temperature trace for heat accumulation, obstructed airflow or a displaced sensor. Target PWM is preset, without temperature feedback; ambient and heat-sink conditions affect the achieved temperature.
 
 ## Stopping one controller leaves another warm
 
-The background and ring are independent. The experiment controller `STOP` command stops target drive and blanks the display; it does not stop their thermal loops. Use the shutdown sequence on the [run page](../operation.md#stop-and-shut-down).
+Target `STOP` disables the four targets and blanks the display. Background and ring controllers remain active. Follow the [shutdown sequence](../operation.md#stop-and-shut-down).
 
 ## Record the working configuration
 
-Keep the controller labels, sketch filenames, board-package versions, library versions, supply ratings, target mapping and a photograph of the final wiring together. After changing one of these, repeat the relevant component check before collecting behavioural data.
+Save board labels, sketch filenames, package and library versions, supply ratings, target mapping and a wiring photograph. Repeat affected checks after changes.

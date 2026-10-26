@@ -3,15 +3,15 @@ title: Four-Peltier controller
 description: ESP32 program for four independently driven Peltier targets, timed trials and wireless display synchronisation.
 section: Software
 ---
-One ESP32 runs the trial sequence and controls four BTS7960 H-bridge drivers. It selects the cooling tile, heats the other tiles and sends the matching visual state to the display controller over ESP-NOW.
+An ESP32 drives four BTS7960 bridges and sends target states to the display over ESP-NOW.
 
 [Download Experiment_Controller.ino](../downloads/firmware/Experiment_Controller/Experiment_Controller.ino) · [Configuration example](../downloads/firmware/Experiment_Controller/local_config.example.h)
 
-## What the controller controls
+## Control
 
-Each Peltier has its own driver. The ESP32 supplies control signals; the external load supply supplies Peltier current. An H-bridge reverses current so a tile can heat or cool. In this sketch, LPWM drives heating and RPWM drives cooling. The opposite PWM output is set to zero before changing direction.
+Each BTS7960 drives one Peltier. LPWM heats and RPWM cools; the opposite output is zeroed before reversal.
 
-PWM switches the drive at **20 kHz**. Its 8-bit setting ranges from 0 to 255 and represents duty cycle, not temperature. This is **open-loop target control**: the program applies preset outputs without reading target temperatures. The background and ring retain their own independent controllers.
+Target control is open-loop, using **20 kHz, 8-bit PWM (0–255)**. Background and ring control are independent.
 
 ## Target labels and wiring
 
@@ -22,7 +22,7 @@ PWM switches the drive at **20 kHz**. Its 8-bit setting ranges from 0 to 255 and
 | C | 3 | 4 | 19 | 18 | 2 | 16 |
 | D | 4 | 1 | 32 | 33 | 4 | 5 |
 
-The pin values are ESP32 GPIO numbers. Manual numbers follow A, B, C, D, not the driver-channel numbering. Connect each driver's output pair to its Peltier and share a ground reference between the ESP32 and driver logic. The enable signals are held HIGH; stopping sets both PWM inputs to zero. Follow the [power and wiring guide](../hardware/wiring.md#power-and-target-connections) before connecting the loads.
+Values are ESP32 GPIO numbers. Share controller and driver logic ground. Enables remain HIGH; stopping zeros both PWM inputs. See [power connections](../hardware/wiring.md#power-and-target-connections).
 
 ![ESP32 GPIO mapping to four independent target drivers](../assets/target-wiring.svg)
 
@@ -38,11 +38,11 @@ The pin values are ESP32 GPIO numbers. Manual numbers follow A, B, C, D, not the
 EXP B-C-D-C-B-A-D-C-B-A
 ```
 
-This gives five minutes of preheating followed by ten five-minute trials: **55 minutes in total**. Video analysis starts at the first cooling trial, after preheat. The parser accepts lowercase letters, ignores non-A–D characters and keeps the first 16 valid selections. Check the echoed sequence before proceeding.
+Ten trials take **55 minutes including five-minute preheat**. Analysis starts at the first cooling trial. The parser accepts lowercase, ignores non-A–D characters and retains the first 16 valid selections; check the echoed order.
 
 ## One complete sequence
 
-At startup, all target PWM outputs are zero and an `OFF` message is sent to the display. An `EXP` command resets the previous sequence and begins preheating.
+Startup zeros target outputs and sends `OFF`. `EXP` resets the sequence and starts preheat.
 
 | Phase | Output | Duration |
 | --- | --- | --- |
@@ -55,11 +55,11 @@ At startup, all target PWM outputs are zero and an `OFF` message is sent to the 
 | Return from cooling | Previous target heats at PWM 50, then 24 | Boost lasts 17 s |
 | Sequence complete | All target PWM outputs zero; display off | Until another command |
 
-The repeat flag is recorded separately for each tile and reset for a new experiment. It chooses a different hold output after that tile has already been selected. This compensates by a fixed setting, not by measuring whether the tile is warmer.
+Each tile's repeat flag selects its hold PWM and resets at the next experiment.
 
-At a trial boundary, `applyStep()` briefly zeros the outputs, starts the next cooling boost and sets the other tiles' heating levels. If consecutive letters select the same tile, it starts another cooling trial using the repeat hold value; it does not receive the return-to-heating boost between those trials.
+At trial boundaries, `applyStep()` zeros outputs, starts cooling boost and sets heating levels. Consecutive selections of the same tile restart cooling with the repeat hold PWM and no intervening heating boost.
 
-Every supplied letter causes cooling. An eleventh letter is another cooling trial, not an all-heating memory probe.
+Every letter initiates cooling, including an eleventh selection. The sketch has no all-heating probe trial.
 
 ## Commands and display synchronisation
 
@@ -73,15 +73,15 @@ Every supplied letter causes cooling. An eleventh letter is another cooling tria
 | `2 c150` | Cool target B at PWM 150 |
 | `3 s` | Stop target C |
 
-Manual commands do not cancel a running sequence. Send `STOP` first before testing individual targets or previewing a display state, otherwise the sequence can overwrite the manual output. `LED OFF` does not stop heating or cooling.
+Send `STOP` before manual commands; they do not cancel the sequence. `LED OFF` affects only the display.
 
-At the start of each trial, the controller sends `STATE:A`, `STATE:B`, `STATE:C` or `STATE:D`. The boards communicate wirelessly; each still needs its own power and peripheral wiring. A delivery message reports the radio result, not confirmation of the visible pattern. This sketch has no automatic retransmission or stop-on-radio-failure logic.
+Each trial sends `STATE:A`–`STATE:D`. Radio delivery does not confirm the visible pattern; the sketch has no retry or stop-on-radio-failure logic.
 
 ## Timing and temperature checks
 
-The main loop compares `millis()` with the phase start time to switch between `IDLE`, `PRE_HOT` and `EXPERIMENT`. It also services the 17-second return boost and prints progress approximately once a minute. Serial input uses a line-reading call that can briefly block, so these are software timings rather than hardware-triggered synchronisation.
+`millis()` controls `IDLE`, `PRE_HOT`, trial transitions and the 17-second heating boost. Progress prints about once a minute. Serial line reads can briefly block timing.
 
-Measure the four tile temperatures alongside the video. PWM 106 or 120 does not establish a particular surface temperature: airflow, room temperature and heat transfer through the carrier affect the result. `STOP` acts on the target controller and requests display shutdown; the background heater and thermal ring must be stopped separately.
+Record tile temperatures alongside video. `STOP` zeros target outputs and requests display shutdown; stop background and ring heating separately.
 
 ## Full source
 

@@ -13,7 +13,7 @@ section: Software
 
 ## Closed-loop ring heating
 
-A OneWire sensor measures the ring temperature. The controller compares the reading with the target and adjusts heater power through a MOSFET. Feedback compensates for heat loss and changes in room temperature.
+OneWire temperature feedback regulates heater PWM through a MOSFET.
 
 | Setting | Value |
 | --- | --- |
@@ -22,13 +22,13 @@ A OneWire sensor measures the ring temperature. The controller compares the read
 | PID: P / I / D | 18 / 0.3 / 150 |
 | Sensor / heater output | Arduino pins 2 / 9 |
 
-The target applies to the sensor location, not the entire enclosed air volume. The cutoff stops heating while the reading is too high; it can restart after cooling.
+The setpoint applies at the sensor. Heating resumes after cooling below the cutoff.
 
 ## Commands
 
-Connect at **115200 baud**. Use <code>T</code> for the target, <code>O</code> for the offset, and <code>P</code>, <code>I</code>, <code>D</code> for the gains. For example, <code>T45</code> sets a 45 °C target.
+Serial: **115200 baud**. Commands: `T` (target), `O` (offset), `P`, `I`, `D` (gains). Example: `T45`.
 
-Use the [syntax-corrected copy](../downloads/firmware/Thermal_ring_syntax_fixed/Thermal_ring_syntax_fixed.ino) for compilation. It removes the stray <code>3</code> after <code>float Kd = 150;</code> in the original.
+Compile the [corrected sketch](../downloads/firmware/Thermal_ring_syntax_fixed/Thermal_ring_syntax_fixed.ino), which removes a stray `3` after `float Kd = 150;`.
 
 [Arduino wiring and proposed ESP32 conversion](../hardware/wiring.md#background-ring-and-camera)
 

@@ -10,9 +10,9 @@ section: Home
 
 <div markdown="1">
 
-How does a fly use its surroundings to find a remembered location? We study this question with a heated walking arena, a cool target and a surrounding visual display.
+We study visual place learning in *Drosophila* using a heated walking arena, a cool target and surrounding visual landmarks.
 
-Our work adapts an established behavioural assay using standard Peltier modules, LED matrix panels, ESP32 and Arduino boards, and parts made in the makerspace. This site documents the apparatus and the analysis needed to turn recorded movement into measurements of target finding.
+This site documents our adaptation of the assay: apparatus, controller programs, CAD files and behavioural analysis.
 
 [Explore the apparatus](hardware/index.md){: .home-link } [Follow the analysis](analysis/index.md){: .home-link }
 
@@ -24,33 +24,31 @@ Our work adapts an established behavioural assay using standard Peltier modules,
 
 <div class="home-facts"><span><strong>20 cm</strong> walking arena</span><span><strong>4</strong> selectable targets</span><span><strong>8</strong> LED panels</span><span><strong>Individual</strong> fly trajectories</span></div>
 
-## From visual cues to spatial memory
+## Visual place learning
 
-Finding a cool patch once can happen by chance. Visual place learning asks whether a fly learns where that patch lies relative to surrounding landmarks, then uses that relationship to guide its search.
+Flies learn the location of a cool target relative to surrounding visual cues.
 
-The original study linked this behaviour to the **ellipsoid body**, a structure within the fly brain's central complex. Silencing particular groups of its ring neurons impaired place learning while leaving several sensory and motor abilities intact. The mushroom-body manipulations tested did not produce the same deficit. This points to a specific circuit requirement for the task. [1](#reference)
+Ofstad, Zuker and Reiser linked this behaviour to the **ellipsoid body**. Silencing specific ring-neuron populations impaired place learning while sparing several sensory and motor functions; the mushroom-body manipulations tested did not produce the same deficit. [1](#reference)
 
-## The experiment behind this build
+## Experimental basis
 
-Ofstad, Zuker and Reiser trained flies to find a cool tile in a warm arena. Between trials, the target and visual panorama moved together, preserving their spatial relationship. Flies found the target more quickly and by shorter routes across training. Darkness and uncoupled visual cues weakened learning. In a subsequent probe trial, cooling was removed: trained flies still searched preferentially where the visual scene predicted the target. [1](#reference)
+In the original assay, the target and panorama moved together between trials. Flies reached the target faster and by shorter routes during training. Learning weakened in darkness or with uncoupled cues. During an uncooled probe trial, trained flies searched where the panorama predicted the target. [1](#reference)
 
-This distinction matters when interpreting our recordings. Arrival time measures target finding; evidence for visual memory also depends on the cue relationship and appropriate control conditions.
+Target-reaching time alone does not establish visual memory; cue relationships and control conditions are essential.
 
-## A makerspace approach to the apparatus
+## Apparatus
 
-The aim is to make the assay practical to build, repair and adapt with accessible parts. Custom fabrication is concentrated in the supports and fittings that hold the components together.
-
-<div markdown="1">
+The build uses standard electronics and locally fabricated supports.
 
 <div markdown="1">
 
-**Temperature.** Sixty Peltier modules form the heated background. Four separately driven tiles provide the selectable targets. Cooling transfers heat to the underside, so the design includes space for a fan and provision for heat removal beneath the tiles.
+<div markdown="1">
 
-**Visual environment.** Eight standard 64 × 32 LED panels form an octagon. Printed legs set their position, and a hinged panel provides access to the arena.
+**Temperature.** Sixty Peltier modules heat the background; four independently driven tiles provide cooling targets. Underside cooling removes heat from the modules.
 
-**Control and fabrication.** ESP32 and Arduino boards handle the display, timing and thermal circuits. A wooden base provides structural support; PVC pipe and printed lampshades carry the infrared lights. Editable CAD files allow these fittings to be reproduced or adjusted locally.
+**Display.** Eight 64 × 32 LED panels form an octagon, with printed supports and a hinged access panel.
 
-These choices reduce dependence on custom instruments. The camera, power supplies and temperature measurements remain important parts of the setup: affordability still depends on stable illumination, reliable tracking and verified thermal conditions.
+**Control and structure.** ESP32 and Arduino boards control the display and thermal circuits. A wooden base supports the arena; PVC and printed fittings hold the infrared lights. Editable CAD files are provided.
 
 </div>
 
@@ -59,9 +57,9 @@ These choices reduce dependence on custom instruments. The camera, power supplie
 
 ## What we measure
 
-An overhead camera records the flies under infrared illumination. AMADEUS provides individual tracks; the arena analysis GUI aligns those tracks with the video and the four target regions.
+An overhead camera records flies under infrared illumination. AMADEUS supplies individual tracks; the analysis GUI aligns them with the video and target schedule.
 
-The analysis follows target-reaching time, paths, distance travelled, speed and occupancy across trials. In the current GUI, a fly reaches the target after remaining inside its region for three continuous seconds; movement within that region is allowed. Reviewing trajectories alongside the video helps identify tracking errors before comparing behaviour.
+Outputs include target-reaching time, trajectories, distance, speed and occupancy. Target success requires three continuous seconds inside the selected region, with movement allowed. Tracks are reviewed against the video before analysis.
 
 <figure class="home-figure analysis-photo"><a href="assets/analysis/analysis-gui.png"><img src="assets/analysis/analysis-gui.png" alt="Arena analysis application showing individual fly tracks, four target regions and trial controls" loading="lazy" width="1950" height="1345"></a><figcaption>The analysis interface links each fly's movement to the target selected for that trial.</figcaption></figure>
 

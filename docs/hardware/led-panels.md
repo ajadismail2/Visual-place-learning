@@ -3,7 +3,7 @@ title: LED panels
 description: P4 panel selection, visual stimulus timing and affordable alternatives for the arena.
 section: Hardware
 ---
-Eight P4 RGB LED panels surround the walking arena. They show green bars against a dark background, providing visual landmarks whose position changes with the selected cooling target. The display ESP32 continuously refreshes the panels while the pattern remains fixed within a trial.
+Eight P4 RGB panels display green landmarks on black. The panorama changes with target selection and remains fixed within each trial.
 
 ![The green visual pattern surrounding the arena](images/LED.jpg)
 
@@ -19,17 +19,15 @@ Eight P4 RGB LED panels surround the walking arena. They show green bars against
 | Supply | External 5 V supply |
 | Enclosure | Eight panels, with their display faces inward |
 
-Waveshare specifies up to 20 W per P4 panel and a 5 V / 4 A supply rating. These are component ratings, not measurements of our green-bar pattern. Panel power comes from the supply, not from ESP32 pins or its USB connection. [1](#references)
+Waveshare rates each P4 panel at up to 20 W (5 V / 4 A). Supply panel power separately from the ESP32. These ratings do not represent measured consumption of the bar pattern. [1](#references)
 
-## Why use a fast LED display?
+## Display timing
 
-The experimental stimulus is the spatial pattern of bars. Unintended flicker would add a second visual stimulus. Reiser and Dickinson developed LED arenas specifically for controlled insect vision experiments, discussing the limitations of conventional display timing for fast insect visual systems. [2](#references)
+Rapid refresh reduces unintended flicker during visual stimulation. Reiser and Dickinson describe LED arenas developed for controlled insect-vision experiments. [2](#references)
 
-Fly vision does not have one fixed temporal cutoff. Juusola and Hardie found that Drosophila photoreceptor responses become faster as illumination increases; their companion study showed that temperature also changes response bandwidth. Timing therefore needs to be assessed under the experiment's lighting and thermal conditions. [3, 4](#references)
+Drosophila photoreceptor bandwidth increases with illumination and temperature, so timing must be assessed under experimental conditions. [3, 4](#references)
 
-Our display sketch requests `min_refresh_rate = 1000`, or a nominal one-millisecond refresh period. This is a design target intended to keep scanning rapid while the landmarks remain stable. It is not a measured 1000 Hz optical output, and the literature does not establish this particular panel and setting as biologically optimal.
-
-Three different rates matter:
+The sketch requests `min_refresh_rate = 1000`. Actual optical refresh remains unmeasured; this setting is not an established biological optimum.
 
 | Rate | What changes |
 | --- | --- |
@@ -41,17 +39,17 @@ A 24 fps behaviour recording cannot establish that an LED display refreshes at 1
 
 ## Pixel pitch and visible landmarks
 
-Refresh rate controls temporal presentation. Pixel pitch and viewing distance determine spatial sampling. Faster refresh does not make individual pixels more spatially resolvable to the fly.
+Pixel pitch and viewing distance determine spatial sampling; refresh rate determines temporal presentation.
 
-For a centred view of a flat panel, a 4 mm pitch spans approximately **1.43° at 160 mm**. An 11-pixel bar spans 44 mm, or **15.66°** at that distance. These are geometric calculations, not measurements of fly visual acuity. The relevant stimulus is the multi-pixel bar and its contrast with the background. The place-learning assay uses the relationship between the visual panorama and the target location. [5](#references)
+At 160 mm, a 4 mm pitch subtends **1.43°** and an 11-pixel bar subtends **15.66°**. These are geometric values, not visual-acuity measurements. The assay uses the panorama's relation to target position. [5](#references)
 
-P4 provides a practical pixel grid for these broad bars without needing a fine-pitch video wall. The animal's viewing angle changes as it walks, so calculate dimensions from the installed enclosure rather than treating the centre example as valid everywhere. Use the [geometry chapter and calculator](../hardware/visual-angle.md) for bar width and elevation.
+P4 provides sufficient sampling for the specified bars. Calculate angles from the installed geometry; they vary as the fly moves. See [display geometry](../hardware/visual-angle.md).
 
 ## Affordable alternatives
 
-**Waveshare is not required.** A lower-cost panel from another supplier can serve the same role. Expensive video-wall controllers and finer pixel pitches are unnecessary for reproducing the documented bar patterns, provided the replacement gives the required geometry, contrast and timing.
+Equivalent low-cost panels can replace Waveshare panels if geometry, contrast and timing are maintained.
 
-For the least disruption, choose a **64 × 32, P4, 1/16-scan panel with a driver chip supported by ESP32-HUB75-MatrixPanel-DMA**. Confirm the chip and row-addressing arrangement with the seller. The library documents both supported and unsupported panel families; some newer panels with their own PWM engines are incompatible despite having a HUB75-style connector. [6](#references)
+Choose **64 × 32, P4, 1/16-scan panels with supported driver chips**. HUB75 connectors alone do not establish compatibility; some panels with integrated PWM engines are unsupported. [6](#references)
 
 | Check before substitution | Why it matters |
 | --- | --- |
@@ -61,13 +59,13 @@ For the least disruption, choose a **64 × 32, P4, 1/16-scan panel with a driver
 | Supply rating and logic levels | Must match the power wiring and ESP32 interface |
 | Actual light output | Brightness, contrast and temporal modulation must be checked |
 
-Compatibility is necessary, but it does not by itself make two panels equivalent visual stimuli. A pitch change requires a new angle calculation; a different chip may require a different driver setting.
+A different pitch requires recalculating visual angles; a different driver may require firmware changes.
 
 ## Check the assembled display
 
-Test one panel first, then the complete eight-panel chain. Check the A–D states, continuity across panel boundaries and any ghost pixels. Keep brightness fixed during comparisons.
+Test one panel, then the full chain. Check A–D states, panel seams and ghosting at fixed brightness.
 
-For a timing check, place a fast photodiode facing a lit area and record its signal with an oscilloscope. Inspect the pulse train and any slower brightness modulation on several rows and panels, using the actual pattern and brightness setting. Record a pattern transition as well as a steady state. A library timing estimate is useful for diagnosis; the photodiode measures emitted light. Phone video or the behaviour camera can reveal some artefacts but cannot certify their absence.
+Measure light output with a fast photodiode and oscilloscope at the experimental brightness. Sample several rows and panels during steady display and transitions. Camera recordings cannot verify a 1000 Hz refresh rate.
 
 [Library operation and settings](../software/led-library.md) · [Display wiring](../hardware/wiring.md#display-board-pin-map) · [Display controller code](../firmware/display.md)
 

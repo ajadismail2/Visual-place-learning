@@ -3,7 +3,7 @@ title: Arena and dimensions
 description: The walking surface, perimeter, cover and supporting structure.
 section: Hardware
 ---
-The arena provides a level walking surface with a controlled thermal pattern. Its ring and cover define the space available to the flies. The surrounding display supplies visual information, while the camera views the walking area from above.
+A ring and glass cover enclose the temperature-controlled walking surface, with an LED panorama around it and a camera above.
 
 ## Current arena specification
 
@@ -19,46 +19,44 @@ The arena provides a level walking surface with a controlled thermal pattern. It
 | Ring sensor setpoint | 45 °C in the supplied sketch |
 | Target cooling interval | 300 s for each selected target |
 
-The 200 mm measurement is the inner walking diameter. Use it for image scaling and arena layout. Ring height, cover clearance, module dimensions, carrier thickness and mounting-hole positions must be recorded from the actual components before machining or printing. Do not infer these from a photograph.
+The **200 mm inner diameter** defines the walking area and image scale. Fabrication dimensions should follow measured components and CAD.
 
 <figure class="photo-slot" data-photo-id="arena-top"><div class="photo-space" aria-label="Blank top-view arena photograph"></div><figcaption><span>Photo · A02</span><strong>Walking surface and target positions</strong></figcaption></figure>
 
 ## Walking surface and target tiles
 
-The background and targets must meet without a step or an accessible gap. A fly should encounter the intended temperature difference rather than an unintended obstacle. Check the surface after mounting the modules, not only when the empty carrier is level.
+Mount targets flush with the background, with no accessible gaps.
 
-Label the physical targets A–D after testing their driver channels. Keep that same mapping in photographs, temperature regions, commands and analysis files. The controller's channel number is not the same as its target letter.
+Label targets A–D using the tested driver mapping, and retain these labels in recordings and analysis.
 
 ## Base and mounts
 
-Fit the supports to a stable base, check that their mounting faces sit evenly, and then place the carrier. Check level in more than one direction. Mount the LED enclosure and overhead components so they do not pull or tilt the arena through cables or shared supports.
+Mount the carrier on a rigid, level base. Supports and cables must not tilt the floor or obstruct the camera.
 
 See [CAD and printed parts](../cad/index.md) for the component overview.
 
-## Work through the makerspace build
+## Fabrication
 
-Measure the purchased components before drawing their mounts. A ruler establishes the overall layout; callipers are useful for hole spacing, module edges and close-fitting features. Record which dimensions are fixed by a component and which can be adjusted during assembly.
+Measure component dimensions and hole spacing before machining or printing mounts.
 
-Use CAD to check the relationships between the floor, panel enclosure and recording mounts. Print a small fit sample or one mounting piece first, check it against the hardware, then produce the remaining pieces. This reduces wasted material when a hole or clearance needs changing. Keep the version that fits with the matching component photograph.
+Check one printed fitting against the hardware before producing the remaining parts.
 
-For the carrier, transfer the measured layout into a machining drawing. Use the workshop's CNC or conventional machine tools for controlled openings and mounting features. Deburr edges, inspect the finished dimensions and test the assembly without power before fitting the full thermal circuit. Printing is useful for fixtures and supports; the thermal contact beneath a Peltier needs a suitable heat-conducting part.
-
-The low-cost approach depends on checking each interface before making the next part. Standard panels, controller boards and drivers can be tested independently while the mounts are being refined.
+Machine and deburr carrier openings to measured tolerances. Use printed parts for supports and conductive material at Peltier thermal interfaces.
 
 <figure class="photo-slot" data-photo-id="arena-side"><div class="photo-space" aria-label="Blank side-view photograph of arena clearances"></div><figcaption><span>Photo · A03</span><strong>Ring, cover and supporting structure</strong></figcaption></figure>
 
 ## Ring and cover
 
-The ring fixes the perimeter of the walking area. The cover limits vertical movement while leaving a clear recording view. Check that the cover rests as intended and that its placement does not disturb the ring or sensor cables. Clearance is an assembly dimension to measure and record, not a value specified here.
+The ring and glass cover enclose the walking surface. Fit the cover without disturbing the ring or sensor wiring; clearance depends on the assembly.
 
-The ring heater has its own sensor and controller. Its sensor reading does not establish the temperature everywhere inside the chamber. See [thermal-ring setup](../hardware/ring.md).
+The ring uses independent temperature feedback. See [thermal ring](../hardware/ring.md).
 
 ## Aluminium carrier
 
-The proposed carrier uses four machined openings for the target modules. CNC milling or conventional machining can produce the required openings, but the toolpath must come from measured dimensions and tolerances. Fit each target level with the surrounding surface and provide rigid support without bridging the intended thermal separation.
+The proposed aluminium carrier has four target openings. Targets must remain supported, flush and thermally separated from the surrounding floor.
 
-Separate finned heat sinks beneath the target hot sides are a proposed way to reduce heat returning into the carrier. Confirm this arrangement against the actual build before adopting it. The [heat-removal chapter](thermal-coupling.md) explains the heat path.
+Separate target heat sinks are proposed to reduce heating of the carrier. See [heat removal](thermal-coupling.md).
 
 ## Check the mechanical setup
 
-Confirm that the walking surface is level, all parts remain fixed during cable handling, the access panel can open without moving the arena, and the complete floor remains visible to the camera. Record the final dimensions and take top, side and underside photographs before covering the wiring.
+Check floor level, mount stability, door clearance and full camera coverage after assembly.

@@ -11,7 +11,7 @@ section: Software
 
 </div>
 
-Use this program to test one panel before connecting the full enclosure. It uses the same HUB75 pin map as the display program.
+Single-panel diagnostic using the display controller's HUB75 pin map.
 
 ## Test commands
 
@@ -24,7 +24,7 @@ Use this program to test one panel before connecting the full enclosure. It uses
 | X | Corners and edges |
 | A | Automatic sequence |
 
-Send commands at 115200 baud. These patterns check colours, address lines and orientation. Flashing this test replaces the display controller program on that board.
+Serial: **115200 baud**. Restore the display-controller sketch after testing.
 
 [Display pin map](../hardware/wiring.md#display-board-pin-map)
 

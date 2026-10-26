@@ -13,7 +13,7 @@ section: Software
 
 ## Temperature feedback
 
-The TMP117 measures the background temperature. PID control adjusts one PWM output for the 60-module circuit, compensating for changes in airflow, ambient temperature and heat from the targets.
+PID control uses filtered TMP117 readings to regulate the 60-module background through one PWM output.
 
 | Setting | Value |
 | --- | --- |
@@ -23,13 +23,13 @@ The TMP117 measures the background temperature. PID control adjusts one PWM outp
 | PID: P / I / D | 60 / 4 / 5 |
 | Output in this sketch | Arduino pin 9 |
 
-The readings are smoothed before control. One sensor does not establish uniform temperature across the floor.
+The sensor measures its local temperature; floor uniformity requires separate measurements.
 
 ## Commands
 
-Connect at **115200 baud**. Use <code>SET</code> for the target temperature, <code>KP</code>, <code>KI</code> and <code>KD</code> for PID gains, and <code>STATUS</code> to read the settings. <code>START</code> and <code>STOP</code> enable and disable control.
+Serial: **115200 baud**. Commands: `SET` (temperature), `KP`, `KI`, `KD` (gains), `STATUS`, `START`, `STOP`.
 
-If a sensor read fails after startup, the program retains the previous reading. This version does not shut down on stale data.
+Failed reads retain the previous value. There is no stale-data shutdown.
 
 [Arduino wiring and proposed ESP32 conversion](../hardware/wiring.md#background-ring-and-camera)
 

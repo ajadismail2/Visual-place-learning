@@ -3,21 +3,21 @@ title: Illumination
 description: Low-cost infrared LED arrays with printed lampshades and PVC supports for behaviour recording.
 section: Hardware
 ---
-We use four inexpensive, generic infrared LED arrays to illuminate the arena for behaviour recording. Each array sits inside a 3D-printed lampshade mounted on a PVC pipe. A diffuser over the array spreads the light across the walking surface.
+Four generic infrared LED arrays illuminate the arena. Each uses a printed shade, diffuser and PVC support.
 
-The [generic IR array module linked here](https://www.amazon.in/Generic-Array-Infrared-Module-Camera/dp/B0DPKYDQDS) is the type used in this build. The brand is not essential. Similar low-cost IR arrays can work when their wavelength matches the camera's sensitivity and they provide even, stable illumination at the required exposure.
+[Generic IR arrays](https://www.amazon.in/Generic-Array-Infrared-Module-Camera/dp/B0DPKYDQDS) are suitable when matched to camera sensitivity and exposure.
 
-## Why infrared illumination?
+## Illumination
 
-The surrounding green LED panels provide the experimental visual pattern. The IR arrays provide the light needed by the recording camera. Keeping these roles separate allows flies to remain visible in recordings as the panorama changes. This illumination is reflected near-infrared light, not the thermal radiation measured by the MLX90640.
+Near-infrared illumination maintains camera visibility as the green panorama changes. It is separate from MLX90640 thermal imaging.
 
-An ordinary camera with strong IR-blocking filters may give a poor image under these lights. Test the camera, lens and light together before choosing a replacement. An IR label alone does not establish the brightness or image quality in the assembled arena.
+Check IR transmission through the camera's lens and filters.
 
 ## Printed shade and PVC stand
 
-The lampshade locates the array and supports the diffuser. The PVC pipe sets the light's height, with printed fittings holding the shade at the required angle. This arrangement uses a standard pipe and a small number of printed parts instead of a specialised laboratory lamp mount. A printed tube can replace the PVC pipe.
+Printed shades hold the arrays and diffusers; PVC pipes set their height. Printed tubes can replace the pipes.
 
-Fix the stand securely so its angle does not change during recording. Leave room for the array to dissipate heat and route the cable down the support with strain relief. The diffuser must transmit the array's infrared wavelength; judge its effect in the camera image rather than by how it looks to the eye.
+Secure each stand, allow heat dissipation and provide cable strain relief. Check diffuser transmission in the camera image.
 
 [IR stand and lampshade CAD](../cad/index.md#03-infrared-light-stand) · [Download the STEP model](../downloads/cad/ir-light-stand.step)
 
@@ -25,9 +25,9 @@ Fix the stand securely so its angle does not change during recording. Leave room
 
 ## Power and positioning
 
-Use the voltage and polarity marked on the particular IR module, with a supply rated for the combined load. Connect the arrays through their power inputs, not directly to ESP32 GPIO pins. The IR lights and HUB75 visual panels have separate power requirements.
+Use each module's rated voltage and polarity, with a supply sized for all four arrays. Power arrays through their supply terminals.
 
-Arrange the four lights around the arena and aim them toward the walking surface. Adjust one light at a time while watching the behaviour camera. Avoid bright reflections from the glass cover or carrier, dark regions at the perimeter and supports that obstruct the camera. Increasing brightness alone will not remove glare.
+Position lights around the arena for even coverage. Adjust angles to suppress reflections from the cover and carrier.
 
 ## Check before recording
 
@@ -40,6 +40,6 @@ Arrange the four lights around the arena and aim them toward the walking surface
 | Reflections | No saturated patches that hide flies or resemble them in tracking |
 | Heating | Lights and their mounts do not introduce unwanted arena warming |
 
-Use fixed exposure and gain where available, and save a short test recording with the final arrangement. Examine moving flies and close encounters at full image resolution. A low-cost array is suitable when it passes these checks; a particular seller or brand is not required.
+Use fixed exposure and gain. Check moving flies and close encounters at full resolution before recording.
 
 [Camera selection and recording](imaging.md) · [Tracking with AMADEUS](../analysis/tracking.md)

@@ -3,7 +3,7 @@ title: Equipment and materials
 description: Identify the parts by function before wiring them together.
 section: Hardware
 ---
-Use this list to identify the components in the apparatus. It is a functional equipment list; purchasing specifications must be checked against the exact module and supply ratings.
+Components are grouped by function. Confirm specifications against the installed modules and supply ratings.
 
 ## Temperature system
 
@@ -18,7 +18,7 @@ Use this list to identify the components in the apparatus. It is a functional eq
 | Target heat sinks | Proposed separate lower sinks | Carry rejected heat away from the target undersides |
 | Fan | Match to the fitted heat-removal arrangement | Move air through the heat sinks |
 
-A Peltier's current rating, its intended voltage and the rating of its driver must be considered together. The number of modules alone is not enough to select a supply. Record the actual part labels before making the final power connections.
+Match supplies and drivers to the modules' voltage and current ratings.
 
 ## Controllers and display
 
@@ -35,12 +35,8 @@ A Peltier's current rating, its intended voltage and the rating of its driver mu
 
 ## Imaging and mechanical parts
 
-The recording setup needs a behaviour camera, a suitable lens, infrared illumination and a stable overhead mount. An MLX90640 and its ESP32 interface provide temperature measurements. Keep the thermal-camera viewing requirements separate from those of the behaviour camera.
+Behaviour recording requires an IR-sensitive camera, lens, illumination and overhead mount. An MLX90640 with ESP32 provides thermal measurements.
 
 The physical assembly includes the base, carrier, ring, glass cover, panel enclosure and printed fixtures.
-
-## Before assembly
-
-Label each controller and load, group the cables by subsystem, and check the supply information printed on each device. Keep the target drivers, background power stage and ring power stage distinguishable. Their similar-looking terminals do not imply identical electrical requirements.
 
 [Start the wiring guide](wiring.md) · [Arena and dimensions](arena.md)
