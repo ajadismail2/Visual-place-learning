@@ -1,9 +1,30 @@
 ---
-title: Cameras and illumination
+title: Cameras
 description: Set up behaviour recording and temperature measurements as separate data streams.
 section: Hardware
 ---
 The behaviour camera records where the flies move. The thermal camera measures surface temperature. Their files answer different questions, and one cannot replace the other: a normal video does not show whether the cooling target reached its intended temperature.
+
+## Behaviour camera: Thorlabs CS165MU
+
+We use a **Thorlabs CS165MU**, a 1.6 MP monochrome CMOS camera, to record the arena under infrared illumination. It records reflected light from the flies and floor; it does not measure their temperature. [Manufacturer specifications](https://www.thorlabs.com/item/CS165MU).
+
+An expensive scientific camera is not a requirement. A lower-cost camera can be used if it is sensitive to the illumination wavelength and produces clear, stable recordings of the full arena. The lens, camera height, exposure and lighting matter as much as the camera model.
+
+## Choosing a lower-cost camera
+
+The practical test is whether individual flies remain distinguishable when they are close together. Look at full-resolution video of approaches, crossings and departures, including near the arena edge. A sharp still image of an isolated fly is not enough.
+
+| Requirement | What to check in a test video |
+| --- | --- |
+| Infrared sensitivity | The sensor, lens and any filters pass enough of the IR illumination |
+| Resolution at the arena | Nearby bodies retain separate outlines where physically visible |
+| Exposure and motion blur | Walking flies remain sharp rather than streaked |
+| Frame timing | Movement can be followed between frames without recording gaps |
+| Full-field focus | Both the centre and perimeter remain usable for tracking |
+| Recording access | Original video can be saved with known timing and limited compression artefacts |
+
+A camera that meets these requirements can replace the CS165MU. Higher price does not guarantee better tracking, and higher pixel count alone does not compensate for poor optics or blur. Even clear video cannot guarantee identity through complete overlap; review close interactions in the tracking output.
 
 ## Position the behaviour camera
 
@@ -13,11 +34,9 @@ Mount the camera above the arena with the walking area centred in the image. Adj
 
 Focus at the walking surface, then inspect the centre and edge of the image. Keep the same camera position and lens settings across recordings that share a spatial calibration. Moving the camera changes the number of image pixels corresponding to a centimetre.
 
-## Adjust illumination
+## Illumination for the behaviour camera
 
-Four infrared lights provide illumination for behaviour recording. Position them so flies remain visible across the floor and reflections from the lid or metal do not obscure the image. Change one light position at a time and inspect the camera image after each change. Keep supports and cables out of the camera view.
-
-Use the supply specified on the illumination hardware. LED-panel power and IR-light power are different circuits. Record the final exposure and illumination arrangement with the experiment so a second person can reproduce the imaging conditions.
+Four generic infrared LED arrays illuminate the walking area. Printed shades, diffusers and PVC stands position the lights without requiring specialised lamp mounts. Follow the separate [Illumination chapter](illumination.md) for assembly, power and reflection checks.
 
 ## Calibrate distance and time
 
@@ -29,7 +48,13 @@ Check the actual recorded frame rate and timestamps. Do not assume a video expor
 
 [![Thermal-camera wiring and four schematic target regions](../assets/setup/measurement-setup.svg)](../assets/setup/measurement-setup.svg)
 
-The MLX90640 returns a **32 × 24 grid of temperature values**. Its ESP32 forwards those values over USB. It needs a direct infrared view of the measured surface; verify any window material instead of assuming that the arena's glass cover is suitable.
+We use an **MLX90640 thermal infrared array** to examine the temperature distribution across the arena. Its 32 × 24 sensing elements provide 768 temperature values per image. The sensor detects emitted thermal radiation and uses its calibration data to estimate surface temperatures. It does not require the IR LED arrays used for behaviour recording. [Melexis sensor documentation](https://www.melexis.com/en/product/mlx90640/far-infrared-thermal-sensor-array).
+
+The MLX90640 connects to its ESP32 over I²C. The supplied ESP32 program reads thermal frames and forwards them over USB to the computer. Its coarse image is useful for comparing target and background regions, not for distinguishing individual flies.
+
+The sensor needs a direct view of the measured surface in thermal infrared. Ordinary glass does not provide the same transmission for thermal imaging as it does for visible or near-infrared behaviour recording. A measurement through the cover can represent the cover and reflected radiation rather than the floor. Establish suitable optical access without changing the experimental thermal conditions. [Thermal-camera viewing limitations](https://www.flir.com/discover/home-outdoor/can-thermal-imaging-see-through-walls/).
+
+Shiny metal can reflect surrounding thermal radiation and has low emissivity, so an apparent hot or cold patch may not represent its true temperature. Check the measurement surface and emissivity assumptions against a contact reference. [Emissivity guidance](https://www.flir.com/discover/professional-tools/how-does-emissivity-affect-thermal-imaging/).
 
 Use repeatable regions over A, B, C and D and over representative background areas. Identify the target letters by testing each physical tile. The positions in the diagram are schematic. Keep regions away from boundaries where a measurement may combine a target and its surroundings.
 

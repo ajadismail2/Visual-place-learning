@@ -22,7 +22,8 @@ The target controller changes both the selected tile and the display state. The 
 | [Temperature control](../build/peltier.md) | How sensors and power drivers regulate heat | Plausible sensor readings and correct heating direction |
 | [Four targets](../build/four-channels.md) | How A–D are controlled separately | Each command acts on the intended physical tile |
 | [Visual display](../build/visual-angle.md) | How the panel chain forms the panorama | Panel order, orientation and measured bar width |
-| [Imaging](imaging.md) | How movement and temperature are recorded | Focus, reflections, calibration and recording time |
+| [Illumination](illumination.md) | How generic IR arrays, printed shades and PVC stands light the arena | Even lighting, secure mounts and limited reflections |
+| [Cameras](imaging.md) | How movement and temperature are recorded | Focus, reflections, calibration and recording time |
 
 ## A few useful terms
 

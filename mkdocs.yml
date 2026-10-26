@@ -39,7 +39,8 @@ nav:
       - Four cooling targets: build/four-channels.md
       - Thermal ring: hardware/ring.md
       - Heat removal: build/thermal-coupling.md
-      - Cameras and illumination: hardware/imaging.md
+      - Illumination: hardware/illumination.md
+      - Cameras: hardware/imaging.md
   - SOFTWARE:
       - How the programs work: firmware/index.md
       - Install and upload: software/upload.md
