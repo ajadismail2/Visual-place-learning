@@ -13,7 +13,7 @@ Network credentials are excluded. A separate [thermal-ring correction](../softwa
 
 ## Analysis software
 
-[AMADEUS tracking and analysis workflow](../analysis/from-video-to-measurements.md) · [Download the arena analysis GUI](../downloads/analysis/fly_target_time_gui_amadeus.py)
+[Download the arena analysis GUI](../downloads/analysis/fly_target_time_gui_amadeus.py)
 
 ## CAD files
 
@@ -27,8 +27,7 @@ Ofstad, Zuker and Reiser. **Visual place learning in Drosophila melanogaster.** 
 
 ## Technical references
 
-- [Ferrotec: Peltier principles](https://thermal.ferrotec.com/technology/thermoelectric-reference-guide/thermalref02/)
-- [Ferrotec: heat sinks](https://thermal.ferrotec.com/technology/thermoelectric-reference-guide/thermalref05/)
+- [TEC 04811-5L31-09CK](https://customthermoelectric.com/media/wysiwyg/TEC_spec_sheets/04811-5L31-09CK_spec_sht.pdf)
 - [Ferrotec: module mounting](https://thermal.ferrotec.com/technology/thermoelectric-reference-guide/thermalref06/)
 - [Espressif: ESP32 board connections](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html)
 - [Espressif: Arduino-ESP32 installation](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
