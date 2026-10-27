@@ -86,7 +86,7 @@ The holder stabilises the baseplate around the four Peltier plates and supports 
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Peltier-plate holder and fan support](images/Octagon-Holder.png)
+![Peltier-plate holder and fan support](images/Peltier_Tile_Holder.png)
 
 <figcaption>Peltier-plate holder with fan support.</figcaption>
 
