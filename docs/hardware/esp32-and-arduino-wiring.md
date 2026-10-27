@@ -19,6 +19,13 @@ Background and ring pin maps refer to Arduino boards; confirm board-specific I²
 
 ESP32 assignments refer to the classic ESP32, not the C3.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![ESP32 development-board pinout](images/ESP32-Pinout.png)
+
+<figcaption>ESP32 development-board pinout.</figcaption>
+
+</figure>
 
 ## Power and Peltier-plate connections
 
@@ -63,6 +70,14 @@ Run the [single-panel test](../software/6-single-panel-test.md), then restore th
 | Each sensor | Compatible supply and GND | Sensor supply pins; follow its breakout documentation |
 
 Pin 9 belongs to two separate boards; do not join these outputs. Use the OneWire sensor's specified pull-up resistor.
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Arduino Uno pinout](images/arduniopinout.jpg)
+
+<figcaption>Arduino Uno pinout.</figcaption>
+
+</figure>
 
 Size the supply and power stage for all 60 Peltier modules in series. Peltier module and supply ratings are not specified here.
 
