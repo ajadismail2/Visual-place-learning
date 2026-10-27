@@ -29,3 +29,11 @@ The sketch has no `STOP` command. Switch off the ring supply separately from Pel
 ## Glass cover
 
 The glass cover is ideally 2–3 mm thick and around 9 inches in diameter. Inexpensive annealed glass works well enough.
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Round glass cover](images/circleflatglass__37330.jpg)
+
+<figcaption>Round annealed-glass cover.</figcaption>
+
+</figure>

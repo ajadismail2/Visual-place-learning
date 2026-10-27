@@ -37,6 +37,14 @@ The PLA ring contains a copper-wire resistive heater. Small openings provide air
 
 Image the mask before each experiment to register the four target positions. Remove it before introducing flies without changing camera framing.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Registration mask with four square openings](../hardware/images/mask.jpeg)
+
+<figcaption>Cool-spot registration mask.</figcaption>
+
+</figure>
+
 [Download the cool-spot mask STEP file](../downloads/cad/cool-spot-mask.step)
 
 
