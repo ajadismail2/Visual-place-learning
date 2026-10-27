@@ -9,20 +9,24 @@ A ring and glass cover enclose the temperature-controlled walking surface, with 
 
 | Feature | Documented configuration |
 | --- | --- |
-| Walking-area inner diameter | 200 mm |
 | Background | 60 Peltier modules operated as one circuit |
 | Cooling Peltier plates | Four separately driven Peltier plates, A–D |
-| Visual enclosure | Eight P4 HUB75 panels, 64 × 32 pixels each |
-| Pixel pitch | 4 mm |
-| Glass cover | Above the walking surface |
-| Background sensor setpoint | 34.8 °C in the supplied sketch |
-| Ring sensor setpoint | 45 °C in the supplied sketch |
-| Peltier-plate cooling interval | 300 s for each selected Peltier plate |
-
-The 200 mm inner diameter defines the walking area and image scale. Fabrication dimensions should follow measured components and CAD.
+| Visual enclosure | Eight P4 HUB75 panels, 64 × 32 pixels each, 4mm Pixel Pitch |
+| Thermal Ring dimensions | 8 inches |
+| Glass cover | 2-3mm thick Annealed glass |
+| Background sensor setpoint | 34.8 °C |
+| Ring sensor setpoint | 50 °C |
 
 
 ## Walking surface and Peltier plates
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![60-Peltier background array](60peltier.png)
+
+<figcaption>60-Peltier background array.</figcaption>
+
+</figure>
 
 Mount the four Peltier plates flush with the background, with no accessible gaps.
 
@@ -39,8 +43,3 @@ See [CAD and printed parts](../cad/parts-and-step-files.md) for the component ov
 
 The ring and glass cover enclose the walking surface. See [Thermal ring and glass cover](thermal-ring-and-glass-cover.md) for fit and handling.
 
-The ring uses independent temperature feedback. See [thermal ring](thermal-ring-and-glass-cover.md).
-
-## Check the mechanical setup
-
-Check floor level, mount stability, door clearance and full camera coverage after assembly.
