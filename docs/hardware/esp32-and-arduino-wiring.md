@@ -22,7 +22,7 @@ ESP32 assignments refer to the classic ESP32, not the C3.
 
 ## Power and Peltier-plate connections
 
-1. Disconnect supplies and label the Peltier plates using the [pin table](peltier-temperature-system.md#target-controller-pin-map).
+1. Disconnect supplies and label the Peltier plates using the [pin table](../software/1-primary-esp32-the-four-peltier-controller.md#peltier-plate-labels-and-wiring).
 2. Connect ESP32 PWM and enable pins to driver inputs.
 3. Share controller and driver logic ground. Return load current directly to the supply.
 4. Connect each Peltier plate across its driver's output pair, never to GPIO or ground.

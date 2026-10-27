@@ -31,7 +31,11 @@ Open Serial Monitor at 115200 baud with a newline ending. Send `SET 34.8` to set
 
 Failed reads retain the previous value. There is no stale-data shutdown.
 
-[Temperature system and full-run measurement](../hardware/peltier-temperature-system.md) · [Arduino wiring and proposed ESP32 conversion](../hardware/esp32-and-arduino-wiring.md#background-ring-and-camera)
+## Temperature change across 10–11 trials
+
+Record background and Peltier-plate temperatures throughout the run, including preheat. If the background warms as the four plates operate, adjust the background `SET` temperature in a later run. Keep airflow and glass-cover position fixed. Trial-by-trial temperature plots can be added here when available.
+
+[Peltier hardware](../hardware/peltier-temperature-system.md) · [Arduino wiring and proposed ESP32 conversion](../hardware/esp32-and-arduino-wiring.md#background-ring-and-camera)
 
 ## Full source
 
