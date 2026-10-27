@@ -13,6 +13,14 @@ This choice is not a measured accuracy comparison. Review AMADEUS identities aro
 
 See the [AMADEUS manual](https://amadeus.jpmyrmecol.com/Manual_EN.html) for installation and current controls.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Amadeus tracking workflow](images/amadeusworkflow%28shouldciteinpage%29.png)
+
+<figcaption>Amadeus tracking workflow.</figcaption>
+
+</figure>
+
 ## Tracking data for analysis
 
 The GUI expects a wide CSV with `frame` and paired centre columns (`cx0, cy0, cx1, cy1`, etc.). Width, height and heading are optional; original IDs are retained.
