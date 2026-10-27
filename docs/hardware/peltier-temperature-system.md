@@ -59,7 +59,7 @@ The Peltier-plate controller heats all four Peltier plates for five minutes befo
 | Return to heating | PWM 50 for 17 s, then 24 |
 
 
-These are programmed outputs rather than measured temperatures. The selected Peltier plate should reach 23–25 °C; confirm this from recorded surface temperatures.
+These are programmed outputs rather than measured temperatures. The selected Peltier plate should reach **23–25 °C**; confirm this from recorded surface temperatures.
 
 ## Temperature change across 10–11 trials
 

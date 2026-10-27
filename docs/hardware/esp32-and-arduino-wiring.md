@@ -75,7 +75,7 @@ Match driver input logic levels and share signal ground for non-isolated stages.
 | Background ESP32 | SDA 21 / SCL 22 | GPIO 25 |
 | Ring ESP32 | OneWire data 4 | GPIO 25 |
 
-These proposed assignments require changes to pin definitions and PWM code. GPIO9 on ESP32-WROOM is used by flash memory and cannot replace Arduino pin 9.
+These proposed assignments require changes to pin definitions and PWM code. **GPIO9 on ESP32-WROOM is used by flash memory** and cannot replace Arduino pin 9.
 
 ESP32 sensor pull-ups and driver inputs must be compatible with 3.3 V logic.
 

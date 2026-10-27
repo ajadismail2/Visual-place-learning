@@ -20,7 +20,7 @@ An Arduino regulates heater PWM through a MOSFET using OneWire temperature feedb
 
 ## Setpoint and cutoff
 
-Setpoint: 45 °C at the sensor. Heating stops above 57 °C and can resume after cooling. The cutoff is software-based and does not latch.
+Setpoint: 45 °C at the sensor. Heating stops above **57 °C** and can resume after cooling. The cutoff is software-based and does not latch.
 
 ## Stopping the heater
 
