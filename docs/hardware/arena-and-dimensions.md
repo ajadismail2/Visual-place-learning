@@ -22,7 +22,7 @@ A ring and glass cover enclose the temperature-controlled walking surface, with 
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![60-Peltier background array](60peltier.png)
+![60-Peltier background array](images/60peltier.png)
 
 <figcaption>60-Peltier background array.</figcaption>
 
