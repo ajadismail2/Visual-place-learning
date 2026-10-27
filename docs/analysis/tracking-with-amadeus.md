@@ -17,4 +17,4 @@ See the [AMADEUS manual](https://amadeus.jpmyrmecol.com/Manual_EN.html) for inst
 
 The GUI expects a wide CSV with `frame` and paired centre columns (`cx0, cy0, cx1, cy1`, etc.). Width, height and heading are optional; original IDs are retained.
 
-[Continue to the analysis GUI](using-the-analysis-gui.md)
+[Continue to the analysis GUI](analysisgui.md)
