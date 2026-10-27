@@ -5,6 +5,22 @@ section: Hardware
 ---
 A Peltier module transfers heat from one face to the other when current passes through it. Reversing the current swaps the hot and cold faces. Cooling depends on removing heat from the hot face.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Peltier module](images/peltier-plate.jpg)
+
+<figcaption>Peltier module.</figcaption>
+
+</figure>
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Internal structure of a Peltier module](images/peltierplateinsideworking.jpg)
+
+<figcaption>Internal structure of a Peltier module.</figcaption>
+
+</figure>
+
 ## Arena arrangement
 
 The background uses 60 Peltier modules connected in series to a single power source. The same current passes through every module, and their voltage drops add together.
