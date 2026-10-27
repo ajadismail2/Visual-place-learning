@@ -51,7 +51,7 @@ nav:
       - 5. Thermal camera stream: software/thermal-camera-stream.md
       - 6. Single-panel test: software/single-panel-test.md
   - ANALYSIS:
-      - Analysis Workflow: analysis/ANALYSIS WORKFLOW.md
+      - Analysis Workflow: analysis/ANALYSISWORKFLOW.md
       - Tracking with AMADEUS: analysis/tracking-with-amadeus.md
       - The Analysis GUI: analysis/analysisgui.md
       - Current measurements and outputs: analysis/measurements-and-outputs.md
