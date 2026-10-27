@@ -69,19 +69,6 @@ Measure the distance D from the reference viewing position to the panel plane. F
 At D = 160 mm, a 15° bar spans 42.13 mm (10.53 pixels). Eleven pixels span 44 mm, or 15.66°. This calculation assumes a centred bar on a flat panel; apparent width varies with fly position and elevation.
 
 
-<details class="calculation" markdown="1">
-<summary>Angular-width calculator</summary>
-<div class="angle-calculator" data-angle-calculator>
-  <div class="calc-inputs">
-    <label>Distance to panel plane (mm)<input id="distance-mm" type="number" min="1" value="160" step="1"></label>
-    <label>Pattern centre above fly (mm)<input id="height-mm" type="number" value="0" step="1"></label>
-    <label>Angular width (degrees)<input id="angle-deg" type="number" min="0.1" max="89" value="15" step="0.1"></label>
-  </div>
-  <p id="angle-result" class="calc-result" role="status">42.13 mm · 10.53 pixel pitches at 4 mm pitch</p>
-  <p class="calc-note">Example geometry for a flat panel viewed along its normal.</p>
-</div>
-</details>
-
 ## Pattern and timing
 
 The included program draws diagonals at about 19.5° from vertical. The archived 45° design uses a different pattern. The horizontal region spans 344 mm, with bars 11 and 10 rows thick.
