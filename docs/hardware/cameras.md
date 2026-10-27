@@ -7,9 +7,25 @@ section: Hardware
 
 A Thorlabs CS165MU monochrome camera records the flies under infrared illumination. Mount it vertically above the arena, with the full walking surface in focus. A lower-cost IR-sensitive camera can also work if individual flies remain distinguishable across the image.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Thorlabs CS165MU camera](images/thorlabscs165mu.webp)
+
+<figcaption>Thorlabs CS165MU behaviour camera.</figcaption>
+
+</figure>
+
 ## Thermal camera
 
 The MLX90640 measures surface temperature on a 32 × 24 pixel grid. An ESP32 reads it over I²C and sends frames to the computer over USB.
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![MLX90640 thermal-camera board](images/mlx90640thermalcamera.jpg)
+
+<figcaption>MLX90640 thermal-camera board.</figcaption>
+
+</figure>
 
 Use it to follow the background and Peltier-plate temperatures throughout the experiment. Check readings against a contact thermometer.
 
