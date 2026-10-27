@@ -51,9 +51,9 @@ nav:
       - Thermal camera stream: software/thermal-camera-stream.md
       - Single-panel test: software/single-panel-test.md
   - ANALYSIS:
-      - From video to measurements: analysis/from-video-to-measurements.md
+      - From video to measurements: analysis/ANALYSIS WORKFLOW.md
       - Tracking with AMADEUS: analysis/tracking-with-amadeus.md
-      - Using the analysis GUI: analysis/using-the-analysis-gui.md
+      - Using the analysis GUI: analysis/analysisgui.md
       - Measurements and outputs: analysis/measurements-and-outputs.md
   - CAD:
       - Parts and STEP files: cad/parts-and-step-files.md
