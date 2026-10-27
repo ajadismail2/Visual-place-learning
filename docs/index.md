@@ -23,7 +23,7 @@ This documentation describes the current apparatus and will be updated as the sy
 
 1. [Hardware](hardware/overview.md) — components, construction, wiring and imaging.
 2. [Software](software/how-the-programs-work.md) — controller programs, installation and operation.
-3. [Analysis](analysis/from-video-to-measurements.md) — tracking, target registration and behavioural measurements.
+3. [Analysis](analysis/ANALYSISWORKFLOW.md) — tracking, target registration and behavioural measurements.
 4. [CAD](cad/parts-and-step-files.md) — editable STEP files for fabricated parts.
 5. [Resources](resources/downloads-and-references.md) — downloads, checksums and technical references.
 
