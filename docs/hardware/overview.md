@@ -6,7 +6,7 @@ section: Hardware
 
 ## Photographs
 
-![](images/full-arena.jpeg)
+!(images/full-arena.jpeg)
 
 *Visual Place Learning Arena.*
 
