@@ -13,4 +13,4 @@ Mark all four regions using the pre-experiment mask beforehand, with the same ca
 
 Save the reviewed CSV, matching video, target-box JSON and analysis metadata together in folder. The Metadata records IDs, timing, scale, target order and file hashes.
 
-[Download the analysis GUI(../downloads/analysis/fly_target_time_gui_amadeus.py) · [Installation and use](analysisgui.md)
+[Download the analysis GUI](../downloads/analysis/fly_target_time_gui_amadeus.py) · [Installation and use](the-analysis-gui.md)

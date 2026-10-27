@@ -34,27 +34,26 @@ nav:
       - ESP32 and Arduino wiring: hardware/esp32-and-arduino-wiring.md
       - LED display: hardware/led-display.md
       - Peltier temperature system: hardware/peltier-temperature-system.md
-      - Thermal ring: hardware/thermal-ring.md
-      - Glass cover: hardware/glass-cover.md
+      - Thermal ring and glass cover: hardware/thermal-ring-and-glass-cover.md
       - Illumination: hardware/illumination.md
       - Cameras: hardware/cameras.md
   - SOFTWARE:
-      - How the Codes work: software/how-the-programs-work.md
+      - How the Codes work: software/how-the-codes-work.md
       - LED matrix library: software/led-matrix-library.md
       - Install and upload: software/install-and-upload.md
-      - How to run an experiment: software/run-an-experiment.md
+      - How to run an experiment: software/how-to-run-an-experiment.md
       - Checks and troubleshooting: software/checks-and-troubleshooting.md
-      - 1. Primary ESP32; The Four-Peltier controller: software/four-peltier-controller.md
-      - 2. Secondandry ESP32; The LED display controller: software/led-display-controller.md
-      - 3. 60-Peltier background: software/60-peltier-background.md
-      - 4. Thermal ring: software/thermal-ring.md
-      - 5. Thermal camera stream: software/thermal-camera-stream.md
-      - 6. Single-panel test: software/single-panel-test.md
+      - 1. Primary ESP32; The Four-Peltier controller: software/1-primary-esp32-the-four-peltier-controller.md
+      - 2. Secondary ESP32; The LED display controller: software/2-secondary-esp32-the-led-display-controller.md
+      - 3. 60-Peltier background: software/3-60-peltier-background.md
+      - 4. Thermal ring: software/4-thermal-ring.md
+      - 5. Thermal camera stream: software/5-thermal-camera-stream.md
+      - 6. Single-panel test: software/6-single-panel-test.md
   - ANALYSIS:
-      - Analysis Workflow: analysis/ANALYSISWORKFLOW.md
+      - Analysis Workflow: analysis/analysis-workflow.md
       - Tracking with AMADEUS: analysis/tracking-with-amadeus.md
-      - The Analysis GUI: analysis/analysisgui.md
-      - Current measurements and outputs: analysis/measurements-and-outputs.md
+      - The Analysis GUI: analysis/the-analysis-gui.md
+      - Current measurements and outputs: analysis/current-measurements-and-outputs.md
   - CAD:
       - Parts and STEP files: cad/parts-and-step-files.md
   - RESOURCES:

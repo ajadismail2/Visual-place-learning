@@ -33,7 +33,7 @@ The Peltier-plate controller requires the pin-based `ledcAttach`/`ledcWrite` API
 Pair the Peltier-plate controller with the display ESP32's MAC address.
 
 1. Upload `Display_Controller` first.
-2. Read its startup MAC address in Serial Monitor at **115200 baud**; reset if needed.
+2. Read its startup MAC address in Serial Monitor at 115200 baud; reset if needed.
 3. Copy `local_config.example.h` to `local_config.h` in the Peltier-controller folder.
 4. Enter the display address and network settings, then remove the `#error` line. Keep this file local.
 5. Upload the Peltier-plate program and retain the radio configuration expected by both sketches.
@@ -43,15 +43,15 @@ ESP-NOW transmits A–D states between boards. Verify the destination address, p
 
 ## 4. Compile, upload and read a response
 
-Select **Verify** and resolve compiler errors, then **Upload**. Confirm completion in the IDE.
+Select Verify and resolve compiler errors, then Upload. Confirm completion in the IDE.
 
 Open Serial Monitor at the program's baud rate and send commands with a line ending.
 
-Peltier-plate, display, background and ring controllers use **115200 baud**. The thermal camera uses **921600 baud** and binary packets, which are not readable as temperature text in Serial Monitor.
+Peltier-plate, display, background and ring controllers use 115200 baud. The thermal camera uses 921600 baud and binary packets, which are not readable as temperature text in Serial Monitor.
 
 
 ## 5. Test before connecting all loads
 
-Test one panel or driver channel at a time. Confirm Peltier-plate mapping and temperature response. Restore experiment firmware after diagnostics, then follow the [operating procedure](run-an-experiment.md).
+Test one panel or driver channel at a time. Confirm Peltier-plate mapping and temperature response. Restore experiment firmware after diagnostics, then follow the [operating procedure](how-to-run-an-experiment.md).
 
 [Arduino upload guide](https://support.arduino.cc/hc/en-us/articles/4733418441116-Upload-a-sketch-in-Arduino-IDE) · [Troubleshooting](checks-and-troubleshooting.md)

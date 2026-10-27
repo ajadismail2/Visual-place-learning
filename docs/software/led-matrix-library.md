@@ -17,13 +17,13 @@ A conventional 64 × 32, 1/16-scan panel addresses two rows at a time across 16 
 | LAT | Transfers shifted data to the display outputs |
 | OE | Enables or blanks the light output |
 
-A **DMA buffer** supplies scan signals directly to the ESP32 peripheral, leaving the processor available for commands and drawing. [1](#references)
+A DMA buffer supplies scan signals directly to the ESP32 peripheral, leaving the processor available for commands and drawing. [1](#references)
 
-**Binary-code modulation** encodes intensity through timed bit planes. Colour depth, chain length and refresh timing therefore interact; the library adjusts bit-plane scheduling toward the requested refresh rate. [2](#references)
+Binary-code modulation encodes intensity through timed bit planes. Colour depth, chain length and refresh timing therefore interact; the library adjusts bit-plane scheduling toward the requested refresh rate. [2](#references)
 
 ## Panorama mapping
 
-Eight chained panels form a 512 × 32 physical strip. The sketch's `putV()` function maps the **256 × 64 virtual panorama** onto the rotated panels.
+Eight chained panels form a 512 × 32 physical strip. The sketch's `putV()` function maps the 256 × 64 virtual panorama onto the rotated panels.
 
 `putV()` applies and wraps the horizontal offset, selects the panel, transforms orientation and calls `dma->drawPixel()`. Shape helpers draw the stimulus bars.
 
@@ -79,8 +79,8 @@ Keep contrast and measured timing consistent across runs.
 
 1. Install the library and Adafruit GFX dependency. The sketch includes `ESP32-HUB75-MatrixPanel-I2S-DMA.h`.
 2. Use the supported original ESP32. ESP32-C3 is not a compatible substitute. [1](#references)
-3. Follow the [pin map](../hardware/esp32-and-arduino-wiring.md#display-board-pin-map), connect external power and common ground, then run the [single-panel test](single-panel-test.md).
-4. Connect the full chain, upload the [display program](led-display-controller.md) and test A–D over serial before wireless pairing.
+3. Follow the [pin map](../hardware/esp32-and-arduino-wiring.md#display-board-pin-map), connect external power and common ground, then run the [single-panel test](6-single-panel-test.md).
+4. Connect the full chain, upload the [display program](2-secondary-esp32-the-led-display-controller.md) and test A–D over serial before wireless pairing.
 5. [Measure display timing](../hardware/led-display.md#check-the-display). Record library and board-package versions, brightness and driver configuration.
 
 For blank panels, check power, IN/OUT orientation, pin mapping and driver compatibility. For repeated rows or columns, check scan type, dimensions and mapping. Faint duplicates may require latch-blanking adjustment, which also affects brightness. [1](#references)

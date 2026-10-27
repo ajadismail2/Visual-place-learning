@@ -3,7 +3,7 @@ title: Single-panel test
 description: "A small display diagnostic separates wiring and panel problems from experiment sequencing."
 section: Software
 ---
-[← Controller programs](how-the-programs-work.md)
+[← Controller programs](how-the-codes-work.md)
 
 <div class="download-links" markdown="1">
 
@@ -24,7 +24,7 @@ Single-panel diagnostic using the display controller's HUB75 pin map.
 | X | Corners and edges |
 | A | Automatic sequence |
 
-Serial: **115200 baud**. Restore the display-controller sketch after testing.
+Serial: 115200 baud. Restore the display-controller sketch after testing.
 
 [Display pin map](../hardware/esp32-and-arduino-wiring.md#display-board-pin-map)
 

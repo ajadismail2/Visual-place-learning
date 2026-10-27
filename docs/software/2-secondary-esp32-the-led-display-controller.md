@@ -3,7 +3,7 @@ title: LED display controller
 description: "An ESP32 translates the selected Peltier-plate letter into a panorama rotation across eight HUB75 panels."
 section: Software
 ---
-[← Controller programs](how-the-programs-work.md)
+[← Controller programs](how-the-codes-work.md)
 
 <div class="download-links" markdown="1">
 
@@ -28,9 +28,9 @@ The horizontal bars are 11 and 10 rows thick.
 
 ## Direct control
 
-Send <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> or <code>OFF</code> to the display board at **115200 baud**. The program uses the ESP32-HUB75-MatrixPanel-I2S-DMA library.
+Send <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code> or <code>OFF</code> to the display board at 115200 baud. The program uses the ESP32-HUB75-MatrixPanel-I2S-DMA library.
 
-The sketch requests **1000 Hz** refresh and uses one buffer. Optical refresh has not been measured.
+The sketch requests 1000 Hz refresh and uses one buffer. Optical refresh has not been measured.
 
 [LED display and geometry](../hardware/led-display.md) · [Library operation and settings](led-matrix-library.md) · [Display wiring](../hardware/esp32-and-arduino-wiring.md#display-board-pin-map)
 

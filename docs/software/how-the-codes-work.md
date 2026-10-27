@@ -17,11 +17,11 @@ The Peltier-plate controller coordinates four Peltier plates and the display. Ba
 
 <div class="chapter-list" markdown="1">
 
-[**Install and upload**<br><span>Board selection, libraries, sketch folders and pairing the display.</span>](install-and-upload.md)
+[Install and upload<br><span>Board selection, libraries, sketch folders and pairing the display.</span>](install-and-upload.md)
 
-[**Run an experiment**<br><span>Pre-run checks, Peltier-plate order, recording and shutdown.</span>](run-an-experiment.md)
+[Run an experiment<br><span>Pre-run checks, Peltier-plate order, recording and shutdown.</span>](how-to-run-an-experiment.md)
 
-[**Checks and troubleshooting**<br><span>Observable tests for each controller and load.</span>](checks-and-troubleshooting.md)
+[Checks and troubleshooting<br><span>Observable tests for each controller and load.</span>](checks-and-troubleshooting.md)
 
 </div>
 
@@ -29,15 +29,15 @@ The Peltier-plate controller coordinates four Peltier plates and the display. Ba
 
 | Program | Function |
 | --- | --- |
-| [Experiment_Controller](four-peltier-controller.md) | Four Peltier-plate outputs and display timing; no plate-temperature feedback |
-| [Display_Controller](led-display-controller.md) | Panorama generation on the display ESP32 |
-| [Closedloop_60peltier](60-peltier-background.md) | Background feedback from one temperature sensor |
-| [Thermal_ring](thermal-ring.md) | Independent perimeter-heater feedback |
-| [thermal_camera](thermal-camera-stream.md) | Thermal-image stream; requires computer-side recording |
+| [Experiment_Controller](1-primary-esp32-the-four-peltier-controller.md) | Four Peltier-plate outputs and display timing; no plate-temperature feedback |
+| [Display_Controller](2-secondary-esp32-the-led-display-controller.md) | Panorama generation on the display ESP32 |
+| [Closedloop_60peltier](3-60-peltier-background.md) | Background feedback from one temperature sensor |
+| [Thermal_ring](4-thermal-ring.md) | Independent perimeter-heater feedback |
+| [thermal_camera](5-thermal-camera-stream.md) | Thermal-image stream; requires computer-side recording |
 
 ## Diagnostic program
 
-[SinglePanelTest](single-panel-test.md) checks panel wiring and orientation. Restore the display sketch after testing.
+[SinglePanelTest](6-single-panel-test.md) checks panel wiring and orientation. Restore the display sketch after testing.
 
 ## Source files and configuration
 

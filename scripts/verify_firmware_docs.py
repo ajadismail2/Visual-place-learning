@@ -11,7 +11,7 @@ site=root/'site'
 downloads=site/'downloads'
 manifest=json.loads((downloads/'firmware-manifest.json').read_text())
 assert manifest['uploaded_sketch_count']==len(manifest['files'])==7
-page_for={'Experiment_Controller.ino':'four-peltier-controller','Closedloop_60peltier.ino':'60-peltier-background','Display_Controller.ino':'led-display-controller','Thermal_ring.ino':'thermal-ring','thermal_camera.ino':'thermal-camera-stream','SinglePanelTest.ino':'single-panel-test'}
+page_for={'Experiment_Controller.ino':'1-primary-esp32-the-four-peltier-controller','Closedloop_60peltier.ino':'3-60-peltier-background','Display_Controller.ino':'2-secondary-esp32-the-led-display-controller','Thermal_ring.ino':'4-thermal-ring','thermal_camera.ino':'5-thermal-camera-stream','SinglePanelTest.ino':'6-single-panel-test'}
 class Source(HTMLParser):
  def __init__(self,text):
   super().__init__();self.inside=False;self.code=False;self.parts=[];self.feed(text)
