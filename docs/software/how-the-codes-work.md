@@ -7,13 +7,13 @@ The Peltier-plate controller coordinates four Peltier plates and the display. Ba
 
 ## Experiment sequence
 
-1. Send the Peltier-plate order over USB serial.
+1. Send the Peltier-plate EXO order over USB serial.
 2. The Peltier-plate controller preheats all four Peltier plates, then cools the selected Peltier plate and heats the others.
 3. ESP-NOW sends the corresponding panorama state to the display.
 4. Background and ring feedback loops run independently.
 5. Record behaviour and temperature separately; the Peltier-plate controller does not log video or use temperature feedback.
 
-## Start here
+## How to get started
 
 <div class="chapter-list" markdown="1">
 
@@ -35,13 +35,6 @@ The Peltier-plate controller coordinates four Peltier plates and the display. Ba
 | [Thermal_ring](4-thermal-ring.md) | Independent perimeter-heater feedback |
 | [thermal_camera](5-thermal-camera-stream.md) | Thermal-image stream; requires computer-side recording |
 
-## Diagnostic program
-
-[SinglePanelTest](6-single-panel-test.md) checks panel wiring and orientation. Restore the display sketch after testing.
-
-## Source files and configuration
-
-Each program page includes its source. Store device addresses and network settings in local `local_config.h`.
 
 Use the corrected ring sketch. Background and ring programs retain Arduino pin assignments; their ESP32 conversion is proposed.
 
