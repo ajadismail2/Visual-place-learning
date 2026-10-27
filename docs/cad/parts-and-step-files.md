@@ -4,7 +4,7 @@ description: STEP models and assembly notes for the structural, display, lightin
 section: CAD
 ---
 
-Full CAD Design - https://cad.onshape.com/documents/51cb519a2868e246f36d1018/w/36f1903476a821ee69db6791/e/1676d93c2aac02087ee3064d?renderMode=0&uiState=6ae025ff2f8fe391dc63bb77
+[Full CAD Design](https://cad.onshape.com/documents/51cb519a2868e246f36d1018/w/36f1903476a821ee69db6791/e/1676d93c2aac02087ee3064d?renderMode=0&uiState=6ae025ff2f8fe391dc63bb77){ target="_blank" rel="noopener" }
 
 ## 01 · Structural baseplate
 
