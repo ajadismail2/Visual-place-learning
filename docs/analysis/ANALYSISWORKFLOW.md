@@ -35,4 +35,4 @@ Register all four regions using the [pre-experiment mask](../cad/parts-and-step-
 
 Keep the reviewed CSV, matching video, target-box JSON and analysis metadata together. Metadata records IDs, timing, scale, target order and file hashes.
 
-[Download the analysis GUI, version 1.3.0](../downloads/analysis/fly_target_time_gui_amadeus.py) · [Installation and use](using-the-analysis-gui.md)
+[Download the analysis GUI, version 1.3.0](../downloads/analysis/fly_target_time_gui_amadeus.py) · [Installation and use](analysisgui.md)
