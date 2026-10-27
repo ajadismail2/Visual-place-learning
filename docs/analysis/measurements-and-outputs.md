@@ -58,4 +58,4 @@ Plots are **JPEG**, with full-experiment time axes of 0–300 seconds. CSVs reta
 
 Keep the CSV, box JSON, metadata and video together; document exclusions. Changing included flies changes group results. The source includes 47 numerical checks for timing, gaps, trial boundaries and exports; these do not validate tracking identities.
 
-[Download the exact analysis source](../downloads/analysis/fly_target_time_gui_amadeus.py) · [Return to the GUI workflow](using-the-analysis-gui.md)
+[Download the exact analysis source](../downloads/analysis/fly_target_time_gui_amadeus.py) · [Return to the GUI workflow](analysisgui.md)
