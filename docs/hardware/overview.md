@@ -6,9 +6,13 @@ section: Hardware
 
 ## Photographs
 
-!(images/full-arena.jpeg)
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-*Visual Place Learning Arena.*
+![Arena viewed from above](images/full-arena.jpeg)
+
+<figcaption>Visual Place Learning Arena.</figcaption>
+
+</figure>
 
 The apparatus combines a heated walking arena, four cooling Peltier plates, an LED panorama and overhead video recording.
 
