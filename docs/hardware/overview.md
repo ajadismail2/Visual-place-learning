@@ -3,6 +3,13 @@ title: Hardware
 description: Arena, thermal control, visual display and recording.
 section: Hardware
 ---
+
+## Photographs
+
+![](images/full_arena.jpg)
+
+*Visual Place Learning Arena.*
+
 The apparatus combines a heated walking arena, four cooling Peltier plates, an LED panorama and overhead video recording.
 
 ## Experimental setup
