@@ -4,7 +4,6 @@ description: Arena, thermal control, visual display and recording.
 section: Hardware
 ---
 
-## Photographs
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
