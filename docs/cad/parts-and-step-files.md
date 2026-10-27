@@ -11,7 +11,7 @@ The wooden baseplate fixes the arena and supports in position. The geometry can 
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Wooden baseplate](../hardware/images/assembly_1.png)
+![Wooden baseplate](images/assembly_1.png)
 
 <figcaption>Structural baseplate.</figcaption>
 
@@ -26,7 +26,7 @@ Printed TPU or PLA legs hold eight 64 × 32 panels in an octagon. One hinged pan
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![LED matrix octagon with access hinge](../hardware/images/led-octagon.jpeg)
+![LED matrix octagon with access hinge](images/led-octagon.jpeg)
 
 <figcaption>LED matrix octagon and access hinge.</figcaption>
 
@@ -41,7 +41,7 @@ A PVC support carries a printed lampshade, infrared array and diffuser. A printe
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Infrared-light stand](../hardware/images/PVC_IR_STAND.png)
+![Infrared-light stand](images/PVC_IR_STAND.png)
 
 <figcaption>Infrared-light stand with lampshade and diffuser.</figcaption>
 
@@ -56,7 +56,7 @@ The PLA ring contains a copper-wire resistive heater. Small openings provide air
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Thermal ring](../hardware/images/thermal-ring.png)
+![Thermal ring](images/thermal-ring.png)
 
 <figcaption>PLA thermal ring with copper-wire heater.</figcaption>
 
@@ -71,7 +71,7 @@ Image the mask before each experiment to register the four target positions. Rem
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Registration mask with four square openings](../hardware/images/mask.png)
+![Registration mask with four square openings](images/mask.png)
 
 <figcaption>Cool-spot registration mask.</figcaption>
 
@@ -86,7 +86,7 @@ The holder stabilises the baseplate around the four Peltier plates and supports 
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Peltier-plate holder and fan support](../hardware/images/Octagon-Holder.png)
+![Peltier-plate holder and fan support](images/Octagon-Holder.png)
 
 <figcaption>Peltier-plate holder with fan support.</figcaption>
 
