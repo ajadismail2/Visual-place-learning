@@ -54,6 +54,11 @@ nav:
       - Tracking with AMADEUS: analysis/tracking-with-amadeus.md
       - The Analysis GUI: analysis/the-analysis-gui.md
       - Current measurements and outputs: analysis/current-measurements-and-outputs.md
+  - VALIDATION:
+      - 60-Peltier background temperature: validation/60-peltier-background-temperature.md
+      - Four cooling Peltier plates: validation/four-cooling-peltier-plates.md
+      - Thermal ring: validation/thermal-ring.md
+      - LED panel states: validation/led-panel-states.md
   - CAD:
       - Parts and STEP files: cad/parts-and-step-files.md
   - RESOURCES:
