@@ -5,6 +5,13 @@ section: Hardware
 ---
 Eight inward-facing Waveshare P4 RGB panels form the visual enclosure. The display shows green bars on black and rotates the panorama when the selected Peltier plate changes.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![LED panels surrounding the arena](images/LEDpanels.jpg)
+
+<figcaption>LED panorama around the arena.</figcaption>
+
+</figure>
 
 ## Panel configuration
 
@@ -20,9 +27,33 @@ Eight inward-facing Waveshare P4 RGB panels form the visual enclosure. The displ
 
 The manufacturer's maximum rating is 20 W per panel (5 V, 4 A); actual draw depends on the displayed pattern. Power the panels separately from the ESP32. [Waveshare specifications](https://docs.waveshare.com/RGB-Matrix-Px-64x32).
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Waveshare 64 by 32 RGB LED panel](images/led-panel-64.32waveshare.webp)
+
+<figcaption>Waveshare 64 × 32 P4 RGB panel.</figcaption>
+
+</figure>
+
 ## Panel chain and drawing
 
 Connect each panel OUT to the next panel IN. The [ESP32-HUB75-MatrixPanel-DMA library](https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA) drives the eight-panel chain as a 512 × 32 physical strip. It uses the ESP32's DMA peripheral to scan the panels after a pattern is drawn; the controller does not need to redraw every frame. The arena sketch's `putV()` maps a 256 × 64 virtual panorama to the rotated panels. This rotation is implemented in the sketch.
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Rear view of the eight LED panels](images/panel_wiring'.jpeg)
+
+<figcaption>Rear view of the eight-panel display and HUB75 connections.</figcaption>
+
+</figure>
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![LED-panel power and ribbon cables](images/panel_wiring.jpeg)
+
+<figcaption>Panel power and ribbon-cable connections.</figcaption>
+
+</figure>
 
 The supplied display sketch selects the FM6126A driver configuration, `clkphase = false`, one DMA buffer and `setBrightness8(120)`. Confirm driver compatibility for replacement panels. Library brightness is a 0–255 command, not a light measurement. [Library settings and code](../software/led-matrix-library.md).
 
