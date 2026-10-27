@@ -1,5 +1,5 @@
 ---
-title: Using the arena analysis GUI
+title: Analysis GUI
 description: Install the Python application, register targets, configure trials and inspect individual trajectories.
 section: Analysis
 ---
