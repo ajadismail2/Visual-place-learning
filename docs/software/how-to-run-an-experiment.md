@@ -9,7 +9,7 @@ Prepare and test each controller, the thermal system and recording equipment bef
 
 1. Level the arena, seat the glass cover, clear the underside airflow and check the full camera view.
 2. Confirm board programs and serial-port assignments.
-3. Verify physical A–D labels against the [wiring table](../hardware/peltier-temperature-system.md#target-controller-pin-map) and display states.
+3. Verify physical A–D labels against the [wiring table](1-primary-esp32-the-four-peltier-controller.md#peltier-plate-labels-and-wiring) and display states.
 4. Check background and ring sensors. Measure the four Peltier-plate surfaces separately; their controller has no temperature feedback.
 5. Wait for stable conditions and record starting temperatures.
 6. Set focus, exposure, frame rate and output folder; confirm a test recording saves correctly.
@@ -29,7 +29,7 @@ Mark the first cooling onset in the recording or timing log; analysis trial 1 st
 
 ## During a trial
 
-The selected Peltier plate receives a cooling boost followed by a lower hold output. The other Peltier plates heat, with a brief boost after cooling. The display receives the corresponding letter. See the [PWM settings](../hardware/peltier-temperature-system.md#trial-sequence).
+The selected Peltier plate receives a cooling boost followed by a lower hold output. The other Peltier plates heat, with a brief boost after cooling. The display receives the corresponding letter. See the [PWM settings](1-primary-esp32-the-four-peltier-controller.md#one-complete-sequence).
 
 Monitor measured temperatures. Stop data collection if the selected Peltier plate fails to cool or the background drifts.
 
