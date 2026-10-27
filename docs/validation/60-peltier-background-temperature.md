@@ -7,17 +7,28 @@ The 60-Peltier background is checked with a thermal camera and temperature senso
 
 A control sensor regulates PWM through a PID loop and logic-level MOSFET. Performance can change with room temperature, Peltier module condition, thermal paste, the aluminium plate, and whether the four cooling Peltier plates use the same heat sink or a separate one.
 
-<figure class="validation-slot">
-  <div class="validation-space">Add thermal-camera uniformity image</div>
-  <figcaption>Temperature uniformity across the 60-Peltier background.</figcaption>
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+<video controls muted loop style="max-width: 100%;">
+  <source src="images/THermalcamera_exp%20video.avi" type="video/x-msvideo">
+</video>
+
+<figcaption>Thermal-camera recording of temperature uniformity across the 60-Peltier background.</figcaption>
+
 </figure>
 
-<figure class="validation-slot">
-  <div class="validation-space">Add closed-loop temperature and PWM plot</div>
-  <figcaption>Background temperature and PWM during an experiment.</figcaption>
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Closed-loop temperature and PWM plot](images/60p_exp_plot.png)
+
+<figcaption>Background temperature and PWM during an experiment.</figcaption>
+
 </figure>
 
-<figure class="validation-slot">
-  <div class="validation-space">Add multi-sensor temperature plot</div>
-  <figcaption>Temperatures measured at several positions inside the arena.</figcaption>
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Multi-sensor temperature plot](images/arena_peltiers_steps_plot%20%281%29.png)
+
+<figcaption>Temperatures measured at several positions inside the arena.</figcaption>
+
 </figure>
