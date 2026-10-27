@@ -9,6 +9,14 @@ Behaviour video and surface-temperature measurements are recorded separately.
 
 We record under infrared illumination with a Thorlabs CS165MU, a 1.6 MP monochrome CMOS camera. [Specifications](https://www.thorlabs.com/item/CS165MU).
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Thorlabs CS165MU camera](images/thorlabscs165mu.webp)
+
+<figcaption>Thorlabs CS165MU behaviour camera.</figcaption>
+
+</figure>
+
 Lower-cost IR-sensitive cameras are suitable if nearby flies remain distinguishable across the full arena.
 
 ## Choosing a lower-cost camera
@@ -37,6 +45,14 @@ Focus across the centre and perimeter. Recalibrate after changing the lens, fram
 
 
 The MLX90640 provides 32 × 24 surface-temperature estimates from emitted infrared radiation. [Sensor documentation](https://www.melexis.com/en/product/mlx90640/far-infrared-thermal-sensor-array).
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![MLX90640 thermal-camera board](images/mlx90640thermalcamera.jpg)
+
+<figcaption>MLX90640 thermal-camera board.</figcaption>
+
+</figure>
 
 An ESP32 reads the array over I²C and streams frames over USB. Its spatial resolution supports Peltier-plate and background measurements, not individual-fly tracking.
 
