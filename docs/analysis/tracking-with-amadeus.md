@@ -7,7 +7,7 @@ AMADEUS learns from unlabelled recordings and represents each animal with an ori
 
 ## Choice of tracker
 
-This assay requires stable identities and centre coordinates, rather than detailed poses. Our earlier SLEAP workflow showed identity swaps during contact and missed detections near the edge. AMADEUS supports recording-specific training, synthetic interactions and identity review.
+The tracker requires stable identities and centre coordinates, rather than detailed poses. Our earlier SLEAP workflow showed identity swaps during contact and missed detections near the edge. AMADEUS supports recording-specific training, synthetic interactions and identity review.
 
 This choice is not a measured accuracy comparison. Review AMADEUS identities around occlusions. [SLEAP](https://sleap.ai/) remains an option for pose analysis.
 
