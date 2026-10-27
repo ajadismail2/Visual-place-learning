@@ -5,11 +5,27 @@ section: Hardware
 ---
 The arena uses 60 Peltier modules for the background and four independently driven Peltier plates at positions A–D. The background uses temperature feedback. The four Peltier plates follow timed PWM commands.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Peltier module](images/peltier-plate.jpg)
+
+<figcaption>Peltier module.</figcaption>
+
+</figure>
+
 ## Background of 60 Peltier modules
 
 The 60 Peltier modules form one series circuit with a single power-control output. An Arduino reads a TMP117 sensor over I²C and drives the external power stage from pin 9.
 
 Peltier current direction determines heat-flow direction. The achieved surface temperature depends on current, thermal contact and heat dissipation. Verify polarity and temperature on the assembled arena.
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Internal structure of a Peltier module](images/peltierplateinsideworking.jpg)
+
+<figcaption>Internal structure of a Peltier module.</figcaption>
+
+</figure>
 
 
 ### Set the background temperature

@@ -7,6 +7,14 @@ Four generic infrared LED arrays illuminate the arena. Each uses a printed shade
 
 [Generic IR arrays](https://www.amazon.in/Generic-Array-Infrared-Module-Camera/dp/B0DPKYDQDS) are suitable when matched to camera sensitivity and exposure.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Infrared LED array](images/IR-array-light.jpg)
+
+<figcaption>Infrared LED array used for behaviour recording.</figcaption>
+
+</figure>
+
 ## Illumination
 
 Near-infrared illumination maintains camera visibility as the green panorama changes. It is separate from MLX90640 thermal imaging.
