@@ -11,7 +11,7 @@ The wooden baseplate fixes the arena and supports in position. The geometry can 
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Wooden baseplate](images/assembly_1.png)
+![Wooden baseplate](images/Assembly_1.png)
 
 <figcaption>Structural baseplate.</figcaption>
 
@@ -26,7 +26,7 @@ Printed TPU or PLA legs hold eight 64 × 32 panels in an octagon. One hinged pan
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![LED matrix octagon with access hinge](images/led-octagon.jpeg)
+![LED matrix octagon with access hinge](images/LED-Matrix-Octagon.png)
 
 <figcaption>LED matrix octagon and access hinge.</figcaption>
 
