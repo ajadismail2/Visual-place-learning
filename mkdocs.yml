@@ -39,22 +39,22 @@ nav:
       - Illumination: hardware/illumination.md
       - Cameras: hardware/cameras.md
   - SOFTWARE:
-      - How the programs work: software/how-the-programs-work.md
-      - Install and upload: software/install-and-upload.md
-      - Run an experiment: software/run-an-experiment.md
-      - Checks and troubleshooting: software/checks-and-troubleshooting.md
-      - Four-Peltier controller: software/four-peltier-controller.md
-      - 60-Peltier background: software/60-peltier-background.md
+      - How the Codes work: software/how-the-programs-work.md
       - LED matrix library: software/led-matrix-library.md
-      - LED display controller: software/led-display-controller.md
-      - Thermal ring: software/thermal-ring.md
-      - Thermal camera stream: software/thermal-camera-stream.md
-      - Single-panel test: software/single-panel-test.md
+      - Install and upload: software/install-and-upload.md
+      - How to run an experiment: software/run-an-experiment.md
+      - Checks and troubleshooting: software/checks-and-troubleshooting.md
+      - 1. Primary ESP32; The Four-Peltier controller: software/four-peltier-controller.md
+      - 2. Secondandry ESP32; The LED display controller: software/led-display-controller.md
+      - 3. 60-Peltier background: software/60-peltier-background.md
+      - 4. Thermal ring: software/thermal-ring.md
+      - 5. Thermal camera stream: software/thermal-camera-stream.md
+      - 6. Single-panel test: software/single-panel-test.md
   - ANALYSIS:
-      - From video to measurements: analysis/ANALYSIS WORKFLOW.md
+      - Analysis Workflow: analysis/ANALYSIS WORKFLOW.md
       - Tracking with AMADEUS: analysis/tracking-with-amadeus.md
-      - Using the analysis GUI: analysis/analysisgui.md
-      - Measurements and outputs: analysis/measurements-and-outputs.md
+      - The Analysis GUI: analysis/analysisgui.md
+      - Current measurements and outputs: analysis/measurements-and-outputs.md
   - CAD:
       - Parts and STEP files: cad/parts-and-step-files.md
   - RESOURCES:
