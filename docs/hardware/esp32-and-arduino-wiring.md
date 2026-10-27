@@ -7,7 +7,7 @@ Pin maps for the Peltier-plate, display, background, ring and thermal-camera con
 
 ## Controller assignments
 
-| Label to put on the board | Program | Job |
+| Board used | Program | Function |
 | --- | --- | --- |
 | Peltier-plate ESP32 | Experiment_Controller | Four Peltier plates and experiment timing |
 | Display ESP32 | Display_Controller | The eight-panel panorama |
