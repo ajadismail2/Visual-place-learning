@@ -8,7 +8,7 @@ section: CAD
 
 ## 01 · Structural baseplate
 
-The wooden baseplate fixes the arena and supports in position. The geometry can also be cut from acrylic, aluminium or another rigid sheet.
+The wooden baseplate fixes the arena and supports in position. The geometry can also be cut from acrylic or any another rigid sheet.
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
