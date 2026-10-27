@@ -7,6 +7,15 @@ The local GUI combines video playback, target registration and analysis of revie
 
 ## 1 · Install and launch
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Analysis GUI home screen](images/Analysis-gui-homescreen.png)
+
+<figcaption>Analysis GUI home screen.</figcaption>
+
+</figure>
+
+
 [Download the GUI](../downloads/analysis/fly_target_time_gui_amadeus.py). Requires Python 3.10+ and Tkinter. From its folder, run in PowerShell:
 
 ```powershell
@@ -25,7 +34,15 @@ py fly_target_time_gui_amadeus.py --self-test
 Load the reviewed AMADEUS CSV and matching video. Coordinates are in pixels. Confirm markers follow the correct flies.
 
 
-## 3 · Register the four targets
+## 3 · Fix the four targets
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Marking the four cool boxes](images/marking%204%20cool%20boxes.png)
+
+<figcaption>Marking the four cool-spot boxes in the analysis GUI.</figcaption>
+
+</figure>
 
 Open Draw / load, select A–D and drag a rectangle over each tile. Use the frame slider or exact-frame control to locate a reference frame. Boxes can be replaced or deleted; their image coordinates remain fixed.
 
