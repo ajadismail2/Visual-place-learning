@@ -45,9 +45,9 @@ Display ESP32 assignments:
 | GND | Controller and panel signal ground | Shared signal reference |
 
 
-Connect the ESP32 to panel 1 **IN**, then chain **OUT → IN**. Power panels separately. Use level conversion if required for 3.3 V control signals.
+Connect the ESP32 to panel 1 IN, then chain OUT → IN. Power panels separately. Use level conversion if required for 3.3 V control signals.
 
-Run the [single-panel test](../software/single-panel-test.md), then restore the display sketch. ESP-NOW carries the selected A–D state.
+Run the [single-panel test](../software/6-single-panel-test.md), then restore the display sketch. ESP-NOW carries the selected A–D state.
 
 ## Background, ring and camera
 
@@ -75,13 +75,13 @@ Match driver input logic levels and share signal ground for non-isolated stages.
 | Background ESP32 | SDA 21 / SCL 22 | GPIO 25 |
 | Ring ESP32 | OneWire data 4 | GPIO 25 |
 
-These proposed assignments require changes to pin definitions and PWM code. **GPIO9 on ESP32-WROOM is used by flash memory** and cannot replace Arduino pin 9.
+These proposed assignments require changes to pin definitions and PWM code. GPIO9 on ESP32-WROOM is used by flash memory and cannot replace Arduino pin 9.
 
 ESP32 sensor pull-ups and driver inputs must be compatible with 3.3 V logic.
 
 ### Thermal camera and other loads
 
-Camera ESP32: **GPIO21 → SDA**, **GPIO22 → SCL**, compatible breakout supply and common ground. USB carries data. Fans and IR arrays use separate rated supplies.
+Camera ESP32: GPIO21 → SDA, GPIO22 → SCL, compatible breakout supply and common ground. USB carries data. Fans and IR arrays use separate rated supplies.
 
 ## Check before connecting load power
 

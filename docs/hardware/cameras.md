@@ -7,7 +7,7 @@ Behaviour video and surface-temperature measurements are recorded separately.
 
 ## Behaviour camera: Thorlabs CS165MU
 
-We record under infrared illumination with a **Thorlabs CS165MU**, a 1.6 MP monochrome CMOS camera. [Specifications](https://www.thorlabs.com/item/CS165MU).
+We record under infrared illumination with a Thorlabs CS165MU, a 1.6 MP monochrome CMOS camera. [Specifications](https://www.thorlabs.com/item/CS165MU).
 
 Lower-cost IR-sensitive cameras are suitable if nearby flies remain distinguishable across the full arena.
 
@@ -36,7 +36,7 @@ Focus across the centre and perimeter. Recalibrate after changing the lens, fram
 ## Set up the thermal camera
 
 
-The **MLX90640** provides 32 × 24 surface-temperature estimates from emitted infrared radiation. [Sensor documentation](https://www.melexis.com/en/product/mlx90640/far-infrared-thermal-sensor-array).
+The MLX90640 provides 32 × 24 surface-temperature estimates from emitted infrared radiation. [Sensor documentation](https://www.melexis.com/en/product/mlx90640/far-infrared-thermal-sensor-array).
 
 An ESP32 reads the array over I²C and streams frames over USB. Its spatial resolution supports Peltier-plate and background measurements, not individual-fly tracking.
 
@@ -44,4 +44,4 @@ An ESP32 reads the array over I²C and streams frames over USB. Its spatial reso
 
 Record preheat, the full 300-second cooling interval and recovery for each Peltier plate, retaining timestamps and the A–D order.
 
-Validate readings against a contact reference and retain raw data. The [camera sketch](../software/thermal-camera-stream.md) supplies a binary stream; computer-side recording is separate.
+Validate readings against a contact reference and retain raw data. The [camera sketch](../software/5-thermal-camera-stream.md) supplies a binary stream; computer-side recording is separate.

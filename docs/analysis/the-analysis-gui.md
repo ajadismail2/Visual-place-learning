@@ -1,5 +1,5 @@
 ---
-title: Analysis GUI
+title: The Analysis GUI
 description: Install the Python application, register targets, configure trials and inspect individual trajectories.
 section: Analysis
 ---
@@ -14,7 +14,7 @@ py -m pip install numpy opencv-python pillow
 py fly_target_time_gui_amadeus.py
 ```
 
-The supplied **version 1.3.0** includes numerical checks:
+The supplied version 1.3.0 includes numerical checks:
 
 ```powershell
 py fly_target_time_gui_amadeus.py --self-test
@@ -27,9 +27,9 @@ Load the reviewed AMADEUS CSV and matching video. Coordinates are in pixels. Con
 
 ## 3 · Register the four targets
 
-Open **Draw / load**, select A–D and drag a rectangle over each tile. Use the frame slider or exact-frame control to locate a reference frame. Boxes can be replaced or deleted; their image coordinates remain fixed.
+Open Draw / load, select A–D and drag a rectangle over each tile. Use the frame slider or exact-frame control to locate a reference frame. Boxes can be replaced or deleted; their image coordinates remain fixed.
 
-Locate tiles with the pre-experiment mask and verify labels against the controller. Select **Use Boxes** and save the JSON. All four boxes are required; overlaps are rejected.
+Locate tiles with the pre-experiment mask and verify labels against the controller. Select Use Boxes and save the JSON. All four boxes are required; overlaps are rejected.
 
 
 ## 4 · Set time, scale and trials
@@ -44,21 +44,21 @@ Locate tiles with the pre-experiment mask and verify labels against the controll
 | Scale | Pixels per centimetre for distance and speed |
 | Video offset | Video frame = CSV frame − offset |
 
-Full mode requires ten targets, each lasting 300 seconds (7,200 frames at 24 fps). Replace the default **B–C–D–C–B–A–D–C–B–A** order with the recorded sequence. Single-trial mode extends from the selected start to the CSV end.
+Full mode requires ten targets, each lasting 300 seconds (7,200 frames at 24 fps). Replace the default B–C–D–C–B–A–D–C–B–A order with the recorded sequence. Single-trial mode extends from the selected start to the CSV end.
 
-Calibrate scale from the arena in the same video: 916 pixels across 20 cm gives **45.8 px/cm**. Recalibrate after cropping or reframing. Video offset aligns trimmed clips; it does not correct resizing, rotation or frame-rate changes.
+Calibrate scale from the arena in the same video: 916 pixels across 20 cm gives 45.8 px/cm. Recalibrate after cropping or reframing. Video offset aligns trimmed clips; it does not correct resizing, rotation or frame-rate changes.
 
 ## 5 · Select flies and calculate
 
-**Flies included in analysis** controls calculations and exports. Retained IDs keep their original numbers and colours. The separate **Fly** selector only changes the displayed individual.
+Flies included in analysis controls calculations and exports. Retained IDs keep their original numbers and colours. The separate Fly selector only changes the displayed individual.
 
-Select **Recalculate** after changing settings, boxes or included flies. Review dwell, occupancy and success times against the video. Live playback continues after success; exported paths stop at the first completed dwell.
+Select Recalculate after changing settings, boxes or included flies. Review dwell, occupancy and success times against the video. Live playback continues after success; exported paths stop at the first completed dwell.
 
 ## 6 · Review and export
 
 Review jumps and low coverage before export. Flags do not remove points or repair identities; correct tracking in AMADEUS and reload the CSV.
 
-Use **Export CSV**, **Choose export...** or **Export MP4**. Tables and plots can be saved separately.
+Use Export CSV, Choose export... or Export MP4. Tables and plots can be saved separately.
 
 
-[What each output means](measurements-and-outputs.md)
+[What each output means](current-measurements-and-outputs.md)

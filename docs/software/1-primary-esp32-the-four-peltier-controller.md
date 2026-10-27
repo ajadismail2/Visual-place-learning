@@ -11,7 +11,7 @@ An ESP32 drives four BTS7960 bridges and sends the selected A–D state to the d
 
 Each BTS7960 drives one Peltier plate. LPWM heats and RPWM cools; the opposite output is zeroed before reversal.
 
-Peltier-plate control is open-loop, using **20 kHz, 8-bit PWM (0–255)**. Background and ring control are independent.
+Peltier-plate control is open-loop, using 20 kHz, 8-bit PWM (0–255). Background and ring control are independent.
 
 ## Peltier-plate labels and wiring
 
@@ -30,14 +30,14 @@ Values are ESP32 GPIO numbers. Share controller and driver logic ground. Enables
 1. Place the downloaded sketch in an Arduino sketch folder named `Experiment_Controller`.
 2. Copy `local_config.example.h` to `local_config.h` in that folder. Enter the display board's MAC address and local AP settings, then remove the example's `#error` line. Use an AP password of at least eight characters.
 3. Use an ESP32 board package supporting the sketch's `ledcAttach` interface and `wifi_tx_info_t` send callback. Older package versions can require API changes. Firmware compilation and hardware operation have not been verified here.
-4. Configure both boards for radio channel **1**. The sketch sets both the AP channel and peer channel; changing one alone is insufficient. The AP fixes the radio channel and provides no web interface.
-5. Open Serial Monitor at **115200 baud** with a newline ending. Verify Peltier-plate labels and display states, then enter the sequence.
+4. Configure both boards for radio channel 1. The sketch sets both the AP channel and peer channel; changing one alone is insufficient. The AP fixes the radio channel and provides no web interface.
+5. Open Serial Monitor at 115200 baud with a newline ending. Verify Peltier-plate labels and display states, then enter the sequence.
 
 ```text
 EXP B-C-D-C-B-A-D-C-B-A
 ```
 
-Ten trials take **55 minutes including five-minute preheat**. Analysis starts at the first cooling trial. The parser accepts lowercase, ignores non-A–D characters and retains the first 16 valid selections; check the echoed order.
+Ten trials take 55 minutes including five-minute preheat. Analysis starts at the first cooling trial. The parser accepts lowercase, ignores non-A–D characters and retains the first 16 valid selections; check the echoed order.
 
 ## One complete sequence
 

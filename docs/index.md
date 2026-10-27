@@ -10,18 +10,18 @@ This custom-built system is used to study how *Drosophila melanogaster* learns t
 
 The documentation covers:
 
-- **Experimental procedure:** preparing the apparatus, running trials and recording the experiment.
-- **Hardware and assembly:** the arena, Peltier temperature system, visual display, illumination and cameras.
-- **Controller software:** installation, configuration and operation of the Arduino and ESP32 programs.
-- **Tracking and analysis:** AMADEUS tracking, target registration and behavioural measurements.
+- Experimental procedure: preparing the apparatus, running trials and recording the experiment.
+- Hardware and assembly: the arena, Peltier temperature system, visual display, illumination and cameras.
+- Controller software: installation, configuration and operation of the Arduino and ESP32 programs.
+- Tracking and analysis: AMADEUS tracking, target registration and behavioural measurements.
 
 This documentation describes the current apparatus and will be updated as the system develops.
 
 ## Documentation
 
 1. [Hardware](hardware/overview.md) — components, construction, wiring and imaging.
-2. [Software](software/how-the-programs-work.md) — controller programs, installation and operation.
-3. [Analysis](analysis/ANALYSISWORKFLOW.md) — tracking, target registration and behavioural measurements.
+2. [Software](software/how-the-codes-work.md) — controller programs, installation and operation.
+3. [Analysis](analysis/analysis-workflow.md) — tracking, target registration and behavioural measurements.
 4. [CAD](cad/parts-and-step-files.md) — editable STEP files for fabricated parts.
 5. [Resources](resources/downloads-and-references.md) — downloads, checksums and technical references.
 

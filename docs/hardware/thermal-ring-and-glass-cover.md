@@ -1,6 +1,6 @@
 ---
-title: Thermal ring
-description: How the perimeter heater, temperature sensor and controller work together.
+title: Thermal ring and glass cover
+description: Perimeter heater control and glass cover dimensions.
 section: Hardware
 ---
 The perimeter heater has its own temperature sensor and controller, independent of the floor and four Peltier plates.
@@ -20,8 +20,12 @@ An Arduino regulates heater PWM through a MOSFET using OneWire temperature feedb
 
 ## Setpoint and cutoff
 
-Setpoint: **45 °C at the sensor**. Heating stops above **57 °C** and can resume after cooling. The cutoff is software-based and does not latch.
+Setpoint: 45 °C at the sensor. Heating stops above 57 °C and can resume after cooling. The cutoff is software-based and does not latch.
 
 ## Stopping the heater
 
-The sketch has no `STOP` command. Switch off the ring supply separately from Peltier-plate control. Use the [syntax-corrected sketch](../software/thermal-ring.md).
+The sketch has no `STOP` command. Switch off the ring supply separately from Peltier-plate control. Use the [syntax-corrected sketch](../software/4-thermal-ring.md).
+
+## Glass cover
+
+The glass cover is ideally 2–3 mm thick and around 9 inches in diameter. Inexpensive annealed glass works well enough.

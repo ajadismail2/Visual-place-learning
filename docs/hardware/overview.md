@@ -18,7 +18,7 @@ One Peltier plate cools during each trial while the other three heat. The Peltie
 | [Wiring](esp32-and-arduino-wiring.md) | Board labels, pin assignments, supply ratings |
 | [Peltier temperature system](peltier-temperature-system.md) | Background feedback, A–D mapping and temperature response |
 | [LED display](led-display.md) | Panel order, orientation, bar dimensions |
-| [Glass cover](glass-cover.md) | Fit, clearance, camera view |
+| [Thermal ring and glass cover](thermal-ring-and-glass-cover.md) | Fit, clearance, camera view |
 | [Illumination](illumination.md) | Uniformity, mounting, reflections |
 | [Cameras](cameras.md) | Focus, calibration, timing |
 

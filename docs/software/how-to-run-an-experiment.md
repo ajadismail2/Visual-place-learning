@@ -17,13 +17,13 @@ Prepare and test each controller, the thermal system and recording equipment bef
 
 ## Start a sequence
 
-Open the Peltier-plate controller at **115200 baud**. Start behaviour and temperature recording, then log the command time:
+Open the Peltier-plate controller at 115200 baud. Start behaviour and temperature recording, then log the command time:
 
 ```text
 EXP A-D-C-D
 ```
 
-`EXP A-D-C-D` selects A, D, C, then D. Commands accept **1–16 selections**, each cooled for **300 seconds**, after a single **300-second preheat**. This example lasts 25 minutes.
+`EXP A-D-C-D` selects A, D, C, then D. Commands accept 1–16 selections, each cooled for 300 seconds, after a single 300-second preheat. This example lasts 25 minutes.
 
 Mark the first cooling onset in the recording or timing log; analysis trial 1 starts after preheat.
 
@@ -53,4 +53,4 @@ Send `STOP` separately to the background controller. The ring program has no `ST
 
 Check the saved recording interval. Retain raw files separately from processed tracks and plots.
 
-[Software checks](checks-and-troubleshooting.md) · [Thermal-camera data format](thermal-camera-stream.md)
+[Software checks](checks-and-troubleshooting.md) · [Thermal-camera data format](5-thermal-camera-stream.md)

@@ -3,7 +3,7 @@ title: 60-module background
 description: "A separate TMP117 feedback loop adjusts one PWM output for the background circuit."
 section: Software
 ---
-[← Controller programs](how-the-programs-work.md)
+[← Controller programs](how-the-codes-work.md)
 
 <div class="download-links" markdown="1">
 
@@ -27,7 +27,7 @@ The sensor measures its local temperature; floor uniformity requires separate me
 
 ## Set the temperature
 
-Open Serial Monitor at **115200 baud** with a newline ending. Send `SET 34.8` to set the requested sensor temperature. Send `STATUS` to inspect the temperature and PWM output. Other commands are `KP`, `KI`, `KD`, `START` and `STOP`.
+Open Serial Monitor at 115200 baud with a newline ending. Send `SET 34.8` to set the requested sensor temperature. Send `STATUS` to inspect the temperature and PWM output. Other commands are `KP`, `KI`, `KD`, `START` and `STOP`.
 
 Failed reads retain the previous value. There is no stale-data shutdown.
 

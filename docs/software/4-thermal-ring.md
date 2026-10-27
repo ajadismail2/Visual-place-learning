@@ -3,7 +3,7 @@ title: Thermal ring
 description: "A separate temperature loop adjusts the ring heater through a MOSFET."
 section: Software
 ---
-[← Controller programs](how-the-programs-work.md)
+[← Controller programs](how-the-codes-work.md)
 
 <div class="download-links" markdown="1">
 
@@ -26,7 +26,7 @@ The setpoint applies at the sensor. Heating resumes after cooling below the cuto
 
 ## Commands
 
-Serial: **115200 baud**. Commands: `T` (target), `O` (offset), `P`, `I`, `D` (gains). Example: `T45`.
+Serial: 115200 baud. Commands: `T` (target), `O` (offset), `P`, `I`, `D` (gains). Example: `T45`.
 
 Compile the [corrected sketch](../downloads/firmware/Thermal_ring_syntax_fixed/Thermal_ring_syntax_fixed.ino), which removes a stray `3` after `float Kd = 150;`.
 
