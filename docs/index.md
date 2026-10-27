@@ -6,7 +6,7 @@ section: Home
 
 # Visual place learning in Drosophila
 
-This custom-built system is used to study how individual *Drosophila* learn the location of a cool target from surrounding visual cues. It adapts the place-learning assay described by Ofstad, Zuker and Reiser using accessible electronics and locally fabricated parts. [1](#reference)
+This custom-built system is used to study how *Drosophila melanogaster* learns the location of a cool target from surrounding visual cues. This adapts the place-learning assay published by Ofstad, Zuker and Reiser in 2011 using accessible electronics and locally fabricated parts. [1](#reference)
 
 The documentation covers:
 
@@ -14,8 +14,6 @@ The documentation covers:
 - **Hardware and assembly:** the arena, Peltier temperature system, visual display, illumination and cameras.
 - **Controller software:** installation, configuration and operation of the Arduino and ESP32 programs.
 - **Tracking and analysis:** AMADEUS tracking, target registration and behavioural measurements.
-
-[Explore the hardware](hardware/overview.md){: .home-link } [Run an experiment](software/run-an-experiment.md){: .home-link } [Follow the analysis](analysis/from-video-to-measurements.md){: .home-link }
 
 This documentation describes the current apparatus and will be updated as the system develops.
 
