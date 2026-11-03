@@ -7,11 +7,27 @@ AMADEUS learns from unlabelled recordings and represents each animal with an ori
 
 ## Choice of tracker
 
-This assay requires stable identities and centre coordinates, rather than detailed poses. Our earlier SLEAP workflow showed identity swaps during contact and missed detections near the edge. AMADEUS supports recording-specific training, synthetic interactions and identity review.
+The tracker requires stable identities and centre coordinates, rather than detailed poses. Our earlier SLEAP workflow showed identity swaps during contact and missed detections near the edge. AMADEUS supports recording-specific training, synthetic interactions and identity review.
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![AMADEUS tracking workflow](images/amadeusworkflow(shouldciteinpage).png)
+
+<figcaption>AMADEUS tracking workflow. Source: <a href="https://www.biorxiv.org/content/10.64898/2026.09.19.752854v1">AMADEUS paper</a>.</figcaption>
+
+</figure>
 
 This choice is not a measured accuracy comparison. Review AMADEUS identities around occlusions. [SLEAP](https://sleap.ai/) remains an option for pose analysis.
 
 See the [AMADEUS manual](https://amadeus.jpmyrmecol.com/Manual_EN.html) for installation and current controls.
+
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Amadeus tracking workflow](images/amadeusworkflow%28shouldciteinpage%29.png)
+
+<figcaption>Amadeus tracking workflow.</figcaption>
+
+</figure>
 
 ## Tracking data for analysis
 

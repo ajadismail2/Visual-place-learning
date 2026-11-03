@@ -19,18 +19,7 @@ The apparatus combines a heated walking arena, four cooling Peltier plates, an L
 
 One Peltier plate cools during each trial while the other three heat. The Peltier-plate ESP32 synchronises the selected position with the visual panorama; the background and ring run independent temperature-control loops.
 
-
-## Assembly
-
-| Component | Assembly checks |
-| --- | --- |
-| [Arena](arena-and-dimensions.md) | Level floor, secure supports, sealed Peltier-plate edges |
-| [Wiring](esp32-and-arduino-wiring.md) | Board labels, pin assignments, supply ratings |
-| [Peltier temperature system](peltier-temperature-system.md) | Background feedback, A–D mapping and temperature response |
-| [LED display](led-display.md) | Panel order, orientation, bar dimensions |
-| [Thermal ring and glass cover](thermal-ring-and-glass-cover.md) | Fit, clearance, camera view |
-| [Illumination](illumination.md) | Uniformity, mounting, reflections |
-| [Cameras](cameras.md) | Focus, calibration, timing |
+The Setup in total consists of the Peltier arena, Peltier temperature system, LED display, thermal ring and glass cover, illumination,wiring and cameras.
 
 ## Configuration
 

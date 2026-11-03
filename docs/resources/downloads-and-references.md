@@ -7,10 +7,6 @@ section: Resources
 
 [Download all controller programs](../downloads/arena-firmware-2026-10-17.zip) · [Individual programs](../software/how-the-codes-work.md) · [Download checksums](../downloads/SHA256SUMS)
 
-[Current settings](../downloads/protocol.json) match the supplied programs. The [archived configuration](../downloads/protocol-2026-10-15.json) has a different final trial and display pattern.
-
-Network credentials are excluded. A separate [thermal-ring correction](../software/4-thermal-ring.md) removes a syntax error from the original file.
-
 ## Analysis software
 
 [Download the arena analysis GUI](../downloads/analysis/fly_target_time_gui_amadeus.py)
