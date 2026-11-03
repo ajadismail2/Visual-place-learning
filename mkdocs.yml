@@ -8,6 +8,8 @@ theme:
   name: readthedocs
 extra_css:
   - styles/readthedocs-extra.css
+extra_javascript:
+  - scripts/image-viewer.js
 plugins:
   - search
 markdown_extensions:
