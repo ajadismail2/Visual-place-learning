@@ -7,8 +7,8 @@ Sensors on Peltier plates A–D record temperature throughout the experiment. Th
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Combined A–D temperature plot](images/cooltilesensors_plot.png)
+![Temperatures recorded from cooling Peltier plates A to D](images/cooltilesensors_plot.png)
 
-<figcaption>Temperatures of the four cooling Peltier plates during one experiment.</figcaption>
+<figcaption>Temperatures of Peltier plates A–D during repeated heating and cooling cycles.</figcaption>
 
 </figure>

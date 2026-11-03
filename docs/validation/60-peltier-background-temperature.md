@@ -10,7 +10,7 @@ A control sensor regulates PWM through a PID loop and logic-level MOSFET. Perfor
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
 <video controls muted loop style="max-width: 100%;">
-  <source src="../images/THermalcamera_exp-video.mp4" type="video/x-msvideo">
+  <source src="images/THermalcamera_exp-video.mp4" type="video/mp4">
 </video>
 
 <figcaption>Thermal-camera recording of temperature uniformity across the 60-Peltier background.</figcaption>
@@ -27,8 +27,8 @@ A control sensor regulates PWM through a PID loop and logic-level MOSFET. Perfor
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Multi-sensor temperature plot](images/arena_peltiers_steps_plot%20%281%29.png)
+![Temperature sensors on Peltier modules inside the arena](images/arena_peltiers_steps_plot%20%281%29.png)
 
-<figcaption>Temperatures measured at several positions inside the arena.</figcaption>
+<figcaption>Temperatures measured at two positions inside the arena.</figcaption>
 
 </figure>

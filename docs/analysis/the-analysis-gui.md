@@ -33,6 +33,13 @@ py fly_target_time_gui_amadeus.py --self-test
 
 Load the reviewed AMADEUS CSV and matching video. Coordinates are in pixels. Confirm markers follow the correct flies.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Analysis GUI showing fly tracks and target boxes](images/Analysis-gui-homescreen.png)
+
+<figcaption>Analysis GUI with reviewed tracks, target boxes and trial settings.</figcaption>
+
+</figure>
 
 ## 3 · Fix the four targets
 
@@ -48,6 +55,13 @@ Open Draw / load, select A–D and drag a rectangle over each tile. Use the fram
 
 Locate tiles with the pre-experiment mask and verify labels against the controller. Select Use Boxes and save the JSON. All four boxes are required; overlaps are rejected.
 
+<figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
+
+![Target registration window with four cool boxes](images/marking%204%20cool%20boxes.png)
+
+<figcaption>Registering the four cooling regions.</figcaption>
+
+</figure>
 
 ## 4 · Set time, scale and trials
 

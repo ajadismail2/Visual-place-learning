@@ -9,7 +9,7 @@ This check is useful, but less critical than validating the 60-Peltier backgroun
 
 <figure markdown="1" style="border: 1px solid #d6d6d6; padding: 12px; margin: 24px 0; text-align: center;">
 
-![Thermal-ring temperature plot](images/thermal%20ring.png)
+![Thermal-ring temperature over time](images/thermal%20ring.png)
 
 <figcaption>Thermal-ring temperature during an experiment.</figcaption>
 
