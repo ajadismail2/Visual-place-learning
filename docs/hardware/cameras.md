@@ -27,6 +27,6 @@ The MLX90640 measures surface temperature on a 32 × 24 pixel grid. An ESP32 rea
 
 </figure>
 
-Use it to follow the background and Peltier-plate temperatures throughout the experiment. Check readings against a contact thermometer.
+Use it to follow the background and Peltier-plate temperatures throughout the experiment. Check readings against a contact temperature sensor.
 
 [Thermal-camera program](../software/5-thermal-camera-stream.md)
